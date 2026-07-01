@@ -8,7 +8,7 @@ Quick code examples for each order type.
 
 ```typescript
 {
-  amount: 10,
+  amount: 0.1,
   receiverId: "db1bb73d-30cf-4718-ad2b-bc25cd13b09c",
   receiverType: "BRANCH",
   integratorId: "76880b28-9033-4d48-b21f-37a9a36ec5dd",
@@ -22,7 +22,7 @@ Quick code examples for each order type.
 
 ```typescript
 {
-  amount: 100,
+  amount: 0.1,
   orderProperties: {
     PURPOSE: { value: "გადასახადის გადახდა", isEditable: false },
     PERSONAL_NUMBER: { value: "61001234567", isEditable: true },
@@ -42,7 +42,7 @@ Quick code examples for each order type.
 
 ```typescript
 {
-  amount: 50,
+  amount: 0.1,
   orderProperties: {
     SERVICE_PROVIDER_CODE: { value: "PATROL", isEditable: false },
     SERVICE_CODE: { value: "PATROL", isEditable: false },
@@ -62,7 +62,7 @@ Quick code examples for each order type.
 
 ```typescript
 {
-  amount: 10,
+  amount: 0.1,
   saveCard: true,
   directLinkProvider: "CREDO",
   receiverId: "uuid",
@@ -93,6 +93,38 @@ Quick code examples for each order type.
   integratorOrderId: crypto.randomUUID()
 }
 ```
+
+---
+
+## 5. Split Order Payment
+
+**Split payments between multiple receivers (BRANCH + IBAN):**
+
+```typescript
+{
+  amount: 1.0,
+  integratorId: "76880b28-9033-4d48-b21f-37a9a36ec5dd",
+  splitDetails: [
+    {
+      receiverType: "BRANCH",
+      receiverIdentifier: "db1bb73d-30cf-4718-ad2b-bc25cd13b09c",
+      amount: 0.5
+    },
+    {
+      receiverType: "IBAN",
+      receiverIdentifier: "GE62BG0000000610917722",
+      amount: 0.5
+    }
+  ]
+}
+```
+
+**IMPORTANT:**
+- Use `splitDetails` (NOT splitOrders)
+- Use `receiverIdentifier` (NOT receiverId)
+- DO NOT include top-level `receiverId` when using splitDetails
+- Total amount must equal sum of split amounts
+- Supported receiverTypes: BRANCH, IBAN
 
 ---
 
