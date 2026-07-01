@@ -1,4 +1,8 @@
 import { defineConfig } from '@playwright/test';
+import dotenv from 'dotenv';
+
+// Load .env file
+dotenv.config();
 
 /**
  * Playwright Configuration
@@ -20,7 +24,19 @@ export default defineConfig({
   retries: 0,
 
   /* Reporter to use */
-  reporter: 'html',
+  reporter: [
+    // 🟢 გამოსაქვეყნებელი: სუფთა summary (მხოლოდ ტესტების სია, steps-ის გარეშე) → docs/report
+    ['./scripts/summary-reporter.js', { outputFile: 'docs/report/index.html' }],
+    // 🔧 ლოკალური debug: სრული Playwright report (steps-ით) → playwright-report (gitignored)
+    ['html', { outputFolder: 'playwright-report', open: process.env.NO_OPEN ? 'never' : 'on-failure' }],
+    ['allure-playwright', {
+      outputFolder: 'allure-results',
+      detail: true,
+      suiteTitle: true,
+    }],
+    // Jira reporter — product bug-ზე ქმნის Jira ticket-ს (მხოლოდ JIRA_REPORT=1-ზე)
+    ['./jira-agent/reporter.js'],
+  ],
 
   /* Shared settings for all the projects below */
   use: {
@@ -30,11 +46,11 @@ export default defineConfig({
     /* Collect trace when retrying the failed test */
     trace: 'on-first-retry',
 
-    /* Screenshot on failure */
-    screenshot: 'only-on-failure',
+    /* Screenshot disabled */
+    screenshot: 'off',
 
-    /* Video on failure */
-    video: 'retain-on-failure',
+    /* Video disabled */
+    video: 'off',
   },
 
   /* Configure projects for major browsers */
