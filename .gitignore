@@ -8,3 +8,11 @@ node_modules/
 /blob-report/
 /playwright/.cache/
 /playwright/.auth/
+/playwright-card-data/
+
+# Jira Agent local state
+/jira-agent/processed.json
+
+# Claude Code local automation state
+.claude/scheduled_tasks.json
+.claude/scheduled_tasks.lock

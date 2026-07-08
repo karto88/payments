@@ -49,9 +49,14 @@ export class PaymentPage {
   /**
    * Step 2: Create order
    */
-  async createOrder(encryptedData: string, encryptedKeys: string, integratorId: string) {
+  async createOrder(
+    encryptedData: string,
+    encryptedKeys: string,
+    integratorId: string,
+    path: string = '/ecommerce-service/api/integrator/order'
+  ) {
     const response = await this.request.post(
-      `${this.baseUrl}/ecommerce-service/api/integrator/order`,
+      `${this.baseUrl}${path}`,
       {
         headers: {
           'Content-Type': 'application/json',
@@ -126,11 +131,104 @@ export class PaymentPage {
   }
 
   /**
-   * Open payment page in browser
+   * Generic decrypt (returns parsed JSON object)
    */
-  async openPaymentPage(paymentUrl: string) {
-    await this.page.goto(paymentUrl);
-    await this.page.waitForLoadState('networkidle');
+  async decryptData(accessToken: string, encryptedData: string, encryptedKeys: string) {
+    const response = await this.request.post(
+      `${this.baseUrl}/payment-service/api/v1/test/decryptAES`,
+      {
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+          'Content-Type': 'application/json',
+        },
+        data: {
+          encryptedAESProperties: encryptedKeys,
+          encryptedData: encryptedData,
+          privateKey: this.PRIVATE_KEY,
+        },
+      }
+    );
+
+    if (!response.ok()) {
+      const errorBody = await response.text();
+      throw new Error(`Decryption failed: ${response.status()} - ${errorBody}`);
+    }
+
+    const decryptData = await response.json();
+    return JSON.parse(decryptData.value);
+  }
+
+  /**
+   * Get order status (encrypt body → GET status → decrypt response)
+   */
+  async getOrderStatus(accessToken: string, integratorId: string, integratorOrderId: string) {
+    // 1. Encrypt status request body (იგივე encryptAES რაც ორდერის შექმნაზე)
+    const statusBody = {
+      integratorId,
+      integratorOrderId,
+      returnCheckDetails: true,
+    };
+    const encrypted = await this.encryptOrderData(accessToken, statusBody);
+
+    // 2. GET order/status — encrypted params (იგივე რაც createOrder-ის body)
+    const response = await this.request.get(
+      `${this.baseUrl}/ecommerce-service/api/integrator/order/status`,
+      {
+        params: {
+          identifier: integratorId,
+          encryptedData: encrypted.encryptedData,
+          encryptedKeys: encrypted.encryptedKeys,
+          aes: true,
+        },
+      }
+    );
+
+    if (!response.ok()) {
+      const errorBody = await response.text();
+      throw new Error(`Get status failed: ${response.status()} - ${errorBody}`);
+    }
+
+    // 3. Decrypt response (იგივე decryptAES body)
+    const statusResult = await response.json();
+
+    return await this.decryptData(accessToken, statusResult.encryptedData, statusResult.encryptedKeys);
+  }
+
+  /**
+   * Get saved card token (encrypt body → GET card/order-id → decrypt response)
+   * იგივე encrypt→GET→decrypt პატერნი რაც getOrderStatus,
+   * ოღონდ card/order-id endpoint-ზე და encrypt body-ში returnCheckDetails არ არის.
+   */
+  async getCardToken(accessToken: string, integratorId: string, integratorOrderId: string) {
+    // 1. Encrypt request body (returnCheckDetails არ სჭირდება)
+    const cardBody = {
+      integratorOrderId,
+      integratorId,
+    };
+    const encrypted = await this.encryptOrderData(accessToken, cardBody);
+
+    // 2. GET card/order-id — encrypted params
+    const response = await this.request.get(
+      `${this.baseUrl}/ecommerce-service/api/v1/integrator/card/order-id`,
+      {
+        params: {
+          identifier: integratorId,
+          encryptedData: encrypted.encryptedData,
+          encryptedKeys: encrypted.encryptedKeys,
+          aes: true,
+        },
+      }
+    );
+
+    if (!response.ok()) {
+      const errorBody = await response.text();
+      throw new Error(`Get card token failed: ${response.status()} - ${errorBody}`);
+    }
+
+    // 3. Decrypt response (იგივე decryptAES body)
+    const cardResult = await response.json();
+
+    return await this.decryptData(accessToken, cardResult.encryptedData, cardResult.encryptedKeys);
   }
 
   /**
@@ -140,26 +238,60 @@ export class PaymentPage {
     accessToken: string,
     orderConfig: {
       amount: number;
-      receiverId: string;
+      receiverId?: string;
+      receiverType?: string;
       integratorId: string;
-      validUntil: string;
+      validUntil?: string;
+      callbackUri?: string;
+      successRedirectUri?: string;
+      failRedirectUri?: string;
       directLinkProvider?: string;
       openBankingLinkProvider?: string;
       installmentPaymentProvider?: string;
       saveCard?: boolean;
+      payWithPreAuth?: boolean;
       orderProperties?: any;
+      splitDetails?: Array<{
+        receiverType: string;
+        receiverIdentifier: string;
+        amount: number;
+      }>;
     }
-  ): Promise<string> {
+  ): Promise<{ paymentUrl: string; integratorOrderId: string }> {
     const randomUuid = crypto.randomUUID();
 
     const orderData: any = {
       amount: orderConfig.amount,
-      receiverId: orderConfig.receiverId,
-      receiverType: 'BRANCH',
       integratorId: orderConfig.integratorId,
       integratorOrderId: randomUuid,
-      validUntil: orderConfig.validUntil,
     };
+
+    // Add validUntil if provided
+    if (orderConfig.validUntil) {
+      orderData.validUntil = orderConfig.validUntil;
+    }
+
+    // Add callbackUri if provided
+    if (orderConfig.callbackUri) {
+      orderData.callbackUri = orderConfig.callbackUri;
+    }
+
+    // Add redirect URIs if provided
+    if (orderConfig.successRedirectUri) {
+      orderData.successRedirectUri = orderConfig.successRedirectUri;
+    }
+    if (orderConfig.failRedirectUri) {
+      orderData.failRedirectUri = orderConfig.failRedirectUri;
+    }
+
+    // Add receiverId/receiverType (required for all orders)
+    orderData.receiverId = orderConfig.receiverId || orderConfig.splitDetails?.[0]?.receiverIdentifier;
+    orderData.receiverType = orderConfig.receiverType || orderConfig.splitDetails?.[0]?.receiverType || 'BRANCH';
+
+    // Add splitDetails if provided
+    if (orderConfig.splitDetails) {
+      orderData.splitDetails = orderConfig.splitDetails;
+    }
 
     // Add optional fields
     if (orderConfig.directLinkProvider) {
@@ -173,6 +305,9 @@ export class PaymentPage {
     }
     if (orderConfig.saveCard !== undefined) {
       orderData.saveCard = orderConfig.saveCard;
+    }
+    if (orderConfig.payWithPreAuth !== undefined) {
+      orderData.payWithPreAuth = orderConfig.payWithPreAuth;
     }
 
     // Add orderProperties (default or custom)
@@ -199,6 +334,86 @@ export class PaymentPage {
       order.encryptedKeys
     );
 
-    return paymentUrl;
+    return { paymentUrl, integratorOrderId: randomUuid };
+  }
+
+  /**
+   * Token (saved-card / recurring) payment.
+   * იგივე flow რაც createPaymentOrder-ს (encrypt → createOrder → decrypt),
+   * ოღონდ body-ში cardToken და payment link (urlForQR) არ ბრუნდება —
+   * გადახდა მაშინვე ხდება, ამიტომ decryptPaymentUrl-ის ნაცვლად decryptData გამოიყენება.
+   */
+  async createTokenPayment(
+    accessToken: string,
+    orderConfig: {
+      amount: number;
+      receiverId: string;
+      receiverType?: string;
+      integratorId: string;
+      cardToken: string;
+    }
+  ): Promise<{ result: any; integratorOrderId: string }> {
+    const randomUuid = crypto.randomUUID();
+
+    const orderData = {
+      amount: orderConfig.amount,
+      receiverId: orderConfig.receiverId,
+      receiverType: orderConfig.receiverType || 'BRANCH',
+      integratorId: orderConfig.integratorId,
+      integratorOrderId: randomUuid,
+      cardToken: orderConfig.cardToken,
+    };
+
+    const encrypted = await this.encryptOrderData(accessToken, orderData);
+    const order = await this.createOrder(
+      encrypted.encryptedData,
+      encrypted.encryptedKeys,
+      orderConfig.integratorId
+    );
+    const result = await this.decryptData(
+      accessToken,
+      order.encryptedData,
+      order.encryptedKeys
+    );
+
+    return { result, integratorOrderId: randomUuid };
+  }
+
+  /**
+   * Pre-Authorization — ეტაპი 2: ორდერის დაქომფლითება (complete/capture).
+   *
+   * იგივე პატერნი რაც createPaymentOrder-ს (encrypt → createOrder → decrypt),
+   * ოღონდ POST მიდის /order/complete endpoint-ზე და inner body-ში ეთითება
+   * არსებული (გადახდილი) integratorOrderId + amount — რამდენი უნდა დაქომფლითდეს.
+   * დანარჩენი (order amount − complete amount) გადამხდელს უბრუნდება.
+   */
+  async completePreAuthOrder(
+    accessToken: string,
+    completeConfig: {
+      integratorId: string;
+      integratorOrderId: string;
+      amount: number;
+    }
+  ): Promise<any> {
+    const orderData = {
+      integratorId: completeConfig.integratorId,
+      integratorOrderId: completeConfig.integratorOrderId,
+      amount: completeConfig.amount,
+    };
+
+    const encrypted = await this.encryptOrderData(accessToken, orderData);
+    const order = await this.createOrder(
+      encrypted.encryptedData,
+      encrypted.encryptedKeys,
+      completeConfig.integratorId,
+      '/ecommerce-service/api/integrator/order/complete'
+    );
+    const result = await this.decryptData(
+      accessToken,
+      order.encryptedData,
+      order.encryptedKeys
+    );
+
+    return result;
   }
 }

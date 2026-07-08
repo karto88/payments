@@ -11,11 +11,14 @@ dotenv.config();
 export default defineConfig({
   testDir: './tests',
 
-  /* Maximum time one test can run */
-  timeout: 0, // No timeout for interactive tests
+  /* Maximum time one test can run — 2 წუთი (error-ის დროს არ გაიყინოს) */
+  timeout: 120000,
 
   /* Run tests in files in parallel */
   fullyParallel: false,
+
+  /* ერთი worker — ტესტები მკაცრად სერიულად (OTP inbox საერთოა, პარალელი OTP-ს ურევს) */
+  workers: 1,
 
   /* Fail the build on CI if you accidentally left test.only in the source code */
   forbidOnly: false,
@@ -25,15 +28,10 @@ export default defineConfig({
 
   /* Reporter to use */
   reporter: [
-    // 🟢 გამოსაქვეყნებელი: სუფთა summary (მხოლოდ ტესტების სია, steps-ის გარეშე) → docs/report
+    // 🖥️ ტერმინალში console.log-ები (Order Created, OTP SUCCESS, redirect...) — steps-ის გარეშე
+    ['list'],
+    // 🟢 report: სუფთა summary (ტესტების სია, steps-ის გარეშე) → docs/report (ლოკალურიც + გიტიც)
     ['./scripts/summary-reporter.js', { outputFile: 'docs/report/index.html' }],
-    // 🔧 ლოკალური debug: სრული Playwright report (steps-ით) → playwright-report (gitignored)
-    ['html', { outputFolder: 'playwright-report', open: process.env.NO_OPEN ? 'never' : 'on-failure' }],
-    ['allure-playwright', {
-      outputFolder: 'allure-results',
-      detail: true,
-      suiteTitle: true,
-    }],
     // Jira reporter — product bug-ზე ქმნის Jira ticket-ს (მხოლოდ JIRA_REPORT=1-ზე)
     ['./jira-agent/reporter.js'],
   ],
@@ -42,6 +40,10 @@ export default defineConfig({
   use: {
     /* Base URL to use in actions like `await page.goto('/')` */
     // baseURL: 'http://127.0.0.1:3000',
+
+    /* ცალკეული action/navigation timeout — რომ error-ის დროს არ გაიჭედოს */
+    actionTimeout: 15000,
+    navigationTimeout: 30000,
 
     /* Collect trace when retrying the failed test */
     trace: 'on-first-retry',

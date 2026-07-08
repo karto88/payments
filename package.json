@@ -3,7 +3,12 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "scripts": {},
+  "scripts": {
+    "share-report": "git add docs && git commit -m \"chore: update test report\" && git push",
+    "publish-report": "node scripts/publish-report.js",
+    "test:jira": "node jira-agent/run-with-report.js",
+    "create-bug": "node jira-agent/create-bug.js"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",

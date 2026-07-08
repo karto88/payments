@@ -18,7 +18,7 @@ export class GmailHelper {
     };
   }
 
-  async getLatestOTP(timeoutSeconds = 20, fromEmail?: string): Promise<string> {
+  async getLatestOTP(timeoutSeconds = 20, fromEmail?: string, bank?: 'BOG' | 'TBC' | 'CREDO'): Promise<string> {
     const startTime = Date.now();
 
     while (Date.now() - startTime < timeoutSeconds * 1000) {
@@ -53,11 +53,27 @@ export class GmailHelper {
             const emailAge = Date.now() - (emailDate ? emailDate.getTime() : 0);
 
             if (emailAge < 30000) {
-              // BOG: "ეროვნული კოდი - 9295" (Subject-ში)
-              let otpMatch = emailSubject.match(/ეროვნული კოდი\s*-\s*(\d{4,6})/i);
+              // თუ bank მითითებულია, შევამოწმოთ Subject-ში
+              if (bank) {
+                const bankInSubject = bank === 'CREDO'
+                  ? emailSubject.toLowerCase().includes('credo')
+                  : emailSubject.includes(`${bank} OTP`);
 
-              // TBC: "SMS კოდი: 1234" (Body-ში)
-              if (!otpMatch) otpMatch = emailBody.match(/SMS კოდი:\s*(\d{4,6})/i);
+                if (!bankInSubject) {
+                  await connection.end();
+                  await new Promise((resolve) => setTimeout(resolve, 2000));
+                  continue;
+                }
+              }
+
+              // BOG/TBC OTP - 58986
+              let otpMatch = emailSubject.match(/(?:BOG|TBC) OTP\s*-\s*(\d{4,6})/i);
+
+              // CREDO OTP (Subject-ში ან body-ში)
+              if (!otpMatch && bank === 'CREDO') {
+                otpMatch = emailSubject.match(/(\d{4,6})/);
+                if (!otpMatch) otpMatch = emailBody.match(/\b(\d{4,6})\b/);
+              }
 
               // Fallback: ნებისმიერი 4-6 ციფრი
               if (!otpMatch) otpMatch = emailBody.match(/\b(\d{4,6})\b/);
@@ -81,5 +97,39 @@ export class GmailHelper {
     }
 
     throw new Error('OTP not found');
+  }
+
+  async deleteOldOTPEmails(): Promise<number> {
+    try {
+      const connection = await imaps.connect(this.config);
+      await connection.openBox('INBOX');
+
+      const searchCriteria = [
+        ['OR',
+          ['SUBJECT', 'BOG OTP'],
+          ['OR',
+            ['SUBJECT', 'TBC OTP'],
+            ['SUBJECT', 'CREDO']
+          ]
+        ]
+      ];
+      const fetchOptions = { bodies: ['HEADER'], markSeen: false };
+
+      const messages = await connection.search(searchCriteria, fetchOptions);
+
+      if (messages.length > 0) {
+        const uids = messages.map((msg: any) => msg.attributes.uid);
+        await connection.addFlags(uids, '\\Deleted');
+        await connection.imap.expunge();
+        await connection.end();
+        return messages.length;
+      }
+
+      await connection.end();
+      return 0;
+    } catch (error) {
+      console.error('Failed to delete emails:', error);
+      return 0;
+    }
   }
 }
