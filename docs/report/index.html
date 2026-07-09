@@ -24,17 +24,31 @@
 </head>
 <body>
   <h1>🎭 Playwright Test Report</h1>
-  <div class="meta">7/9/2026, 2:45:24 PM</div>
+  <div class="meta">7/9/2026, 4:57:02 PM</div>
   <div class="summary">
     <div class="card">Total: 1</div>
-    <div class="card pass">✅ Passed: 1</div>
-    <div class="card fail">❌ Failed: 0</div>
+    <div class="card pass">✅ Passed: 0</div>
+    <div class="card fail">❌ Failed: 1</div>
     <div class="card skip">⏭️ Skipped: 0</div>
   </div>
   <div class="file">tests/Positive/refund-order.spec.ts</div><div class="test">
-          <span class="st" style="color:#3fb950">✅ passed</span>
-          <span class="name">Refunded Device</span>
-          <span class="dur">54.9s</span>
-        </div>
+          <span class="st" style="color:#f85149">❌ failed</span>
+          <span class="name">Partially Device</span>
+          <span class="dur">54.1s</span>
+        </div><pre class="err">ApiAssertionError: 
+❌ API TEST FAILED
+───────────────────────────────────────────
+🔧 ოპერაცია:    Device refund — transaction status
+⚠️  პრობლემა:    ბალანსიდან არასწორად ჩამოიჭრა (ჩამოიჭრა 0.06, უნდა 0.05)
+📥 მიმდინარე შედეგი:
+{
+  "balanceBefore": 2.15,
+  "balanceAfter": 2.09,
+  "actualDeduction": 0.06,
+  "fee": 0.03
+}
+✅ მოსალოდნელი შედეგი: partial refund → ჩამოჭრა = refundAmount = 0.05 (fee გარეშე)
+───────────────────────────────────────────
+</pre>
 </body>
 </html>
