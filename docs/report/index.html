@@ -12,8 +12,13 @@
     .card { background:#161b22; border:1px solid #30363d; border-radius:8px; padding:12px 18px; font-weight:600; }
     .card.pass { color:#3fb950; } .card.fail { color:#f85149; } .card.skip { color:#7d8590; }
     .file { color:#7d8590; font-size:13px; margin:18px 0 6px; font-weight:600; }
+    .test-item { margin-bottom:6px; }
     .test { display:flex; align-items:center; gap:16px; background:#161b22; border:1px solid #30363d;
-            border-radius:6px; padding:12px 16px; margin-bottom:6px; }
+            border-radius:6px; padding:12px 16px; cursor:pointer; list-style:none; user-select:none; }
+    .test::-webkit-details-marker { display:none; }
+    .test:hover { border-color:#484f58; }
+    .chev { color:#7d8590; font-size:11px; width:12px; transition:transform .15s; }
+    details[open] > .test .chev { transform:rotate(90deg); }
     .st { min-width:110px; font-weight:600; font-size:13px; }
     .name { flex:1; }
     .dur { color:#7d8590; font-size:13px; }
@@ -27,45 +32,24 @@
 </head>
 <body>
   <h1>🎭 Playwright Test Report</h1>
-  <div class="meta">7/9/2026, 5:45:02 PM</div>
+  <div class="meta">7/10/2026, 1:55:32 PM</div>
   <div class="summary">
     <div class="card">Total: 1</div>
     <div class="card pass">✅ Passed: 0</div>
     <div class="card fail">❌ Failed: 1</div>
     <div class="card skip">⏭️ Skipped: 0</div>
   </div>
-  <div class="file">tests/Positive/refund-order.spec.ts</div><div class="test">
-          <span class="st" style="color:#f85149">❌ failed</span>
-          <span class="name">Partially Device</span>
-          <span class="dur">54.3s</span>
-        </div><pre class="log">✅ 1. Order Created
-✅ 2. OTP Sent: 543171
-✅ 3. Payment Successful
-✅ Closed QR terminal modal
-✅ Clicked Skip button
-✅ Clicked Done button
-✅ 4. Transaction ID: 54722 (fee: 0.03)
+  <div class="file">tests/Positive/create-order.spec.ts</div><details class="test-item" open>
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#f85149">❌ failed</span>
+            <span class="name">Create Order Only</span>
+            <span class="dur">98.8s</span>
+          </summary><pre class="log">✅ Order Created
 
-🔄 5. Refunding: 0.05 GEL
-   Refund response status: 200
-✅ Refund API call successful (no response body)
+🔗 Payment URL:
+https://web.appdev.keepz.me/pay?qrType=REQUEST&amp;receiverType=BRANCH&amp;receiverId=a1b9a5c5-9f01-42ee-a6e3-8853297caf49&amp;integratorId=76880b28-9033-4d48-b21f-37a9a36ec5dd&amp;integratorOrderId=20ed8d43-35ef-4d7f-930d-e300e614d87b&amp;amount=0.1&amp;currency=GEL
 
-🔍 Verifying Transaction ID: 54722
-✅ 6. Refund Verified (PARTIALLY_REFUNDED)
-   Balance: 1.67 → 1.61 | ჩამოიჭრა: 0.06 | მოსალოდნელი: 0.05</pre><pre class="err">ApiAssertionError: 
-❌ API TEST FAILED
-───────────────────────────────────────────
-🔧 ოპერაცია:    Device refund — transaction status
-⚠️  პრობლემა:    ბალანსიდან არასწორად ჩამოიჭრა (ჩამოიჭრა 0.06, უნდა 0.05)
-📥 მიმდინარე შედეგი:
-{
-  "balanceBefore": 1.67,
-  "balanceAfter": 1.61,
-  "actualDeduction": 0.06,
-  "fee": 0.03
-}
-✅ მოსალოდნელი შედეგი: partial refund → ჩამოჭრა = refundAmount = 0.05 (fee გარეშე)
-───────────────────────────────────────────
-</pre>
+✅ Browser opened</pre><pre class="err">Error: page.waitForTimeout: Target page, context or browser has been closed</pre></details>
 </body>
 </html>
