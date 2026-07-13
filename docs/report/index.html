@@ -32,29 +32,46 @@
 </head>
 <body>
   <h1>🎭 Playwright Test Report</h1>
-  <div class="meta">7/13/2026, 4:41:12 PM</div>
+  <div class="meta">7/13/2026, 5:36:56 PM</div>
   <div class="summary">
     <div class="card">Total: 1</div>
-    <div class="card pass">✅ Passed: 1</div>
-    <div class="card fail">❌ Failed: 0</div>
+    <div class="card pass">✅ Passed: 0</div>
+    <div class="card fail">❌ Failed: 1</div>
     <div class="card skip">⏭️ Skipped: 0</div>
   </div>
-  <div class="file">tests/Positive/refund-order.spec.ts</div><details class="test-item">
+  <div class="file">tests/Positive/refund-order.spec.ts</div><details class="test-item" open>
           <summary class="test">
             <span class="chev">▶</span>
-            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="st" style="color:#f85149">❌ failed</span>
             <span class="name">Partially Refunded Admin</span>
-            <span class="dur">59.1s</span>
+            <span class="dur">57.7s</span>
           </summary><pre class="log">✅ 1. Order Created
-✅ 2. OTP Sent: 253736
+✅ 2. OTP Sent: 591839
 ✅ 3. Payment Successful
 ✅ Closed QR terminal modal
 ✅ Clicked Skip button
 ✅ Clicked Done button
-✅ Status update successful
 ✅ 4. Payment Status Confirmed
 
 🔄 5. Refunding: 0.05 GEL
-✅ 6. Refund Successful (PARTIALLY_REFUNDED)</pre></details>
+❌ Refund verification failed:
+   Expected: PARTIALLY_REFUNDED
+   Actual: NOT_SET
+
+   Balance: 5.25 → 5.25 | ჩამოიჭრა: 0 | მოსალოდნელი: 0.05</pre><pre class="err">ApiAssertionError: 
+❌ API TEST FAILED
+───────────────────────────────────────────
+🔧 ოპერაცია:    Admin refund — balance deduction
+⚠️  პრობლემა:    ბალანსიდან არასწორად ჩამოიჭრა (ჩამოიჭრა 0, უნდა 0.05)
+📥 მიმდინარე შედეგი:
+{
+  "balanceBefore": 5.25,
+  "balanceAfter": 5.25,
+  "actualDeduction": 0,
+  "fee": 0.01
+}
+✅ მოსალოდნელი შედეგი: partial refund → ჩამოჭრა = refundAmount = 0.05
+───────────────────────────────────────────
+</pre></details>
 </body>
 </html>
