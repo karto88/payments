@@ -32,34 +32,44 @@
 </head>
 <body>
   <h1>🎭 Playwright Test Report</h1>
-  <div class="meta">7/13/2026, 5:45:57 PM</div>
+  <div class="meta">7/13/2026, 5:57:21 PM</div>
   <div class="summary">
     <div class="card">Total: 1</div>
-    <div class="card pass">✅ Passed: 1</div>
-    <div class="card fail">❌ Failed: 0</div>
+    <div class="card pass">✅ Passed: 0</div>
+    <div class="card fail">❌ Failed: 1</div>
     <div class="card skip">⏭️ Skipped: 0</div>
   </div>
-  <div class="file">tests/Positive/refund-order.spec.ts</div><details class="test-item">
+  <div class="file">tests/Positive/refund-order.spec.ts</div><details class="test-item" open>
           <summary class="test">
             <span class="chev">▶</span>
-            <span class="st" style="color:#3fb950">✅ passed</span>
-            <span class="name">Partially Device</span>
-            <span class="dur">54.9s</span>
+            <span class="st" style="color:#f85149">❌ failed</span>
+            <span class="name">Partially Refunded Admin</span>
+            <span class="dur">58.6s</span>
           </summary><pre class="log">✅ 1. Order Created
-✅ 2. OTP Sent: 283312
+✅ 2. OTP Sent: 117547
 ✅ 3. Payment Successful
 ✅ Closed QR terminal modal
 ✅ Clicked Skip button
 ✅ Clicked Done button
-✅ 4. Transaction ID: 55200 (fee: 0.01)
+✅ 4. Payment Status Confirmed
 
 🔄 5. Refunding: 0.05 GEL
-   Refund response status: 200
-✅ Refund API call successful (no response body)
+❌ Transaction not found
 
-🔍 Verifying Transaction ID: 55200
-✅ 6. Refund Verified (PARTIALLY_REFUNDED)
-   Balance: 5.09 → 5.04 | ჩამოიჭრა: 0.05 | მოსალოდნელი: 0.05
-✅ 7. Balance Deduction Verified (0.05)</pre></details>
+   Balance: 5.04 → 5.04 | ჩამოიჭრა: 0 | მოსალოდნელი: 0.05</pre><pre class="err">ApiAssertionError: 
+❌ API TEST FAILED
+───────────────────────────────────────────
+🔧 ოპერაცია:    Admin refund — balance deduction
+⚠️  პრობლემა:    ბალანსიდან არასწორად ჩამოიჭრა (ჩამოიჭრა 0, უნდა 0.05)
+📥 მიმდინარე შედეგი:
+{
+  "balanceBefore": 5.04,
+  "balanceAfter": 5.04,
+  "actualDeduction": 0,
+  "fee": 0.01
+}
+✅ მოსალოდნელი შედეგი: partial refund → ჩამოჭრა = refundAmount = 0.05
+───────────────────────────────────────────
+</pre></details>
 </body>
 </html>
