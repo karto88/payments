@@ -32,65 +32,25 @@
 </head>
 <body>
   <h1>🎭 Playwright Test Report</h1>
-  <div class="meta">7/13/2026, 2:49:25 PM</div>
+  <div class="meta">7/13/2026, 3:47:20 PM</div>
   <div class="summary">
     <div class="card">Total: 1</div>
-    <div class="card pass">✅ Passed: 0</div>
-    <div class="card fail">❌ Failed: 1</div>
+    <div class="card pass">✅ Passed: 1</div>
+    <div class="card fail">❌ Failed: 0</div>
     <div class="card skip">⏭️ Skipped: 0</div>
   </div>
-  <div class="file">tests/Positive/split-order.spec.ts</div><details class="test-item" open>
+  <div class="file">tests/Positive/split-order.spec.ts</div><details class="test-item">
           <summary class="test">
             <span class="chev">▶</span>
-            <span class="st" style="color:#f85149">❌ failed</span>
-            <span class="name">Split Order IBAN BRANCH</span>
-            <span class="dur">126.4s</span>
+            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="name">Split Order BRANCH and BRANCH</span>
+            <span class="dur">71.5s</span>
           </summary><pre class="log">✅ Order Created
 ✅ Payment page opened
-✅ OTP: 809911
+✅ OTP: 364445
 ✅ Closed QR terminal modal
 ✅ Clicked Skip button
-✅ Clicked Done button</pre><pre class="err">ApiAssertionError: 
-❌ API TEST FAILED
-───────────────────────────────────────────
-🔧 ოპერაცია:    Split order — transactions status — parent (tx 55095)
-⚠️  პრობლემა:    ველი "status" ვერ დაემთხვა (მოვიდა: PENDING)
-📥 მიმდინარე შედეგი:
-{
-  "id": 55095,
-  "status": "PENDING",
-  "distributionStatus": "PENDING",
-  "senderName": "Guest",
-  "receiverName": "stromae T",
-  "receiverMerchantName": "stromae T",
-  "receiverPersonalNumber": "90000000141",
-  "transactionDate": "2026-07-13T14:49:35",
-  "initialCurrency": "GEL",
-  "initialAmount": 0.4,
-  "acquiringCurrency": "GEL",
-  "acquiringAmount": 0.5,
-  "paymentMethod": "Standard",
-  "distributionCurrencyCode": "GEL",
-  "distributionAmount": 0.4,
-  "receiverCommissionPercent": 0,
-  "senderCommissionPercent": 20,
-  "commissionRateType": "PERCENTAGE",
-  "initialCashbackAmount": 0,
-  "paymentProvider": "CREDO",
-  "initialRefundAmount": 0,
-  "source": "Web",
-  "refundableFromMerchant": true,
-  "hasChildren": true,
-  "isRefundable": true,
-  "isRetryable": false,
-  "isStatusUpdatable": true,
-  "parentTransaction": 0,
-  "isInvoiceDownloadable": true,
-  "isSenderMock": false,
-  "isReceiverMock": false
-}
-✅ მოსალოდნელი შედეგი: status = SUCCESS
-───────────────────────────────────────────
-</pre></details>
+✅ Clicked Done button
+✅ Split verified: parent 55116=PENDING | children 55119=PENDING(0.2), 55118=SUCCESS(0.2)</pre></details>
 </body>
 </html>
