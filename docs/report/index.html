@@ -32,25 +32,29 @@
 </head>
 <body>
   <h1>🎭 Playwright Test Report</h1>
-  <div class="meta">7/13/2026, 3:47:20 PM</div>
+  <div class="meta">7/13/2026, 4:41:12 PM</div>
   <div class="summary">
     <div class="card">Total: 1</div>
     <div class="card pass">✅ Passed: 1</div>
     <div class="card fail">❌ Failed: 0</div>
     <div class="card skip">⏭️ Skipped: 0</div>
   </div>
-  <div class="file">tests/Positive/split-order.spec.ts</div><details class="test-item">
+  <div class="file">tests/Positive/refund-order.spec.ts</div><details class="test-item">
           <summary class="test">
             <span class="chev">▶</span>
             <span class="st" style="color:#3fb950">✅ passed</span>
-            <span class="name">Split Order BRANCH and BRANCH</span>
-            <span class="dur">71.5s</span>
-          </summary><pre class="log">✅ Order Created
-✅ Payment page opened
-✅ OTP: 364445
+            <span class="name">Partially Refunded Admin</span>
+            <span class="dur">59.1s</span>
+          </summary><pre class="log">✅ 1. Order Created
+✅ 2. OTP Sent: 253736
+✅ 3. Payment Successful
 ✅ Closed QR terminal modal
 ✅ Clicked Skip button
 ✅ Clicked Done button
-✅ Split verified: parent 55116=PENDING | children 55119=PENDING(0.2), 55118=SUCCESS(0.2)</pre></details>
+✅ Status update successful
+✅ 4. Payment Status Confirmed
+
+🔄 5. Refunding: 0.05 GEL
+✅ 6. Refund Successful (PARTIALLY_REFUNDED)</pre></details>
 </body>
 </html>
