@@ -32,36 +32,31 @@
 </head>
 <body>
   <h1>🎭 Playwright Test Report</h1>
-  <div class="meta">7/14/2026, 12:56:45 PM</div>
+  <div class="meta">7/14/2026, 2:48:22 PM</div>
   <div class="summary">
     <div class="card">Total: 1</div>
     <div class="card pass">✅ Passed: 1</div>
     <div class="card fail">❌ Failed: 0</div>
     <div class="card skip">⏭️ Skipped: 0</div>
   </div>
-  <div class="file">tests/Positive/refund-order.spec.ts</div><details class="test-item">
+  <div class="file">tests/Positive/check-balance.spec.ts</div><details class="test-item">
           <summary class="test">
             <span class="chev">▶</span>
             <span class="st" style="color:#3fb950">✅ passed</span>
-            <span class="name">Full Refunded Device — Receiver</span>
-            <span class="dur">70.3s</span>
-          </summary><pre class="log">✅ 1. Order Created
-✅ 2. OTP Sent: 977187
-✅ 3. Payment Successful
+            <span class="name">Balance reflection — Sender commission</span>
+            <span class="dur">93.5s</span>
+          </summary><pre class="log">✅ Merchant updated: distributionFlow=BALANCE, commissionType=SENDER
+✅ Balance before: 4.85 ₾
+✅ Order Created
+✅ Payment page opened
+✅ OTP: 701025
 ✅ Closed QR terminal modal
 ✅ Clicked Skip button
 ✅ Clicked Done button
-✅ 4. Transaction ID: 55309 (senderFee: 0, receiverFee: 0.01)
 
-🔄 5. Refunding: 0.1 GEL
-   Refund response status: 200
-✅ Refund API call successful (no response body)
-
-🔍 Verifying Transaction ID: 55309
-✅ 6. Refund Verified (REFUNDED)
-
-📊 შედეგი — FULL REFUND · RECEIVER commission (receiverFee 0.01)
-   ბალანსი: 4.67 ₾ → 4.57 ₾
-   ჩამოიჭრა: 0.1 ₾  |  მოსალოდნელი: 0.1 ₾  ✅</pre></details>
+📊 მოსალოდნელი შედეგი — SENDER commission, distributionFlow: BALANCE
+   merchant-ს აქვს SENDER commission → ბალანსს უნდა დაემატოს სრული amount = 0.1 ₾ (გადამხდელი საკომისიოს ზემოდან იხდის)
+   ბალანსი: იყო 4.85 ₾ → გახდა 4.95 ₾ (დაემატა 0.1 ₾)
+   ✅ ბალანსი სწორად აისახა — დაემატა 0.1 ₾ (მოსალოდნელი 0.1 ₾)</pre></details>
 </body>
 </html>
