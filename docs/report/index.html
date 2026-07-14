@@ -32,7 +32,7 @@
 </head>
 <body>
   <h1>🎭 Playwright Test Report</h1>
-  <div class="meta">7/14/2026, 3:08:09 PM</div>
+  <div class="meta">7/14/2026, 3:15:55 PM</div>
   <div class="summary">
     <div class="card">Total: 1</div>
     <div class="card pass">✅ Passed: 1</div>
@@ -43,21 +43,21 @@
           <summary class="test">
             <span class="chev">▶</span>
             <span class="st" style="color:#3fb950">✅ passed</span>
-            <span class="name">Balance reflection — Receiver commission</span>
-            <span class="dur">45.8s</span>
-          </summary><pre class="log">✅ Merchant updated: distributionFlow=BALANCE, commissionType=RECEIVER
-✅ Balance before: 5.15 ₾
+            <span class="name">Balance reflection — Sender commission</span>
+            <span class="dur">43.5s</span>
+          </summary><pre class="log">✅ Merchant updated: distributionFlow=BALANCE, commissionType=SENDER
+✅ Balance before: 5.24 ₾
 ✅ Order Created
 ✅ Payment page opened
-✅ OTP: 184671
+✅ OTP: 379052
 ✅ Closed QR terminal modal
 ✅ Clicked Skip button
 ✅ Clicked Done button
 
-📊 მოსალოდნელი შედეგი — RECEIVER commission, distributionFlow: BALANCE
-   იუზერმა გადაიხადა: 0.1 ₾ (საკომისიო 0.01 ₾ merchant-ს ეჭრება, არა გადამხდელს)
-   merchant-ს დაერიცხა: amount − საკომისიო = 0.1 − 0.01 = 0.09 ₾
-   ბალანსი: იყო 5.15 ₾ → გახდა 5.24 ₾ (დაემატა 0.09 ₾)
-   ✅ დაემატა 0.09 ₾ (მოსალოდნელი 0.09 ₾)</pre></details>
+📊 მოსალოდნელი შედეგი — SENDER commission, distributionFlow: BALANCE
+   იუზერმა გადაიხადა: 0.1 + 0.01 (საკომისიო) = 0.11 ₾
+   merchant-ს დაერიცხა: სრული amount = 0.1 ₾
+   ბალანსი: იყო 5.24 ₾ → გახდა 5.34 ₾ (დაემატა 0.1 ₾)
+   ✅ ბალანსი წარმატებულად შეივსო</pre></details>
 </body>
 </html>
