@@ -32,34 +32,27 @@
 </head>
 <body>
   <h1>🎭 Playwright Test Report</h1>
-  <div class="meta">7/14/2026, 5:09:50 PM</div>
+  <div class="meta">7/14/2026, 5:13:00 PM</div>
   <div class="summary">
     <div class="card">Total: 1</div>
     <div class="card pass">✅ Passed: 1</div>
     <div class="card fail">❌ Failed: 0</div>
     <div class="card skip">⏭️ Skipped: 0</div>
   </div>
-  <div class="file">tests/Positive/check-balance.spec.ts</div><details class="test-item">
+  <div class="file">tests/Positive/token-payment.spec.ts</div><details class="test-item">
           <summary class="test">
             <span class="chev">▶</span>
             <span class="st" style="color:#3fb950">✅ passed</span>
-            <span class="name">Balance check — Receiver commission PERCENTAGE</span>
-            <span class="dur">47.1s</span>
-          </summary><pre class="log">✅ Group updated: STANDARD GEL rateType=PERCENTAGE
-✅ Merchant updated: distributionFlow=BALANCE, commissionType=RECEIVER
-✅ Balance before: 5.61 ₾
-✅ Order Created
+            <span class="name">Token Payment saved card</span>
+            <span class="dur">36.7s</span>
+          </summary><pre class="log">✅ Order Created (saveCard + CREDO)
 ✅ Payment page opened
-✅ OTP: 920823
+✅ OTP: 486025
 ✅ Closed QR terminal modal
 ✅ Clicked Skip button
 ✅ Clicked Done button
-
-📊 მოსალოდნელი შედეგი — RECEIVER commission, STANDARD: PERCENTAGE, distributionFlow: BALANCE
-   იუზერმა გადაიხადა: 0.1 ₾ (საკომისიო 0.01 ₾)
-   merchant-ს დაერიცხა: amount − საკომისიო = 0.1 − 0.01 = 0.09 ₾
-   ბალანსი: იყო 5.61 ₾ → გახდა 5.7 ₾ (დაემატა 0.09 ₾)
-   ✅ ბალანსი წარმატებულად შეივსო
-✅ Group restored: STANDARD GEL rateType=PERCENTAGE</pre></details>
+✅ Card Token: 3a11f17c-cdcf-476f-9221-39a2dbf8205a
+✅ Token Payment Order Created: abd8087d-ae19-4502-b148-05d3cab48660
+✅ Test PASSED: token payment შესრულდა (order: abd8087d-ae19-4502-b148-05d3cab48660, token: 3a11f17c-cdcf-476f-9221-39a2dbf8205a)</pre></details>
 </body>
 </html>
