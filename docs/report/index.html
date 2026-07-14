@@ -32,7 +32,7 @@
 </head>
 <body>
   <h1>🎭 Playwright Test Report</h1>
-  <div class="meta">7/14/2026, 4:29:20 PM</div>
+  <div class="meta">7/14/2026, 5:09:50 PM</div>
   <div class="summary">
     <div class="card">Total: 1</div>
     <div class="card pass">✅ Passed: 1</div>
@@ -43,22 +43,22 @@
           <summary class="test">
             <span class="chev">▶</span>
             <span class="st" style="color:#3fb950">✅ passed</span>
-            <span class="name">Balance check — Sender commission FIXED</span>
-            <span class="dur">48.1s</span>
-          </summary><pre class="log">✅ Group updated: STANDARD GEL rateType=FIXED
-✅ Merchant updated: distributionFlow=BALANCE, commissionType=SENDER
-✅ Balance before: 5.51 ₾
+            <span class="name">Balance check — Receiver commission PERCENTAGE</span>
+            <span class="dur">47.1s</span>
+          </summary><pre class="log">✅ Group updated: STANDARD GEL rateType=PERCENTAGE
+✅ Merchant updated: distributionFlow=BALANCE, commissionType=RECEIVER
+✅ Balance before: 5.61 ₾
 ✅ Order Created
 ✅ Payment page opened
-✅ OTP: 862806
+✅ OTP: 920823
 ✅ Closed QR terminal modal
 ✅ Clicked Skip button
 ✅ Clicked Done button
 
-📊 მოსალოდნელი შედეგი — SENDER commission, STANDARD: FIXED, distributionFlow: BALANCE
-   იუზერმა გადაიხადა: 0.1 + 0.1 (ფიქსირებული საკომისიო) = 0.2 ₾
-   merchant-ს დაერიცხა: სრული amount = 0.1 ₾
-   ბალანსი: იყო 5.51 ₾ → გახდა 5.61 ₾ (დაემატა 0.1 ₾)
+📊 მოსალოდნელი შედეგი — RECEIVER commission, STANDARD: PERCENTAGE, distributionFlow: BALANCE
+   იუზერმა გადაიხადა: 0.1 ₾ (საკომისიო 0.01 ₾)
+   merchant-ს დაერიცხა: amount − საკომისიო = 0.1 − 0.01 = 0.09 ₾
+   ბალანსი: იყო 5.61 ₾ → გახდა 5.7 ₾ (დაემატა 0.09 ₾)
    ✅ ბალანსი წარმატებულად შეივსო
 ✅ Group restored: STANDARD GEL rateType=PERCENTAGE</pre></details>
 </body>
