@@ -32,7 +32,7 @@
 </head>
 <body>
   <h1>🎭 Playwright Test Report</h1>
-  <div class="meta">7/14/2026, 2:48:22 PM</div>
+  <div class="meta">7/14/2026, 3:02:46 PM</div>
   <div class="summary">
     <div class="card">Total: 1</div>
     <div class="card pass">✅ Passed: 1</div>
@@ -44,19 +44,58 @@
             <span class="chev">▶</span>
             <span class="st" style="color:#3fb950">✅ passed</span>
             <span class="name">Balance reflection — Sender commission</span>
-            <span class="dur">93.5s</span>
+            <span class="dur">51.3s</span>
           </summary><pre class="log">✅ Merchant updated: distributionFlow=BALANCE, commissionType=SENDER
-✅ Balance before: 4.85 ₾
+✅ Balance before: 4.95 ₾
 ✅ Order Created
 ✅ Payment page opened
-✅ OTP: 701025
+✅ OTP: 486068
 ✅ Closed QR terminal modal
 ✅ Clicked Skip button
 ✅ Clicked Done button
+🐞 RAW TX: {
+  "id": 55332,
+  "amount": 0.1,
+  "initialAmount": 0.1,
+  "senderCommissionAmount": 0.01,
+  "receiverCommissionAmount": 0,
+  "receiverCashBackAmount": 0,
+  "refundedAmount": 0,
+  "currencyCode": "GEL",
+  "recipientInfo": "stromae - RECEIVER",
+  "senderInfo": "Guest",
+  "senderUserId": null,
+  "senderUserType": null,
+  "receiverUserId": "292de25e-c01e-47c8-8e4f-8823aba25fc0",
+  "receiverUserType": "BRANCH",
+  "senderImagePath": null,
+  "receiverImagePath": null,
+  "status": "COLLECTED",
+  "transactionDate": "2026-07-14T15:02:59.383225",
+  "secondParty": null,
+  "isReceived": true,
+  "isSent": false,
+  "senderBusinessName": null,
+  "recipientBusinessName": null,
+  "senderPersonalNumber": null,
+  "receiverPersonalNumber": "423423222",
+  "description": "Desc",
+  "acquiringTransactionType": "STANDARD",
+  "canBeRefunded": true,
+  "softposTransactionId": null,
+  "softposAcquiringAmount": null,
+  "softposCurrency": null,
+  "paymentMethod": "STANDARD",
+  "note": null,
+  "receivedOnIban": "GE29TB7197445064300124",
+  "cardMask": null,
+  "operationType": "STANDARD",
+  "canBeSent": false
+}
 
 📊 მოსალოდნელი შედეგი — SENDER commission, distributionFlow: BALANCE
    merchant-ს აქვს SENDER commission → ბალანსს უნდა დაემატოს სრული amount = 0.1 ₾ (გადამხდელი საკომისიოს ზემოდან იხდის)
-   ბალანსი: იყო 4.85 ₾ → გახდა 4.95 ₾ (დაემატა 0.1 ₾)
+   ბალანსი: იყო 4.95 ₾ → გახდა 5.05 ₾ (დაემატა 0.1 ₾)
    ✅ ბალანსი სწორად აისახა — დაემატა 0.1 ₾ (მოსალოდნელი 0.1 ₾)</pre></details>
 </body>
 </html>
