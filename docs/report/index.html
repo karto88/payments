@@ -32,39 +32,34 @@
 </head>
 <body>
   <h1>🎭 Playwright Test Report</h1>
-  <div class="meta">7/14/2026, 3:46:10 PM</div>
+  <div class="meta">7/14/2026, 3:47:32 PM</div>
   <div class="summary">
     <div class="card">Total: 1</div>
     <div class="card pass">✅ Passed: 1</div>
     <div class="card fail">❌ Failed: 0</div>
     <div class="card skip">⏭️ Skipped: 0</div>
   </div>
-  <div class="file">tests/Positive/gpc.spec.ts</div><details class="test-item">
+  <div class="file">tests/Positive/check-balance.spec.ts</div><details class="test-item">
           <summary class="test">
             <span class="chev">▶</span>
             <span class="st" style="color:#3fb950">✅ passed</span>
-            <span class="name">GPS Status</span>
-            <span class="dur">38.1s</span>
-          </summary><pre class="log">✅ Order Created
+            <span class="name">Balance check — Receiver commission (FIXED)</span>
+            <span class="dur">46.9s</span>
+          </summary><pre class="log">✅ Group updated: STANDARD GEL rateType=FIXED
+✅ Merchant updated: distributionFlow=BALANCE, commissionType=RECEIVER
+✅ Balance before: 5.34 ₾
+✅ Order Created
 ✅ Payment page opened
-✅ OTP: 802771
+✅ OTP: 344578
 ✅ Closed QR terminal modal
 ✅ Clicked Skip button
 ✅ Clicked Done button
-🔍 Fetching order status...
 
-📋 ===== ORDER STATUS =====
-{
-  "integratorOrderId": "fb616011-a180-479b-824f-b7c24f30e951",
-  "status": "SUCCESS",
-  "report": "stromae T \n B - მრენჩი - სტანდარტი - OB - ვაჟა ფშაველას 90 \n QR 21172 \n ორდერის ID: fb616011-a180-479b-824f-b7c24f30e951 \n თანხა: 0.1 GEL \n მეთოდი: Card \n დრო: 14.07.2026 15:46:16 \n სტატუსი: წარმატებული",
-  "initialCurrency": "GEL",
-  "acquiringCurrency": "GEL",
-  "acquiringAmount": 0.11,
-  "transactionId": 55338
-}
-==========================
-
-✅ Test PASSED: ყველა status key შემოწმდა</pre></details>
+📊 მოსალოდნელი შედეგი — RECEIVER commission, STANDARD: FIXED, distributionFlow: BALANCE
+   იუზერმა გადაიხადა: 0.1 ₾ (ფიქსირებული საკომისიო 0.03 ₾)
+   merchant-ს დაერიცხა: amount − ფიქსირებული საკომისიო = 0.1 − 0.03 = 0.07 ₾
+   ბალანსი: იყო 5.34 ₾ → გახდა 5.41 ₾ (დაემატა 0.07 ₾)
+   ✅ ბალანსი წარმატებულად შეივსო
+✅ Group restored: STANDARD GEL rateType=PERCENTAGE</pre></details>
 </body>
 </html>
