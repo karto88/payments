@@ -32,32 +32,60 @@
 </head>
 <body>
   <h1>🎭 Playwright Test Report</h1>
-  <div class="meta">7/14/2026, 3:15:55 PM</div>
+  <div class="meta">7/14/2026, 3:42:20 PM</div>
   <div class="summary">
     <div class="card">Total: 1</div>
     <div class="card pass">✅ Passed: 1</div>
     <div class="card fail">❌ Failed: 0</div>
     <div class="card skip">⏭️ Skipped: 0</div>
   </div>
-  <div class="file">tests/Positive/check-balance.spec.ts</div><details class="test-item">
+  <div class="file">tests/Positive/callback-test.spec.ts</div><details class="test-item">
           <summary class="test">
             <span class="chev">▶</span>
             <span class="st" style="color:#3fb950">✅ passed</span>
-            <span class="name">Balance reflection — Sender commission</span>
-            <span class="dur">43.5s</span>
-          </summary><pre class="log">✅ Merchant updated: distributionFlow=BALANCE, commissionType=SENDER
-✅ Balance before: 5.24 ₾
+            <span class="name">should send callback after successful payment</span>
+            <span class="dur">45.4s</span>
+          </summary><pre class="log">🌐 Created webhook: https://webhook.site/4349af17-e54f-48d3-a5e9-bda71977f088
+
+═══════════════════════════════════════════════════════════
+📞 WEBHOOK URL:
+   https://webhook.site/4349af17-e54f-48d3-a5e9-bda71977f088
+═══════════════════════════════════════════════════════════
+
 ✅ Order Created
 ✅ Payment page opened
-✅ OTP: 379052
+✅ OTP: 276879
 ✅ Closed QR terminal modal
 ✅ Clicked Skip button
 ✅ Clicked Done button
+✅ Payment completed
+⏳ Waiting for callback...
+✅ Found 1 callback(s)
 
-📊 მოსალოდნელი შედეგი — SENDER commission, distributionFlow: BALANCE
-   იუზერმა გადაიხადა: 0.1 + 0.01 (საკომისიო) = 0.11 ₾
-   merchant-ს დაერიცხა: სრული amount = 0.1 ₾
-   ბალანსი: იყო 5.24 ₾ → გახდა 5.34 ₾ (დაემატა 0.1 ₾)
-   ✅ ბალანსი წარმატებულად შეივსო</pre></details>
+📋 ===== CALLBACK RECEIVED (ENCRYPTED) =====
+🕐 Received At: 2026-07-14 11:42:49
+==================================
+
+🔓 Decrypting callback...
+
+📋 ===== DECRYPTED CALLBACK =====
+📦 Payload: {
+  "amount": 0.1,
+  "receiverId": "a1b9a5c5-9f01-42ee-a6e3-8853297caf49",
+  "receiverType": "BRANCH",
+  "integratorId": "76880b28-9033-4d48-b21f-37a9a36ec5dd",
+  "integratorOrderId": "7101e544-7fec-45bf-8d2e-2beebcdbbae6",
+  "status": "SUCCESS",
+  "initialCurrency": "GEL",
+  "acquiringCurrency": "GEL",
+  "acquiringAmount": 0.11,
+  "toIban": "GE62BG0000000610917722",
+  "transactionId": 55337
+}
+================================
+
+✅ Test PASSED: Callback decrypted and validated
+📄 Report saved: C:\Users\User.MS940-2KDV1M\Desktop\test\Admin - Playwright\docs\callback-result.html
+💡 Share it: npm run share-report</pre></details>
 </body>
 </html>
