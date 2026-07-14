@@ -32,36 +32,19 @@
 </head>
 <body>
   <h1>🎭 Playwright Test Report</h1>
-  <div class="meta">7/14/2026, 12:52:38 PM</div>
+  <div class="meta">7/14/2026, 12:55:29 PM</div>
   <div class="summary">
     <div class="card">Total: 1</div>
-    <div class="card pass">✅ Passed: 1</div>
-    <div class="card fail">❌ Failed: 0</div>
+    <div class="card pass">✅ Passed: 0</div>
+    <div class="card fail">❌ Failed: 1</div>
     <div class="card skip">⏭️ Skipped: 0</div>
   </div>
-  <div class="file">tests/Positive/refund-order.spec.ts</div><details class="test-item">
+  <div class="file">tests/Positive/refund-order.spec.ts</div><details class="test-item" open>
           <summary class="test">
             <span class="chev">▶</span>
-            <span class="st" style="color:#3fb950">✅ passed</span>
-            <span class="name">Partially Device — Receiver</span>
-            <span class="dur">52.7s</span>
-          </summary><pre class="log">✅ 1. Order Created
-✅ 2. OTP Sent: 375331
-✅ 3. Payment Successful
-✅ Closed QR terminal modal
-✅ Clicked Skip button
-✅ Clicked Done button
-✅ 4. Transaction ID: 55304 (senderFee: 0, receiverFee: 0.01)
-
-🔄 5. Refunding: 0.05 GEL
-   Refund response status: 200
-✅ Refund API call successful (no response body)
-
-🔍 Verifying Transaction ID: 55304
-✅ 6. Refund Verified (PARTIALLY_REFUNDED)
-
-📊 შედეგი — PARTIAL REFUND · RECEIVER commission (receiverFee 0.01)
-   ბალანსი: 4.72 ₾ → 4.67 ₾
-   ჩამოიჭრა: 0.05 ₾  |  მოსალოდნელი: 0.05 ₾  ✅</pre></details>
+            <span class="st" style="color:#f85149">❌ failed</span>
+            <span class="name">Full Refunded Device — Receiver</span>
+            <span class="dur">56.2s</span>
+          </summary><pre class="log">✅ 1. Order Created</pre><pre class="err">Error: OTP not found</pre></details>
 </body>
 </html>
