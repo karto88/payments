@@ -36,10 +36,10 @@
 </head>
 <body>
   <h1>🎭 Playwright Test Report</h1>
-  <div class="meta">7/15/2026, 2:15:43 PM</div>
+  <div class="meta">7/15/2026, 2:38:24 PM</div>
   <div class="summary">
-    <button type="button" class="card active" data-filter="all">Total: 1</button>
-    <button type="button" class="card pass" data-filter="pass">✅ Passed: 0</button>
+    <button type="button" class="card active" data-filter="all">Total: 2</button>
+    <button type="button" class="card pass" data-filter="pass">✅ Passed: 1</button>
     <button type="button" class="card fail" data-filter="fail">❌ Failed: 1</button>
     <button type="button" class="card skip" data-filter="skip">⏭️ Skipped: 0</button>
   </div>
@@ -47,59 +47,41 @@
           <summary class="test">
             <span class="chev">▶</span>
             <span class="st" style="color:#f85149">❌ failed</span>
-            <span class="name">Refunded Admin — Insufficient Balance — Receiver</span>
-            <span class="dur">84.7s</span>
+            <span class="name">Partially Device</span>
+            <span class="dur">50.1s</span>
           </summary><pre class="log">✅ 1. Order Created
-✅ 2. OTP Sent: 353545
+✅ 2. OTP Sent: 409322
 ✅ 3. Payment Successful
 ✅ Closed QR terminal modal
 ✅ Clicked Skip button
 ✅ Clicked Done button
-✅ 4. Payment Status Confirmed
+✅ 4. Transaction ID: 55506 (senderFee: 0.01, receiverFee: 0)
 
-🔄 5. Refunding: 20 GEL</pre><pre class="err">ApiAssertionError: 
-❌ API TEST FAILED
-───────────────────────────────────────────
-🔧 ოპერაცია:    Admin refund — verification
-⚠️  პრობლემა:    ველი "initialRefundAmount" ვერ დაემთხვა (მოვიდა: 20.03)
-📥 მიმდინარე შედეგი:
-{
-  "id": 55510,
-  "status": "REFUNDED",
-  "distributionStatus": "SUCCESS",
-  "senderName": "Guest",
-  "receiverName": "stromae - RECEIVER",
-  "receiverMerchantName": "stromae - RECEIVER",
-  "iban": "GE29TB7197445064300124",
-  "receiverPersonalNumber": "423423222",
-  "transactionDate": "2026-07-15T14:15:49",
-  "initialCurrency": "GEL",
-  "initialAmount": 20,
-  "acquiringCurrency": "GEL",
-  "acquiringAmount": 20.03,
-  "paymentMethod": "Standard",
-  "distributionCurrencyCode": "GEL",
-  "distributionAmount": 20,
-  "receiverCommissionPercent": 0,
-  "senderCommissionPercent": 0.1,
-  "commissionRateType": "PERCENTAGE",
-  "initialCashbackAmount": 0,
-  "paymentProvider": "CREDO",
-  "initialRefundAmount": 20.03,
-  "source": "Web",
-  "refundInfo": "REFUNDED",
-  "refundableFromMerchant": true,
-  "hasChildren": false,
-  "isRefundable": false,
-  "isRetryable": false,
-  "isStatusUpdatable": false,
-  "isInvoiceDownloadable": true,
-  "isSenderMock": false,
-  "isReceiverMock": false
-}
-✅ მოსალოდნელი შედეგი: initialRefundAmount = 20
-───────────────────────────────────────────
-</pre></details></div>
+🔄 5. Refunding: 0.05 GEL
+   Refund response status: 400</pre><pre class="err">Error: Refund failed: 400 - {"message":"Refund not allowed","statusCode":2386,"exceptionGroup":2}</pre></details><details class="test-item" data-status="pass">
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="name">Partially Device — Receiver</span>
+            <span class="dur">48.5s</span>
+          </summary><pre class="log">✅ 1. Order Created
+✅ 2. OTP Sent: 131451
+✅ 3. Payment Successful
+✅ Closed QR terminal modal
+✅ Clicked Skip button
+✅ Clicked Done button
+✅ 4. Transaction ID: 55522 (senderFee: 0, receiverFee: 0.01)
+
+🔄 5. Refunding: 0.05 GEL
+   Refund response status: 200
+✅ Refund API call successful (no response body)
+
+🔍 Verifying Transaction ID: 55522
+✅ 6. Refund Verified (PARTIALLY_REFUNDED)
+
+📊 შედეგი — PARTIAL REFUND · RECEIVER commission (receiverFee 0.01)
+   ბალანსი: 6.15 ₾ → 6.1 ₾
+   ჩამოიჭრა: 0.05 ₾  |  მოსალოდნელი: 0.05 ₾  ✅</pre></details></div>
   <script>
     (function () {
       const cards = document.querySelectorAll('.card');
