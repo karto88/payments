@@ -32,54 +32,26 @@
 </head>
 <body>
   <h1>🎭 Playwright Test Report</h1>
-  <div class="meta">7/15/2026, 11:39:47 AM</div>
+  <div class="meta">7/15/2026, 11:48:10 AM</div>
   <div class="summary">
     <div class="card">Total: 1</div>
     <div class="card pass">✅ Passed: 1</div>
     <div class="card fail">❌ Failed: 0</div>
     <div class="card skip">⏭️ Skipped: 0</div>
   </div>
-  <div class="file">tests/Positive/callback-test.spec.ts</div><details class="test-item">
+  <div class="file">tests/Positive/direct-link-automation.spec.ts</div><details class="test-item">
           <summary class="test">
             <span class="chev">▶</span>
             <span class="st" style="color:#3fb950">✅ passed</span>
-            <span class="name">should send callback after successful payment</span>
-            <span class="dur">40.3s</span>
-          </summary><pre class="log">🌐 Webhook inbox (ბრაუზერში გახსენი): https://webhook.site/#!/view/4b137b42-e5bc-4f90-be88-e6f8db7e4fb0
-✅ Order Created
-✅ Payment page opened
-✅ OTP: 741310
-✅ Closed QR terminal modal
-✅ Clicked Skip button
-✅ Clicked Done button
-✅ Payment completed
-⏳ Waiting for callback...
-✅ Found 1 callback(s)
-
-📋 ===== CALLBACK RECEIVED (ENCRYPTED) =====
-🕐 Received At: 2026-07-15 07:40:12
-==================================
-
-🔓 Decrypting callback...
-
-📋 ===== DECRYPTED CALLBACK =====
-📦 Payload: {
-  "amount": 0.1,
-  "receiverId": "a1b9a5c5-9f01-42ee-a6e3-8853297caf49",
-  "receiverType": "BRANCH",
-  "integratorId": "76880b28-9033-4d48-b21f-37a9a36ec5dd",
-  "integratorOrderId": "b67c5ec7-f12a-4338-8f01-b79d63ccea20",
-  "status": "SUCCESS",
-  "initialCurrency": "GEL",
-  "acquiringCurrency": "GEL",
-  "acquiringAmount": 0.11,
-  "toIban": "GE62BG0000000610917722",
-  "transactionId": 55447
-}
-================================
-
-✅ Test PASSED: Callback decrypted and validated
-📄 Report saved: C:\Users\User.MS940-2KDV1M\Desktop\test\Admin - Playwright\docs\callback-result.html
-💡 Share it: npm run share-report</pre></details>
+            <span class="name">TBC Direct Link</span>
+            <span class="dur">63.6s</span>
+          </summary><pre class="log">✅ Order Created - TBC
+✅ Page loaded
+✅ Card filled
+✅ Submit clicked
+✅ OTP: 133626
+ℹ️ QR terminal modal not found
+ℹ️ Skip button not present — გამოვტოვე
+ℹ️ Done button not present — გამოვტოვე</pre></details>
 </body>
 </html>
