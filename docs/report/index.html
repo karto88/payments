@@ -32,23 +32,27 @@
 </head>
 <body>
   <h1>🎭 Playwright Test Report</h1>
-  <div class="meta">7/15/2026, 11:54:02 AM</div>
+  <div class="meta">7/15/2026, 11:54:52 AM</div>
   <div class="summary">
     <div class="card">Total: 1</div>
-    <div class="card pass">✅ Passed: 1</div>
-    <div class="card fail">❌ Failed: 0</div>
+    <div class="card pass">✅ Passed: 0</div>
+    <div class="card fail">❌ Failed: 1</div>
     <div class="card skip">⏭️ Skipped: 0</div>
   </div>
-  <div class="file">tests/Positive/direct-link-automation.spec.ts</div><details class="test-item">
+  <div class="file">tests/Positive/direct-link-automation.spec.ts</div><details class="test-item" open>
           <summary class="test">
             <span class="chev">▶</span>
-            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="st" style="color:#f85149">❌ failed</span>
             <span class="name">TBC Direct Link</span>
-            <span class="dur">22.2s</span>
-          </summary><pre class="log">✅ Order Created - TBC
-✅ Page loaded
-✅ Card filled
-✅ Submit clicked
-✅ OTP: 755668</pre></details>
+            <span class="dur">15.0s</span>
+          </summary><pre class="err">TimeoutError: apiRequestContext.post: Timeout 15000ms exceeded.
+Call log:
+[2m  - → POST https://gateway.dev.keepz.me/common-service/api/v1/auth/send-sms[22m
+[2m    - user-agent: Playwright/1.61.0 (x64; windows 10.0) node/24.15[22m
+[2m    - accept: */*[22m
+[2m    - accept-encoding: gzip,deflate,br[22m
+[2m    - content-type: application/json[22m
+[2m    - content-length: 107[22m
+</pre></details>
 </body>
 </html>
