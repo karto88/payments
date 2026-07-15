@@ -32,26 +32,38 @@
 </head>
 <body>
   <h1>🎭 Playwright Test Report</h1>
-  <div class="meta">7/15/2026, 12:28:31 PM</div>
+  <div class="meta">7/15/2026, 1:09:52 PM</div>
   <div class="summary">
     <div class="card">Total: 1</div>
-    <div class="card pass">✅ Passed: 1</div>
-    <div class="card fail">❌ Failed: 0</div>
+    <div class="card pass">✅ Passed: 0</div>
+    <div class="card fail">❌ Failed: 1</div>
     <div class="card skip">⏭️ Skipped: 0</div>
   </div>
-  <div class="file">tests/Positive/direct-link-automation.spec.ts</div><details class="test-item">
+  <div class="file">tests/Positive/direct-link-automation.spec.ts</div><details class="test-item" open>
           <summary class="test">
             <span class="chev">▶</span>
-            <span class="st" style="color:#3fb950">✅ passed</span>
-            <span class="name">BOG Direct Link</span>
-            <span class="dur">37.2s</span>
-          </summary><pre class="log">✅ Order Created - BOG
+            <span class="st" style="color:#f85149">❌ failed</span>
+            <span class="name">TBC Direct Link</span>
+            <span class="dur">20.2s</span>
+          </summary><pre class="log">✅ Order Created - TBC
 ✅ Page loaded
-✅ Card filled
-✅ OTP: 626740
-✅ Payment completed
-✅ Closed QR terminal modal
-✅ Clicked Skip button
-✅ Clicked Done button</pre></details>
+✅ Card filled</pre><pre class="err">TimeoutError: page.click: Timeout 15000ms exceeded.
+Call log:
+[2m  - waiting for locator('#payment-submit')[22m
+[2m    - locator resolved to &lt;button type="submit" id="payment-submit"&gt;…&lt;/button&gt;[22m
+[2m  - attempting click action[22m
+[2m    2 × waiting for element to be visible, enabled and stable[22m
+[2m      - element is not enabled[22m
+[2m    - retrying click action[22m
+[2m    - waiting 20ms[22m
+[2m    2 × waiting for element to be visible, enabled and stable[22m
+[2m      - element is not enabled[22m
+[2m    - retrying click action[22m
+[2m      - waiting 100ms[22m
+[2m    28 × waiting for element to be visible, enabled and stable[22m
+[2m       - element is not enabled[22m
+[2m     - retrying click action[22m
+[2m       - waiting 500ms[22m
+</pre></details>
 </body>
 </html>
