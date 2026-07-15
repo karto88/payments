@@ -36,7 +36,7 @@
 </head>
 <body>
   <h1>🎭 Playwright Test Report</h1>
-  <div class="meta">7/15/2026, 3:17:28 PM</div>
+  <div class="meta">7/15/2026, 3:22:37 PM</div>
   <div class="summary">
     <button type="button" class="card active" data-filter="all">Total: 1</button>
     <button type="button" class="card pass" data-filter="pass">✅ Passed: 0</button>
@@ -47,42 +47,57 @@
           <summary class="test">
             <span class="chev">▶</span>
             <span class="st" style="color:#f85149">❌ failed</span>
-            <span class="name">Partially Refunded Admin</span>
-            <span class="dur">105.7s</span>
+            <span class="name">Refunded Admin — Insufficient Balance</span>
+            <span class="dur">96.4s</span>
           </summary><pre class="log">✅ 1. Order Created
-✅ 2. OTP Sent: 451802
+✅ 2. OTP Sent: 990431
 ✅ 3. Payment Successful
 ✅ Closed QR terminal modal
 ✅ Clicked Skip button
 ✅ Clicked Done button
 ✅ 4. Payment Status Confirmed
 
-🔄 5. Refunding: 0.05 GEL
-
-📊 შედეგი — PARTIALLY_REFUNDED
-   tx 55543: initialAmount 0.1 ₾ | დაერიცხა (distribution) 0.1 ₾
-   receiverCommission 0% | senderCommission 0.1%
-   დარეფანდა: 0.05 ₾  |  მოსალოდნელი: 0.05 ₾  ✅
-
-📊 მოსალოდნელი შედეგი — Admin refund (PARTIAL)
-   დაბრუნდა: 0.05 ₾
-   ბალანსს უნდა მოაკლდეს: 0.05 ₾
-   ბალანსი: იყო 3 ₾ → გახდა 3 ₾ (მოაკლდა 0 ₾)
-   ❌ ბალანსი არასწორად შეიცვალა — მოაკლდა 0 ₾, უნდა 0.05 ₾</pre><pre class="err">ApiAssertionError: 
+🔄 5. Refunding: 20 GEL</pre><pre class="err">ApiAssertionError: 
 ❌ API TEST FAILED
 ───────────────────────────────────────────
 🔧 ოპერაცია:    Admin refund — verification
-⚠️  პრობლემა:    ბალანსი არასწორად შეიცვალა (მოაკლდა 0, უნდა 0.05)
+⚠️  პრობლემა:    ველი "initialRefundAmount" ვერ დაემთხვა (მოვიდა: 20.03)
 📥 მიმდინარე შედეგი:
 {
-  "balanceBefore": 3,
-  "balanceAfter": 3,
-  "actual": 0,
-  "expected": 0.05,
-  "requested": 0.05,
-  "insufficient": false
+  "id": 55544,
+  "status": "REFUNDED",
+  "distributionStatus": "SUCCESS",
+  "senderName": "Guest",
+  "receiverName": "stromae Sender",
+  "receiverMerchantName": "stromae Sender",
+  "iban": "GE29TB7197445064300124",
+  "receiverPersonalNumber": "373737372",
+  "transactionDate": "2026-07-15T15:22:48",
+  "initialCurrency": "GEL",
+  "initialAmount": 20,
+  "acquiringCurrency": "GEL",
+  "acquiringAmount": 20.03,
+  "paymentMethod": "Standard",
+  "distributionCurrencyCode": "GEL",
+  "distributionAmount": 20,
+  "receiverCommissionPercent": 0,
+  "senderCommissionPercent": 0.1,
+  "commissionRateType": "PERCENTAGE",
+  "initialCashbackAmount": 0,
+  "paymentProvider": "CREDO",
+  "initialRefundAmount": 20.03,
+  "source": "Web",
+  "refundInfo": "REFUNDED",
+  "refundableFromMerchant": true,
+  "hasChildren": false,
+  "isRefundable": false,
+  "isRetryable": false,
+  "isStatusUpdatable": false,
+  "isInvoiceDownloadable": true,
+  "isSenderMock": false,
+  "isReceiverMock": false
 }
-✅ მოსალოდნელი შედეგი: უნდა მოკლებოდა 0.05
+✅ მოსალოდნელი შედეგი: initialRefundAmount = 20
 ───────────────────────────────────────────
 </pre></details></div>
   <script>
