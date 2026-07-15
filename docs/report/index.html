@@ -36,35 +36,39 @@
 </head>
 <body>
   <h1>🎭 Playwright Test Report</h1>
-  <div class="meta">7/15/2026, 2:40:41 PM</div>
+  <div class="meta">7/15/2026, 2:48:41 PM</div>
   <div class="summary">
     <button type="button" class="card active" data-filter="all">Total: 1</button>
     <button type="button" class="card pass" data-filter="pass">✅ Passed: 1</button>
     <button type="button" class="card fail" data-filter="fail">❌ Failed: 0</button>
     <button type="button" class="card skip" data-filter="skip">⏭️ Skipped: 0</button>
   </div>
-  <div class="file-group"><div class="file">tests/Positive/check-balance.spec.ts</div><details class="test-item" data-status="pass">
+  <div class="file-group"><div class="file">tests/Positive/refund-order.spec.ts</div><details class="test-item" data-status="pass">
           <summary class="test">
             <span class="chev">▶</span>
             <span class="st" style="color:#3fb950">✅ passed</span>
-            <span class="name">Balance check — Receiver commission PERCENTAGE</span>
-            <span class="dur">62.5s</span>
-          </summary><pre class="log">✅ Group updated: STANDARD GEL rateType=PERCENTAGE
-✅ Merchant updated: distributionFlow=BALANCE, commissionType=RECEIVER
-✅ Balance before: 6.1 ₾
-✅ Order Created
-✅ Payment page opened
-✅ OTP: 606070
+            <span class="name">Refunded Admin — Insufficient Balance — Receiver</span>
+            <span class="dur">101.3s</span>
+          </summary><pre class="log">✅ 1. Order Created
+✅ 2. OTP Sent: 464203
+✅ 3. Payment Successful
 ✅ Closed QR terminal modal
 ✅ Clicked Skip button
 ✅ Clicked Done button
+✅ 4. Payment Status Confirmed
 
-📊 მოსალოდნელი შედეგი — RECEIVER commission, STANDARD: PERCENTAGE, distributionFlow: BALANCE
-   იუზერმა გადაიხადა: 0.1 ₾ (საკომისიო 0.01 ₾)
-   merchant-ს დაერიცხა: amount − საკომისიო = 0.1 − 0.01 = 0.09 ₾
-   ბალანსი: იყო 6.1 ₾ → გახდა 6.19 ₾ (დაემატა 0.09 ₾)
-   ✅ ბალანსი წარმატებულად შეივსო
-✅ Group restored: STANDARD GEL rateType=PERCENTAGE</pre></details></div>
+🔄 5. Refunding: 20 GEL
+
+📊 შედეგი — REFUNDED
+   tx 55531: initialAmount 20 ₾ | დაერიცხა (distribution) 19.99 ₾
+   receiverCommission 0.03% | senderCommission 0%
+   დარეფანდა: 20 ₾  |  მოსალოდნელი: 20 ₾  ✅
+
+📊 მოსალოდნელი შედეგი — Admin refund — არასაკმარისი ბალანსი
+   დაბრუნდა: 20 ₾ (refund მაინც მოხდა)
+   ანგარიშზე იყო მხოლოდ 6.19 ₾, მოთხოვნილი refund 20 ₾ (20 &gt; 6.19) → ბალანსი არ უნდა შეიცვალოს
+   ბალანსი: იყო 6.19 ₾ → გახდა 6.19 ₾ (მოაკლდა 0 ₾)
+   ✅ ბალანსი უცვლელი — არასაკმარისი ბალანსის გამო არ მოაკლდა</pre></details></div>
   <script>
     (function () {
       const cards = document.querySelectorAll('.card');
