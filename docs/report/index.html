@@ -9,7 +9,11 @@
     h1 { font-size:20px; margin:0 0 4px; }
     .meta { color:#7d8590; font-size:13px; margin-bottom:20px; }
     .summary { display:flex; gap:12px; margin-bottom:24px; }
-    .card { background:#161b22; border:1px solid #30363d; border-radius:8px; padding:12px 18px; font-weight:600; }
+    .card { background:#161b22; border:1px solid #30363d; border-radius:8px; padding:12px 18px;
+            font-family:inherit; font-size:14px; font-weight:600; color:#e6edf3; cursor:pointer;
+            transition:border-color .15s, box-shadow .15s; }
+    .card:hover { border-color:#484f58; }
+    .card.active { border-color:#58a6ff; box-shadow:0 0 0 1px #58a6ff; }
     .card.pass { color:#3fb950; } .card.fail { color:#f85149; } .card.skip { color:#7d8590; }
     .file { color:#7d8590; font-size:13px; margin:18px 0 6px; font-weight:600; }
     .test-item { margin-bottom:6px; }
@@ -32,351 +36,21 @@
 </head>
 <body>
   <h1>🎭 Playwright Test Report</h1>
-  <div class="meta">7/15/2026, 1:21:18 PM</div>
+  <div class="meta">7/15/2026, 2:13:30 PM</div>
   <div class="summary">
-    <div class="card">Total: 35</div>
-    <div class="card pass">✅ Passed: 20</div>
-    <div class="card fail">❌ Failed: 15</div>
-    <div class="card skip">⏭️ Skipped: 0</div>
+    <button type="button" class="card active" data-filter="all">Total: 1</button>
+    <button type="button" class="card pass" data-filter="pass">✅ Passed: 0</button>
+    <button type="button" class="card fail" data-filter="fail">❌ Failed: 1</button>
+    <button type="button" class="card skip" data-filter="skip">⏭️ Skipped: 0</button>
   </div>
-  <div class="file">tests/Positive/all-methods-automation.spec.ts</div><details class="test-item">
-          <summary class="test">
-            <span class="chev">▶</span>
-            <span class="st" style="color:#3fb950">✅ passed</span>
-            <span class="name">Card Payment TBC</span>
-            <span class="dur">50.3s</span>
-          </summary><pre class="log">✅ Order Created
-✅ Payment page opened
-✅ OTP: 702131
-✅ Closed QR terminal modal
-✅ Clicked Skip button
-✅ Clicked Done button
-✅ Status update successful
-ℹ️ Transaction status: WAITING_FOR_SIGNATURE</pre></details><details class="test-item">
-          <summary class="test">
-            <span class="chev">▶</span>
-            <span class="st" style="color:#3fb950">✅ passed</span>
-            <span class="name">Card Payment BOG</span>
-            <span class="dur">56.0s</span>
-          </summary><pre class="log">✅ Order Created
-✅ Payment page opened
-✅ OTP: 39057
-✅ Closed QR terminal modal
-✅ Clicked Skip button
-✅ Clicked Done button
-✅ Status update successful
-ℹ️ Transaction status: PENDING</pre></details><details class="test-item">
-          <summary class="test">
-            <span class="chev">▶</span>
-            <span class="st" style="color:#3fb950">✅ passed</span>
-            <span class="name">TIP Payment</span>
-            <span class="dur">45.6s</span>
-          </summary><pre class="log">✅ Order Created
-✅ Payment page opened
-✅ OTP: 434638
-✅ TIP OTP: 053643
-✅ TIP Payment completed</pre></details><div class="file">tests/Positive/callback-test.spec.ts</div><details class="test-item">
-          <summary class="test">
-            <span class="chev">▶</span>
-            <span class="st" style="color:#3fb950">✅ passed</span>
-            <span class="name">should send callback after successful payment</span>
-            <span class="dur">49.6s</span>
-          </summary><pre class="log">🌐 Webhook inbox (ბრაუზერში გახსენი): https://webhook.site/#!/view/ee165220-9317-4dd5-bc63-eaada56332fa
-✅ Order Created
-✅ Payment page opened
-✅ OTP: 809301
-✅ Closed QR terminal modal
-✅ Clicked Skip button
-✅ Clicked Done button
-✅ Payment completed
-⏳ Waiting for callback...
-✅ Found 1 callback(s)
-
-📋 ===== CALLBACK RECEIVED (ENCRYPTED) =====
-🕐 Received At: 2026-07-15 09:24:24
-==================================
-
-🔓 Decrypting callback...
-
-📋 ===== DECRYPTED CALLBACK =====
-📦 Payload: {
-  "amount": 0.1,
-  "receiverId": "a1b9a5c5-9f01-42ee-a6e3-8853297caf49",
-  "receiverType": "BRANCH",
-  "integratorId": "76880b28-9033-4d48-b21f-37a9a36ec5dd",
-  "integratorOrderId": "a54be8a5-0671-43d9-b106-53b76cfd605c",
-  "status": "SUCCESS",
-  "initialCurrency": "GEL",
-  "acquiringCurrency": "GEL",
-  "acquiringAmount": 0.11,
-  "toIban": "GE62BG0000000610917722",
-  "transactionId": 55477
-}
-================================
-
-✅ Test PASSED: Callback decrypted and validated
-📄 Report saved: C:\Users\User.MS940-2KDV1M\Desktop\test\Admin - Playwright\docs\callback-result.html
-💡 Share it: npm run share-report</pre></details><div class="file">tests/Positive/check-balance.spec.ts</div><details class="test-item">
-          <summary class="test">
-            <span class="chev">▶</span>
-            <span class="st" style="color:#3fb950">✅ passed</span>
-            <span class="name">Balance check — Receiver commission PERCENTAGE</span>
-            <span class="dur">39.7s</span>
-          </summary><pre class="log">✅ Group updated: STANDARD GEL rateType=PERCENTAGE
-✅ Merchant updated: distributionFlow=BALANCE, commissionType=RECEIVER
-✅ Balance before: 5.7 ₾
-✅ Order Created
-✅ Payment page opened
-✅ OTP: 026752
-✅ Closed QR terminal modal
-✅ Clicked Skip button
-✅ Clicked Done button
-
-📊 მოსალოდნელი შედეგი — RECEIVER commission, STANDARD: PERCENTAGE, distributionFlow: BALANCE
-   იუზერმა გადაიხადა: 0.1 ₾ (საკომისიო 0.01 ₾)
-   merchant-ს დაერიცხა: amount − საკომისიო = 0.1 − 0.01 = 0.09 ₾
-   ბალანსი: იყო 5.7 ₾ → გახდა 5.79 ₾ (დაემატა 0.09 ₾)
-   ✅ ბალანსი წარმატებულად შეივსო</pre></details><details class="test-item">
-          <summary class="test">
-            <span class="chev">▶</span>
-            <span class="st" style="color:#3fb950">✅ passed</span>
-            <span class="name">Balance check — Sender commission PERCENTAGE</span>
-            <span class="dur">41.9s</span>
-          </summary><pre class="log">✅ Group updated: STANDARD GEL rateType=PERCENTAGE
-✅ Merchant updated: distributionFlow=BALANCE, commissionType=SENDER
-✅ Balance before: 5.79 ₾
-✅ Order Created
-✅ Payment page opened
-✅ OTP: 117201
-✅ Closed QR terminal modal
-✅ Clicked Skip button
-✅ Clicked Done button
-
-📊 მოსალოდნელი შედეგი — SENDER commission, STANDARD: PERCENTAGE, distributionFlow: BALANCE
-   იუზერმა გადაიხადა: 0.1 + 0.01 (საკომისიო) = 0.11 ₾
-   merchant-ს დაერიცხა: სრული amount = 0.1 ₾
-   ბალანსი: იყო 5.79 ₾ → გახდა 5.89 ₾ (დაემატა 0.1 ₾)
-   ✅ ბალანსი წარმატებულად შეივსო</pre></details><details class="test-item">
-          <summary class="test">
-            <span class="chev">▶</span>
-            <span class="st" style="color:#3fb950">✅ passed</span>
-            <span class="name">Balance check — Receiver commission FIXED</span>
-            <span class="dur">40.5s</span>
-          </summary><pre class="log">✅ Group updated: STANDARD GEL rateType=FIXED
-✅ Merchant updated: distributionFlow=BALANCE, commissionType=RECEIVER
-✅ Balance before: 5.89 ₾
-✅ Order Created
-✅ Payment page opened
-✅ OTP: 042835
-✅ Closed QR terminal modal
-✅ Clicked Skip button
-✅ Clicked Done button
-
-📊 მოსალოდნელი შედეგი — RECEIVER commission, STANDARD: FIXED, distributionFlow: BALANCE
-   იუზერმა გადაიხადა: 0.1 ₾ (ფიქსირებული საკომისიო 0.03 ₾)
-   merchant-ს დაერიცხა: amount − ფიქსირებული საკომისიო = 0.1 − 0.03 = 0.07 ₾
-   ბალანსი: იყო 5.89 ₾ → გახდა 5.96 ₾ (დაემატა 0.07 ₾)
-   ✅ ბალანსი წარმატებულად შეივსო</pre></details><details class="test-item">
-          <summary class="test">
-            <span class="chev">▶</span>
-            <span class="st" style="color:#3fb950">✅ passed</span>
-            <span class="name">Balance check — Sender commission FIXED</span>
-            <span class="dur">44.0s</span>
-          </summary><pre class="log">✅ Group updated: STANDARD GEL rateType=FIXED
-✅ Merchant updated: distributionFlow=BALANCE, commissionType=SENDER
-✅ Balance before: 5.96 ₾
-✅ Order Created
-✅ Payment page opened
-✅ OTP: 137541
-✅ Closed QR terminal modal
-✅ Clicked Skip button
-✅ Clicked Done button
-
-📊 მოსალოდნელი შედეგი — SENDER commission, STANDARD: FIXED, distributionFlow: BALANCE
-   იუზერმა გადაიხადა: 0.1 + 0.1 (ფიქსირებული საკომისიო) = 0.2 ₾
-   merchant-ს დაერიცხა: სრული amount = 0.1 ₾
-   ბალანსი: იყო 5.96 ₾ → გახდა 6.06 ₾ (დაემატა 0.1 ₾)
-   ✅ ბალანსი წარმატებულად შეივსო
-✅ Group restored: STANDARD GEL rateType=PERCENTAGE</pre></details><div class="file">tests/Positive/create-order.spec.ts</div><details class="test-item" open>
-          <summary class="test">
-            <span class="chev">▶</span>
-            <span class="st" style="color:#f85149">❌ timedOut</span>
-            <span class="name">Create Order Only</span>
-            <span class="dur">120.0s</span>
-          </summary><pre class="log">✅ Order Created
-
-🔗 Payment URL:
-https://web.appdev.keepz.me/pay?qrType=REQUEST&amp;receiverType=BRANCH&amp;receiverId=a1b9a5c5-9f01-42ee-a6e3-8853297caf49&amp;integratorId=76880b28-9033-4d48-b21f-37a9a36ec5dd&amp;integratorOrderId=042fe587-bd89-42b1-80ac-6de01068e2f9&amp;amount=0.1&amp;currency=GEL
-
-✅ Browser opened</pre><pre class="err">[31mTest timeout of 120000ms exceeded.[39m</pre></details><div class="file">tests/Positive/direct-link-automation.spec.ts</div><details class="test-item">
-          <summary class="test">
-            <span class="chev">▶</span>
-            <span class="st" style="color:#3fb950">✅ passed</span>
-            <span class="name">BOG Direct Link</span>
-            <span class="dur">47.8s</span>
-          </summary><pre class="log">✅ Order Created - BOG
-✅ Page loaded
-✅ Card filled
-✅ OTP: 242130
-✅ Payment completed
-✅ Closed QR terminal modal
-✅ Clicked Skip button
-✅ Clicked Done button
-✅ BOG directLinkProvider payment is success</pre></details><details class="test-item">
-          <summary class="test">
-            <span class="chev">▶</span>
-            <span class="st" style="color:#3fb950">✅ passed</span>
-            <span class="name">TBC Direct Link</span>
-            <span class="dur">49.6s</span>
-          </summary><pre class="log">✅ Order Created - TBC
-✅ Page loaded
-✅ Card filled
-✅ Submit clicked
-✅ OTP: 617013
-ℹ️ QR terminal modal not found
-ℹ️ Skip button not present — გამოვტოვე
-ℹ️ Done button not present — გამოვტოვე
-✅ TBC directLinkProvider payment is success</pre></details><div class="file">tests/Positive/gpc.spec.ts</div><details class="test-item">
-          <summary class="test">
-            <span class="chev">▶</span>
-            <span class="st" style="color:#3fb950">✅ passed</span>
-            <span class="name">GPS Status</span>
-            <span class="dur">35.8s</span>
-          </summary><pre class="log">✅ Order Created
-✅ Payment page opened
-✅ OTP: 088713
-✅ Closed QR terminal modal
-✅ Clicked Skip button
-✅ Clicked Done button
-🔍 Fetching order status...
-
-📋 ===== ORDER STATUS =====
-{
-  "integratorOrderId": "8722738e-357d-4401-b090-96d221ec7770",
-  "status": "SUCCESS",
-  "report": "stromae T \n B - მრენჩი - სტანდარტი - OB - ვაჟა ფშაველას 90 \n QR 21172 \n ორდერის ID: 8722738e-357d-4401-b090-96d221ec7770 \n თანხა: 0.1 GEL \n მეთოდი: Card \n დრო: 15.07.2026 13:31:09 \n სტატუსი: წარმატებული",
-  "initialCurrency": "GEL",
-  "acquiringCurrency": "GEL",
-  "acquiringAmount": 0.11,
-  "transactionId": 55485
-}
-==========================
-
-✅ Test PASSED: ყველა status key შემოწმდა</pre></details><div class="file">tests/Positive/open-banking-automation.spec.ts</div><details class="test-item">
-          <summary class="test">
-            <span class="chev">▶</span>
-            <span class="st" style="color:#3fb950">✅ passed</span>
-            <span class="name">BOG Open Banking</span>
-            <span class="dur">46.8s</span>
-          </summary><pre class="log">✅ Order Created - BOG Open Banking
-✅ OTP: 6572
-✅ BOG Login completed
-✅ Payment confirmed
-✅ Closed QR terminal modal
-✅ Clicked Skip button
-✅ Clicked Done button</pre></details><details class="test-item" open>
+  <div class="file-group"><div class="file">tests/Positive/refund-order.spec.ts</div><details class="test-item" data-status="fail" open>
           <summary class="test">
             <span class="chev">▶</span>
             <span class="st" style="color:#f85149">❌ failed</span>
-            <span class="name">TBC Open Banking</span>
-            <span class="dur">1.1s</span>
-          </summary><pre class="log">❌ Error 2137: I/O error on POST request for "https://test-openbanking.tbcbank.ge/0.8/v1/payments/aspsp": (certificate_expired) Received fatal alert: certificate_expired</pre><pre class="err">Error: Order failed: I/O error on POST request for "https://test-openbanking.tbcbank.ge/0.8/v1/payments/aspsp": (certificate_expired) Received fatal alert: certificate_expired</pre></details><div class="file">tests/Positive/pre-auth.spec.ts</div><details class="test-item">
-          <summary class="test">
-            <span class="chev">▶</span>
-            <span class="st" style="color:#3fb950">✅ passed</span>
-            <span class="name">Pre Authorization)</span>
-            <span class="dur">74.1s</span>
-          </summary><pre class="log">✅ Order Created (payWithPreAuth)
-✅ Payment page opened
-✅ OTP: 313539
-✅ Closed QR terminal modal
-✅ Clicked Skip button
-✅ Clicked Done button
-✅ Stage 1: pre-auth Transaction → STATUS IS - TO_BE_CONFIRMED (order: cb21037e-180d-4ed6-a694-9cdc1972b946, tx: 55487)
-✅ Order Completed (amount: 0.1)
-✅ After complete → WAITING_FOR_SIGNATURE
-✅ Stage 2: complete(0.1) → after complete: WAITING_FOR_SIGNATURE → final: WAITING_FOR_SIGNATURE (tx: 55487)</pre></details><div class="file">tests/Positive/redirect.spec.ts</div><details class="test-item">
-          <summary class="test">
-            <span class="chev">▶</span>
-            <span class="st" style="color:#3fb950">✅ passed</span>
-            <span class="name">success redirect</span>
-            <span class="dur">42.7s</span>
-          </summary><pre class="log">✅ Order Created — link returned
-✅ Payment page opened
-✅ OTP SUCCESS: 910702
-✅ Closed QR terminal modal
-✅ Clicked Skip button
-ℹ️ Done button not present — გამოვტოვე
-✅ successRedirectUri is successful</pre></details><details class="test-item">
-          <summary class="test">
-            <span class="chev">▶</span>
-            <span class="st" style="color:#3fb950">✅ passed</span>
-            <span class="name">fail redirect</span>
-            <span class="dur">59.7s</span>
-          </summary><pre class="log">✅ Order Created — link returned
-✅ Payment page opened
-✅ OTP SUCCESS: 086528
-ℹ️ QR terminal modal not found
-ℹ️ Skip button not present — გამოვტოვე
-ℹ️ Done button not present — გამოვტოვე
-✅ failRedirectUri is successful</pre></details><div class="file">tests/Positive/refund-order.spec.ts</div><details class="test-item" open>
-          <summary class="test">
-            <span class="chev">▶</span>
-            <span class="st" style="color:#f85149">❌ failed</span>
-            <span class="name">Partially Refunded Admin</span>
-            <span class="dur">84.0s</span>
+            <span class="name">Refunded Admin — Insufficient Balance — Receiver</span>
+            <span class="dur">90.0s</span>
           </summary><pre class="log">✅ 1. Order Created
-✅ 2. OTP Sent: 863052
-✅ 3. Payment Successful
-✅ Closed QR terminal modal
-✅ Clicked Skip button
-✅ Clicked Done button
-✅ 4. Payment Status Confirmed
-
-🔄 5. Refunding: 0.05 GEL</pre><pre class="err">ApiAssertionError: 
-❌ API TEST FAILED
-───────────────────────────────────────────
-🔧 ოპერაცია:    Admin refund — verification
-⚠️  პრობლემა:    ტრანზაქცია ვერ მოიძებნა
-📥 მიმდინარე შედეგი:
-{
-  "found": false
-}
-✅ მოსალოდნელი შედეგი: ტრანზაქცია IBAN GE95TB7197445064300003-ზე
-───────────────────────────────────────────
-</pre></details><details class="test-item" open>
-          <summary class="test">
-            <span class="chev">▶</span>
-            <span class="st" style="color:#f85149">❌ failed</span>
-            <span class="name">Refunded Admin</span>
-            <span class="dur">90.2s</span>
-          </summary><pre class="log">✅ 1. Order Created
-✅ 2. OTP Sent: 738936
-✅ 3. Payment Successful
-✅ Closed QR terminal modal
-✅ Clicked Skip button
-✅ Clicked Done button
-✅ 4. Payment Status Confirmed
-
-🔄 5. Refunding: 0.1 GEL</pre><pre class="err">ApiAssertionError: 
-❌ API TEST FAILED
-───────────────────────────────────────────
-🔧 ოპერაცია:    Admin refund — verification
-⚠️  პრობლემა:    ტრანზაქცია ვერ მოიძებნა
-📥 მიმდინარე შედეგი:
-{
-  "found": false
-}
-✅ მოსალოდნელი შედეგი: ტრანზაქცია IBAN GE95TB7197445064300003-ზე
-───────────────────────────────────────────
-</pre></details><details class="test-item" open>
-          <summary class="test">
-            <span class="chev">▶</span>
-            <span class="st" style="color:#f85149">❌ failed</span>
-            <span class="name">Refunded Admin — Insufficient Balance</span>
-            <span class="dur">88.4s</span>
-          </summary><pre class="log">✅ 1. Order Created
-✅ 2. OTP Sent: 746777
+✅ 2. OTP Sent: 348242
 ✅ 3. Payment Successful
 ✅ Closed QR terminal modal
 ✅ Clicked Skip button
@@ -387,85 +61,10 @@ https://web.appdev.keepz.me/pay?qrType=REQUEST&amp;receiverType=BRANCH&amp;recei
 ❌ API TEST FAILED
 ───────────────────────────────────────────
 🔧 ოპერაცია:    Admin refund — verification
-⚠️  პრობლემა:    ტრანზაქცია ვერ მოიძებნა
+⚠️  პრობლემა:    ველი "initialRefundAmount" ვერ დაემთხვა (მოვიდა: 20.03)
 📥 მიმდინარე შედეგი:
 {
-  "found": false
-}
-✅ მოსალოდნელი შედეგი: ტრანზაქცია IBAN GE95TB7197445064300003-ზე
-───────────────────────────────────────────
-</pre></details><details class="test-item" open>
-          <summary class="test">
-            <span class="chev">▶</span>
-            <span class="st" style="color:#f85149">❌ failed</span>
-            <span class="name">Partially Device</span>
-            <span class="dur">43.4s</span>
-          </summary><pre class="log">✅ 1. Order Created
-✅ 2. OTP Sent: 584257
-✅ 3. Payment Successful
-✅ Closed QR terminal modal
-✅ Clicked Skip button
-✅ Clicked Done button
-✅ 4. Transaction ID: 55494 (senderFee: 0.01, receiverFee: 0)
-
-🔄 5. Refunding: 0.05 GEL
-   Refund response status: 400</pre><pre class="err">Error: Refund failed: 400 - {"message":"Refund not allowed","statusCode":2386,"exceptionGroup":2}</pre></details><details class="test-item" open>
-          <summary class="test">
-            <span class="chev">▶</span>
-            <span class="st" style="color:#f85149">❌ failed</span>
-            <span class="name">Refunded Device</span>
-            <span class="dur">41.5s</span>
-          </summary><pre class="log">✅ 1. Order Created
-✅ 2. OTP Sent: 074755
-✅ 3. Payment Successful
-✅ Closed QR terminal modal
-✅ Clicked Skip button
-✅ Clicked Done button
-✅ 4. Transaction ID: 55496 (senderFee: 0.01, receiverFee: 0)
-
-🔄 5. Refunding: 0.1 GEL
-   Refund response status: 400</pre><pre class="err">Error: Refund failed: 400 - {"message":"Refund not allowed","statusCode":2386,"exceptionGroup":2}</pre></details><details class="test-item">
-          <summary class="test">
-            <span class="chev">▶</span>
-            <span class="st" style="color:#3fb950">✅ passed</span>
-            <span class="name">Partially Refunded Admin — Receiver</span>
-            <span class="dur">49.3s</span>
-          </summary><pre class="log">✅ 1. Order Created
-✅ 2. OTP Sent: 734874
-✅ 3. Payment Successful
-✅ Closed QR terminal modal
-✅ Clicked Skip button
-✅ Clicked Done button
-✅ 4. Payment Status Confirmed
-
-🔄 5. Refunding: 0.05 GEL
-
-📊 შედეგი — PARTIALLY_REFUNDED
-   tx 55497: initialAmount 0.1 ₾ | დაერიცხა (distribution) 0 ₾
-   receiverCommission 0% | senderCommission 0.1%
-   დარეფანდა: 0.05 ₾  |  მოსალოდნელი: 0.05 ₾  ✅
-   ბალანსი: 6.16 ₾ → 6.11 ₾ | მოაკლდა: 0.05 ₾ | მოსალოდნელი: 0.05 ₾</pre></details><details class="test-item" open>
-          <summary class="test">
-            <span class="chev">▶</span>
-            <span class="st" style="color:#f85149">❌ failed</span>
-            <span class="name">Full Refunded Admin — Receiver</span>
-            <span class="dur">82.6s</span>
-          </summary><pre class="log">✅ 1. Order Created
-✅ 2. OTP Sent: 711083
-✅ 3. Payment Successful
-✅ Closed QR terminal modal
-✅ Clicked Skip button
-✅ Clicked Done button
-✅ 4. Payment Status Confirmed
-
-🔄 5. Refunding: 0.1 GEL</pre><pre class="err">ApiAssertionError: 
-❌ API TEST FAILED
-───────────────────────────────────────────
-🔧 ოპერაცია:    Admin refund — verification
-⚠️  პრობლემა:    ველი "initialRefundAmount" ვერ დაემთხვა (მოვიდა: 0.11)
-📥 მიმდინარე შედეგი:
-{
-  "id": 55498,
+  "id": 55509,
   "status": "REFUNDED",
   "distributionStatus": "COLLECTED",
   "senderName": "Guest",
@@ -473,11 +72,11 @@ https://web.appdev.keepz.me/pay?qrType=REQUEST&amp;receiverType=BRANCH&amp;recei
   "receiverMerchantName": "stromae - RECEIVER",
   "iban": "GE29TB7197445064300124",
   "receiverPersonalNumber": "423423222",
-  "transactionDate": "2026-07-15T13:42:10",
+  "transactionDate": "2026-07-15T14:13:36",
   "initialCurrency": "GEL",
-  "initialAmount": 0.1,
+  "initialAmount": 20,
   "acquiringCurrency": "GEL",
-  "acquiringAmount": 0.11,
+  "acquiringAmount": 20.03,
   "paymentMethod": "Standard",
   "distributionCurrencyCode": "GEL",
   "distributionAmount": 0,
@@ -486,7 +85,7 @@ https://web.appdev.keepz.me/pay?qrType=REQUEST&amp;receiverType=BRANCH&amp;recei
   "commissionRateType": "PERCENTAGE",
   "initialCashbackAmount": 0,
   "paymentProvider": "CREDO",
-  "initialRefundAmount": 0.11,
+  "initialRefundAmount": 20.03,
   "source": "Web",
   "refundInfo": "REFUNDED",
   "refundableFromMerchant": true,
@@ -498,198 +97,30 @@ https://web.appdev.keepz.me/pay?qrType=REQUEST&amp;receiverType=BRANCH&amp;recei
   "isSenderMock": false,
   "isReceiverMock": false
 }
-✅ მოსალოდნელი შედეგი: initialRefundAmount = 0.1
-───────────────────────────────────────────
-</pre></details><details class="test-item" open>
-          <summary class="test">
-            <span class="chev">▶</span>
-            <span class="st" style="color:#f85149">❌ failed</span>
-            <span class="name">Refunded Admin — Insufficient Balance — Receiver</span>
-            <span class="dur">88.4s</span>
-          </summary><pre class="log">✅ 1. Order Created
-✅ 2. OTP Sent: 932017
-✅ 3. Payment Successful
-✅ Closed QR terminal modal
-✅ Clicked Skip button
-✅ Clicked Done button
-✅ 4. Payment Status Confirmed
-
-🔄 5. Refunding: 20 GEL</pre><pre class="err">ApiAssertionError: 
-❌ API TEST FAILED
-───────────────────────────────────────────
-🔧 ოპერაცია:    Admin refund — verification
-⚠️  პრობლემა:    ველი "initialRefundAmount" ვერ დაემთხვა (მოვიდა: 0)
-📥 მიმდინარე შედეგი:
-{
-  "id": 55500,
-  "status": "SUCCESS",
-  "distributionStatus": "SUCCESS",
-  "senderName": "დავით კარტოზია",
-  "receiverName": "stromae T",
-  "receiverMerchantName": "stromae T",
-  "iban": "GE29TB7197445064300124",
-  "receiverPersonalNumber": "90000000141",
-  "transactionDate": "2026-07-15T13:43:58",
-  "initialCurrency": "GEL",
-  "initialAmount": 0.07,
-  "acquiringCurrency": "GEL",
-  "acquiringAmount": 0.08,
-  "paymentMethod": "OB",
-  "distributionCurrencyCode": "GEL",
-  "distributionAmount": 0.07,
-  "receiverCommissionPercent": 0,
-  "senderCommissionPercent": 0.1,
-  "commissionRateType": "PERCENTAGE",
-  "initialCashbackAmount": 0,
-  "paymentProvider": "CREDO",
-  "initialRefundAmount": 0,
-  "source": "App",
-  "refundableFromMerchant": true,
-  "hasChildren": false,
-  "isRefundable": true,
-  "isRetryable": false,
-  "isStatusUpdatable": false,
-  "isInvoiceDownloadable": true,
-  "isSenderMock": false,
-  "isReceiverMock": false
-}
 ✅ მოსალოდნელი შედეგი: initialRefundAmount = 20
 ───────────────────────────────────────────
-</pre></details><details class="test-item">
-          <summary class="test">
-            <span class="chev">▶</span>
-            <span class="st" style="color:#3fb950">✅ passed</span>
-            <span class="name">Partially Device — Receiver</span>
-            <span class="dur">48.1s</span>
-          </summary><pre class="log">✅ 1. Order Created
-✅ 2. OTP Sent: 409541
-✅ 3. Payment Successful
-✅ Closed QR terminal modal
-✅ Clicked Skip button
-✅ Clicked Done button
-✅ 4. Transaction ID: 55501 (senderFee: 0.01, receiverFee: 0)
-
-🔄 5. Refunding: 0.05 GEL
-   Refund response status: 200
-✅ Refund API call successful (no response body)
-
-🔍 Verifying Transaction ID: 55501
-✅ 6. Refund Verified (PARTIALLY_REFUNDED)
-
-📊 შედეგი — PARTIAL REFUND · SENDER commission (senderFee 0.01)
-   ბალანსი: 6.21 ₾ → 6.16 ₾
-   ჩამოიჭრა: 0.05 ₾  |  მოსალოდნელი: 0.05 ₾  ✅</pre></details><details class="test-item">
-          <summary class="test">
-            <span class="chev">▶</span>
-            <span class="st" style="color:#3fb950">✅ passed</span>
-            <span class="name">Full Refunded Device — Receiver</span>
-            <span class="dur">54.6s</span>
-          </summary><pre class="log">✅ 1. Order Created
-✅ 2. OTP Sent: 468918
-✅ 3. Payment Successful
-✅ Closed QR terminal modal
-✅ Clicked Skip button
-✅ Clicked Done button
-✅ 4. Transaction ID: 55502 (senderFee: 0.01, receiverFee: 0)
-
-🔄 5. Refunding: 0.1 GEL
-   Refund response status: 200
-✅ Refund API call successful (no response body)
-
-🔍 Verifying Transaction ID: 55502
-✅ 6. Refund Verified (REFUNDED)
-
-📊 შედეგი — FULL REFUND · SENDER commission (senderFee 0.01)
-   ბალანსი: 6.26 ₾ → 6.15 ₾
-   ჩამოიჭრა: 0.11 ₾  |  მოსალოდნელი: 0.11 ₾  ✅</pre></details><div class="file">tests/Positive/saved-card.spec.ts</div><details class="test-item" open>
-          <summary class="test">
-            <span class="chev">▶</span>
-            <span class="st" style="color:#f85149">❌ failed</span>
-            <span class="name">Saved Card</span>
-            <span class="dur">2.6s</span>
-          </summary><pre class="log">❌ Permission Error:
-   This integrator does not have permission for directLinkProvider
-   Use basic order (without directLinkProvider) or request permission from Keepz</pre><pre class="err">Error: Permission denied: directLinkProvider not allowed</pre></details><div class="file">tests/Positive/split-order.spec.ts</div><details class="test-item" open>
-          <summary class="test">
-            <span class="chev">▶</span>
-            <span class="st" style="color:#f85149">❌ failed</span>
-            <span class="name">Split Order IBAN BRANCH</span>
-            <span class="dur">18.0s</span>
-          </summary><pre class="log">✅ Order Created
-✅ Payment page opened</pre><pre class="err">TimeoutError: locator.click: Timeout 15000ms exceeded.
-Call log:
-[2m  - waiting for locator('button').filter({ hasText: 'საბანკო ბარათი' })[22m
-</pre></details><details class="test-item" open>
-          <summary class="test">
-            <span class="chev">▶</span>
-            <span class="st" style="color:#f85149">❌ failed</span>
-            <span class="name">Split Order BRANCH and BRANCH</span>
-            <span class="dur">18.3s</span>
-          </summary><pre class="log">✅ Order Created
-✅ Payment page opened</pre><pre class="err">TimeoutError: locator.click: Timeout 15000ms exceeded.
-Call log:
-[2m  - waiting for locator('button').filter({ hasText: 'საბანკო ბარათი' })[22m
-</pre></details><details class="test-item" open>
-          <summary class="test">
-            <span class="chev">▶</span>
-            <span class="st" style="color:#f85149">❌ failed</span>
-            <span class="name">Split Order receiverType amount 0</span>
-            <span class="dur">18.1s</span>
-          </summary><pre class="log">✅ Order Created
-✅ Payment page opened</pre><pre class="err">TimeoutError: locator.click: Timeout 15000ms exceeded.
-Call log:
-[2m  - waiting for locator('button').filter({ hasText: 'საბანკო ბარათი' })[22m
-</pre></details><details class="test-item" open>
-          <summary class="test">
-            <span class="chev">▶</span>
-            <span class="st" style="color:#f85149">❌ failed</span>
-            <span class="name">Split Order receiver amount 0</span>
-            <span class="dur">17.8s</span>
-          </summary><pre class="log">✅ Order Created
-✅ Payment page opened</pre><pre class="err">TimeoutError: locator.click: Timeout 15000ms exceeded.
-Call log:
-[2m  - waiting for locator('button').filter({ hasText: 'საბანკო ბარათი' })[22m
-</pre></details><div class="file">tests/Positive/token-payment.spec.ts</div><details class="test-item" open>
-          <summary class="test">
-            <span class="chev">▶</span>
-            <span class="st" style="color:#f85149">❌ failed</span>
-            <span class="name">Token Payment saved card</span>
-            <span class="dur">2.6s</span>
-          </summary><pre class="log">❌ Permission Error:
-   This integrator does not have permission for directLinkProvider
-   Use basic order (without directLinkProvider) or request permission from Keepz</pre><pre class="err">Error: Permission denied: directLinkProvider not allowed</pre></details><div class="file">tests/Positive/treasury-order.spec.ts</div><details class="test-item">
-          <summary class="test">
-            <span class="chev">▶</span>
-            <span class="st" style="color:#3fb950">✅ passed</span>
-            <span class="name">Treasury Order</span>
-            <span class="dur">40.3s</span>
-          </summary><pre class="log">✅ Treasury Order Created
-✅ Payment page opened
-✅ TBC OTP: 818798
-✅ Closed QR terminal modal
-ℹ️ Skip button not present — გამოვტოვე
-✅ Clicked Done button</pre></details><div class="file">tests/Positive/validuntil-retry-payment.spec.ts</div><details class="test-item">
-          <summary class="test">
-            <span class="chev">▶</span>
-            <span class="st" style="color:#3fb950">✅ passed</span>
-            <span class="name">validUntil</span>
-            <span class="dur">87.0s</span>
-          </summary><pre class="log">✅ Order Created (with validUntil)
-Payment URL: https://web.appdev.keepz.me/pay?qrType=REQUEST&amp;receiverType=BRANCH&amp;receiverId=a1b9a5c5-9f01-42ee-a6e3-8853297caf49&amp;integratorId=76880b28-9033-4d48-b21f-37a9a36ec5dd&amp;integratorOrderId=9b6bf363-268f-4134-8b83-d9f4fbfcf9c7&amp;amount=0.1&amp;currency=GEL
-
-🔴 First Attempt - CREDO card (insufficient funds) - Payment will FAIL
-✅ CREDO OTP: 112217
-❌ First Payment FAILED (CREDO - insufficient funds)
-
-✅ Second Attempt - Retrying on SAME page with TBC
-
-✅ TBC OTP: 934150
-✅ Closed QR terminal modal
-✅ Clicked Skip button
-✅ Clicked Done button
-✅ Second Payment SUCCESS
-
-✅ Status update successful
-ℹ️ Transaction status: WAITING_FOR_SIGNATURE</pre></details>
+</pre></details></div>
+  <script>
+    (function () {
+      const cards = document.querySelectorAll('.card');
+      const items = document.querySelectorAll('.test-item');
+      const groups = document.querySelectorAll('.file-group');
+      function applyFilter(f) {
+        items.forEach((it) => {
+          it.style.display = (f === 'all' || it.dataset.status === f) ? '' : 'none';
+        });
+        // ცარიელი file-group-ის header დამალვა
+        groups.forEach((g) => {
+          let anyVisible = false;
+          g.querySelectorAll('.test-item').forEach((it) => {
+            if (it.style.display !== 'none') anyVisible = true;
+          });
+          g.style.display = anyVisible ? '' : 'none';
+        });
+        cards.forEach((c) => c.classList.toggle('active', c.dataset.filter === f));
+      }
+      cards.forEach((c) => c.addEventListener('click', () => applyFilter(c.dataset.filter)));
+    })();
+  </script>
 </body>
 </html>
