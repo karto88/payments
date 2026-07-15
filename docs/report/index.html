@@ -36,39 +36,55 @@
 </head>
 <body>
   <h1>🎭 Playwright Test Report</h1>
-  <div class="meta">7/15/2026, 2:48:41 PM</div>
+  <div class="meta">7/15/2026, 3:17:28 PM</div>
   <div class="summary">
     <button type="button" class="card active" data-filter="all">Total: 1</button>
-    <button type="button" class="card pass" data-filter="pass">✅ Passed: 1</button>
-    <button type="button" class="card fail" data-filter="fail">❌ Failed: 0</button>
+    <button type="button" class="card pass" data-filter="pass">✅ Passed: 0</button>
+    <button type="button" class="card fail" data-filter="fail">❌ Failed: 1</button>
     <button type="button" class="card skip" data-filter="skip">⏭️ Skipped: 0</button>
   </div>
-  <div class="file-group"><div class="file">tests/Positive/refund-order.spec.ts</div><details class="test-item" data-status="pass">
+  <div class="file-group"><div class="file">tests/Positive/refund-order.spec.ts</div><details class="test-item" data-status="fail" open>
           <summary class="test">
             <span class="chev">▶</span>
-            <span class="st" style="color:#3fb950">✅ passed</span>
-            <span class="name">Refunded Admin — Insufficient Balance — Receiver</span>
-            <span class="dur">101.3s</span>
+            <span class="st" style="color:#f85149">❌ failed</span>
+            <span class="name">Partially Refunded Admin</span>
+            <span class="dur">105.7s</span>
           </summary><pre class="log">✅ 1. Order Created
-✅ 2. OTP Sent: 464203
+✅ 2. OTP Sent: 451802
 ✅ 3. Payment Successful
 ✅ Closed QR terminal modal
 ✅ Clicked Skip button
 ✅ Clicked Done button
 ✅ 4. Payment Status Confirmed
 
-🔄 5. Refunding: 20 GEL
+🔄 5. Refunding: 0.05 GEL
 
-📊 შედეგი — REFUNDED
-   tx 55531: initialAmount 20 ₾ | დაერიცხა (distribution) 19.99 ₾
-   receiverCommission 0.03% | senderCommission 0%
-   დარეფანდა: 20 ₾  |  მოსალოდნელი: 20 ₾  ✅
+📊 შედეგი — PARTIALLY_REFUNDED
+   tx 55543: initialAmount 0.1 ₾ | დაერიცხა (distribution) 0.1 ₾
+   receiverCommission 0% | senderCommission 0.1%
+   დარეფანდა: 0.05 ₾  |  მოსალოდნელი: 0.05 ₾  ✅
 
-📊 მოსალოდნელი შედეგი — Admin refund — არასაკმარისი ბალანსი
-   დაბრუნდა: 20 ₾ (refund მაინც მოხდა)
-   ანგარიშზე იყო მხოლოდ 6.19 ₾, მოთხოვნილი refund 20 ₾ (20 &gt; 6.19) → ბალანსი არ უნდა შეიცვალოს
-   ბალანსი: იყო 6.19 ₾ → გახდა 6.19 ₾ (მოაკლდა 0 ₾)
-   ✅ ბალანსი უცვლელი — არასაკმარისი ბალანსის გამო არ მოაკლდა</pre></details></div>
+📊 მოსალოდნელი შედეგი — Admin refund (PARTIAL)
+   დაბრუნდა: 0.05 ₾
+   ბალანსს უნდა მოაკლდეს: 0.05 ₾
+   ბალანსი: იყო 3 ₾ → გახდა 3 ₾ (მოაკლდა 0 ₾)
+   ❌ ბალანსი არასწორად შეიცვალა — მოაკლდა 0 ₾, უნდა 0.05 ₾</pre><pre class="err">ApiAssertionError: 
+❌ API TEST FAILED
+───────────────────────────────────────────
+🔧 ოპერაცია:    Admin refund — verification
+⚠️  პრობლემა:    ბალანსი არასწორად შეიცვალა (მოაკლდა 0, უნდა 0.05)
+📥 მიმდინარე შედეგი:
+{
+  "balanceBefore": 3,
+  "balanceAfter": 3,
+  "actual": 0,
+  "expected": 0.05,
+  "requested": 0.05,
+  "insufficient": false
+}
+✅ მოსალოდნელი შედეგი: უნდა მოკლებოდა 0.05
+───────────────────────────────────────────
+</pre></details></div>
   <script>
     (function () {
       const cards = document.querySelectorAll('.card');
