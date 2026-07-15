@@ -36,52 +36,35 @@
 </head>
 <body>
   <h1>🎭 Playwright Test Report</h1>
-  <div class="meta">7/15/2026, 2:38:24 PM</div>
+  <div class="meta">7/15/2026, 2:40:41 PM</div>
   <div class="summary">
-    <button type="button" class="card active" data-filter="all">Total: 2</button>
+    <button type="button" class="card active" data-filter="all">Total: 1</button>
     <button type="button" class="card pass" data-filter="pass">✅ Passed: 1</button>
-    <button type="button" class="card fail" data-filter="fail">❌ Failed: 1</button>
+    <button type="button" class="card fail" data-filter="fail">❌ Failed: 0</button>
     <button type="button" class="card skip" data-filter="skip">⏭️ Skipped: 0</button>
   </div>
-  <div class="file-group"><div class="file">tests/Positive/refund-order.spec.ts</div><details class="test-item" data-status="fail" open>
-          <summary class="test">
-            <span class="chev">▶</span>
-            <span class="st" style="color:#f85149">❌ failed</span>
-            <span class="name">Partially Device</span>
-            <span class="dur">50.1s</span>
-          </summary><pre class="log">✅ 1. Order Created
-✅ 2. OTP Sent: 409322
-✅ 3. Payment Successful
-✅ Closed QR terminal modal
-✅ Clicked Skip button
-✅ Clicked Done button
-✅ 4. Transaction ID: 55506 (senderFee: 0.01, receiverFee: 0)
-
-🔄 5. Refunding: 0.05 GEL
-   Refund response status: 400</pre><pre class="err">Error: Refund failed: 400 - {"message":"Refund not allowed","statusCode":2386,"exceptionGroup":2}</pre></details><details class="test-item" data-status="pass">
+  <div class="file-group"><div class="file">tests/Positive/check-balance.spec.ts</div><details class="test-item" data-status="pass">
           <summary class="test">
             <span class="chev">▶</span>
             <span class="st" style="color:#3fb950">✅ passed</span>
-            <span class="name">Partially Device — Receiver</span>
-            <span class="dur">48.5s</span>
-          </summary><pre class="log">✅ 1. Order Created
-✅ 2. OTP Sent: 131451
-✅ 3. Payment Successful
+            <span class="name">Balance check — Receiver commission PERCENTAGE</span>
+            <span class="dur">62.5s</span>
+          </summary><pre class="log">✅ Group updated: STANDARD GEL rateType=PERCENTAGE
+✅ Merchant updated: distributionFlow=BALANCE, commissionType=RECEIVER
+✅ Balance before: 6.1 ₾
+✅ Order Created
+✅ Payment page opened
+✅ OTP: 606070
 ✅ Closed QR terminal modal
 ✅ Clicked Skip button
 ✅ Clicked Done button
-✅ 4. Transaction ID: 55522 (senderFee: 0, receiverFee: 0.01)
 
-🔄 5. Refunding: 0.05 GEL
-   Refund response status: 200
-✅ Refund API call successful (no response body)
-
-🔍 Verifying Transaction ID: 55522
-✅ 6. Refund Verified (PARTIALLY_REFUNDED)
-
-📊 შედეგი — PARTIAL REFUND · RECEIVER commission (receiverFee 0.01)
-   ბალანსი: 6.15 ₾ → 6.1 ₾
-   ჩამოიჭრა: 0.05 ₾  |  მოსალოდნელი: 0.05 ₾  ✅</pre></details></div>
+📊 მოსალოდნელი შედეგი — RECEIVER commission, STANDARD: PERCENTAGE, distributionFlow: BALANCE
+   იუზერმა გადაიხადა: 0.1 ₾ (საკომისიო 0.01 ₾)
+   merchant-ს დაერიცხა: amount − საკომისიო = 0.1 − 0.01 = 0.09 ₾
+   ბალანსი: იყო 6.1 ₾ → გახდა 6.19 ₾ (დაემატა 0.09 ₾)
+   ✅ ბალანსი წარმატებულად შეივსო
+✅ Group restored: STANDARD GEL rateType=PERCENTAGE</pre></details></div>
   <script>
     (function () {
       const cards = document.querySelectorAll('.card');
