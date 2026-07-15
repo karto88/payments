@@ -32,35 +32,60 @@
 </head>
 <body>
   <h1>🎭 Playwright Test Report</h1>
-  <div class="meta">7/14/2026, 6:50:26 PM</div>
+  <div class="meta">7/15/2026, 10:47:05 AM</div>
   <div class="summary">
     <div class="card">Total: 1</div>
     <div class="card pass">✅ Passed: 1</div>
     <div class="card fail">❌ Failed: 0</div>
     <div class="card skip">⏭️ Skipped: 0</div>
   </div>
-  <div class="file">tests/Positive/validuntil-retry-payment.spec.ts</div><details class="test-item">
+  <div class="file">tests/Positive/callback-test.spec.ts</div><details class="test-item">
           <summary class="test">
             <span class="chev">▶</span>
             <span class="st" style="color:#3fb950">✅ passed</span>
-            <span class="name">validUntil</span>
-            <span class="dur">93.2s</span>
-          </summary><pre class="log">✅ Order Created (with validUntil)
-Payment URL: https://web.appdev.keepz.me/pay?qrType=REQUEST&amp;receiverType=BRANCH&amp;receiverId=a1b9a5c5-9f01-42ee-a6e3-8853297caf49&amp;integratorId=76880b28-9033-4d48-b21f-37a9a36ec5dd&amp;integratorOrderId=38fd3315-2d45-42e8-9c41-66b3fb772172&amp;amount=0.1&amp;currency=GEL
+            <span class="name">should send callback after successful payment</span>
+            <span class="dur">49.6s</span>
+          </summary><pre class="log">🌐 Created webhook: https://webhook.site/3108aa53-ce91-439b-b330-183dd40d8b3d
 
-🔴 First Attempt - CREDO card (insufficient funds) - Payment will FAIL
-✅ CREDO OTP: 075777
-❌ First Payment FAILED (CREDO - insufficient funds)
+═══════════════════════════════════════════════════════════
+📞 WEBHOOK URL:
+   https://webhook.site/3108aa53-ce91-439b-b330-183dd40d8b3d
+═══════════════════════════════════════════════════════════
 
-✅ Second Attempt - Retrying on SAME page with TBC
-
-✅ TBC OTP: 090515
+✅ Order Created
+✅ Payment page opened
+✅ OTP: 758401
 ✅ Closed QR terminal modal
 ✅ Clicked Skip button
 ✅ Clicked Done button
-✅ Second Payment SUCCESS
+✅ Payment completed
+⏳ Waiting for callback...
+✅ Found 1 callback(s)
 
-✅ Status update successful
-ℹ️ Transaction status: WAITING_FOR_SIGNATURE</pre></details>
+📋 ===== CALLBACK RECEIVED (ENCRYPTED) =====
+🕐 Received At: 2026-07-15 06:47:40
+==================================
+
+🔓 Decrypting callback...
+
+📋 ===== DECRYPTED CALLBACK =====
+📦 Payload: {
+  "amount": 0.1,
+  "receiverId": "a1b9a5c5-9f01-42ee-a6e3-8853297caf49",
+  "receiverType": "BRANCH",
+  "integratorId": "76880b28-9033-4d48-b21f-37a9a36ec5dd",
+  "integratorOrderId": "38d7e1cc-31db-4a67-87ed-c23562f8cc9c",
+  "status": "SUCCESS",
+  "initialCurrency": "GEL",
+  "acquiringCurrency": "GEL",
+  "acquiringAmount": 0.11,
+  "toIban": "GE62BG0000000610917722",
+  "transactionId": 55423
+}
+================================
+
+✅ Test PASSED: Callback decrypted and validated
+📄 Report saved: C:\Users\User.MS940-2KDV1M\Desktop\test\Admin - Playwright\docs\callback-result.html
+💡 Share it: npm run share-report</pre></details>
 </body>
 </html>
