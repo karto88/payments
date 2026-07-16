@@ -36,96 +36,33 @@
 </head>
 <body>
   <h1>🎭 Playwright Test Report</h1>
-  <div class="meta">7/16/2026, 3:16:51 PM</div>
+  <div class="meta">7/16/2026, 4:12:21 PM</div>
   <div class="summary">
-    <button type="button" class="card active" data-filter="all">Total: 2</button>
-    <button type="button" class="card pass" data-filter="pass">✅ Passed: 0</button>
-    <button type="button" class="card fail" data-filter="fail">❌ Failed: 2</button>
+    <button type="button" class="card active" data-filter="all">Total: 1</button>
+    <button type="button" class="card pass" data-filter="pass">✅ Passed: 1</button>
+    <button type="button" class="card fail" data-filter="fail">❌ Failed: 0</button>
     <button type="button" class="card skip" data-filter="skip">⏭️ Skipped: 0</button>
   </div>
-  <div class="file-group"><div class="file">tests/Positive/refund-order.spec.ts</div><details class="test-item" data-status="fail" open>
+  <div class="file-group"><div class="file">tests/Positive/check-balance.spec.ts</div><details class="test-item" data-status="pass">
           <summary class="test">
             <span class="chev">▶</span>
-            <span class="st" style="color:#f85149">❌ failed</span>
-            <span class="name">Full Refunded INTEGRATOR</span>
-            <span class="dur">98.3s</span>
-          </summary><pre class="log">✅ 1. Order Created
-✅ 2. OTP Sent: 833021
-✅ 3. Payment Successful
+            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="name">Balance check — USD reflection</span>
+            <span class="dur">45.2s</span>
+          </summary><pre class="log">✅ Balance before: 0 USD
+✅ Order Created
+✅ Payment page opened
+✅ OTP: 729180
 ✅ Closed QR terminal modal
 ✅ Clicked Skip button
 ✅ Clicked Done button
-✅ 4. Payment Status Confirmed
 
-🔄 5. Refunding: 0.1 GEL
-
-📊 შედეგი — REFUNDED
-   tx 55691: initialAmount 0.1 ₾ | acquiringAmount 0.11 ₾
-   receiverCommission 0% | senderCommission 0.1%
-   დარეფანდა: 0.11 ₾  |  მოსალოდნელი: 0.11 ₾  ✅
-
-📊 მოსალოდნელი შედეგი — Admin refund (FULL)
-   დაბრუნდა: 0.1 ₾
-   ბალანსს უნდა მოაკლდეს: 0.11 ₾
-   ბალანსი: იყო 2.62 ₾ → გახდა 2.62 ₾ (მოაკლდა 0 ₾)
-   ❌ ბალანსი არასწორად შეიცვალა — მოაკლდა 0 ₾, უნდა 0.11 ₾</pre><pre class="err">ApiAssertionError: 
-❌ API TEST FAILED
-───────────────────────────────────────────
-🔧 ოპერაცია:    Admin refund — verification
-⚠️  პრობლემა:    ბალანსი არასწორად შეიცვალა (მოაკლდა 0, უნდა 0.11)
-📥 მიმდინარე შედეგი:
-{
-  "balanceBefore": 2.62,
-  "balanceAfter": 2.62,
-  "actual": 0,
-  "expected": 0.11,
-  "requested": 0.11,
-  "insufficient": false
-}
-✅ მოსალოდნელი შედეგი: უნდა მოკლებოდა 0.11
-───────────────────────────────────────────
-</pre></details><details class="test-item" data-status="fail" open>
-          <summary class="test">
-            <span class="chev">▶</span>
-            <span class="st" style="color:#f85149">❌ failed</span>
-            <span class="name">Full Refunded INTEGRATOR — Receiver</span>
-            <span class="dur">100.9s</span>
-          </summary><pre class="log">✅ 1. Order Created
-✅ 2. OTP Sent: 551800
-✅ 3. Payment Successful
-✅ Closed QR terminal modal
-✅ Clicked Skip button
-✅ Clicked Done button
-✅ 4. Payment Status Confirmed
-
-🔄 5. Refunding: 0.1 GEL
-
-📊 შედეგი — REFUNDED
-   tx 55692: initialAmount 0.1 ₾ | acquiringAmount 0.1 ₾
-   receiverCommission 0.03% | senderCommission 0%
-   დარეფანდა: 0.1 ₾  |  მოსალოდნელი: 0.1 ₾  ✅
-
-📊 მოსალოდნელი შედეგი — Admin refund (FULL)
-   დაბრუნდა: 0.1 ₾
-   ბალანსს უნდა მოაკლდეს: 0.1 ₾
-   ბალანსი: იყო 5.93 ₾ → გახდა 5.93 ₾ (მოაკლდა 0 ₾)
-   ❌ ბალანსი არასწორად შეიცვალა — მოაკლდა 0 ₾, უნდა 0.1 ₾</pre><pre class="err">ApiAssertionError: 
-❌ API TEST FAILED
-───────────────────────────────────────────
-🔧 ოპერაცია:    Admin refund — verification
-⚠️  პრობლემა:    ბალანსი არასწორად შეიცვალა (მოაკლდა 0, უნდა 0.1)
-📥 მიმდინარე შედეგი:
-{
-  "balanceBefore": 5.93,
-  "balanceAfter": 5.93,
-  "actual": 0,
-  "expected": 0.1,
-  "requested": 0.1,
-  "insufficient": false
-}
-✅ მოსალოდნელი შედეგი: უნდა მოკლებოდა 0.1
-───────────────────────────────────────────
-</pre></details></div>
+📊 მოსალოდნელი შედეგი — SENDER commission · USD · distributionFlow: BALANCE
+   იუზერმა გადაიხადა: 0.1 + 0.01 (საკომისიო) = 0.11 USD
+   merchant-ს დაერიცხა: სრული amount = 0.1 USD
+   ბალანსი: იყო 0 USD → გახდა 0.1 USD (დაემატა 0.1 USD)
+   ✅ ბალანსი წარმატებულად შეივსო (USD)
+✅ Restored: group rateType=PERCENTAGE, merchant distributionFlow=STANDARD</pre></details></div>
   <script>
     (function () {
       const cards = document.querySelectorAll('.card');
