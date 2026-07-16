@@ -36,34 +36,26 @@
 </head>
 <body>
   <h1>🎭 Playwright Test Report</h1>
-  <div class="meta">7/16/2026, 5:33:58 PM</div>
+  <div class="meta">7/16/2026, 5:36:24 PM</div>
   <div class="summary">
     <button type="button" class="card active" data-filter="all">Total: 1</button>
     <button type="button" class="card pass" data-filter="pass">✅ Passed: 1</button>
     <button type="button" class="card fail" data-filter="fail">❌ Failed: 0</button>
     <button type="button" class="card skip" data-filter="skip">⏭️ Skipped: 0</button>
   </div>
-  <div class="file-group"><div class="file">tests/Positive/pre-auth.spec.ts</div><details class="test-item" data-status="pass">
+  <div class="file-group"><div class="file">tests/Positive/redirect.spec.ts</div><details class="test-item" data-status="pass">
           <summary class="test">
             <span class="chev">▶</span>
             <span class="st" style="color:#3fb950">✅ passed</span>
-            <span class="name">Pre Authorization — Full complete</span>
-            <span class="dur">84.2s</span>
-          </summary><pre class="log">✅ Order Created (payWithPreAuth)
+            <span class="name">fail redirect</span>
+            <span class="dur">60.1s</span>
+          </summary><pre class="log">✅ Order Created — link returned
 ✅ Payment page opened
-✅ OTP: 121043
-✅ Closed QR terminal modal
-✅ Clicked Skip button
-✅ Clicked Done button
-✅ Stage 1: pre-auth → STATUS IS - TO_BE_CONFIRMED (order: 532df22f-c07e-4ecd-958a-c35bc9d9569c, tx: 55748)
-✅ Order Completed (amount: 0.1)
-✅ After complete → WAITING_FOR_SIGNATURE
-✅ Stage 2: complete(0.1) → after: WAITING_FOR_SIGNATURE → final: WAITING_FOR_SIGNATURE (tx: 55748)
-
-📊 მოსალოდნელი შედეგი — Pre-Auth (FULL)
-   ავტორიზებული: 0.1 | დავაქომფლითეთ: 0.1
-   distribution (ტრანზაქციაში): 0.1
-   ✅ პრე-ავტორიზაციით გადახდა წარმატებულია — distribution ემთხვევა დაქომფლითებულს (0.1)</pre></details></div>
+✅ OTP SUCCESS: 950931
+ℹ️ QR terminal modal not found
+ℹ️ Skip button not present — გამოვტოვე
+ℹ️ Done button not present — გამოვტოვე
+✅ failRedirectUri is successful</pre></details></div>
   <script>
     (function () {
       const cards = document.querySelectorAll('.card');
