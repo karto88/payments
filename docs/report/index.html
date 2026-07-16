@@ -36,32 +36,42 @@
 </head>
 <body>
   <h1>🎭 Playwright Test Report</h1>
-  <div class="meta">7/16/2026, 7:10:31 PM</div>
+  <div class="meta">7/16/2026, 7:12:42 PM</div>
   <div class="summary">
     <button type="button" class="card active" data-filter="all">Total: 2</button>
-    <button type="button" class="card pass" data-filter="pass">✅ Passed: 1</button>
-    <button type="button" class="card fail" data-filter="fail">❌ Failed: 1</button>
+    <button type="button" class="card pass" data-filter="pass">✅ Passed: 2</button>
+    <button type="button" class="card fail" data-filter="fail">❌ Failed: 0</button>
     <button type="button" class="card skip" data-filter="skip">⏭️ Skipped: 0</button>
   </div>
-  <div class="file-group"><div class="file">tests/Positive/open-banking.spec.ts</div><details class="test-item" data-status="pass">
+  <div class="file-group"><div class="file">tests/Positive/directLinkProvider.spec.ts</div><details class="test-item" data-status="pass">
           <summary class="test">
             <span class="chev">▶</span>
             <span class="st" style="color:#3fb950">✅ passed</span>
-            <span class="name">BOG Open Banking</span>
-            <span class="dur">47.8s</span>
-          </summary><pre class="log">✅ Order Created - BOG Open Banking
-✅ OTP: 3916
-✅ BOG Login completed
-✅ Payment confirmed
+            <span class="name">BOG directLinkProvider - Distributor BOG - MCard</span>
+            <span class="dur">37.9s</span>
+          </summary><pre class="log">✅ Order Created - BOG
+✅ Page loaded
+✅ Card filled
+✅ OTP: 365467
+✅ Payment completed
 ✅ Closed QR terminal modal
 ✅ Clicked Skip button
-✅ Clicked Done button</pre></details><details class="test-item" data-status="fail" open>
+✅ Clicked Done button
+✅ BOG directLinkProvider payment is success</pre></details><details class="test-item" data-status="pass">
           <summary class="test">
             <span class="chev">▶</span>
-            <span class="st" style="color:#f85149">❌ failed</span>
-            <span class="name">TBC Open Banking</span>
-            <span class="dur">1.1s</span>
-          </summary><pre class="log">❌ Error 2137: I/O error on POST request for "https://test-openbanking.tbcbank.ge/0.8/v1/payments/aspsp": (certificate_expired) Received fatal alert: certificate_expired</pre><pre class="err">Error: Order failed: I/O error on POST request for "https://test-openbanking.tbcbank.ge/0.8/v1/payments/aspsp": (certificate_expired) Received fatal alert: certificate_expired</pre></details></div>
+            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="name">TBC directLinkProvider - Distributor TBC Visa</span>
+            <span class="dur">35.6s</span>
+          </summary><pre class="log">✅ Order Created - TBC
+✅ Page loaded
+✅ Card filled
+✅ Submit clicked
+✅ OTP: 599680
+✅ Closed QR terminal modal
+✅ Clicked Skip button
+✅ Clicked Done button
+✅ TBC directLinkProvider payment is success</pre></details></div>
   <script>
     (function () {
       const cards = document.querySelectorAll('.card');
