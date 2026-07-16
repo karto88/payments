@@ -36,7 +36,7 @@
 </head>
 <body>
   <h1>🎭 Playwright Test Report</h1>
-  <div class="meta">7/16/2026, 2:43:36 PM</div>
+  <div class="meta">7/16/2026, 2:48:10 PM</div>
   <div class="summary">
     <button type="button" class="card active" data-filter="all">Total: 1</button>
     <button type="button" class="card pass" data-filter="pass">✅ Passed: 0</button>
@@ -48,9 +48,9 @@
             <span class="chev">▶</span>
             <span class="st" style="color:#f85149">❌ failed</span>
             <span class="name">Full Refunded ADMIN — Sender</span>
-            <span class="dur">55.9s</span>
+            <span class="dur">55.6s</span>
           </summary><pre class="log">✅ 1. Order Created
-✅ 2. OTP Sent: 980226
+✅ 2. OTP Sent: 868801
 ✅ 3. Payment Successful
 ✅ Closed QR terminal modal
 ✅ Clicked Skip button
@@ -58,7 +58,40 @@
 ✅ 4. Payment Status Confirmed
 
 🔄 5. Refunding: 0.1 GEL
-   genericTransactionId: 55676</pre><pre class="err">Error: Admin refund failed: 500 - {"message":"An unexpected error occurred. Please contact support with reference ID: b21ec496-fe9d-4432-860f-9735e354e89e","statusCode":1000,"exceptionGroup":6}</pre></details></div>
+🐞 ADMIN TX: {
+  "id": 55677,
+  "status": "SUCCESS",
+  "distributionStatus": "SUCCESS",
+  "senderName": "Guest",
+  "receiverName": "stromae Sender",
+  "receiverMerchantName": "stromae Sender",
+  "iban": "GE29TB7197445064300124",
+  "receiverPersonalNumber": "373737372",
+  "transactionDate": "2026-07-16T14:48:19",
+  "initialCurrency": "GEL",
+  "initialAmount": 0.1,
+  "acquiringCurrency": "GEL",
+  "acquiringAmount": 0.11,
+  "paymentMethod": "Standard",
+  "distributionCurrencyCode": "GEL",
+  "distributionAmount": 0.1,
+  "receiverCommissionPercent": 0,
+  "senderCommissionPercent": 0.1,
+  "commissionRateType": "PERCENTAGE",
+  "initialCashbackAmount": 0,
+  "paymentProvider": "CREDO",
+  "initialRefundAmount": 0,
+  "source": "Web",
+  "refundableFromMerchant": true,
+  "hasChildren": false,
+  "isRefundable": true,
+  "isRetryable": false,
+  "isStatusUpdatable": false,
+  "isInvoiceDownloadable": true,
+  "isSenderMock": false,
+  "isReceiverMock": false
+}
+🐞 newest content[0].id: [33m55677[39m</pre><pre class="err">Error: Admin refund failed: 500 - {"message":"An unexpected error occurred. Please contact support with reference ID: 8ccd701f-7dc7-414d-a8ee-eef5cf90fe74","statusCode":1000,"exceptionGroup":6}</pre></details></div>
   <script>
     (function () {
       const cards = document.querySelectorAll('.card');
