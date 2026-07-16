@@ -36,10 +36,10 @@
 </head>
 <body>
   <h1>🎭 Playwright Test Report</h1>
-  <div class="meta">7/16/2026, 2:58:36 PM</div>
+  <div class="meta">7/16/2026, 3:07:01 PM</div>
   <div class="summary">
-    <button type="button" class="card active" data-filter="all">Total: 1</button>
-    <button type="button" class="card pass" data-filter="pass">✅ Passed: 1</button>
+    <button type="button" class="card active" data-filter="all">Total: 4</button>
+    <button type="button" class="card pass" data-filter="pass">✅ Passed: 4</button>
     <button type="button" class="card fail" data-filter="fail">❌ Failed: 0</button>
     <button type="button" class="card skip" data-filter="skip">⏭️ Skipped: 0</button>
   </div>
@@ -47,10 +47,35 @@
           <summary class="test">
             <span class="chev">▶</span>
             <span class="st" style="color:#3fb950">✅ passed</span>
-            <span class="name">Full Refunded ADMIN — Sender</span>
-            <span class="dur">54.3s</span>
+            <span class="name">Partially Refunded ADMIN — Sender</span>
+            <span class="dur">54.4s</span>
           </summary><pre class="log">✅ 1. Order Created
-✅ 2. OTP Sent: 633176
+✅ 2. OTP Sent: 164387
+✅ 3. Payment Successful
+✅ Closed QR terminal modal
+✅ Clicked Skip button
+✅ Clicked Done button
+✅ 4. Payment Status Confirmed
+
+🔄 5. Refunding: 0.05 GEL
+
+📊 შედეგი — PARTIALLY_REFUNDED
+   tx 55681: initialAmount 0.1 ₾ | acquiringAmount 0.11 ₾
+   receiverCommission 0% | senderCommission 0.1%
+   დარეფანდა: 0.05 ₾  |  მოსალოდნელი: 0.05 ₾  ✅
+
+📊 მოსალოდნელი შედეგი — Admin refund (PARTIAL)
+   დაბრუნდა: 0.05 ₾
+   ბალანსს უნდა მოაკლდეს: 0.05 ₾
+   ბალანსი: იყო 2.78 ₾ → გახდა 2.73 ₾ (მოაკლდა 0.05 ₾)
+   ✅ ბალანსი სწორად შემცირდა</pre></details><details class="test-item" data-status="pass">
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="name">Full Refunded ADMIN — Sender</span>
+            <span class="dur">55.1s</span>
+          </summary><pre class="log">✅ 1. Order Created
+✅ 2. OTP Sent: 218375
 ✅ 3. Payment Successful
 ✅ Closed QR terminal modal
 ✅ Clicked Skip button
@@ -60,14 +85,64 @@
 🔄 5. Refunding: 0.1 GEL
 
 📊 შედეგი — REFUNDED
-   tx 55680: initialAmount 0.1 ₾ | acquiringAmount 0.11 ₾
+   tx 55682: initialAmount 0.1 ₾ | acquiringAmount 0.11 ₾
    receiverCommission 0% | senderCommission 0.1%
    დარეფანდა: 0.11 ₾  |  მოსალოდნელი: 0.11 ₾  ✅
 
 📊 მოსალოდნელი შედეგი — Admin refund (FULL)
    დაბრუნდა: 0.1 ₾
    ბალანსს უნდა მოაკლდეს: 0.11 ₾
-   ბალანსი: იყო 2.89 ₾ → გახდა 2.78 ₾ (მოაკლდა 0.11 ₾)
+   ბალანსი: იყო 2.73 ₾ → გახდა 2.62 ₾ (მოაკლდა 0.11 ₾)
+   ✅ ბალანსი სწორად შემცირდა</pre></details><details class="test-item" data-status="pass">
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="name">Partially Refunded ADMIN — Receiver</span>
+            <span class="dur">58.6s</span>
+          </summary><pre class="log">✅ 1. Order Created
+✅ 2. OTP Sent: 439253
+✅ 3. Payment Successful
+✅ Closed QR terminal modal
+✅ Clicked Skip button
+✅ Clicked Done button
+✅ 4. Payment Status Confirmed
+
+🔄 5. Refunding: 0.05 GEL
+
+📊 შედეგი — PARTIALLY_REFUNDED
+   tx 55683: initialAmount 0.1 ₾ | acquiringAmount 0.1 ₾
+   receiverCommission 0.03% | senderCommission 0%
+   დარეფანდა: 0.05 ₾  |  მოსალოდნელი: 0.05 ₾  ✅
+
+📊 მოსალოდნელი შედეგი — Admin refund (PARTIAL)
+   დაბრუნდა: 0.05 ₾
+   ბალანსს უნდა მოაკლდეს: 0.05 ₾
+   ბალანსი: იყო 6.18 ₾ → გახდა 6.13 ₾ (მოაკლდა 0.05 ₾)
+   ✅ ბალანსი სწორად შემცირდა</pre></details><details class="test-item" data-status="pass">
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="name">Full Refunded ADMIN — Receiver</span>
+            <span class="dur">53.0s</span>
+          </summary><pre class="log">✅ 1. Order Created
+✅ 2. OTP Sent: 924951
+✅ 3. Payment Successful
+✅ Closed QR terminal modal
+✅ Clicked Skip button
+✅ Clicked Done button
+✅ 4. Payment Status Confirmed
+
+🔄 5. Refunding: 0.1 GEL
+
+📊 შედეგი — REFUNDED
+   tx 55684: initialAmount 0.1 ₾ | acquiringAmount 0.1 ₾
+   receiverCommission 0.03% | senderCommission 0%
+   დარეფანდა: 0.1 ₾  |  მოსალოდნელი: 0.1 ₾  ✅
+
+📊 მოსალოდნელი შედეგი — Admin refund (FULL)
+   დაბრუნდა: 0.1 ₾
+   ბალანსს უნდა მოაკლდეს: 0.1 ₾
+   ბალანსი: იყო 6.13 ₾ → გახდა 6.03 ₾ (მოაკლდა 0.1 ₾)
    ✅ ბალანსი სწორად შემცირდა</pre></details></div>
   <script>
     (function () {
