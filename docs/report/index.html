@@ -36,7 +36,7 @@
 </head>
 <body>
   <h1>🎭 Playwright Test Report</h1>
-  <div class="meta">7/16/2026, 6:47:52 PM</div>
+  <div class="meta">7/16/2026, 6:51:02 PM</div>
   <div class="summary">
     <button type="button" class="card active" data-filter="all">Total: 1</button>
     <button type="button" class="card pass" data-filter="pass">✅ Passed: 0</button>
@@ -48,27 +48,28 @@
             <span class="chev">▶</span>
             <span class="st" style="color:#f85149">❌ failed</span>
             <span class="name">Split Order IBAN BRANCH</span>
-            <span class="dur">108.4s</span>
+            <span class="dur">102.1s</span>
           </summary><pre class="log">✅ Order Created
 ✅ Payment page opened
-✅ OTP: 611198
+✅ OTP: 971625
 ✅ Closed QR terminal modal
 ✅ Clicked Skip button
-✅ Clicked Done button</pre><pre class="err">ApiAssertionError: 
+✅ Clicked Done button
+🐞 parent 55779=PENDING | children 55781=PENDING(0.2), 55780=SUCCESS(0.2)</pre><pre class="err">ApiAssertionError: 
 ❌ API TEST FAILED
 ───────────────────────────────────────────
-🔧 ოპერაცია:    Split order — transactions status — parent (tx 55776)
+🔧 ოპერაცია:    Split order — transactions status — parent (tx 55779)
 ⚠️  პრობლემა:    ველი "distributionStatus" ვერ დაემთხვა (მოვიდა: PENDING)
 📥 მიმდინარე შედეგი:
 {
-  "id": 55776,
+  "id": 55779,
   "status": "PENDING",
   "distributionStatus": "PENDING",
   "senderName": "Guest",
   "receiverName": "stromae T",
   "receiverMerchantName": "stromae T",
   "receiverPersonalNumber": "90000000141",
-  "transactionDate": "2026-07-16T18:48:01",
+  "transactionDate": "2026-07-16T18:51:08",
   "initialCurrency": "GEL",
   "initialAmount": 0.4,
   "acquiringCurrency": "GEL",
