@@ -1,62 +1,85 @@
-import { test } from '@playwright/test';
+import { test, APIRequestContext } from '@playwright/test';
 import { PreAuthHelper } from '../../utils/order-helpers';
-import { assertField } from '../../utils/assertions';
+import { assertField, assertCondition } from '../../utils/assertions';
 
 const OP = 'Pre-Authorization transaction status';
-
-// უნიკალური თანხა pre-auth-ისთვის — ამით ვპოულობთ ტრანზაქციას filter-ში
-const PRE_AUTH_AMOUNT = 0.17;
-const COMPLETE_AMOUNT = 0.1;
 const INTEGRATOR_ID = '76880b28-9033-4d48-b21f-37a9a36ec5dd';
+const RECEIVER_ID = 'a1b9a5c5-9f01-42ee-a6e3-8853297caf49';
 
-test('Pre Authorization)', async ({ request }) => {
-  // Stage 1 (payment+OTP) + Stage 2 (complete → ხელმოწერა → status)
-  test.setTimeout(180000);
+/**
+ * Pre-Auth flow: ეტაპი 1 (payWithPreAuth order + TBC გადახდა → TO_BE_CONFIRMED),
+ * ეტაპი 2 (complete → WAITING_FOR_SIGNATURE → ხელმოწერა → final).
+ * ბოლოს: distributionAmount უნდა ემთხვეოდეს დაქომფლითებულ თანხას → გადახდა წარმატებულია.
+ * @param authAmount უნიკალური auth თანხა (ტრანზაქციის ამოსაცნობად filter-ში)
+ * @param completeAmount რამდენს ვაქომფლითებთ (partial < auth | full === auth)
+ */
+async function runPreAuth(request: APIRequestContext, authAmount: number, completeAmount: number) {
   const helper = new PreAuthHelper(request);
 
-  // ეტაპი 1 — ორდერი payWithPreAuth: true-ით + TBC ბარათით გადახდა
+  // ეტაპი 1
   const { integratorOrderId, transactionId, status, accessToken } = await helper.createAndPayOrder({
-    amount: PRE_AUTH_AMOUNT,
-    receiverId: 'a1b9a5c5-9f01-42ee-a6e3-8853297caf49',
+    amount: authAmount,
+    receiverId: RECEIVER_ID,
     integratorId: INTEGRATOR_ID,
     receiverType: 'BRANCH',
-    
     cardType: 'TBC',
   });
 
-  // pre-auth გადახდის მოსალოდნელი შედეგი — ტრანზაქცია უნდა ჩავარდეს TO_BE_CONFIRMED-ში
-  // (თანხა არ ნაწილდება, სანამ ცალკე complete/capture endpoint არ დაინიცირდება)
-  assertField(OP, { status }, 'status', 'TO_BE_CONFIRMED');
-
-  console.log(
-    `✅ Stage 1: pre-auth Transaction → STATUS IS - ${status} (order: ${integratorOrderId}, tx: ${transactionId})`
+  // pre-auth გადახდა → TO_BE_CONFIRMED (თანხა არ ნაწილდება სანამ complete არ მოხდება).
+  // ⚠️ კრიტიკული: თუ TO_BE_CONFIRMED არ მოვიდა → pre-auth ჩვეულებრივ გადახდად გაიარა = ბაგი.
+  assertCondition(
+    OP,
+    status === 'TO_BE_CONFIRMED',
+    `pre-auth-მა ჩვეულებრივ გადახდად გაიარა — status "${status}" (≠ TO_BE_CONFIRMED). ეს ბაგია: pre-auth-ზე თანხა არ უნდა გადანაწილდეს complete-მდე.`,
+    'status === TO_BE_CONFIRMED (თანხა complete-მდე არ ნაწილდება)',
+    { status, integratorOrderId, transactionId }
   );
+  console.log(`✅ Stage 1: pre-auth → STATUS IS - ${status} (order: ${integratorOrderId}, tx: ${transactionId})`);
 
-  // ეტაპი 2 — ორდერის დაქომფლითება (0.1 → მიმღებს, დანარჩენი გადამხდელს უბრუნდება)
+  // ეტაპი 2 — complete
   const completed = await helper.completeOrder(accessToken, {
     integratorId: INTEGRATOR_ID,
     integratorOrderId,
     transactionId,
-    completeAmount: COMPLETE_AMOUNT,
+    completeAmount,
   });
 
-  // ბიჯი 2 — complete-ის შემდეგ ტრანზაქცია უნდა იყოს ხელმოსაწერში (WAITING_FOR_SIGNATURE)
   assertField(OP, { status: completed.afterCompleteStatus }, 'status', 'WAITING_FOR_SIGNATURE');
 
-  // ბიჯი 3 — ხელმოწერის შემდეგ საბოლოო status:
-  //   SUCCESS → სრულად წარმატებული
-  //   PENDING → გადახდა წარმატებულია, ტრანზაქცია მუშავდება
-  //   WAITING_FOR_SIGNATURE → ჯერ ხელმოსაწერშია
-  // სამივე მისაღებია (გადახდა წარმატებულია) — მხოლოდ ვლოგავთ საბოლოო status-ს.
   const paymentOk = ['SUCCESS', 'PENDING', 'WAITING_FOR_SIGNATURE'].includes(completed.status);
-  assertField(
-    OP,
-    { paymentSuccessful: paymentOk },
-    'paymentSuccessful',
-    true
-  );
+  assertField(OP, { paymentSuccessful: paymentOk }, 'paymentSuccessful', true);
 
-  console.log(
-    `✅ Stage 2: complete(${COMPLETE_AMOUNT}) → after complete: ${completed.afterCompleteStatus} → final: ${completed.status} (tx: ${completed.transactionId})`
+  console.log(`✅ Stage 2: complete(${completeAmount}) → after: ${completed.afterCompleteStatus} → final: ${completed.status} (tx: ${completed.transactionId})`);
+
+  // ეტაპი 3 — distribution უნდა ემთხვეოდეს დაქომფლითებულ თანხას
+  const dist = completed.distributionAmount;
+  const distOk = Math.abs(dist - completeAmount) < 0.001;
+  const kind = completeAmount === authAmount ? 'FULL' : 'PARTIAL';
+
+  console.log(`\n📊 მოსალოდნელი შედეგი — Pre-Auth (${kind})`);
+  console.log(`   ავტორიზებული: ${authAmount} | დავაქომფლითეთ: ${completeAmount}`);
+  console.log(`   distribution (ტრანზაქციაში): ${dist}`);
+  console.log(distOk
+    ? `   ✅ პრე-ავტორიზაციით გადახდა წარმატებულია — distribution ემთხვევა დაქომფლითებულს (${completeAmount})`
+    : `   ❌ distribution არ ემთხვევა — ${dist}, უნდა ${completeAmount}`);
+
+  assertCondition(
+    OP,
+    distOk,
+    `distribution არ ემთხვევა დაქომფლითებულს (distribution ${dist}, complete ${completeAmount})`,
+    `distributionAmount === ${completeAmount}`,
+    { distributionAmount: dist, completeAmount, authAmount }
   );
+}
+
+// ნაწილობრივი complete — ავტორიზება 0.17, ქომფლითი 0.1 (დანარჩენი გადამხდელს უბრუნდება)
+test('Pre Authorization — Partial complete', async ({ request }) => {
+  test.setTimeout(180000);
+  await runPreAuth(request, 0.17, 0.1);
+});
+
+// სრული complete — ავტორიზება 0.16, ქომფლითი 0.16 (მთელი ავტორიზებული თანხა)
+test('Pre Authorization — Full complete', async ({ request }) => {
+  test.setTimeout(180000);
+  await runPreAuth(request, 0.10, 0.10);
 });

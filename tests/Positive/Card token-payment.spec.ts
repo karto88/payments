@@ -4,11 +4,11 @@ import { assertCondition } from '../../utils/assertions';
 
 const OP = 'POST /integrator/order (cardToken)';
 
-test('Token Payment (saved card)', async ({ request }, testInfo) => {
+test('Token Payment saved card', async ({ request }, testInfo) => {
   const helper = new TokenPaymentHelper(request);
 
   // ეტაპი 1 (SavedCardHelper-ით token) + ეტაპი 2 (createTokenPayment)
-  const { result, integratorOrderId, cardToken } = await helper.payWithSavedCard({
+  const { result } = await helper.payWithSavedCard({
     amount: 0.05,
     receiverId: 'db1bb73d-30cf-4718-ad2b-bc25cd13b09c',
     integratorId: '76880b28-9033-4d48-b21f-37a9a36ec5dd',
@@ -40,5 +40,5 @@ test('Token Payment (saved card)', async ({ request }, testInfo) => {
     result
   );
 
-  console.log(`✅ Test PASSED: token payment შესრულდა (order: ${integratorOrderId}, token: ${cardToken})`);
+  console.log('✅ Test PASSED: token payment შესრულდა');
 });

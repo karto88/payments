@@ -5,7 +5,7 @@ import * as dotenv from 'dotenv';
 
 dotenv.config();
 
-test('Create Order Only - No Automation', async ({ request }) => {
+test('Create Order Only', async ({ request }) => {
   const authPage = new AuthPage(request);
   const paymentPage = new PaymentPage(request, null as any);
 

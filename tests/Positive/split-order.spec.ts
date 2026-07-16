@@ -8,7 +8,7 @@ test('Split Order IBAN BRANCH', async ({ request }) => {
   const helper = new SplitPaymentHelper(request);
 
   await helper.createAndPaySplitOrder({
-    amount: 0.40,
+    amount: 0.2,
     receiverId: 'db1bb73d-30cf-4718-ad2b-bc25cd13b09c',
     receiverType: 'BRANCH',
     integratorId: '76880b28-9033-4d48-b21f-37a9a36ec5dd',
@@ -16,23 +16,23 @@ test('Split Order IBAN BRANCH', async ({ request }) => {
       {
         receiverType: "BRANCH",
         receiverIdentifier: "db1bb73d-30cf-4718-ad2b-bc25cd13b09c",
-        amount: 0.2
+        amount: 0.1
       },
       {
         receiverType: "IBAN",
-        receiverIdentifier: "GE62BG0000000610917722",
-        amount: 0.2
+        receiverIdentifier: "GE29TB7197445064300124",
+        amount: 0.1
       }
     ],
-    ibanToCheck: 'GE62BG0000000610917722'
+    ibanToCheck: 'GE29TB7197445064300124'
   });
 });
 
-test('Split Order BRANCH + BRANCH', async ({ request }) => {
+test('Split Order BRANCH and BRANCH', async ({ request }) => {
   const helper = new SplitPaymentHelper(request);
 
   await helper.createAndPaySplitOrder({
-    amount: 0.40,
+    amount: 0.2,
     receiverId: 'db1bb73d-30cf-4718-ad2b-bc25cd13b09c',
     receiverType: 'BRANCH',
     integratorId: '76880b28-9033-4d48-b21f-37a9a36ec5dd',
@@ -40,24 +40,24 @@ test('Split Order BRANCH + BRANCH', async ({ request }) => {
       {
         receiverType: "BRANCH",
         receiverIdentifier: "db1bb73d-30cf-4718-ad2b-bc25cd13b09c",
-        amount: 0.20
+        amount: 0.1
       },
       {
         receiverType: "BRANCH",
         receiverIdentifier: "a1b9a5c5-9f01-42ee-a6e3-8853297caf49",
-        amount: 0.20
+        amount: 0.1
       }
     ],
-    ibanToCheck: 'GE62BG0000000610917722'
+    ibanToCheck: 'GE29TB7197445064300124'
   });
 });
 
 
-test('Split Order receiverType amount 0', async ({ request }) => {
+test('Split Order chaild amount 0', async ({ request }) => {
   const helper = new SplitPaymentHelper(request);
 
   await helper.createAndPaySplitOrder({
-    amount: 0.40,
+    amount: 0.2,
     receiverId: 'db1bb73d-30cf-4718-ad2b-bc25cd13b09c',
     receiverType: 'BRANCH',
     integratorId: '76880b28-9033-4d48-b21f-37a9a36ec5dd',
@@ -65,23 +65,23 @@ test('Split Order receiverType amount 0', async ({ request }) => {
       {
         receiverType: "BRANCH",
         receiverIdentifier: "db1bb73d-30cf-4718-ad2b-bc25cd13b09c",
-        amount: 0.40
+        amount: 0.2
       },
       {
         receiverType: "IBAN",
-        receiverIdentifier: "GE62BG0000000610917722",
+        receiverIdentifier: "GE29TB7197445064300124",
         amount: 0
       }
     ],
-    ibanToCheck: 'GE62BG0000000610917722'
+    ibanToCheck: 'GE29TB7197445064300124'
   });
 });
 
-test('Split Order receiver amount 0', async ({ request }) => {
+test('Split Order Main receiver amount 0', async ({ request }) => {
   const helper = new SplitPaymentHelper(request);
 
   await helper.createAndPaySplitOrder({
-    amount: 0.40,
+    amount: 0.2,
     receiverId: 'db1bb73d-30cf-4718-ad2b-bc25cd13b09c',
     receiverType: 'BRANCH',
     integratorId: '76880b28-9033-4d48-b21f-37a9a36ec5dd',
@@ -93,11 +93,11 @@ test('Split Order receiver amount 0', async ({ request }) => {
       },
       {
         receiverType: "IBAN",
-        receiverIdentifier: "GE62BG0000000610917722",
-        amount: 0.40
+        receiverIdentifier: "GE29TB7197445064300124",
+        amount: 0.2
       }
     ],
-    ibanToCheck: 'GE62BG0000000610917722'
+    ibanToCheck: 'GE29TB7197445064300124'
   });
 });
 

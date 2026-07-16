@@ -250,6 +250,7 @@ export class PaymentPage {
       installmentPaymentProvider?: string;
       saveCard?: boolean;
       payWithPreAuth?: boolean;
+      currency?: string; // ვალუტა (default GEL) — USD/EUR order-ისთვის
       orderProperties?: any;
       splitDetails?: Array<{
         receiverType: string;
@@ -287,6 +288,13 @@ export class PaymentPage {
     // Add receiverId/receiverType (required for all orders)
     orderData.receiverId = orderConfig.receiverId || orderConfig.splitDetails?.[0]?.receiverIdentifier;
     orderData.receiverType = orderConfig.receiverType || orderConfig.splitDetails?.[0]?.receiverType || 'BRANCH';
+
+    // ვალუტა (default GEL) — USD/EUR order-ისთვის სამივე ველი უნდა დაისეტოს
+    if (orderConfig.currency) {
+      orderData.currency = orderConfig.currency;
+      orderData.acquiringCurrency = orderConfig.currency;
+      orderData.distributionCurrency = orderConfig.currency;
+    }
 
     // Add splitDetails if provided
     if (orderConfig.splitDetails) {

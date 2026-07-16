@@ -97,7 +97,7 @@ export class TransactionChecker {
   async getStatusById(
     transactionId: number,
     waitSeconds: number = 10
-  ): Promise<{ status: string; distributionStatus: string; transactionId: number }> {
+  ): Promise<{ status: string; distributionStatus: string; transactionId: number; distributionAmount: number }> {
     await new Promise(resolve => setTimeout(resolve, waitSeconds * 1000));
 
     const adminAuth = new AdminAuthPage(this.request);
@@ -106,13 +106,14 @@ export class TransactionChecker {
     const transaction = await this.getTransactionById(adminToken, transactionId);
 
     if (!transaction) {
-      return { status: 'NOT_FOUND', distributionStatus: 'NOT_FOUND', transactionId };
+      return { status: 'NOT_FOUND', distributionStatus: 'NOT_FOUND', transactionId, distributionAmount: 0 };
     }
 
     return {
       status: transaction.status,
       distributionStatus: transaction.distributionStatus,
       transactionId: transaction.id,
+      distributionAmount: transaction.distributionAmount,
     };
   }
 
@@ -123,6 +124,63 @@ export class TransactionChecker {
     const adminAuth = new AdminAuthPage(this.request);
     const adminToken = await adminAuth.authenticate();
     await this.updateTransactionStatus(adminToken, transactionId);
+  }
+
+  /**
+   * Split-ის მშობელი + ორივე შვილი ტრანზაქცია.
+   * split order იქმნება როგორც მშობელი (`hasChildren: true`) + N შვილი,
+   * სადაც შვილს აქვს `parentTransaction === parentId`. მშობელს ვპოულობთ initialAmount-ით
+   * (ლისტში პირველივე hasChildren დამთხვევა — ჩვენი ახალი split).
+   */
+  async getSplitStatuses(
+    expectedAmount: number,
+    waitSeconds: number = 10
+  ): Promise<{ parent: any; children: any[] }> {
+    await new Promise(resolve => setTimeout(resolve, waitSeconds * 1000));
+
+    const adminAuth = new AdminAuthPage(this.request);
+    const adminToken = await adminAuth.authenticate();
+
+    let parent: any;
+    let children: any[] = [];
+
+    // split-ი გადახდის მალევე: parent/children შეიძლება WAITING_FOR_SIGNATURE-ში იყოს.
+    // WAITING_FOR_SIGNATURE-ს ვაწერთ ხელს (update-status); ვჩერდებით როცა აღარაა ხელმოსაწერი
+    // (ყველა SUCCESS ან PENDING). PENDING მისაღებია — გადახდა შედგა, მუშავდება.
+    for (let i = 0; i < 15; i++) {
+      const transactionResponse = await this.request.post(
+        'https://newadmin.dev.keepz.me/api/transaction/filter',
+        {
+          headers: {
+            'Authorization': `Bearer ${adminToken}`,
+            'Content-Type': 'application/json'
+          },
+          data: {}
+        }
+      );
+
+      const data = await transactionResponse.json();
+      const all = data.value.content;
+
+      parent = all.find((t: any) => t.hasChildren && t.initialAmount === expectedAmount);
+      children = parent ? all.filter((t: any) => t.parentTransaction === parent.id) : [];
+
+      const txs = [parent, ...children].filter(Boolean);
+
+      // ყველა distributionStatus === SUCCESS → მზადაა
+      if (txs.length > 0 && txs.every((t: any) => t.distributionStatus === 'SUCCESS')) break;
+
+      // ყველა არა-SUCCESS ტრანზაქციას (PENDING / WAITING_FOR_SIGNATURE) update-status ვუშვებთ → SUCCESS
+      for (const t of txs) {
+        if (t.distributionStatus !== 'SUCCESS') {
+          await this.updateTransactionStatus(adminToken, t.id);
+        }
+      }
+
+      await new Promise(resolve => setTimeout(resolve, 5000));
+    }
+
+    return { parent, children };
   }
 
   /**

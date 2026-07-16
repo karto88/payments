@@ -38,7 +38,9 @@ export class WebhookSiteHelper {
       url: `https://webhook.site/${data.uuid}`,
     };
 
-    console.log(`🌐 Created webhook: ${this.token.url}`);
+    // endpoint (callback target) vs inbox view (ბრაუზერში გასახსნელი, callback-ების სანახავად).
+    // plain URL-ს ბრაუზერში გახსნა default პასუხს აჩვენებს — inbox-ს #!/view/ პრეფიქსი სჭირდება.
+    console.log(`🌐 Webhook inbox (ბრაუზერში გახსენი): https://webhook.site/#!/view/${data.uuid}`);
     return this.token.url;
   }
 

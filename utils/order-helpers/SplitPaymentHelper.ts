@@ -5,6 +5,9 @@ import { GmailHelper } from '../GmailHelper';
 import { closePaymentSuccess, fillOTPAndVerifyTBC } from '../PaymentFlowHelper';
 import { TransactionChecker } from '../transactionChecker';
 import { CARDS } from '../../config/cards.config';
+import { assertCondition, assertField } from '../assertions';
+
+const OP = 'Split order — transactions status';
 
 interface SplitDetail {
   receiverType: 'BRANCH' | 'IBAN';
@@ -84,16 +87,56 @@ export class SplitPaymentHelper {
     // Success modal დახურვა
     await closePaymentSuccess(page, context);
 
-    // Transaction status შემოწმება (თუ IBAN მითითებულია)
-    if (config.ibanToCheck) {
-      const txChecker = new TransactionChecker(this.request);
-      const result = await txChecker.checkTransactionStatus(config.ibanToCheck);
+    // Split-ის შემოწმება — მშობელი + ყველა შვილი (SUCCESS ან PENDING მისაღებია, FAILED/WAITING არა)
+    const txChecker = new TransactionChecker(this.request);
+    const { parent, children } = await txChecker.getSplitStatuses(config.amount);
 
-      if (result.distributionStatus === 'SUCCESS') {
-        console.log('✅ Test PASSED: Transaction confirmed');
-      } else {
-        console.log(`ℹ️ Transaction status: ${result.distributionStatus}`);
-      }
+    // მშობელი უნდა არსებობდეს
+    assertCondition(
+      OP,
+      !!parent,
+      'split-ის მშობელი ტრანზაქცია ვერ მოიძებნა',
+      `hasChildren მშობელი initialAmount=${config.amount}-ით`,
+      { found: !!parent }
+    );
+
+    // ყველა შვილი უნდა არსებობდეს
+    assertCondition(
+      OP,
+      children.length === config.splitDetails.length,
+      `შვილების რაოდენობა: ${children.length}, უნდა ${config.splitDetails.length}`,
+      `${config.splitDetails.length} შვილი ტრანზაქცია`,
+      { childrenCount: children.length }
+    );
+
+    // მშობელი + ყველა შვილი — distributionStatus უნდა იყოს SUCCESS.
+    // (getSplitStatuses უკვე ცდილობს status-update-ით SUCCESS-მდე მიყვანას.)
+    assertField(`${OP} — parent (tx ${parent.id})`, parent, 'distributionStatus', 'SUCCESS');
+    for (const child of children) {
+      assertField(`${OP} — child (tx ${child.id})`, child, 'distributionStatus', 'SUCCESS');
     }
+
+    // თანხის შემოწმება — თითო შვილს ზუსტად request-ის (splitDetails) თანხა უნდა დაუჯდეს
+    const requestedAmounts = config.splitDetails.map((s) => s.amount).sort((a, b) => a - b);
+    const childAmounts = children.map((c: any) => c.initialAmount).sort((a: number, b: number) => a - b);
+    assertCondition(
+      `${OP} — amounts`,
+      requestedAmounts.length === childAmounts.length &&
+        requestedAmounts.every((a, i) => Math.abs(a - childAmounts[i]) < 0.001),
+      `ჩარიცხული თანხები არ ემთხვევა request-ს`,
+      `თითო მხარეს request-ის თანხა: [${requestedAmounts.join(', ')}]`,
+      { requested: requestedAmounts, actual: childAmounts }
+    );
+
+    // ლამაზი ლოგი — parent + შვილები, status + რამდენი დაერიცხა
+    console.log(`\n✅ Split ორდერი გადახდილია:`);
+    console.log(`   parent ${parent.id} = ${parent.distributionStatus}`);
+    console.log(
+      `   children ${children
+        .map((c: any) => `${c.id} = ${c.distributionStatus} (${c.initialAmount} ლარი)`)
+        .join(',  ')}`
+    );
+
+    return { parent, children };
   }
 }

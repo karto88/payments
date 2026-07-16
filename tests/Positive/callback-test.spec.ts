@@ -19,11 +19,6 @@ test.describe('Callback Test', () => {
     const webhookHelper = new WebhookSiteHelper(request);
     const webhookUrl = await webhookHelper.createWebhook();
 
-    console.log('\n═══════════════════════════════════════════════════════════');
-    console.log('📞 WEBHOOK URL:');
-    console.log(`   ${webhookUrl}`);
-    console.log('═══════════════════════════════════════════════════════════\n');
-
     // 2. გადახდა
     const paymentHelper = new CallbackOrderHelper(request);
     await paymentHelper.createAndPayOrder({

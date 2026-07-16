@@ -5,7 +5,7 @@ import { assertCondition } from '../../utils/assertions';
 const SUCCESS_URL = 'https://lingolandedu.com/en/english-english-dictionary/successful';
 const FAIL_URL = 'https://www.istockphoto.com/photos/fail';
 
-test.describe('Success Redirect', () => {
+test.describe('Success Redirect URL', () => {
   // 1️⃣ SUCCESS — TBC ბარათი → წარმატებული → successRedirectUri
   test('success redirect', async ({ request }) => {
     const helper = new RedirectHelper(request);
@@ -32,7 +32,7 @@ test.describe('Success Redirect', () => {
   });
 
   // 2️⃣ FAIL — CREDO ბარათი (ფული არ აქვს) → ჩავარდნა → failRedirectUri
-  test('fail redirect', async ({ request }) => {
+  test('fail redirect URL', async ({ request }) => {
     const helper = new RedirectHelper(request);
 
     const finalUrl = await helper.createAndPay({

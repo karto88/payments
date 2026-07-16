@@ -16,6 +16,7 @@ interface DefaultOrderConfig {
   validUntil?: string;
   cardType: CardType;
   ibanToCheck?: string;
+  currency?: string; // ვალუტა (default GEL) — USD/EUR order-ისთვის
 }
 
 export class DefaultOrderHelper {
@@ -43,6 +44,7 @@ export class DefaultOrderHelper {
       receiverType: config.receiverType,
       integratorId: config.integratorId,
       validUntil: config.validUntil,
+      currency: config.currency,
     });
 
     console.log('✅ Order Created');

@@ -1,5 +1,6 @@
 import { APIRequestContext, chromium } from '@playwright/test';
 import { AuthPage } from '../../pages/AuthPage';
+import { AuthDevicePage } from '../../pages/AuthDevicePage';
 import { AdminAuthPage } from '../../pages/AdminAuthPage';
 import { PaymentPage } from '../../pages/PaymentPage';
 import { GmailHelper } from '../GmailHelper';
@@ -7,6 +8,9 @@ import { fillOTPAndVerifyTBC, closePaymentSuccess } from '../PaymentFlowHelper';
 import { TransactionChecker } from '../transactionChecker';
 import { CARDS } from '../../config/cards.config';
 import { API_CONFIG } from '../../config/api.config';
+import { assertField, assertCondition } from '../assertions';
+
+const OP = 'Admin refund — verification';
 
 interface RefundOrderConfig {
   amount: number;
@@ -16,6 +20,8 @@ interface RefundOrderConfig {
   validUntil?: string;
   refundAmount: number;
   ibanToCheck: string;
+  balancePhone?: string; // ბალანსის/fee-ს device login ნომერი (default 591078180; 591030201 — receiver commission)
+  refundVia?: 'INTEGRATOR' | 'ADMIN'; // refund-ის მხარე: INTEGRATOR (ecommerce, default) | ADMIN (admin panel endpoint, tx id-ზე)
 }
 
 export class RefundAdmin {
@@ -90,15 +96,136 @@ export class RefundAdmin {
 
     console.log('✅ 4. Payment Status Confirmed');
 
+    // ბალანსი refund-ის წინ (merchant-ის device token-ით: default 591078180 ან 591030201)
+    const deviceToken = await new AuthDevicePage(this.request).authenticate(config.balancePhone || '591078180');
+    const balanceBefore = await this.getBalance(deviceToken);
+
     // Refund API call
     console.log(`\n🔄 5. Refunding: ${config.refundAmount} GEL`);
     await this.refundOrder(accessToken, config);
 
-    // Refund verification
-    await this.verifyRefund(config);
+    // Refund verification — ვაცდით სანამ refund აისახება ტრანზაქციაში, ვიღებთ tx-ს
+    const transaction = await this.verifyRefund(config);
+
+    // ბალანსი refund-ის შემდეგ + შედარება
+    const balanceAfter = await this.getBalanceAfterSettle(deviceToken, balanceBefore);
+    this.verifyBalance(config, transaction, balanceBefore, balanceAfter);
   }
 
+  /**
+   * GEL ბალანსის წამოღება (merchant-balance)
+   */
+  private async getBalance(token: string): Promise<number> {
+    const response = await this.request.get(
+      'https://gateway.dev.keepz.me/payment-service/api/v1/merchant-balance',
+      { headers: { 'Authorization': `Bearer ${token}`, 'Content-Type': 'application/json' } }
+    );
+    const data = await response.json();
+    const gel = (data.value || []).find((b: any) => b.currency === 'GEL');
+    return gel ? gel.amount : 0;
+  }
+
+  /**
+   * ბალანსს ვაპოლინგებთ სანამ balanceBefore-ისგან შეიცვლება (admin refund async-ად აისახება),
+   * ან timeout — მაშინ უცვლელი (insufficient balance-ის ქეისი).
+   */
+  private async getBalanceAfterSettle(token: string, balanceBefore: number): Promise<number> {
+    let latest = balanceBefore;
+    for (let i = 0; i < 15; i++) {
+      latest = await this.getBalance(token);
+      if (Math.abs(latest - balanceBefore) > 0.001) break;
+      await new Promise(resolve => setTimeout(resolve, 3000));
+    }
+    return latest;
+  }
+
+  /**
+   * ბალანსის შედარება — რამდენი მოაკლდა refund-ის შემდეგ:
+   *   full refund    → acquiringAmount (sender: amount+fee | receiver: amount — commission-ს receiver ფარავს)
+   *   partial refund → refundAmount
+   *   insufficient   → 0 (ბალანსზე ნაკლები refund → არ აკლდება)
+   */
+  private verifyBalance(config: RefundOrderConfig, tx: any, balanceBefore: number, balanceAfter: number) {
+    const isFull = config.refundAmount === config.amount;
+    const requested = isFull ? (tx?.acquiringAmount ?? config.amount) : config.refundAmount;
+    const insufficient = balanceBefore < requested;
+    const expected = insufficient ? 0 : requested;
+
+    const actual = Math.round((balanceBefore - balanceAfter) * 100) / 100;
+    const expectedRounded = Math.round(expected * 100) / 100;
+    const requestedRounded = Math.round(requested * 100) / 100;
+    const label = isFull ? 'FULL' : 'PARTIAL';
+    const ok = Math.abs(actual - expectedRounded) < 0.001;
+
+    if (insufficient) {
+      // არასაკმარისი ბალანსი — refund მაინც ხდება, მაგრამ ბალანსიდან არ აკლდება
+      console.log(`\n📊 მოსალოდნელი შედეგი — Admin refund — არასაკმარისი ბალანსი`);
+      console.log(`   დაბრუნდა: ${config.refundAmount} ₾ (refund მაინც მოხდა)`);
+      console.log(`   ანგარიშზე იყო მხოლოდ ${balanceBefore} ₾, მოთხოვნილი refund ${requestedRounded} ₾ (${requestedRounded} > ${balanceBefore}) → ბალანსი არ უნდა შეიცვალოს`);
+      console.log(`   ბალანსი: იყო ${balanceBefore} ₾ → გახდა ${balanceAfter} ₾ (მოაკლდა ${actual} ₾)`);
+      console.log(ok
+        ? `   ✅ ბალანსი უცვლელი — არასაკმარისი ბალანსის გამო არ მოაკლდა`
+        : `   ❌ ბალანსი შეიცვალა — არ უნდა შეცვლილიყო (მოაკლდა ${actual} ₾)`);
+    } else {
+      console.log(`\n📊 მოსალოდნელი შედეგი — Admin refund (${label})`);
+      console.log(`   დაბრუნდა: ${config.refundAmount} ₾`);
+      console.log(`   ბალანსს უნდა მოაკლდეს: ${expectedRounded} ₾`);
+      console.log(`   ბალანსი: იყო ${balanceBefore} ₾ → გახდა ${balanceAfter} ₾ (მოაკლდა ${actual} ₾)`);
+      console.log(ok
+        ? `   ✅ ბალანსი სწორად შემცირდა`
+        : `   ❌ ბალანსი არასწორად შეიცვალა — მოაკლდა ${actual} ₾, უნდა ${expectedRounded} ₾`);
+    }
+
+    assertCondition(
+      OP,
+      ok,
+      `ბალანსი არასწორად შეიცვალა (მოაკლდა ${actual}, უნდა ${expectedRounded})`,
+      insufficient
+        ? `არასაკმარისი ბალანსი (${balanceBefore} < ${requestedRounded}) → არ უნდა შეიცვალოს`
+        : `უნდა მოკლებოდა ${expectedRounded}`,
+      { balanceBefore, balanceAfter, actual, expected: expectedRounded, requested: requestedRounded, insufficient }
+    );
+  }
+
+  /** refund-ის მხარის არჩევა: ADMIN panel (tx id) ან INTEGRATOR (ecommerce, encrypted) */
   private async refundOrder(accessToken: string, config: RefundOrderConfig) {
+    if (config.refundVia === 'ADMIN') {
+      await this.refundViaAdmin(config);
+    } else {
+      await this.refundViaIntegrator(accessToken, config);
+    }
+  }
+
+  /**
+   * ADMIN panel refund — genericTransactionId-ზე (admin token, device-ის გარეშე).
+   * full refund → amount: null | partial → amount: refundAmount.
+   */
+  private async refundViaAdmin(config: RefundOrderConfig) {
+    const adminToken = await new AdminAuthPage(this.request).authenticate();
+    const isFull = config.refundAmount === config.amount;
+
+    // ჩვენი ტრანზაქცია admin filter-ით (IBAN-ით, უახლესი) → genericTransactionId = tx.id
+    const filterResp = await this.request.post(
+      'https://newadmin.dev.keepz.me/api/transaction/filter',
+      { headers: { 'Authorization': `Bearer ${adminToken}`, 'Content-Type': 'application/json' }, data: {} }
+    );
+    const tx = (await filterResp.json()).value.content.find((t: any) => t.iban === config.ibanToCheck);
+
+    // ⚠️ refund არის PUT (POST → 500)
+    const response = await this.request.put(
+      'https://newadmin.dev.keepz.me/api/transaction/refund',
+      {
+        headers: { 'Authorization': `Bearer ${adminToken}`, 'Content-Type': 'application/json' },
+        data: { amount: isFull ? null : config.refundAmount, genericTransactionId: tx?.id },
+      }
+    );
+
+    if (!response.ok()) {
+      throw new Error(`Admin refund failed: ${response.status()} - ${await response.text()}`);
+    }
+  }
+
+  private async refundViaIntegrator(accessToken: string, config: RefundOrderConfig) {
     const paymentPage = new PaymentPage(this.request, null as any);
 
     // Step 1: Encrypt refund data
@@ -133,41 +260,55 @@ export class RefundAdmin {
     }
   }
 
-  private async verifyRefund(config: RefundOrderConfig) {
-    await new Promise(resolve => setTimeout(resolve, 5000)); // 5 წამი ველოდებით
+  /**
+   * Refund-ის ვერიფიკაცია ტრანზაქციიდან (balance-diff-ის ნაცვლად — უფრო საიმედო).
+   * ვამოწმებთ: refundInfo (REFUNDED/PARTIALLY_REFUNDED) + initialRefundAmount === refundAmount.
+   * ტრანზაქციას IBAN-ით ვპოულობთ (უახლესი ჩანაწერი მაგ IBAN-ზე). refund-ის აისახება
+   * დაგვიანებით, ამიტომ ვაპოლინგებთ.
+   */
+  private async verifyRefund(config: RefundOrderConfig): Promise<any> {
+    const adminToken = await new AdminAuthPage(this.request).authenticate();
+    const isFull = config.refundAmount === config.amount;
+    const expectedRefundInfo = isFull ? 'REFUNDED' : 'PARTIALLY_REFUNDED';
 
-    const adminAuth = new AdminAuthPage(this.request);
-    const adminToken = await adminAuth.authenticate();
+    let transaction: any;
+    let expectedRefunded = config.refundAmount;
+    for (let i = 0; i < 10; i++) {
+      await new Promise(resolve => setTimeout(resolve, 3000));
 
-    const transactionResponse = await this.request.post(
-      `${API_CONFIG.ADMIN.BASE_URL}${API_CONFIG.ADMIN.ENDPOINTS.TRANSACTION_FILTER}`,
-      {
-        headers: {
-          'Authorization': `Bearer ${adminToken}`,
-          'Content-Type': 'application/json'
-        },
-        data: {}
+      const resp = await this.request.post(
+        `${API_CONFIG.ADMIN.BASE_URL}${API_CONFIG.ADMIN.ENDPOINTS.TRANSACTION_FILTER}`,
+        { headers: { 'Authorization': `Bearer ${adminToken}`, 'Content-Type': 'application/json' }, data: {} }
+      );
+      transaction = (await resp.json()).value.content.find((t: any) => t.iban === config.ibanToCheck);
+
+      // full refund → სრული acquiringAmount ბრუნდება (sender: amount+fee), partial → refundAmount.
+      // ველოდებით სანამ refund აისახება (initialRefundAmount === მოსალოდნელი)
+      if (transaction) {
+        expectedRefunded = isFull ? (transaction.acquiringAmount ?? config.amount) : config.refundAmount;
+        if (Math.abs((transaction.initialRefundAmount || 0) - expectedRefunded) < 0.001) break;
       }
+    }
+
+    assertCondition(
+      OP,
+      !!transaction,
+      'ტრანზაქცია ვერ მოიძებნა',
+      `ტრანზაქცია IBAN ${config.ibanToCheck}-ზე`,
+      { found: !!transaction }
     );
 
-    const data = await transactionResponse.json();
-    const transactions = data.value.content;
-    const transaction = transactions.find((t: any) => t.iban === config.ibanToCheck);
+    // 1. რამდენი დარეფანდა — full → acquiringAmount (sender: amount+fee), partial → refundAmount
+    assertField(OP, transaction, 'initialRefundAmount', expectedRefunded);
 
-    if (!transaction) {
-      console.log('❌ Transaction not found\n');
-      return;
-    }
+    // 2. refund status
+    assertField(OP, transaction, 'refundInfo', expectedRefundInfo);
 
-    // Check refundInfo
-    const expectedRefundInfo = config.refundAmount === config.amount ? 'REFUNDED' : 'PARTIALLY_REFUNDED';
+    console.log(`\n📊 შედეგი — ${expectedRefundInfo}`);
+    console.log(`   tx ${transaction.id}: initialAmount ${transaction.initialAmount} ₾ | acquiringAmount ${transaction.acquiringAmount} ₾`);
+    console.log(`   receiverCommission ${transaction.receiverCommissionPercent}% | senderCommission ${transaction.senderCommissionPercent}%`);
+    console.log(`   დარეფანდა: ${transaction.initialRefundAmount} ₾  |  მოსალოდნელი: ${expectedRefunded} ₾  ✅`);
 
-    if (transaction.refundInfo === expectedRefundInfo) {
-      console.log(`✅ 6. Refund Successful (${transaction.refundInfo})\n`);
-    } else {
-      console.log(`❌ Refund verification failed:`);
-      console.log(`   Expected: ${expectedRefundInfo}`);
-      console.log(`   Actual: ${transaction.refundInfo || 'NOT_SET'}\n`);
-    }
+    return transaction;
   }
 }

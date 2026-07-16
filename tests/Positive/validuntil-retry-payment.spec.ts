@@ -9,7 +9,7 @@ import * as dotenv from 'dotenv';
 
 dotenv.config();
 
-test('validUntil', async ({ request }) => {
+test('validUntil Order', async ({ request }) => {
   const authPage = new AuthPage(request);
   const paymentPage = new PaymentPage(request, null as any);
   const gmail = new GmailHelper(process.env.GMAIL_USER!, process.env.GMAIL_APP_PASSWORD!);

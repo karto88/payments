@@ -59,6 +59,8 @@ export class DirectLinkHelper {
     }
 
     await closePaymentSuccess(page, context);
+
+    console.log(`✅ ${config.provider} directLinkProvider payment is success`);
   }
 
   private async automateBOGPayment(page: any) {

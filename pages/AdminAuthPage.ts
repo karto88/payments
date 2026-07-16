@@ -48,18 +48,27 @@ export class AdminAuthPage {
       }
     );
     const data = await response.json();
-    const accessToken = data.value.accessToken;
-    return accessToken;
+
+    // ცხადი შეტყობინება login-ის ჩავარდნაზე (cryptic "undefined" error-ის ნაცვლად)
+    if (!data.value || !data.value.accessToken) {
+      throw new Error(
+        `Admin login failed: ${data.message || 'no access token'} ` +
+          `(statusCode: ${data.statusCode ?? response.status()}). შეამოწმე ADMIN_PASSWORD .env-ში.`
+      );
+    }
+
+    return data.value.accessToken;
   }
 
   /**
-   * Complete full admin authentication flow
+   * Complete full admin authentication flow.
+   * credentials .env-იდან (ADMIN_USERNAME/PASSWORD/COUNTRY_CODE/DEVICE_ID), fallback default-ებით.
    */
   async authenticate(
-    username: string = '591078180',
-    password: string = 'Keepz1234',
-    countryCode: string = '995',
-    deviceId: string = 'bf38e78b-95c7-4f39-8183-f095a1919fe2'
+    username: string = process.env.ADMIN_USERNAME || '591078180',
+    password: string = process.env.ADMIN_PASSWORD || 'Keepz@1234',
+    countryCode: string = process.env.ADMIN_COUNTRY_CODE || '995',
+    deviceId: string = process.env.ADMIN_DEVICE_ID || 'bf38e78b-95c7-4f39-8183-f095a1919fe2'
   ): Promise<string> {
     await this.preLogin(username, countryCode);
     const accessToken = await this.login(username, password, countryCode, deviceId);

@@ -122,6 +122,7 @@ export class PreAuthHelper {
       transactionId: final.transactionId,
       afterCompleteStatus: afterComplete.status,
       status: final.status,
+      distributionAmount: final.distributionAmount,
     };
   }
 

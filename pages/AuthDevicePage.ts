@@ -71,8 +71,15 @@ export class AuthDevicePage {
 
   /**
    * Step 4: Login and get access token
+   * @param userType - BUSINESS (მასტერ ბრენჩი) ან INDIVIDUAL (ინდივიდუალური იუზერი).
+   *   ერთ ნომერზე ორივე არსებობს — მხოლოდ userType განსხვავდება.
    */
-  async login(userSMSId: string, phone: string, countryCode: string) {
+  async login(
+    userSMSId: string,
+    phone: string,
+    countryCode: string,
+    userType: 'BUSINESS' | 'INDIVIDUAL' = 'BUSINESS'
+  ) {
     const response = await this.request.post(
       `${this.baseUrl}/common-service/api/v1/auth/login`,
       {
@@ -81,7 +88,7 @@ export class AuthDevicePage {
           mobileName: 'Pixel 5',
           mobileOS: 'ANDROID',
           userSMSId: userSMSId,
-          userType: 'BUSINESS',
+          userType: userType,
           mobileNumber: `${countryCode}${phone}`,
         },
       }
@@ -92,17 +99,19 @@ export class AuthDevicePage {
   }
 
   /**
-   * Complete full device authentication flow
+   * Complete full device authentication flow.
+   * @param userType - BUSINESS (default) ან INDIVIDUAL
    */
   async authenticate(
     phone: string = '591078180',
     countryCode: string = '995',
-    smsCode: string = '111111'
+    smsCode: string = '111111',
+    userType: 'BUSINESS' | 'INDIVIDUAL' = 'BUSINESS'
   ): Promise<string> {
     await this.checkPhone(phone, countryCode);
     await this.sendSMS(phone, countryCode);
     const userSMSId = await this.verifySMS(phone, countryCode, smsCode);
-    const accessToken = await this.login(userSMSId, phone, countryCode);
+    const accessToken = await this.login(userSMSId, phone, countryCode, userType);
     return accessToken;
   }
 }

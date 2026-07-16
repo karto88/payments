@@ -54,8 +54,6 @@ export class TokenPaymentHelper {
       );
     }
 
-    console.log(`✅ Card Token: ${cardToken}`);
-
     // ეტაპი 2 — token-ით გადახდა (browser არ სჭირდება)
     const authPage = new AuthPage(this.request);
     const paymentPage = new PaymentPage(this.request, null as any);
@@ -69,8 +67,6 @@ export class TokenPaymentHelper {
       integratorId: config.integratorId,
       cardToken,
     });
-
-    console.log(`✅ Token Payment Order Created: ${integratorOrderId}`);
 
     return { result, integratorOrderId, cardToken };
   }
