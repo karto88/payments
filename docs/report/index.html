@@ -36,67 +36,30 @@
 </head>
 <body>
   <h1>🎭 Playwright Test Report</h1>
-  <div class="meta">7/16/2026, 6:51:02 PM</div>
+  <div class="meta">7/16/2026, 6:54:17 PM</div>
   <div class="summary">
     <button type="button" class="card active" data-filter="all">Total: 1</button>
-    <button type="button" class="card pass" data-filter="pass">✅ Passed: 0</button>
-    <button type="button" class="card fail" data-filter="fail">❌ Failed: 1</button>
+    <button type="button" class="card pass" data-filter="pass">✅ Passed: 1</button>
+    <button type="button" class="card fail" data-filter="fail">❌ Failed: 0</button>
     <button type="button" class="card skip" data-filter="skip">⏭️ Skipped: 0</button>
   </div>
-  <div class="file-group"><div class="file">tests/Positive/split-order.spec.ts</div><details class="test-item" data-status="fail" open>
+  <div class="file-group"><div class="file">tests/Positive/split-order.spec.ts</div><details class="test-item" data-status="pass">
           <summary class="test">
             <span class="chev">▶</span>
-            <span class="st" style="color:#f85149">❌ failed</span>
+            <span class="st" style="color:#3fb950">✅ passed</span>
             <span class="name">Split Order IBAN BRANCH</span>
-            <span class="dur">102.1s</span>
+            <span class="dur">51.8s</span>
           </summary><pre class="log">✅ Order Created
 ✅ Payment page opened
-✅ OTP: 971625
+✅ OTP: 687979
 ✅ Closed QR terminal modal
 ✅ Clicked Skip button
 ✅ Clicked Done button
-🐞 parent 55779=PENDING | children 55781=PENDING(0.2), 55780=SUCCESS(0.2)</pre><pre class="err">ApiAssertionError: 
-❌ API TEST FAILED
-───────────────────────────────────────────
-🔧 ოპერაცია:    Split order — transactions status — parent (tx 55779)
-⚠️  პრობლემა:    ველი "distributionStatus" ვერ დაემთხვა (მოვიდა: PENDING)
-📥 მიმდინარე შედეგი:
-{
-  "id": 55779,
-  "status": "PENDING",
-  "distributionStatus": "PENDING",
-  "senderName": "Guest",
-  "receiverName": "stromae T",
-  "receiverMerchantName": "stromae T",
-  "receiverPersonalNumber": "90000000141",
-  "transactionDate": "2026-07-16T18:51:08",
-  "initialCurrency": "GEL",
-  "initialAmount": 0.4,
-  "acquiringCurrency": "GEL",
-  "acquiringAmount": 0.41,
-  "paymentMethod": "Standard",
-  "distributionCurrencyCode": "GEL",
-  "distributionAmount": 0.4,
-  "receiverCommissionPercent": 0,
-  "senderCommissionPercent": 0.1,
-  "commissionRateType": "PERCENTAGE",
-  "initialCashbackAmount": 0,
-  "paymentProvider": "CREDO",
-  "initialRefundAmount": 0,
-  "source": "Web",
-  "refundableFromMerchant": true,
-  "hasChildren": true,
-  "isRefundable": true,
-  "isRetryable": false,
-  "isStatusUpdatable": true,
-  "parentTransaction": 0,
-  "isInvoiceDownloadable": true,
-  "isSenderMock": false,
-  "isReceiverMock": false
-}
-✅ მოსალოდნელი შედეგი: distributionStatus = SUCCESS
-───────────────────────────────────────────
-</pre></details></div>
+🐞 parent 55782=SUCCESS | children 55784=SUCCESS(0.2), 55783=SUCCESS(0.2)
+
+✅ Split ორდერი გადახდილია:
+   parent 55782 = SUCCESS
+   children 55784 = SUCCESS (0.2 ლარი),  55783 = SUCCESS (0.2 ლარი)</pre></details></div>
   <script>
     (function () {
       const cards = document.querySelectorAll('.card');
