@@ -36,20 +36,39 @@
 </head>
 <body>
   <h1>🎭 Playwright Test Report</h1>
-  <div class="meta">7/16/2026, 2:57:01 PM</div>
+  <div class="meta">7/16/2026, 2:58:36 PM</div>
   <div class="summary">
     <button type="button" class="card active" data-filter="all">Total: 1</button>
-    <button type="button" class="card pass" data-filter="pass">✅ Passed: 0</button>
-    <button type="button" class="card fail" data-filter="fail">❌ Failed: 1</button>
+    <button type="button" class="card pass" data-filter="pass">✅ Passed: 1</button>
+    <button type="button" class="card fail" data-filter="fail">❌ Failed: 0</button>
     <button type="button" class="card skip" data-filter="skip">⏭️ Skipped: 0</button>
   </div>
-  <div class="file-group"><div class="file">tests/Positive/refund-order.spec.ts</div><details class="test-item" data-status="fail" open>
+  <div class="file-group"><div class="file">tests/Positive/refund-order.spec.ts</div><details class="test-item" data-status="pass">
           <summary class="test">
             <span class="chev">▶</span>
-            <span class="st" style="color:#f85149">❌ failed</span>
+            <span class="st" style="color:#3fb950">✅ passed</span>
             <span class="name">Full Refunded ADMIN — Sender</span>
-            <span class="dur">53.4s</span>
-          </summary><pre class="log">✅ 1. Order Created</pre><pre class="err">Error: OTP not found</pre></details></div>
+            <span class="dur">54.3s</span>
+          </summary><pre class="log">✅ 1. Order Created
+✅ 2. OTP Sent: 633176
+✅ 3. Payment Successful
+✅ Closed QR terminal modal
+✅ Clicked Skip button
+✅ Clicked Done button
+✅ 4. Payment Status Confirmed
+
+🔄 5. Refunding: 0.1 GEL
+
+📊 შედეგი — REFUNDED
+   tx 55680: initialAmount 0.1 ₾ | acquiringAmount 0.11 ₾
+   receiverCommission 0% | senderCommission 0.1%
+   დარეფანდა: 0.11 ₾  |  მოსალოდნელი: 0.11 ₾  ✅
+
+📊 მოსალოდნელი შედეგი — Admin refund (FULL)
+   დაბრუნდა: 0.1 ₾
+   ბალანსს უნდა მოაკლდეს: 0.11 ₾
+   ბალანსი: იყო 2.89 ₾ → გახდა 2.78 ₾ (მოაკლდა 0.11 ₾)
+   ✅ ბალანსი სწორად შემცირდა</pre></details></div>
   <script>
     (function () {
       const cards = document.querySelectorAll('.card');
