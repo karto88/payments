@@ -36,7 +36,7 @@
 </head>
 <body>
   <h1>🎭 Playwright Test Report</h1>
-  <div class="meta">7/16/2026, 4:47:08 PM</div>
+  <div class="meta">7/16/2026, 4:48:46 PM</div>
   <div class="summary">
     <button type="button" class="card active" data-filter="all">Total: 1</button>
     <button type="button" class="card pass" data-filter="pass">✅ Passed: 1</button>
@@ -47,23 +47,23 @@
           <summary class="test">
             <span class="chev">▶</span>
             <span class="st" style="color:#3fb950">✅ passed</span>
-            <span class="name">Pre Authorization — Partial complete</span>
-            <span class="dur">77.2s</span>
+            <span class="name">Pre Authorization — Full complete</span>
+            <span class="dur">76.6s</span>
           </summary><pre class="log">✅ Order Created (payWithPreAuth)
 ✅ Payment page opened
-✅ OTP: 638410
+✅ OTP: 499496
 ✅ Closed QR terminal modal
 ✅ Clicked Skip button
 ✅ Clicked Done button
-✅ Stage 1: pre-auth → STATUS IS - TO_BE_CONFIRMED (order: f8e1d1d1-311a-4d73-9d8d-05a20ff5b8c8, tx: 55727)
-✅ Order Completed (amount: 0.1)
+✅ Stage 1: pre-auth → STATUS IS - TO_BE_CONFIRMED (order: a5204c1f-35c7-4847-80b5-f19b57be4a50, tx: 55728)
+✅ Order Completed (amount: 0.16)
 ✅ After complete → WAITING_FOR_SIGNATURE
-✅ Stage 2: complete(0.1) → after: WAITING_FOR_SIGNATURE → final: WAITING_FOR_SIGNATURE (tx: 55727)
+✅ Stage 2: complete(0.16) → after: WAITING_FOR_SIGNATURE → final: WAITING_FOR_SIGNATURE (tx: 55728)
 
-📊 მოსალოდნელი შედეგი — Pre-Auth (PARTIAL)
-   ავტორიზებული: 0.17 | დავაქომფლითეთ: 0.1
-   distribution (ტრანზაქციაში): 0.1
-   ✅ პრე-ავტორიზაციით გადახდა წარმატებულია — distribution ემთხვევა დაქომფლითებულს (0.1)</pre></details></div>
+📊 მოსალოდნელი შედეგი — Pre-Auth (FULL)
+   ავტორიზებული: 0.16 | დავაქომფლითეთ: 0.16
+   distribution (ტრანზაქციაში): 0.16
+   ✅ პრე-ავტორიზაციით გადახდა წარმატებულია — distribution ემთხვევა დაქომფლითებულს (0.16)</pre></details></div>
   <script>
     (function () {
       const cards = document.querySelectorAll('.card');
