@@ -36,26 +36,24 @@
 </head>
 <body>
   <h1>🎭 Playwright Test Report</h1>
-  <div class="meta">7/16/2026, 5:36:24 PM</div>
+  <div class="meta">7/16/2026, 5:39:06 PM</div>
   <div class="summary">
     <button type="button" class="card active" data-filter="all">Total: 1</button>
-    <button type="button" class="card pass" data-filter="pass">✅ Passed: 1</button>
-    <button type="button" class="card fail" data-filter="fail">❌ Failed: 0</button>
+    <button type="button" class="card pass" data-filter="pass">✅ Passed: 0</button>
+    <button type="button" class="card fail" data-filter="fail">❌ Failed: 1</button>
     <button type="button" class="card skip" data-filter="skip">⏭️ Skipped: 0</button>
   </div>
-  <div class="file-group"><div class="file">tests/Positive/redirect.spec.ts</div><details class="test-item" data-status="pass">
+  <div class="file-group"><div class="file">tests/Positive/split-order.spec.ts</div><details class="test-item" data-status="fail" open>
           <summary class="test">
             <span class="chev">▶</span>
-            <span class="st" style="color:#3fb950">✅ passed</span>
-            <span class="name">fail redirect</span>
-            <span class="dur">60.1s</span>
-          </summary><pre class="log">✅ Order Created — link returned
-✅ Payment page opened
-✅ OTP SUCCESS: 950931
-ℹ️ QR terminal modal not found
-ℹ️ Skip button not present — გამოვტოვე
-ℹ️ Done button not present — გამოვტოვე
-✅ failRedirectUri is successful</pre></details></div>
+            <span class="st" style="color:#f85149">❌ failed</span>
+            <span class="name">Split Order IBAN BRANCH</span>
+            <span class="dur">20.2s</span>
+          </summary><pre class="log">✅ Order Created
+✅ Payment page opened</pre><pre class="err">TimeoutError: locator.click: Timeout 15000ms exceeded.
+Call log:
+[2m  - waiting for locator('button').filter({ hasText: 'საბანკო ბარათი' })[22m
+</pre></details></div>
   <script>
     (function () {
       const cards = document.querySelectorAll('.card');
