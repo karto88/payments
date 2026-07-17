@@ -36,26 +36,41 @@
 </head>
 <body>
   <h1>🎭 Playwright Test Report</h1>
-  <div class="meta">7/17/2026, 4:08:31 PM</div>
+  <div class="meta">7/17/2026, 4:10:56 PM</div>
   <div class="summary">
-    <button type="button" class="card active" data-filter="all">Total: 1</button>
+    <button type="button" class="card active" data-filter="all">Total: 2</button>
     <button type="button" class="card pass" data-filter="pass">✅ Passed: 1</button>
-    <button type="button" class="card fail" data-filter="fail">❌ Failed: 0</button>
+    <button type="button" class="card fail" data-filter="fail">❌ Failed: 1</button>
     <button type="button" class="card skip" data-filter="skip">⏭️ Skipped: 0</button>
   </div>
-  <div class="file-group"><div class="file">tests/Positive/open-banking.spec.ts</div><details class="test-item" data-status="pass">
+  <div class="file-group"><div class="file">tests/Positive/directLinkProvider.spec.ts</div><details class="test-item" data-status="pass">
           <summary class="test">
             <span class="chev">▶</span>
             <span class="st" style="color:#3fb950">✅ passed</span>
-            <span class="name">BOG Open Banking</span>
-            <span class="dur">44.7s</span>
-          </summary><pre class="log">✅ Order Created - BOG Open Banking
-✅ OTP: 7980
-✅ BOG Login completed
-✅ Payment confirmed
+            <span class="name">BOG directLinkProvider - Distributor BOG - MCard</span>
+            <span class="dur">36.9s</span>
+          </summary><pre class="log">✅ Order Created - BOG
+✅ Page loaded
+✅ Card filled
+✅ OTP: 501409
+✅ Payment completed
 ✅ Closed QR terminal modal
 ✅ Clicked Skip button
-✅ Clicked Done button</pre></details></div>
+✅ Clicked Done button
+✅ BOG directLinkProvider payment is success</pre></details><details class="test-item" data-status="fail" open>
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#f85149">❌ failed</span>
+            <span class="name">TBC directLinkProvider - Distributor TBC Visa</span>
+            <span class="dur">18.3s</span>
+          </summary><pre class="log">✅ Order Created - TBC
+✅ Page loaded
+✅ Card filled
+✅ Submit clicked
+✅ OTP: 501409</pre><pre class="err">TimeoutError: page.waitForSelector: Timeout 10000ms exceeded.
+Call log:
+[2m  - waiting for locator('input[name="code"]') to be visible[22m
+</pre></details></div>
   <script>
     (function () {
       const cards = document.querySelectorAll('.card');
