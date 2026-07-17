@@ -36,20 +36,26 @@
 </head>
 <body>
   <h1>🎭 Playwright Test Report</h1>
-  <div class="meta">7/17/2026, 4:07:24 PM</div>
+  <div class="meta">7/17/2026, 4:08:31 PM</div>
   <div class="summary">
     <button type="button" class="card active" data-filter="all">Total: 1</button>
-    <button type="button" class="card pass" data-filter="pass">✅ Passed: 0</button>
+    <button type="button" class="card pass" data-filter="pass">✅ Passed: 1</button>
     <button type="button" class="card fail" data-filter="fail">❌ Failed: 0</button>
     <button type="button" class="card skip" data-filter="skip">⏭️ Skipped: 0</button>
   </div>
-  <div class="file-group"><div class="file">tests/Positive/open-banking.spec.ts</div><details class="test-item" data-status="fail">
+  <div class="file-group"><div class="file">tests/Positive/open-banking.spec.ts</div><details class="test-item" data-status="pass">
           <summary class="test">
             <span class="chev">▶</span>
-            <span class="st" style="color:#f85149">❌ interrupted</span>
+            <span class="st" style="color:#3fb950">✅ passed</span>
             <span class="name">BOG Open Banking</span>
-            <span class="dur">62.4s</span>
-          </summary><pre class="log">✅ Order Created - BOG Open Banking</pre></details></div>
+            <span class="dur">44.7s</span>
+          </summary><pre class="log">✅ Order Created - BOG Open Banking
+✅ OTP: 7980
+✅ BOG Login completed
+✅ Payment confirmed
+✅ Closed QR terminal modal
+✅ Clicked Skip button
+✅ Clicked Done button</pre></details></div>
   <script>
     (function () {
       const cards = document.querySelectorAll('.card');
