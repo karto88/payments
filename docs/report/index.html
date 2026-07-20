@@ -36,21 +36,24 @@
 </head>
 <body>
   <h1>🎭 Playwright Test Report</h1>
-  <div class="meta">7/20/2026, 5:51:14 PM</div>
+  <div class="meta">7/20/2026, 5:53:29 PM</div>
   <div class="summary">
     <button type="button" class="card active" data-filter="all">Total: 1</button>
-    <button type="button" class="card pass" data-filter="pass">✅ Passed: 0</button>
-    <button type="button" class="card fail" data-filter="fail">❌ Failed: 1</button>
+    <button type="button" class="card pass" data-filter="pass">✅ Passed: 1</button>
+    <button type="button" class="card fail" data-filter="fail">❌ Failed: 0</button>
     <button type="button" class="card skip" data-filter="skip">⏭️ Skipped: 0</button>
   </div>
-  <div class="file-group"><div class="file">tests/Positive/invoice.spec.ts</div><details class="test-item" data-status="fail" open>
+  <div class="file-group"><div class="file">tests/Positive/invoice.spec.ts</div><details class="test-item" data-status="pass">
           <summary class="test">
             <span class="chev">▶</span>
-            <span class="st" style="color:#f85149">❌ failed</span>
+            <span class="st" style="color:#3fb950">✅ passed</span>
             <span class="name">Invoice download (ქვითრის ჩეკი)</span>
-            <span class="dur">41.0s</span>
+            <span class="dur">29.6s</span>
           </summary><pre class="log">✅ Order Created
-✅ Payment page opened</pre><pre class="err">Error: OTP not found</pre></details></div>
+✅ Payment page opened
+✅ OTP: 098037
+✅ QR modal ჩაიხურა
+✅ ქვითარი გაიხსნა ახალ ტაბში: blob:https://www.web.appdev.keepz.me/b5c7aaa1-a06d-4251-97d0-c7721149501e</pre></details></div>
   <script>
     (function () {
       const cards = document.querySelectorAll('.card');
