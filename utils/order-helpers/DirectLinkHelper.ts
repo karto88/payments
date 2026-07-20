@@ -91,14 +91,18 @@ export class DirectLinkHelper {
 
     // ბარათის მონაცემების ჩაწერა
     await page.waitForSelector('#cardNumber', { timeout: 10000 });
+    await page.waitForTimeout(1000); // form-ის JS მიბმას მოასწროს
 
     await page.fill('#cardNumber', CARDS.TBC.number);
     await page.fill('#cardExpirationDateCustom', CARDS.TBC.expiry);
     await page.fill('#cvc2', CARDS.TBC.cvv);
+    await page.locator('#cvc2').blur(); // change/blur → ვალიდაცია გააქტიურდეს, submit enable
+    await page.waitForTimeout(500);
 
     console.log('✅ Card filled');
 
-    await page.click('#payment-submit');
+    // submit — actionable-ს დაველოდოთ (button ვალიდაციამდე disabled შეიძლება იყოს)
+    await page.locator('#payment-submit').click({ timeout: 20000 });
     console.log('✅ Submit clicked');
 
     await page.waitForLoadState('networkidle');

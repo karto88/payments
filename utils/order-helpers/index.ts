@@ -10,3 +10,4 @@ export { PreAuthHelper } from './PreAuthHelper';
 export { RefundAdmin } from './RefundAdmin';
 export { RefundDevice } from './RefundDevice';
 export { CheckBalanceHelper } from './CheckBalanceHelper';
+export { InvoiceHelper } from './InvoiceHelper';
