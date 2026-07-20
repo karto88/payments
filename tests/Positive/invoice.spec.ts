@@ -5,7 +5,7 @@ import * as dotenv from 'dotenv';
 dotenv.config();
 
 // ქვითრის ჩეკი — გადახდის success გვერდზე QR modal-ის ჩახურვა + ქვითრის გადმოწერა (ახალი ტაბი)
-test('Invoice download (ქვითრის ჩეკი)', async ({ request }) => {
+test('Invoice Check', async ({ request }) => {
   test.setTimeout(180000);
   const helper = new InvoiceHelper(request);
 
