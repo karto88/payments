@@ -36,7 +36,7 @@
 </head>
 <body>
   <h1>🎭 Playwright Test Report</h1>
-  <div class="meta">7/21/2026, 12:07:54 PM</div>
+  <div class="meta">7/21/2026, 12:17:13 PM</div>
   <div class="summary">
     <button type="button" class="card active" data-filter="all">Total: 1</button>
     <button type="button" class="card pass" data-filter="pass">✅ Passed: 1</button>
@@ -48,9 +48,9 @@
             <span class="chev">▶</span>
             <span class="st" style="color:#3fb950">✅ passed</span>
             <span class="name">Full Refunded INTEGRATOR Sender</span>
-            <span class="dur">48.6s</span>
+            <span class="dur">63.2s</span>
           </summary><pre class="log">✅ 1. Order Created
-✅ 2. OTP Sent: 972580
+✅ 2. OTP Sent: 318346
 ✅ 3. Payment Successful
 ✅ Closed QR terminal modal
 ✅ Clicked Skip button
@@ -59,10 +59,21 @@
 
 🔄 5. Refunding: 3 GEL
 
-📊 INTEGRATOR refund (FULL):
-   integratorOrderId: 982fb87b-46c1-4769-ac4b-63c364736af2
-   status: REFUND_REQUESTED | errorMessage: null
-   ✅ integrator refund წარმატებით დარეგისტრირდა — REFUND_REQUESTED</pre></details></div>
+📊 INTEGRATOR refund result: REFUND_REQUESTED (order 1abb4d49-1b9b-4de7-9ff8-4727b7caf0e6)
+🐞 my tx by integratorOrderId: [90mundefined[39m
+🐞 first 2: [
+  {
+    "id": 58224,
+    "status": "SUCCESS",
+    "initialRefundAmount": 0
+  },
+  {
+    "id": 58223,
+    "status": "REFUNDED",
+    "refundInfo": "REFUNDED",
+    "initialRefundAmount": 0.11
+  }
+]</pre></details></div>
   <script>
     (function () {
       const cards = document.querySelectorAll('.card');
