@@ -36,39 +36,35 @@
 </head>
 <body>
   <h1>🎭 Playwright Test Report</h1>
-  <div class="meta">7/21/2026, 1:56:22 PM</div>
+  <div class="meta">7/21/2026, 2:13:22 PM</div>
   <div class="summary">
     <button type="button" class="card active" data-filter="all">Total: 1</button>
     <button type="button" class="card pass" data-filter="pass">✅ Passed: 1</button>
     <button type="button" class="card fail" data-filter="fail">❌ Failed: 0</button>
     <button type="button" class="card skip" data-filter="skip">⏭️ Skipped: 0</button>
   </div>
-  <div class="file-group"><div class="file">tests/Positive/refund-order.spec.ts</div><details class="test-item" data-status="pass">
+  <div class="file-group"><div class="file">tests/Positive/refund-integrator.spec.ts</div><details class="test-item" data-status="pass">
           <summary class="test">
             <span class="chev">▶</span>
             <span class="st" style="color:#3fb950">✅ passed</span>
-            <span class="name">Partially Refund Device — Receiver</span>
-            <span class="dur">50.2s</span>
+            <span class="name">Full Refunded INTEGRATOR — Receiver</span>
+            <span class="dur">53.2s</span>
           </summary><pre class="log">✅ 1. Order Created
-✅ 2. OTP Sent: 085806
-✅ 3. Payment Successful
+✅ 2. OTP: 256790
 ✅ Closed QR terminal modal
 ✅ Clicked Skip button
 ✅ Clicked Done button
-✅ 4. Transaction ID: 58243 (senderFee: 0, receiverFee: 0.01)
+✅ 3. Payment Status Confirmed
 
-🔄 5. Refunding: 0.05 GEL
-   Refund response status: 200
-✅ Refund API call successful (no response body)
+🔄 5. Refunding (FULL)
+✅ 6. Refund requested → REFUND_REQUESTED
 
-🔍 Verifying Transaction ID: 58243
-✅ 6. Refund Verified (PARTIALLY_REFUNDED)
+📊 INTEGRATOR refund დადასტურდა (FULL):
+   tx 58244: status REFUNDED | refundInfo REFUNDED | initialRefundAmount 0.1 ₾
+   ✅ ტრანზაქცია რეალურად REFUNDED
 
-📊 მოსალოდნელი შედეგი — Device refund (PARTIAL) · RECEIVER commission
-   დაბრუნდა: 0.05 ₾
-   ბალანსს უნდა მოაკლდეს: 0.05 ₾ (partial → refundAmount = 0.05)
-   ბალანსი: იყო 5.93 ₾ → გახდა 5.88 ₾ (მოაკლდა 0.05 ₾)
-   ✅ ბალანსი სწორად შემცირდა</pre></details></div>
+📊 ბალანსი: იყო 5.88 ₾ → დარჩა 5.78 ₾ (მოაკლდა 0.1 ₾) | დარეფანდა 0.1 ₾
+   ✅ ბალანსი სწორად შემცირდა — მოაკლდა 0.1 ₾ = დარეფანდილი</pre></details></div>
   <script>
     (function () {
       const cards = document.querySelectorAll('.card');
