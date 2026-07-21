@@ -36,44 +36,32 @@
 </head>
 <body>
   <h1>🎭 Playwright Test Report</h1>
-  <div class="meta">7/21/2026, 12:17:13 PM</div>
+  <div class="meta">7/21/2026, 12:29:15 PM</div>
   <div class="summary">
     <button type="button" class="card active" data-filter="all">Total: 1</button>
     <button type="button" class="card pass" data-filter="pass">✅ Passed: 1</button>
     <button type="button" class="card fail" data-filter="fail">❌ Failed: 0</button>
     <button type="button" class="card skip" data-filter="skip">⏭️ Skipped: 0</button>
   </div>
-  <div class="file-group"><div class="file">tests/Positive/refund-order.spec.ts</div><details class="test-item" data-status="pass">
+  <div class="file-group"><div class="file">tests/Positive/refund-integrator.spec.ts</div><details class="test-item" data-status="pass">
           <summary class="test">
             <span class="chev">▶</span>
             <span class="st" style="color:#3fb950">✅ passed</span>
-            <span class="name">Full Refunded INTEGRATOR Sender</span>
-            <span class="dur">63.2s</span>
+            <span class="name">Full Refunded INTEGRATOR — Sender</span>
+            <span class="dur">51.0s</span>
           </summary><pre class="log">✅ 1. Order Created
-✅ 2. OTP Sent: 318346
-✅ 3. Payment Successful
+✅ 2. OTP: 169373
 ✅ Closed QR terminal modal
 ✅ Clicked Skip button
 ✅ Clicked Done button
-✅ 4. Payment Status Confirmed
+✅ 3. Payment Status Confirmed
 
-🔄 5. Refunding: 3 GEL
+🔄 4. Refunding (FULL)
+✅ 5. Refund requested → REFUND_REQUESTED
 
-📊 INTEGRATOR refund result: REFUND_REQUESTED (order 1abb4d49-1b9b-4de7-9ff8-4727b7caf0e6)
-🐞 my tx by integratorOrderId: [90mundefined[39m
-🐞 first 2: [
-  {
-    "id": 58224,
-    "status": "SUCCESS",
-    "initialRefundAmount": 0
-  },
-  {
-    "id": 58223,
-    "status": "REFUNDED",
-    "refundInfo": "REFUNDED",
-    "initialRefundAmount": 0.11
-  }
-]</pre></details></div>
+📊 INTEGRATOR refund დადასტურდა (FULL):
+   tx 58229: status REFUNDED | refundInfo REFUNDED | initialRefundAmount 0.11 ₾
+   ✅ ტრანზაქცია რეალურად REFUNDED</pre></details></div>
   <script>
     (function () {
       const cards = document.querySelectorAll('.card');
