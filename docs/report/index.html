@@ -36,7 +36,7 @@
 </head>
 <body>
   <h1>🎭 Playwright Test Report</h1>
-  <div class="meta">7/21/2026, 12:42:34 PM</div>
+  <div class="meta">7/21/2026, 12:43:34 PM</div>
   <div class="summary">
     <button type="button" class="card active" data-filter="all">Total: 1</button>
     <button type="button" class="card pass" data-filter="pass">✅ Passed: 0</button>
@@ -48,8 +48,36 @@
             <span class="chev">▶</span>
             <span class="st" style="color:#f85149">❌ failed</span>
             <span class="name">Full Refunded INTEGRATOR — Sender</span>
-            <span class="dur">43.0s</span>
-          </summary><pre class="log">✅ 1. Order Created</pre><pre class="err">Error: OTP not found</pre></details></div>
+            <span class="dur">99.3s</span>
+          </summary><pre class="log">✅ 1. Order Created
+✅ 2. OTP: 060744
+✅ Closed QR terminal modal
+✅ Clicked Skip button
+✅ Clicked Done button
+✅ 3. Payment Status Confirmed
+
+🔄 5. Refunding (FULL)
+✅ 6. Refund requested → REFUND_REQUESTED
+
+📊 INTEGRATOR refund დადასტურდა (FULL):
+   tx 58233: status REFUNDED | refundInfo REFUNDED | initialRefundAmount 0.11 ₾
+   ✅ ტრანზაქცია რეალურად REFUNDED
+
+📊 ბალანსი: იყო 4.8 ₾ → დარჩა 4.8 ₾ (მოაკლდა 0 ₾) | დარეფანდა 0.11 ₾</pre><pre class="err">ApiAssertionError: 
+❌ API TEST FAILED
+───────────────────────────────────────────
+🔧 ოპერაცია:    Integrator refund — verification
+⚠️  პრობლემა:    ბალანსი არასწორად შემცირდა — მოაკლდა 0 ₾, დარეფანდა კი 0.11 ₾
+📥 მიმდინარე შედეგი:
+{
+  "balanceBefore": 4.8,
+  "balanceAfter": 4.8,
+  "deducted": 0,
+  "refunded": 0.11
+}
+✅ მოსალოდნელი შედეგი: მოკლებული === დარეფანდილი (0.11 ₾)
+───────────────────────────────────────────
+</pre></details></div>
   <script>
     (function () {
       const cards = document.querySelectorAll('.card');
