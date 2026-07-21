@@ -36,7 +36,7 @@
 </head>
 <body>
   <h1>🎭 Playwright Test Report</h1>
-  <div class="meta">7/21/2026, 11:38:05 AM</div>
+  <div class="meta">7/21/2026, 11:42:22 AM</div>
   <div class="summary">
     <button type="button" class="card active" data-filter="all">Total: 1</button>
     <button type="button" class="card pass" data-filter="pass">✅ Passed: 0</button>
@@ -48,32 +48,31 @@
             <span class="chev">▶</span>
             <span class="st" style="color:#f85149">❌ failed</span>
             <span class="name">Full Refunded INTEGRATOR Sender</span>
-            <span class="dur">86.2s</span>
+            <span class="dur">86.8s</span>
           </summary><pre class="log">✅ 1. Order Created
-✅ 2. OTP Sent: 150368
+✅ 2. OTP Sent: 110233
 ✅ 3. Payment Successful
 ✅ Closed QR terminal modal
 ✅ Clicked Skip button
 ✅ Clicked Done button
 ✅ 4. Payment Status Confirmed
 
-🔄 5. Refunding: 3 GEL
-🐞 INTEGRATOR refund [200]: {"encryptedData":"ITf9IS3qC4z/oKo9K/5Q+9ecsYZJq7wnEr8ODcAiVVoB0irqVL2CD9GA2PbmLSH3Z9cnd25szs/8wZ1L4mI0Z4KtfTOJLaj1QTgjNvH9ph+0BtQeRgXy585Hfiv7f84i9D4i7qLgsrjImuTyaUo1Mw==","aes":true,"encryptedKeys":"ZYeJ4kek3Jgqymrr78WUUAJEHN04LDVbEOwLdWNZBH+0pZtxrwynyrVkIlhptCY8kixpeU3TasUZL0GetTp3UeBUHIxtiDPiYO2EhKfrC3YFfqrSPJZiPtB04l8W5S3uuzvcsqVngQM5MkasdeIWfNK/mrdKCBbPvSKl9/QlZSNu792TmPo/Mwjobrf4nCbWy9L+iLxZeFMzed+wnkBmmU7vUvSWmCB+85r0NtkhETsEbWUElwyLjWMu/A3MGP5fl4knRiY5laQgdVorEYTF0P7+d6I9RWc7qY2+dBP8S2v/</pre><pre class="err">ApiAssertionError: 
+🔄 5. Refunding: 3 GEL</pre><pre class="err">ApiAssertionError: 
 ❌ API TEST FAILED
 ───────────────────────────────────────────
 🔧 ოპერაცია:    Admin refund — verification
 ⚠️  პრობლემა:    ველი "initialRefundAmount" ვერ დაემთხვა (მოვიდა: 0)
 📥 მიმდინარე შედეგი:
 {
-  "id": 58219,
-  "status": "PENDING",
-  "distributionStatus": "PENDING",
+  "id": 58220,
+  "status": "SUCCESS",
+  "distributionStatus": "SUCCESS",
   "senderName": "Guest",
   "receiverName": "stromae Sender",
   "receiverMerchantName": "stromae Sender",
   "iban": "GE29TB7197445064300124",
   "receiverPersonalNumber": "373737372",
-  "transactionDate": "2026-07-21T11:38:11",
+  "transactionDate": "2026-07-21T11:42:29",
   "initialCurrency": "GEL",
   "initialAmount": 3,
   "acquiringCurrency": "GEL",
@@ -92,7 +91,7 @@
   "hasChildren": false,
   "isRefundable": true,
   "isRetryable": false,
-  "isStatusUpdatable": true,
+  "isStatusUpdatable": false,
   "isInvoiceDownloadable": true,
   "isSenderMock": false,
   "isReceiverMock": false
