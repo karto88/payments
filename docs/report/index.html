@@ -36,51 +36,36 @@
 </head>
 <body>
   <h1>🎭 Playwright Test Report</h1>
-  <div class="meta">7/22/2026, 8:53:54 PM</div>
+  <div class="meta">7/22/2026, 9:08:49 PM</div>
   <div class="summary">
     <button type="button" class="card active" data-filter="all">Total: 1</button>
-    <button type="button" class="card pass" data-filter="pass">✅ Passed: 0</button>
-    <button type="button" class="card fail" data-filter="fail">❌ Failed: 1</button>
+    <button type="button" class="card pass" data-filter="pass">✅ Passed: 1</button>
+    <button type="button" class="card fail" data-filter="fail">❌ Failed: 0</button>
     <button type="button" class="card skip" data-filter="skip">⏭️ Skipped: 0</button>
   </div>
-  <div class="file-group"><div class="file">tests/Positive/refund-preauth.spec.ts</div><details class="test-item" data-status="fail" open>
+  <div class="file-group"><div class="file">tests/Positive/refund-preauth.spec.ts</div><details class="test-item" data-status="pass">
           <summary class="test">
             <span class="chev">▶</span>
-            <span class="st" style="color:#f85149">❌ failed</span>
+            <span class="st" style="color:#3fb950">✅ passed</span>
             <span class="name">Full Refund — DEVICE</span>
-            <span class="dur">267.5s</span>
+            <span class="dur">89.6s</span>
           </summary><pre class="log">✅ Order Created (payWithPreAuth)
 ✅ Payment page opened
-✅ OTP: 392985
+✅ OTP: 769646
 ✅ Closed QR terminal modal
 ✅ Clicked Skip button
 ✅ Clicked Done button
-✅ 1. Pre-auth → TO_BE_CONFIRMED (tx: 58514)
+✅ 1. Pre-auth → TO_BE_CONFIRMED (tx: 58516)
 ✅ Order Completed (amount: 0.12)
-✅ After complete → PENDING
+✅ After complete → SUCCESS
 ✅ 2. Captured(0.12) → SUCCESS
-✅ 3. Balance before refund: 3.78 ₾ (capture დაერიცხა 0 ₾)
 
 🔄 4. Refunding via DEVICE (FULL)
    ✅ Device refund call successful (status 200)
 
-📊 refund დადასტურდა (FULL): tx 58514 | refundInfo REFUNDED | initialRefundAmount 0.13 ₾
-
-📊 DEVICE refund (FULL) — ბალანსი: იყო 3.78 ₾ → დარჩა 3.66 ₾ (მოაკლდა 0.12 ₾) | დარეფანდა 0.13 ₾</pre><pre class="err">ApiAssertionError: 
-❌ API TEST FAILED
-───────────────────────────────────────────
-🔧 ოპერაცია:    Pre-Auth refund — verification
-⚠️  პრობლემა:    ბალანსი არასწორად ჩამოიჭრა — მოაკლდა 0.12 ₾, დარეფანდა 0.13 ₾
-📥 მიმდინარე შედეგი:
-{
-  "balanceBefore": 3.78,
-  "balanceAfter": 3.66,
-  "deducted": 0.12,
-  "refunded": 0.13
-}
-✅ მოსალოდნელი შედეგი: მოკლებული === დარეფანდილი (0.13 ₾)
-───────────────────────────────────────────
-</pre></details></div>
+📊 refund დადასტურდა (FULL): tx 58516 | refundInfo REFUNDED
+   captured 0.12 + საკომისიო 0.01 = 0.13 ₾ | initialRefundAmount 0.13 ₾
+   ✅ refund სწორია — captured თავისი საკომისიოთი დარეფანდა</pre></details></div>
   <script>
     (function () {
       const cards = document.querySelectorAll('.card');
