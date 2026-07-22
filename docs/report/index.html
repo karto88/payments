@@ -36,42 +36,46 @@
 </head>
 <body>
   <h1>🎭 Playwright Test Report</h1>
-  <div class="meta">7/22/2026, 10:17:08 PM</div>
+  <div class="meta">7/22/2026, 10:25:41 PM</div>
   <div class="summary">
     <button type="button" class="card active" data-filter="all">Total: 1</button>
-    <button type="button" class="card pass" data-filter="pass">✅ Passed: 1</button>
-    <button type="button" class="card fail" data-filter="fail">❌ Failed: 0</button>
+    <button type="button" class="card pass" data-filter="pass">✅ Passed: 0</button>
+    <button type="button" class="card fail" data-filter="fail">❌ Failed: 1</button>
     <button type="button" class="card skip" data-filter="skip">⏭️ Skipped: 0</button>
   </div>
-  <div class="file-group"><div class="file">tests/Positive/refund-preauth.spec.ts</div><details class="test-item" data-status="pass">
+  <div class="file-group"><div class="file">tests/Positive/refund-preauth.spec.ts</div><details class="test-item" data-status="fail" open>
           <summary class="test">
             <span class="chev">▶</span>
-            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="st" style="color:#f85149">❌ failed</span>
             <span class="name">Full Refund — INTEGRATOR</span>
-            <span class="dur">144.2s</span>
+            <span class="dur">241.9s</span>
           </summary><pre class="log">✅ Order Created (payWithPreAuth)
 ✅ Payment page opened
-✅ OTP: 309448
+✅ OTP: 925898
 ✅ Closed QR terminal modal
 ✅ Clicked Skip button
 ✅ Clicked Done button
-✅ 1. Pre-auth → TO_BE_CONFIRMED (tx: 58533)
+✅ 1. Pre-auth → TO_BE_CONFIRMED (tx: 58535)
 ✅ Order Completed (amount: 0.12)
-✅ After complete → SUCCESS
+✅ After complete → PENDING
 ✅ 2. Captured(0.12) → SUCCESS
-   🔎 order status response: {"integratorOrderId":"b259c7b4-6fe2-48f7-82a1-d402531dc13c","status":"WAITING_FOR_CONFIRM","initialCurrency":"GEL","acquiringCurrency":"GEL","acquiringAmount":0.13,"transactionId":58533}
-✅ 3. Order refundable → SUCCESS
-✅ 3. Balance before refund: 1.3 ₾
+✅ 3. Order refundable → WAITING_FOR_CONFIRM
+✅ 3. Balance before refund: 1.17 ₾
 
-🔄 4. Refunding via INTEGRATOR (FULL)
-   ✅ Refund requested → REFUND_REQUESTED
-
-📊 refund დადასტურდა (FULL): tx 58533 | refundInfo REFUNDED
-   captured 0.12 + საკომისიო 0.01 = 0.13 ₾ | initialRefundAmount 0.13 ₾
-   ✅ refund სწორია — captured თავისი საკომისიოთი დარეფანდა
-
-📊 ბალანსი: იყო 1.3 ₾ → დარჩა 1.17 ₾ (მოაკლდა 0.13 ₾) | უნდა მოკლებოდა 0.13 ₾
-   ✅ ბალანსი სწორად ჩამოიჭრა — მოაკლდა 0.13 ₾</pre></details></div>
+🔄 4. Refunding via INTEGRATOR (FULL)</pre><pre class="err">ApiAssertionError: 
+❌ API TEST FAILED
+───────────────────────────────────────────
+🔧 ოპერაცია:    Pre-Auth refund — verification
+⚠️  პრობლემა:    integrator refund ვერ მოთხოვნდა (status: WAITING_FOR_CONFIRM, error: You can't refund order with status: WAITING_FOR_CONFIRM)
+📥 მიმდინარე შედეგი:
+{
+  "integratorOrderId": "b41498a2-6e63-4106-b506-a5f104e3fbd4",
+  "status": "WAITING_FOR_CONFIRM",
+  "errorMessage": "You can't refund order with status: WAITING_FOR_CONFIRM"
+}
+✅ მოსალოდნელი შედეგი: status === REFUND_REQUESTED
+───────────────────────────────────────────
+</pre></details></div>
   <script>
     (function () {
       const cards = document.querySelectorAll('.card');
