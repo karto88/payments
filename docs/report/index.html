@@ -36,7 +36,7 @@
 </head>
 <body>
   <h1>🎭 Playwright Test Report</h1>
-  <div class="meta">7/22/2026, 9:52:08 PM</div>
+  <div class="meta">7/22/2026, 9:56:32 PM</div>
   <div class="summary">
     <button type="button" class="card active" data-filter="all">Total: 1</button>
     <button type="button" class="card pass" data-filter="pass">✅ Passed: 0</button>
@@ -48,35 +48,35 @@
             <span class="chev">▶</span>
             <span class="st" style="color:#f85149">❌ failed</span>
             <span class="name">Full Refund — ADMIN</span>
-            <span class="dur">83.0s</span>
+            <span class="dur">99.3s</span>
           </summary><pre class="log">✅ Order Created (payWithPreAuth)
 ✅ Payment page opened
-✅ OTP: 252323
+✅ OTP: 448745
 ✅ Closed QR terminal modal
 ✅ Clicked Skip button
 ✅ Clicked Done button
-✅ 1. Pre-auth → TO_BE_CONFIRMED (tx: 58527)
+✅ 1. Pre-auth → TO_BE_CONFIRMED (tx: 58528)
 ✅ Order Completed (amount: 0.14)
 ✅ After complete → SUCCESS
 ✅ 2. Captured(0.14) → SUCCESS
-✅ 3. Balance before refund: 2.07 ₾
+✅ 3. Balance before refund (stable): 1.78 ₾
 
 🔄 4. Refunding via ADMIN (FULL)
    ✅ Admin refund call successful (status 204)
 
-📊 refund დადასტურდა (FULL): tx 58527 | refundInfo REFUNDED
+📊 refund დადასტურდა (FULL): tx 58528 | refundInfo REFUNDED
    captured 0.14 + საკომისიო 0.01 = 0.15 ₾ | initialRefundAmount 0.15 ₾
    ✅ refund სწორია — captured თავისი საკომისიოთი დარეფანდა
 
-📊 ბალანსი: იყო 2.07 ₾ → დარჩა 1.78 ₾ (მოაკლდა 0.29 ₾) | უნდა მოკლებოდა 0.15 ₾</pre><pre class="err">ApiAssertionError: 
+📊 ბალანსი: იყო 1.78 ₾ → დარჩა 1.49 ₾ (მოაკლდა 0.29 ₾) | უნდა მოკლებოდა 0.15 ₾</pre><pre class="err">ApiAssertionError: 
 ❌ API TEST FAILED
 ───────────────────────────────────────────
 🔧 ოპერაცია:    Pre-Auth refund — verification
 ⚠️  პრობლემა:    ბალანსი არასწორად ჩამოიჭრა — მოაკლდა 0.29 ₾, უნდა 0.15 ₾
 📥 მიმდინარე შედეგი:
 {
-  "balanceBefore": 2.07,
-  "balanceAfter": 1.78,
+  "balanceBefore": 1.78,
+  "balanceAfter": 1.49,
   "deducted": 0.29,
   "expectedDeduction": 0.15
 }
