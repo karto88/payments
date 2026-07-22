@@ -36,25 +36,32 @@
 </head>
 <body>
   <h1>🎭 Playwright Test Report</h1>
-  <div class="meta">7/22/2026, 2:14:14 PM</div>
+  <div class="meta">7/22/2026, 2:21:14 PM</div>
   <div class="summary">
-    <button type="button" class="card active" data-filter="all">Total: 1</button>
+    <button type="button" class="card active" data-filter="all">Total: 2</button>
     <button type="button" class="card pass" data-filter="pass">✅ Passed: 0</button>
-    <button type="button" class="card fail" data-filter="fail">❌ Failed: 1</button>
+    <button type="button" class="card fail" data-filter="fail">❌ Failed: 2</button>
     <button type="button" class="card skip" data-filter="skip">⏭️ Skipped: 0</button>
   </div>
-  <div class="file-group"><div class="file">tests/Positive/Card token-payment.spec.ts</div><details class="test-item" data-status="fail" open>
+  <div class="file-group"><div class="file">tests/Positive/saved-card.spec.ts</div><details class="test-item" data-status="fail" open>
           <summary class="test">
             <span class="chev">▶</span>
             <span class="st" style="color:#f85149">❌ failed</span>
-            <span class="name">Token Payment saved card</span>
-            <span class="dur">37.3s</span>
+            <span class="name">Saved Card — amount 0</span>
+            <span class="dur">38.8s</span>
           </summary><pre class="log">✅ Order Created (saveCard + CREDO)
 ✅ Payment page opened
-✅ OTP: 042964
+✅ OTP: 070156
 ✅ Closed QR terminal modal
 ✅ Clicked Skip button
-✅ Clicked Done button</pre><pre class="err">Error: Get card token failed: 400 - {"message":"Integrator card not found","statusCode":6075,"exceptionGroup":5}</pre></details></div>
+✅ Clicked Done button</pre><pre class="err">Error: Get card token failed: 400 - {"message":"Integrator card not found","statusCode":6075,"exceptionGroup":5}</pre></details><details class="test-item" data-status="fail" open>
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#f85149">❌ failed</span>
+            <span class="name">Saved Card — amount 0.1</span>
+            <span class="dur">38.4s</span>
+          </summary><pre class="log">✅ Order Created (saveCard + CREDO)
+✅ Payment page opened</pre><pre class="err">Error: OTP not found</pre></details></div>
   <script>
     (function () {
       const cards = document.querySelectorAll('.card');
