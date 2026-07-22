@@ -36,7 +36,7 @@
 </head>
 <body>
   <h1>🎭 Playwright Test Report</h1>
-  <div class="meta">7/22/2026, 6:19:01 PM</div>
+  <div class="meta">7/22/2026, 6:22:30 PM</div>
   <div class="summary">
     <button type="button" class="card active" data-filter="all">Total: 1</button>
     <button type="button" class="card pass" data-filter="pass">✅ Passed: 0</button>
@@ -48,10 +48,43 @@
             <span class="chev">▶</span>
             <span class="st" style="color:#f85149">❌ failed</span>
             <span class="name">Pre-Auth balance — Partial complete</span>
-            <span class="dur">45.3s</span>
+            <span class="dur">136.9s</span>
           </summary><pre class="log">✅ Balance before: 5.39 ₾
 ✅ Order Created (payWithPreAuth)
-✅ Payment page opened</pre><pre class="err">Error: OTP not found</pre></details></div>
+✅ Payment page opened
+✅ OTP: 959681
+✅ Closed QR terminal modal
+✅ Clicked Skip button
+✅ Clicked Done button
+✅ Stage 1: pre-auth → TO_BE_CONFIRMED (tx: 58491)
+
+📊 Pre-Auth hold — ბალანსი: იყო 5.39 ₾ → 5.39 ₾ (ცვლილება 0 ₾)
+   ✅ ბალანსი არ დარიცხულა pre-auth hold-ის დროს (თანხა მხოლოდ დაჭერილია)
+✅ Order Completed (amount: 0.11)
+✅ After complete → SUCCESS
+✅ Stage 2: complete(0.11) → SUCCESS
+
+📊 მოსალოდნელი შედეგი — Pre-Auth capture (RECEIVER commission)
+   ავტორიზებული: 0.19 ₾ | დავაქომფლითეთ: 0.11 ₾
+   merchant-ს უნდა დაერიცხოს: 0.11 − 0.01 (საკომისიო) = 0.1 ₾
+   ბალანსი: იყო 5.39 ₾ → გახდა 5.39 ₾ (დაემატა 0 ₾)
+   ❌ ბალანსი არასწორად დაირიცხა — დაემატა 0 ₾, უნდა 0.1 ₾</pre><pre class="err">ApiAssertionError: 
+❌ API TEST FAILED
+───────────────────────────────────────────
+🔧 ოპერაცია:    Pre-Auth balance hold
+⚠️  პრობლემა:    capture-ის შემდეგ ბალანსი არასწორად დაირიცხა — დაემატა 0 ₾, უნდა 0.1 ₾
+📥 მიმდინარე შედეგი:
+{
+  "balanceBefore": 5.39,
+  "balanceAfter": 5.39,
+  "actualCredit": 0,
+  "expected": 0.1,
+  "senderFee": 0,
+  "receiverFee": 0.01
+}
+✅ მოსალოდნელი შედეგი: ბალანსს უნდა დაემატოს 0.1 ₾ (RECEIVER commission)
+───────────────────────────────────────────
+</pre></details></div>
   <script>
     (function () {
       const cards = document.querySelectorAll('.card');
