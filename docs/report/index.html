@@ -36,7 +36,7 @@
 </head>
 <body>
   <h1>🎭 Playwright Test Report</h1>
-  <div class="meta">7/22/2026, 8:39:34 PM</div>
+  <div class="meta">7/22/2026, 8:43:29 PM</div>
   <div class="summary">
     <button type="button" class="card active" data-filter="all">Total: 1</button>
     <button type="button" class="card pass" data-filter="pass">✅ Passed: 0</button>
@@ -48,37 +48,38 @@
             <span class="chev">▶</span>
             <span class="st" style="color:#f85149">❌ failed</span>
             <span class="name">Full Refund — DEVICE</span>
-            <span class="dur">129.2s</span>
+            <span class="dur">124.8s</span>
           </summary><pre class="log">✅ Order Created (payWithPreAuth)
 ✅ Payment page opened
-✅ OTP: 151108
+✅ OTP: 107542
 ✅ Closed QR terminal modal
 ✅ Clicked Skip button
 ✅ Clicked Done button
-✅ 1. Pre-auth → TO_BE_CONFIRMED (tx: 58512)
+✅ 1. Pre-auth → TO_BE_CONFIRMED (tx: 58513)
 ✅ Order Completed (amount: 0.12)
 ✅ After complete → SUCCESS
 ✅ 2. Capture(0.12) → SUCCESS
-✅ 3b. Capture credited → balance: 4.23 → 4.23 ₾
+✅ 3b. Capture credited → balance: 4.11 → 4.11 ₾
 
 🔄 4. Refunding via DEVICE (FULL)
    ✅ Device refund call successful (status 200)
 
-📊 refund დადასტურდა (FULL): tx 58512 | refundInfo REFUNDED | initialRefundAmount 0.13 ₾
+📊 refund დადასტურდა (FULL): tx 58513 | refundInfo REFUNDED | initialRefundAmount 0.13 ₾
 
-📊 DEVICE refund (FULL) — captured(distribution) 0.12 ₾ | acquiring 0.25 ₾ | initialRefundAmount 0.13 ₾</pre><pre class="err">ApiAssertionError: 
+📊 DEVICE refund (FULL) — captured 0.12 ₾ + კომისია 0 ₾ (sender 0/receiver 0) | initialRefundAmount 0.13 ₾</pre><pre class="err">ApiAssertionError: 
 ❌ API TEST FAILED
 ───────────────────────────────────────────
 🔧 ოპერაცია:    Pre-Auth refund — verification
-⚠️  პრობლემა:    refund თანხა არასწორია — initialRefundAmount 0.13 ₾, უნდა 0.25 ₾
+⚠️  პრობლემა:    refund თანხა არასწორია — initialRefundAmount 0.13 ₾, უნდა 0.12 ₾
 📥 მიმდინარე შედეგი:
 {
   "initialRefundAmount": 0.13,
-  "acquiringAmount": 0.25,
   "distributionAmount": 0.12,
-  "expected": 0.25
+  "senderFee": 0,
+  "receiverFee": 0,
+  "expected": 0.12
 }
-✅ მოსალოდნელი შედეგი: full refund → merchant-ის ბალანსიდან acquiringAmount = 0.25 ₾ (captured + კომისია)
+✅ მოსალოდნელი შედეგი: full refund → captured + კომისია = 0.12 + 0 = 0.12 ₾ (merchant-ის ბალანსიდან)
 ───────────────────────────────────────────
 </pre></details></div>
   <script>
