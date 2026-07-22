@@ -36,7 +36,7 @@
 </head>
 <body>
   <h1>🎭 Playwright Test Report</h1>
-  <div class="meta">7/22/2026, 8:11:05 PM</div>
+  <div class="meta">7/22/2026, 8:18:44 PM</div>
   <div class="summary">
     <button type="button" class="card active" data-filter="all">Total: 1</button>
     <button type="button" class="card pass" data-filter="pass">✅ Passed: 0</button>
@@ -48,37 +48,37 @@
             <span class="chev">▶</span>
             <span class="st" style="color:#f85149">❌ failed</span>
             <span class="name">Full Refund — DEVICE</span>
-            <span class="dur">129.9s</span>
+            <span class="dur">204.7s</span>
           </summary><pre class="log">✅ Order Created (payWithPreAuth)
 ✅ Payment page opened
-✅ OTP: 002227
+✅ OTP: 550092
 ✅ Closed QR terminal modal
 ✅ Clicked Skip button
 ✅ Clicked Done button
-✅ 1. Pre-auth → TO_BE_CONFIRMED (tx: 58508)
+✅ 1. Pre-auth → TO_BE_CONFIRMED (tx: 58509)
 ✅ Order Completed (amount: 0.12)
 ✅ After complete → SUCCESS
 ✅ 2. Capture(0.12) → SUCCESS
-✅ 3b. Capture credited → balance: 4.59 → 4.59 ₾
+✅ 3b. Capture credited → balance: 4.47 → 4.47 ₾
 
 🔄 4. Refunding via DEVICE (FULL)
    ✅ Device refund call successful (status 200)
 
-📊 refund დადასტურდა (FULL): tx 58508 | refundInfo REFUNDED | initialRefundAmount 0.13 ₾
+📊 refund დადასტურდა (FULL): tx 58509 | refundInfo REFUNDED | initialRefundAmount 0.13 ₾
 
-📊 DEVICE refund (FULL) — ბალანსი: იყო 4.59 ₾ → დარჩა 4.47 ₾ (მოაკლდა 0.12 ₾) | დარეფანდა 0.13 ₾</pre><pre class="err">ApiAssertionError: 
+📊 DEVICE refund (FULL) — ბალანსი: იყო 4.47 ₾ → დარჩა 4.35 ₾ (მოაკლდა 0.12 ₾) | დარეფანდა 0.13 ₾ (საკომისიოს ჩათვლით)</pre><pre class="err">ApiAssertionError: 
 ❌ API TEST FAILED
 ───────────────────────────────────────────
 🔧 ოპერაცია:    Pre-Auth refund — verification
-⚠️  პრობლემა:    ბალანსი არასწორად შემცირდა — მოაკლდა 0.12 ₾, დარეფანდა კი 0.13 ₾
+⚠️  პრობლემა:    ბალანსი არასწორად შემცირდა — მოაკლდა 0.12 ₾, უნდა 0.13 ₾ (merchant იხდის კომისიასაც)
 📥 მიმდინარე შედეგი:
 {
-  "balanceBeforeRefund": 4.59,
-  "balanceAfter": 4.47,
+  "balanceBeforeRefund": 4.47,
+  "balanceAfter": 4.35,
   "deducted": 0.12,
-  "refunded": 0.13
+  "refundedTotal": 0.13
 }
-✅ მოსალოდნელი შედეგი: მოკლებული === დარეფანდილი (0.13 ₾)
+✅ მოსალოდნელი შედეგი: merchant-ს უნდა მოაკლდეს სრული დარეფანდილი 0.13 ₾ (საკომისიოს ჩათვლით)
 ───────────────────────────────────────────
 </pre></details></div>
   <script>
