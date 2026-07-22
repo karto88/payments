@@ -36,7 +36,7 @@
 </head>
 <body>
   <h1>🎭 Playwright Test Report</h1>
-  <div class="meta">7/22/2026, 8:05:27 PM</div>
+  <div class="meta">7/22/2026, 8:11:05 PM</div>
   <div class="summary">
     <button type="button" class="card active" data-filter="all">Total: 1</button>
     <button type="button" class="card pass" data-filter="pass">✅ Passed: 0</button>
@@ -47,63 +47,38 @@
           <summary class="test">
             <span class="chev">▶</span>
             <span class="st" style="color:#f85149">❌ failed</span>
-            <span class="name">Full Refund — INTEGRATOR</span>
-            <span class="dur">290.7s</span>
+            <span class="name">Full Refund — DEVICE</span>
+            <span class="dur">129.9s</span>
           </summary><pre class="log">✅ Order Created (payWithPreAuth)
 ✅ Payment page opened
-✅ OTP: 970382
+✅ OTP: 002227
 ✅ Closed QR terminal modal
 ✅ Clicked Skip button
 ✅ Clicked Done button
-✅ 1. Pre-auth → TO_BE_CONFIRMED (tx: 58507)
-✅ Order Completed (amount: 0.1)
+✅ 1. Pre-auth → TO_BE_CONFIRMED (tx: 58508)
+✅ Order Completed (amount: 0.12)
 ✅ After complete → SUCCESS
-✅ 2. Capture(0.1) → SUCCESS
-   order status [0] → WAITING_FOR_CONFIRM
-   order status [1] → WAITING_FOR_CONFIRM
-   order status [2] → WAITING_FOR_CONFIRM
-   order status [3] → WAITING_FOR_CONFIRM
-   order status [4] → WAITING_FOR_CONFIRM
-   order status [5] → WAITING_FOR_CONFIRM
-   order status [6] → WAITING_FOR_CONFIRM
-   order status [7] → WAITING_FOR_CONFIRM
-   order status [8] → WAITING_FOR_CONFIRM
-   order status [9] → WAITING_FOR_CONFIRM
-   order status [10] → WAITING_FOR_CONFIRM
-   order status [11] → WAITING_FOR_CONFIRM
-   order status [12] → WAITING_FOR_CONFIRM
-   order status [13] → WAITING_FOR_CONFIRM
-   order status [14] → WAITING_FOR_CONFIRM
-   order status [15] → WAITING_FOR_CONFIRM
-   order status [16] → WAITING_FOR_CONFIRM
-   order status [17] → WAITING_FOR_CONFIRM
-   order status [18] → WAITING_FOR_CONFIRM
-   order status [19] → WAITING_FOR_CONFIRM
-   order status [20] → WAITING_FOR_CONFIRM
-   order status [21] → WAITING_FOR_CONFIRM
-   order status [22] → WAITING_FOR_CONFIRM
-   order status [23] → WAITING_FOR_CONFIRM
-   order status [24] → WAITING_FOR_CONFIRM
-   order status [25] → WAITING_FOR_CONFIRM
-   order status [26] → WAITING_FOR_CONFIRM
-   order status [27] → WAITING_FOR_CONFIRM
-   order status [28] → WAITING_FOR_CONFIRM
-   order status [29] → WAITING_FOR_CONFIRM
-✅ 3. Order refundable → WAITING_FOR_CONFIRM
+✅ 2. Capture(0.12) → SUCCESS
 ✅ 3b. Capture credited → balance: 4.59 → 4.59 ₾
 
-🔄 4. Refunding via INTEGRATOR (FULL)</pre><pre class="err">ApiAssertionError: 
+🔄 4. Refunding via DEVICE (FULL)
+   ✅ Device refund call successful (status 200)
+
+📊 refund დადასტურდა (FULL): tx 58508 | refundInfo REFUNDED | initialRefundAmount 0.13 ₾
+
+📊 DEVICE refund (FULL) — ბალანსი: იყო 4.59 ₾ → დარჩა 4.47 ₾ (მოაკლდა 0.12 ₾) | დარეფანდა 0.13 ₾</pre><pre class="err">ApiAssertionError: 
 ❌ API TEST FAILED
 ───────────────────────────────────────────
 🔧 ოპერაცია:    Pre-Auth refund — verification
-⚠️  პრობლემა:    integrator refund ვერ მოთხოვნდა (status: WAITING_FOR_CONFIRM, error: You can't refund order with status: WAITING_FOR_CONFIRM)
+⚠️  პრობლემა:    ბალანსი არასწორად შემცირდა — მოაკლდა 0.12 ₾, დარეფანდა კი 0.13 ₾
 📥 მიმდინარე შედეგი:
 {
-  "integratorOrderId": "4e0b0eac-a718-4dfd-892f-44a5b406f343",
-  "status": "WAITING_FOR_CONFIRM",
-  "errorMessage": "You can't refund order with status: WAITING_FOR_CONFIRM"
+  "balanceBeforeRefund": 4.59,
+  "balanceAfter": 4.47,
+  "deducted": 0.12,
+  "refunded": 0.13
 }
-✅ მოსალოდნელი შედეგი: status === REFUND_REQUESTED
+✅ მოსალოდნელი შედეგი: მოკლებული === დარეფანდილი (0.13 ₾)
 ───────────────────────────────────────────
 </pre></details></div>
   <script>
