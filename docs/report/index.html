@@ -36,7 +36,7 @@
 </head>
 <body>
   <h1>🎭 Playwright Test Report</h1>
-  <div class="meta">7/22/2026, 10:25:41 PM</div>
+  <div class="meta">7/22/2026, 10:33:53 PM</div>
   <div class="summary">
     <button type="button" class="card active" data-filter="all">Total: 1</button>
     <button type="button" class="card pass" data-filter="pass">✅ Passed: 0</button>
@@ -48,16 +48,16 @@
             <span class="chev">▶</span>
             <span class="st" style="color:#f85149">❌ failed</span>
             <span class="name">Full Refund — INTEGRATOR</span>
-            <span class="dur">241.9s</span>
+            <span class="dur">324.6s</span>
           </summary><pre class="log">✅ Order Created (payWithPreAuth)
 ✅ Payment page opened
-✅ OTP: 925898
+✅ OTP: 306964
 ✅ Closed QR terminal modal
 ✅ Clicked Skip button
 ✅ Clicked Done button
-✅ 1. Pre-auth → TO_BE_CONFIRMED (tx: 58535)
+✅ 1. Pre-auth → TO_BE_CONFIRMED (tx: 58536)
 ✅ Order Completed (amount: 0.12)
-✅ After complete → PENDING
+✅ After complete → SUCCESS
 ✅ 2. Captured(0.12) → SUCCESS
 ✅ 3. Order refundable → WAITING_FOR_CONFIRM
 ✅ 3. Balance before refund: 1.17 ₾
@@ -69,7 +69,7 @@
 ⚠️  პრობლემა:    integrator refund ვერ მოთხოვნდა (status: WAITING_FOR_CONFIRM, error: You can't refund order with status: WAITING_FOR_CONFIRM)
 📥 მიმდინარე შედეგი:
 {
-  "integratorOrderId": "b41498a2-6e63-4106-b506-a5f104e3fbd4",
+  "integratorOrderId": "284c8ceb-d485-400f-b83c-244df088f7a3",
   "status": "WAITING_FOR_CONFIRM",
   "errorMessage": "You can't refund order with status: WAITING_FOR_CONFIRM"
 }
