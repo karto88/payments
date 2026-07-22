@@ -36,27 +36,26 @@
 </head>
 <body>
   <h1>🎭 Playwright Test Report</h1>
-  <div class="meta">7/22/2026, 4:19:20 PM</div>
+  <div class="meta">7/22/2026, 4:42:30 PM</div>
   <div class="summary">
     <button type="button" class="card active" data-filter="all">Total: 1</button>
     <button type="button" class="card pass" data-filter="pass">✅ Passed: 0</button>
     <button type="button" class="card fail" data-filter="fail">❌ Failed: 1</button>
     <button type="button" class="card skip" data-filter="skip">⏭️ Skipped: 0</button>
   </div>
-  <div class="file-group"><div class="file">tests/Positive/refund-integrator.spec.ts</div><details class="test-item" data-status="fail" open>
+  <div class="file-group"><div class="file">tests/Positive/check-balance.spec.ts</div><details class="test-item" data-status="fail" open>
           <summary class="test">
             <span class="chev">▶</span>
             <span class="st" style="color:#f85149">❌ failed</span>
-            <span class="name">Full Refunded INTEGRATOR — Merchant is Sender</span>
-            <span class="dur">50.6s</span>
-          </summary><pre class="log">✅ 1. Order Created
-✅ 2. OTP: 089979
-✅ Closed QR terminal modal
-✅ Clicked Skip button
-✅ Clicked Done button
-✅ 3. Payment Status Confirmed
-
-🔄 5. Refunding (FULL)</pre><pre class="err">Error: Refund failed: 400 - {"message":"Insufficient merchant balance for refund.","statusCode":6130,"exceptionGroup":2}</pre></details></div>
+            <span class="name">EUR Balance check</span>
+            <span class="dur">25.0s</span>
+          </summary><pre class="log">✅ Balance before: 0.1 EUR
+✅ Order Created
+✅ Payment page opened
+✅ Restored: group rateType=PERCENTAGE, merchant distributionFlow=STANDARD</pre><pre class="err">TimeoutError: locator.fill: Timeout 15000ms exceeded.
+Call log:
+[2m  - waiting for locator('#cardNumber')[22m
+</pre></details></div>
   <script>
     (function () {
       const cards = document.querySelectorAll('.card');
