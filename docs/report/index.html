@@ -36,7 +36,7 @@
 </head>
 <body>
   <h1>🎭 Playwright Test Report</h1>
-  <div class="meta">7/22/2026, 9:37:32 PM</div>
+  <div class="meta">7/22/2026, 9:42:13 PM</div>
   <div class="summary">
     <button type="button" class="card active" data-filter="all">Total: 2</button>
     <button type="button" class="card pass" data-filter="pass">✅ Passed: 1</button>
@@ -47,68 +47,68 @@
           <summary class="test">
             <span class="chev">▶</span>
             <span class="st" style="color:#f85149">❌ failed</span>
-            <span class="name">Full Refund — DEVICE</span>
-            <span class="dur">84.0s</span>
+            <span class="name">Full Refund — ADMIN</span>
+            <span class="dur">86.1s</span>
           </summary><pre class="log">✅ Order Created (payWithPreAuth)
 ✅ Payment page opened
-✅ OTP: 138721
+✅ OTP: 642348
 ✅ Closed QR terminal modal
 ✅ Clicked Skip button
 ✅ Clicked Done button
-✅ 1. Pre-auth → TO_BE_CONFIRMED (tx: 58521)
-✅ Order Completed (amount: 0.12)
-✅ After complete → PENDING
-✅ 2. Captured(0.12) → SUCCESS
-✅ 3. Balance before refund: 2.98 ₾
+✅ 1. Pre-auth → TO_BE_CONFIRMED (tx: 58523)
+✅ Order Completed (amount: 0.14)
+✅ After complete → SUCCESS
+✅ 2. Captured(0.14) → SUCCESS
+✅ 3. Balance before refund: 2.79 ₾
 
-🔄 4. Refunding via DEVICE (FULL)
-   ✅ Device refund call successful (status 200)
+🔄 4. Refunding via ADMIN (FULL)
+   ✅ Admin refund call successful (status 204)
 
-📊 refund დადასტურდა (FULL): tx 58521 | refundInfo REFUNDED
-   captured 0.12 + საკომისიო 0.01 = 0.13 ₾ | initialRefundAmount 0.13 ₾
+📊 refund დადასტურდა (FULL): tx 58523 | refundInfo REFUNDED
+   captured 0.14 + საკომისიო 0.01 = 0.15 ₾ | initialRefundAmount 0.15 ₾
    ✅ refund სწორია — captured თავისი საკომისიოთი დარეფანდა
 
-📊 ბალანსი: იყო 2.98 ₾ → დარჩა 2.86 ₾ (მოაკლდა 0.12 ₾) | უნდა მოკლებოდა 0.13 ₾</pre><pre class="err">ApiAssertionError: 
+📊 ბალანსი: იყო 2.79 ₾ → დარჩა 2.5 ₾ (მოაკლდა 0.29 ₾) | უნდა მოკლებოდა 0.15 ₾</pre><pre class="err">ApiAssertionError: 
 ❌ API TEST FAILED
 ───────────────────────────────────────────
 🔧 ოპერაცია:    Pre-Auth refund — verification
-⚠️  პრობლემა:    ბალანსი არასწორად ჩამოიჭრა — მოაკლდა 0.12 ₾, უნდა 0.13 ₾
+⚠️  პრობლემა:    ბალანსი არასწორად ჩამოიჭრა — მოაკლდა 0.29 ₾, უნდა 0.15 ₾
 📥 მიმდინარე შედეგი:
 {
-  "balanceBefore": 2.98,
-  "balanceAfter": 2.86,
-  "deducted": 0.12,
-  "expectedDeduction": 0.13
+  "balanceBefore": 2.79,
+  "balanceAfter": 2.5,
+  "deducted": 0.29,
+  "expectedDeduction": 0.15
 }
-✅ მოსალოდნელი შედეგი: full → captured + საკომისიო = 0.12 + 0.01 = 0.13 ₾
+✅ მოსალოდნელი შედეგი: full → captured + საკომისიო = 0.14 + 0.01 = 0.15 ₾
 ───────────────────────────────────────────
 </pre></details><details class="test-item" data-status="pass">
           <summary class="test">
             <span class="chev">▶</span>
             <span class="st" style="color:#3fb950">✅ passed</span>
-            <span class="name">Partial Refund — DEVICE</span>
-            <span class="dur">87.6s</span>
+            <span class="name">Partial Refund — ADMIN</span>
+            <span class="dur">83.0s</span>
           </summary><pre class="log">✅ Order Created (payWithPreAuth)
 ✅ Payment page opened
-✅ OTP: 653313
+✅ OTP: 604983
 ✅ Closed QR terminal modal
 ✅ Clicked Skip button
 ✅ Clicked Done button
-✅ 1. Pre-auth → TO_BE_CONFIRMED (tx: 58522)
-✅ Order Completed (amount: 0.14)
+✅ 1. Pre-auth → TO_BE_CONFIRMED (tx: 58524)
+✅ Order Completed (amount: 0.16)
 ✅ After complete → SUCCESS
-✅ 2. Captured(0.14) → SUCCESS
-✅ 3. Balance before refund: 2.86 ₾
+✅ 2. Captured(0.16) → SUCCESS
+✅ 3. Balance before refund: 2.5 ₾
 
-🔄 4. Refunding via DEVICE (PARTIAL 0.07)
-   ✅ Device refund call successful (status 200)
+🔄 4. Refunding via ADMIN (PARTIAL 0.08)
+   ✅ Admin refund call successful (status 204)
 
-📊 refund დადასტურდა (PARTIAL): tx 58522 | refundInfo PARTIALLY_REFUNDED
-   partial refundAmount = 0.07 ₾ | initialRefundAmount 0.07 ₾
+📊 refund დადასტურდა (PARTIAL): tx 58524 | refundInfo PARTIALLY_REFUNDED
+   partial refundAmount = 0.08 ₾ | initialRefundAmount 0.08 ₾
    ✅ refund სწორია — captured თავისი საკომისიოთი დარეფანდა
 
-📊 ბალანსი: იყო 2.86 ₾ → დარჩა 2.79 ₾ (მოაკლდა 0.07 ₾) | უნდა მოკლებოდა 0.07 ₾
-   ✅ ბალანსი სწორად ჩამოიჭრა — მოაკლდა 0.07 ₾</pre></details></div>
+📊 ბალანსი: იყო 2.5 ₾ → დარჩა 2.42 ₾ (მოაკლდა 0.08 ₾) | უნდა მოკლებოდა 0.08 ₾
+   ✅ ბალანსი სწორად ჩამოიჭრა — მოაკლდა 0.08 ₾</pre></details></div>
   <script>
     (function () {
       const cards = document.querySelectorAll('.card');
