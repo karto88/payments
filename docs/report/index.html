@@ -36,94 +36,46 @@
 </head>
 <body>
   <h1>🎭 Playwright Test Report</h1>
-  <div class="meta">7/22/2026, 10:01:58 PM</div>
+  <div class="meta">7/22/2026, 10:09:35 PM</div>
   <div class="summary">
-    <button type="button" class="card active" data-filter="all">Total: 4</button>
-    <button type="button" class="card pass" data-filter="pass">✅ Passed: 1</button>
-    <button type="button" class="card fail" data-filter="fail">❌ Failed: 3</button>
+    <button type="button" class="card active" data-filter="all">Total: 1</button>
+    <button type="button" class="card pass" data-filter="pass">✅ Passed: 0</button>
+    <button type="button" class="card fail" data-filter="fail">❌ Failed: 1</button>
     <button type="button" class="card skip" data-filter="skip">⏭️ Skipped: 0</button>
   </div>
   <div class="file-group"><div class="file">tests/Positive/refund-preauth.spec.ts</div><details class="test-item" data-status="fail" open>
           <summary class="test">
             <span class="chev">▶</span>
             <span class="st" style="color:#f85149">❌ failed</span>
-            <span class="name">Full Refund — DEVICE</span>
-            <span class="dur">88.6s</span>
+            <span class="name">Full Refund — INTEGRATOR</span>
+            <span class="dur">245.3s</span>
           </summary><pre class="log">✅ Order Created (payWithPreAuth)
 ✅ Payment page opened
-✅ OTP: 127304
+✅ OTP: 361916
 ✅ Closed QR terminal modal
 ✅ Clicked Skip button
 ✅ Clicked Done button
-✅ 1. Pre-auth → TO_BE_CONFIRMED (tx: 58529)
+✅ 1. Pre-auth → TO_BE_CONFIRMED (tx: 58532)
 ✅ Order Completed (amount: 0.12)
-✅ After complete → SUCCESS
+✅ After complete → PENDING
 ✅ 2. Captured(0.12) → SUCCESS
-✅ 3. Balance before refund: 1.49 ₾
+✅ 3. Order refundable → WAITING_FOR_CONFIRM
+✅ 3. Balance before refund: 1.3 ₾
 
-🔄 4. Refunding via DEVICE (FULL)
-   ✅ Device refund call successful (status 200)
-
-📊 refund დადასტურდა (FULL): tx 58529 | refundInfo REFUNDED
-   captured 0.12 + საკომისიო 0.01 = 0.13 ₾ | initialRefundAmount 0.13 ₾
-   ✅ refund სწორია — captured თავისი საკომისიოთი დარეფანდა
-
-📊 ბალანსი: იყო 1.49 ₾ → დარჩა 1.37 ₾ (მოაკლდა 0.12 ₾) | უნდა მოკლებოდა 0.13 ₾</pre><pre class="err">ApiAssertionError: 
+🔄 4. Refunding via INTEGRATOR (FULL)</pre><pre class="err">ApiAssertionError: 
 ❌ API TEST FAILED
 ───────────────────────────────────────────
 🔧 ოპერაცია:    Pre-Auth refund — verification
-⚠️  პრობლემა:    ბალანსი არასწორად ჩამოიჭრა — მოაკლდა 0.12 ₾, უნდა 0.13 ₾
+⚠️  პრობლემა:    integrator refund ვერ მოთხოვნდა (status: WAITING_FOR_CONFIRM, error: You can't refund order with status: WAITING_FOR_CONFIRM)
 📥 მიმდინარე შედეგი:
 {
-  "balanceBefore": 1.49,
-  "balanceAfter": 1.37,
-  "deducted": 0.12,
-  "expectedDeduction": 0.13
+  "integratorOrderId": "383794f0-1894-4a83-badb-3d14fc19e3c3",
+  "status": "WAITING_FOR_CONFIRM",
+  "errorMessage": "You can't refund order with status: WAITING_FOR_CONFIRM"
 }
-✅ მოსალოდნელი შედეგი: full → captured + საკომისიო = 0.12 + 0.01 = 0.13 ₾
+✅ მოსალოდნელი შედეგი: status === REFUND_REQUESTED
 ───────────────────────────────────────────
-</pre></details><details class="test-item" data-status="pass">
-          <summary class="test">
-            <span class="chev">▶</span>
-            <span class="st" style="color:#3fb950">✅ passed</span>
-            <span class="name">Partial Refund — DEVICE</span>
-            <span class="dur">90.8s</span>
-          </summary><pre class="log">✅ Order Created (payWithPreAuth)
-✅ Payment page opened
-✅ OTP: 481656
-✅ Closed QR terminal modal
-✅ Clicked Skip button
-✅ Clicked Done button
-✅ 1. Pre-auth → TO_BE_CONFIRMED (tx: 58530)
-✅ Order Completed (amount: 0.14)
-✅ After complete → SUCCESS
-✅ 2. Captured(0.14) → SUCCESS
-✅ 3. Balance before refund: 1.37 ₾
-
-🔄 4. Refunding via DEVICE (PARTIAL 0.07)
-   ✅ Device refund call successful (status 200)
-
-📊 refund დადასტურდა (PARTIAL): tx 58530 | refundInfo PARTIALLY_REFUNDED
-   partial refundAmount = 0.07 ₾ | initialRefundAmount 0.07 ₾
-   ✅ refund სწორია — captured თავისი საკომისიოთი დარეფანდა
-
-📊 ბალანსი: იყო 1.37 ₾ → დარჩა 1.3 ₾ (მოაკლდა 0.07 ₾) | უნდა მოკლებოდა 0.07 ₾
-   ✅ ბალანსი სწორად ჩამოიჭრა — მოაკლდა 0.07 ₾</pre></details><details class="test-item" data-status="fail" open>
-          <summary class="test">
-            <span class="chev">▶</span>
-            <span class="st" style="color:#f85149">❌ failed</span>
-            <span class="name">Full Refund — ADMIN</span>
-            <span class="dur">20.8s</span>
-          </summary><pre class="log">✅ Order Created (payWithPreAuth)
-✅ Payment page opened
-✅ OTP: 624304</pre><pre class="err">Error: page.fill: Target page, context or browser has been closed</pre></details><details class="test-item" data-status="fail" open>
-          <summary class="test">
-            <span class="chev">▶</span>
-            <span class="st" style="color:#f85149">❌ failed</span>
-            <span class="name">Partial Refund — ADMIN</span>
-            <span class="dur">6.2s</span>
-          </summary><pre class="log">✅ Order Created (payWithPreAuth)
-✅ Payment page opened</pre><pre class="err">Error: page.waitForTimeout: Target page, context or browser has been closed</pre></details></div>
+</pre></details></div>
   <script>
     (function () {
       const cards = document.querySelectorAll('.card');
