@@ -36,7 +36,7 @@
 </head>
 <body>
   <h1>🎭 Playwright Test Report</h1>
-  <div class="meta">7/22/2026, 2:11:54 PM</div>
+  <div class="meta">7/22/2026, 2:14:14 PM</div>
   <div class="summary">
     <button type="button" class="card active" data-filter="all">Total: 1</button>
     <button type="button" class="card pass" data-filter="pass">✅ Passed: 0</button>
@@ -48,9 +48,13 @@
             <span class="chev">▶</span>
             <span class="st" style="color:#f85149">❌ failed</span>
             <span class="name">Token Payment saved card</span>
-            <span class="dur">48.7s</span>
+            <span class="dur">37.3s</span>
           </summary><pre class="log">✅ Order Created (saveCard + CREDO)
-✅ Payment page opened</pre><pre class="err">Error: OTP not found</pre></details></div>
+✅ Payment page opened
+✅ OTP: 042964
+✅ Closed QR terminal modal
+✅ Clicked Skip button
+✅ Clicked Done button</pre><pre class="err">Error: Get card token failed: 400 - {"message":"Integrator card not found","statusCode":6075,"exceptionGroup":5}</pre></details></div>
   <script>
     (function () {
       const cards = document.querySelectorAll('.card');
