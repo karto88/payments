@@ -36,26 +36,21 @@
 </head>
 <body>
   <h1>🎭 Playwright Test Report</h1>
-  <div class="meta">7/22/2026, 2:02:39 PM</div>
+  <div class="meta">7/22/2026, 2:05:07 PM</div>
   <div class="summary">
     <button type="button" class="card active" data-filter="all">Total: 1</button>
-    <button type="button" class="card pass" data-filter="pass">✅ Passed: 1</button>
-    <button type="button" class="card fail" data-filter="fail">❌ Failed: 0</button>
+    <button type="button" class="card pass" data-filter="pass">✅ Passed: 0</button>
+    <button type="button" class="card fail" data-filter="fail">❌ Failed: 1</button>
     <button type="button" class="card skip" data-filter="skip">⏭️ Skipped: 0</button>
   </div>
-  <div class="file-group"><div class="file">tests/Positive/Card token-payment.spec.ts</div><details class="test-item" data-status="pass">
+  <div class="file-group"><div class="file">tests/Positive/Card token-payment.spec.ts</div><details class="test-item" data-status="fail" open>
           <summary class="test">
             <span class="chev">▶</span>
-            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="st" style="color:#f85149">❌ failed</span>
             <span class="name">Token Payment saved card</span>
-            <span class="dur">38.1s</span>
+            <span class="dur">38.6s</span>
           </summary><pre class="log">✅ Order Created (saveCard + CREDO)
-✅ Payment page opened
-✅ OTP: 119130
-✅ Closed QR terminal modal
-✅ Clicked Skip button
-✅ Clicked Done button
-✅ Test PASSED: token payment შესრულდა</pre></details></div>
+✅ Payment page opened</pre><pre class="err">Error: OTP not found</pre></details></div>
   <script>
     (function () {
       const cards = document.querySelectorAll('.card');
