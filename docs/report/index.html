@@ -36,26 +36,33 @@
 </head>
 <body>
   <h1>🎭 Playwright Test Report</h1>
-  <div class="meta">7/22/2026, 4:42:30 PM</div>
+  <div class="meta">7/22/2026, 5:20:23 PM</div>
   <div class="summary">
     <button type="button" class="card active" data-filter="all">Total: 1</button>
-    <button type="button" class="card pass" data-filter="pass">✅ Passed: 0</button>
-    <button type="button" class="card fail" data-filter="fail">❌ Failed: 1</button>
+    <button type="button" class="card pass" data-filter="pass">✅ Passed: 1</button>
+    <button type="button" class="card fail" data-filter="fail">❌ Failed: 0</button>
     <button type="button" class="card skip" data-filter="skip">⏭️ Skipped: 0</button>
   </div>
-  <div class="file-group"><div class="file">tests/Positive/check-balance.spec.ts</div><details class="test-item" data-status="fail" open>
+  <div class="file-group"><div class="file">tests/Positive/check-balance.spec.ts</div><details class="test-item" data-status="pass">
           <summary class="test">
             <span class="chev">▶</span>
-            <span class="st" style="color:#f85149">❌ failed</span>
+            <span class="st" style="color:#3fb950">✅ passed</span>
             <span class="name">EUR Balance check</span>
-            <span class="dur">25.0s</span>
+            <span class="dur">38.3s</span>
           </summary><pre class="log">✅ Balance before: 0.1 EUR
 ✅ Order Created
 ✅ Payment page opened
-✅ Restored: group rateType=PERCENTAGE, merchant distributionFlow=STANDARD</pre><pre class="err">TimeoutError: locator.fill: Timeout 15000ms exceeded.
-Call log:
-[2m  - waiting for locator('#cardNumber')[22m
-</pre></details></div>
+✅ OTP: 799302
+✅ Closed QR terminal modal
+✅ Clicked Skip button
+✅ Clicked Done button
+
+📊 მოსალოდნელი შედეგი — SENDER commission · EUR · distributionFlow: BALANCE
+   იუზერმა გადაიხადა: 0.05 + 0.01 (საკომისიო) = 0.06 EUR
+   merchant-ს დაერიცხა: სრული amount = 0.05 EUR
+   ბალანსი: იყო 0.1 EUR → გახდა 0.15 EUR (დაემატა 0.05 EUR)
+   ✅ ბალანსი წარმატებულად შეივსო (EUR)
+✅ Restored: group rateType=PERCENTAGE, merchant distributionFlow=STANDARD</pre></details></div>
   <script>
     (function () {
       const cards = document.querySelectorAll('.card');
