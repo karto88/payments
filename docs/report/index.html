@@ -36,10 +36,10 @@
 </head>
 <body>
   <h1>🎭 Playwright Test Report</h1>
-  <div class="meta">7/22/2026, 9:18:29 PM</div>
+  <div class="meta">7/22/2026, 9:25:22 PM</div>
   <div class="summary">
-    <button type="button" class="card active" data-filter="all">Total: 3</button>
-    <button type="button" class="card pass" data-filter="pass">✅ Passed: 3</button>
+    <button type="button" class="card active" data-filter="all">Total: 1</button>
+    <button type="button" class="card pass" data-filter="pass">✅ Passed: 1</button>
     <button type="button" class="card fail" data-filter="fail">❌ Failed: 0</button>
     <button type="button" class="card skip" data-filter="skip">⏭️ Skipped: 0</button>
   </div>
@@ -47,68 +47,24 @@
           <summary class="test">
             <span class="chev">▶</span>
             <span class="st" style="color:#3fb950">✅ passed</span>
-            <span class="name">Partial Refund — DEVICE</span>
-            <span class="dur">88.0s</span>
+            <span class="name">Full Refund — DEVICE</span>
+            <span class="dur">81.3s</span>
           </summary><pre class="log">✅ Order Created (payWithPreAuth)
 ✅ Payment page opened
-✅ OTP: 574094
+✅ OTP: 992268
 ✅ Closed QR terminal modal
 ✅ Clicked Skip button
 ✅ Clicked Done button
-✅ 1. Pre-auth → TO_BE_CONFIRMED (tx: 58517)
-✅ Order Completed (amount: 0.14)
+✅ 1. Pre-auth → TO_BE_CONFIRMED (tx: 58520)
+✅ Order Completed (amount: 0.12)
 ✅ After complete → SUCCESS
-✅ 2. Captured(0.14) → SUCCESS
+✅ 2. Captured(0.12) → SUCCESS
 
-🔄 4. Refunding via DEVICE (PARTIAL 0.07)
+🔄 4. Refunding via DEVICE (FULL)
    ✅ Device refund call successful (status 200)
 
-📊 refund დადასტურდა (PARTIAL): tx 58517 | refundInfo PARTIALLY_REFUNDED
-   captured 0.14 + საკომისიო 0.01 = 0.07 ₾ | initialRefundAmount 0.07 ₾
-   ✅ refund სწორია — captured თავისი საკომისიოთი დარეფანდა</pre></details><details class="test-item" data-status="pass">
-          <summary class="test">
-            <span class="chev">▶</span>
-            <span class="st" style="color:#3fb950">✅ passed</span>
-            <span class="name">Full Refund — ADMIN</span>
-            <span class="dur">81.0s</span>
-          </summary><pre class="log">✅ Order Created (payWithPreAuth)
-✅ Payment page opened
-✅ OTP: 267397
-✅ Closed QR terminal modal
-✅ Clicked Skip button
-✅ Clicked Done button
-✅ 1. Pre-auth → TO_BE_CONFIRMED (tx: 58518)
-✅ Order Completed (amount: 0.14)
-✅ After complete → PENDING
-✅ 2. Captured(0.14) → SUCCESS
-
-🔄 4. Refunding via ADMIN (FULL)
-   ✅ Admin refund call successful (status 204)
-
-📊 refund დადასტურდა (FULL): tx 58518 | refundInfo REFUNDED
-   captured 0.14 + საკომისიო 0.01 = 0.15 ₾ | initialRefundAmount 0.15 ₾
-   ✅ refund სწორია — captured თავისი საკომისიოთი დარეფანდა</pre></details><details class="test-item" data-status="pass">
-          <summary class="test">
-            <span class="chev">▶</span>
-            <span class="st" style="color:#3fb950">✅ passed</span>
-            <span class="name">Partial Refund — ADMIN</span>
-            <span class="dur">80.8s</span>
-          </summary><pre class="log">✅ Order Created (payWithPreAuth)
-✅ Payment page opened
-✅ OTP: 371585
-✅ Closed QR terminal modal
-✅ Clicked Skip button
-✅ Clicked Done button
-✅ 1. Pre-auth → TO_BE_CONFIRMED (tx: 58519)
-✅ Order Completed (amount: 0.16)
-✅ After complete → SUCCESS
-✅ 2. Captured(0.16) → SUCCESS
-
-🔄 4. Refunding via ADMIN (PARTIAL 0.08)
-   ✅ Admin refund call successful (status 204)
-
-📊 refund დადასტურდა (PARTIAL): tx 58519 | refundInfo PARTIALLY_REFUNDED
-   captured 0.16 + საკომისიო 0.01 = 0.08 ₾ | initialRefundAmount 0.08 ₾
+📊 refund დადასტურდა (FULL): tx 58520 | refundInfo REFUNDED
+   captured 0.12 + საკომისიო 0.01 = 0.13 ₾ | initialRefundAmount 0.13 ₾
    ✅ refund სწორია — captured თავისი საკომისიოთი დარეფანდა</pre></details></div>
   <script>
     (function () {
