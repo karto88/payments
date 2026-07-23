@@ -36,14 +36,46 @@
 </head>
 <body>
   <h1>🎭 Playwright Test Report</h1>
-  <div class="meta">7/23/2026, 2:08:40 PM</div>
+  <div class="meta">7/23/2026, 2:10:01 PM</div>
   <div class="summary">
-    <button type="button" class="card active" data-filter="all">Total: 0</button>
+    <button type="button" class="card active" data-filter="all">Total: 1</button>
     <button type="button" class="card pass" data-filter="pass">✅ Passed: 0</button>
-    <button type="button" class="card fail" data-filter="fail">❌ Failed: 0</button>
+    <button type="button" class="card fail" data-filter="fail">❌ Failed: 1</button>
     <button type="button" class="card skip" data-filter="skip">⏭️ Skipped: 0</button>
   </div>
-  
+  <div class="file-group"><div class="file">tests/Positive/refund-preauth.spec.ts</div><details class="test-item" data-status="fail" open>
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#f85149">❌ failed</span>
+            <span class="name">Full Refund — INTEGRATOR</span>
+            <span class="dur">337.3s</span>
+          </summary><pre class="log">✅ Order Created (payWithPreAuth)
+✅ Payment page opened
+✅ OTP: 299769
+✅ Closed QR terminal modal
+✅ Clicked Skip button
+✅ Clicked Done button
+✅ 1. Pre-auth → TO_BE_CONFIRMED (tx: 58648)
+✅ Order Completed (amount: 0.1)
+✅ After complete → SUCCESS
+✅ 2. Captured(0.1) → SUCCESS
+✅ 3. Order refundable → WAITING_FOR_CONFIRM
+✅ 3. Balance before refund: 1.17 ₾
+
+🔄 4. Refunding via INTEGRATOR (FULL)</pre><pre class="err">ApiAssertionError: 
+❌ API TEST FAILED
+───────────────────────────────────────────
+🔧 ოპერაცია:    Pre-Auth refund — verification
+⚠️  პრობლემა:    integrator refund ვერ მოთხოვნდა (status: WAITING_FOR_CONFIRM, error: You can't refund order with status: WAITING_FOR_CONFIRM)
+📥 მიმდინარე შედეგი:
+{
+  "integratorOrderId": "052a2331-553e-446c-916b-1d0bf415cdf9",
+  "status": "WAITING_FOR_CONFIRM",
+  "errorMessage": "You can't refund order with status: WAITING_FOR_CONFIRM"
+}
+✅ მოსალოდნელი შედეგი: status === REFUND_REQUESTED
+───────────────────────────────────────────
+</pre></details></div>
   <script>
     (function () {
       const cards = document.querySelectorAll('.card');
