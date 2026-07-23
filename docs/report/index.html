@@ -36,7 +36,7 @@
 </head>
 <body>
   <h1>🎭 Playwright Test Report</h1>
-  <div class="meta">7/23/2026, 6:33:34 PM</div>
+  <div class="meta">7/23/2026, 6:38:53 PM</div>
   <div class="summary">
     <button type="button" class="card active" data-filter="all">Total: 1</button>
     <button type="button" class="card pass" data-filter="pass">✅ Passed: 0</button>
@@ -48,40 +48,29 @@
             <span class="chev">▶</span>
             <span class="st" style="color:#f85149">❌ failed</span>
             <span class="name">ADMIN — Full</span>
-            <span class="dur">99.5s</span>
+            <span class="dur">106.5s</span>
           </summary><pre class="log">✅ 0. Merchant commissionType → RECEIVER
 ✅ Order Created (payWithPreAuth)
 ✅ Payment page opened
-✅ OTP: 273876
+✅ OTP: 480628
 ✅ Closed QR terminal modal
 ✅ Clicked Skip button
 ✅ Clicked Done button
-✅ 1. Pre-auth → TO_BE_CONFIRMED (tx: 58773)
+✅ 1. Pre-auth → TO_BE_CONFIRMED (tx: 58774)
 ✅ Order Completed (amount: 0.16)
-✅ After complete → SUCCESS
+✅ After complete → PENDING
 ✅ 2. Captured(0.16) → SUCCESS
-✅ 3. Balance before refund: 0.73 ₾
+✅ 3. Balance before refund: 0.57 ₾
 
 🔄 4. Refunding via ADMIN (FULL)
    ✅ Admin refund call successful (status 204)
 
-📊 refund დადასტურდა (FULL): tx 58773 | refundInfo REFUNDED
-   captured 0.16 + საკომისიო 0.01 = 0.17 ₾ | initialRefundAmount 0.16 ₾
-✅ Restored: merchant commissionType=SENDER</pre><pre class="err">ApiAssertionError: 
-❌ API TEST FAILED
-───────────────────────────────────────────
-🔧 ოპერაცია:    Pre-Auth refund — verification
-⚠️  პრობლემა:    refund თანხა არასწორია — initialRefundAmount 0.16 ₾, უნდა 0.17 ₾
-📥 მიმდინარე შედეგი:
-{
-  "initialRefundAmount": 0.16,
-  "captured": 0.16,
-  "commission": 0.01,
-  "expected": 0.17
-}
-✅ მოსალოდნელი შედეგი: full → captured + საკომისიო = 0.16 + 0.01 = 0.17 ₾
-───────────────────────────────────────────
-</pre></details></div>
+📊 refund დადასტურდა (FULL): tx 58774 | refundInfo REFUNDED
+   captured 0.16 + senderFee 0 = 0.16 ₾ | initialRefundAmount 0.16 ₾
+   ✅ refund თანხა სწორია
+
+📊 ბალანსი: იყო 0.57 ₾ → დარჩა 0.41 ₾ (მოაკლდა 0.16 ₾) | უნდა მოკლებოდა 0.16 ₾
+✅ Restored: merchant commissionType=SENDER</pre><pre class="err">ReferenceError: commission is not defined</pre></details></div>
   <script>
     (function () {
       const cards = document.querySelectorAll('.card');
