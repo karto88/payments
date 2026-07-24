@@ -36,10 +36,10 @@
 </head>
 <body>
   <h1>🎭 Playwright Test Report</h1>
-  <div class="meta">7/24/2026, 11:47:55 AM</div>
+  <div class="meta">7/24/2026, 11:51:45 AM</div>
   <div class="summary">
-    <button type="button" class="card active" data-filter="all">Total: 1</button>
-    <button type="button" class="card pass" data-filter="pass">✅ Passed: 1</button>
+    <button type="button" class="card active" data-filter="all">Total: 2</button>
+    <button type="button" class="card pass" data-filter="pass">✅ Passed: 2</button>
     <button type="button" class="card fail" data-filter="fail">❌ Failed: 0</button>
     <button type="button" class="card skip" data-filter="skip">⏭️ Skipped: 0</button>
   </div>
@@ -47,30 +47,57 @@
           <summary class="test">
             <span class="chev">▶</span>
             <span class="st" style="color:#3fb950">✅ passed</span>
-            <span class="name">პრე-ავტორიციის ორდერზე Partial რეფანდი ADMIN — საკომისიო SENDER</span>
-            <span class="dur">104.8s</span>
-          </summary><pre class="log">✅ 0. Merchant commissionType → SENDER
+            <span class="name">პრე-ავტორიციის ორდერზე Partial რეფანდი - მერჩანტი — საკომისიო RECEIVER — საკომისიო RECEIVER</span>
+            <span class="dur">95.6s</span>
+          </summary><pre class="log">✅ 0. Merchant commissionType → RECEIVER
 ✅ Order Created (payWithPreAuth)
 ✅ Payment page opened
-✅ OTP: 974396
+✅ OTP: 461346
 ✅ Closed QR terminal modal
 ✅ Clicked Skip button
 ✅ Clicked Done button
-✅ 1. Pre-auth → TO_BE_CONFIRMED (tx: 58820)
+✅ 1. Pre-auth → TO_BE_CONFIRMED (tx: 58821)
 ✅ Order Completed (amount: 0.15)
 ✅ After complete → SUCCESS
 ✅ 2. Captured(0.15) → SUCCESS
-✅ 3. Balance before refund: 5.02 ₾
+✅ 3. Balance before refund: 4.95 ₾
 
-🔄 4. Refunding via ADMIN (PARTIAL 0.07)
-   ✅ Admin refund call successful (status 204)
+🔄 4. Refunding via DEVICE (PARTIAL 0.07)
+   ✅ Device refund call successful (status 200)
 
-📊 refund დადასტურდა (PARTIAL): tx 58820 | refundInfo PARTIALLY_REFUNDED
+📊 refund დადასტურდა (PARTIAL): tx 58821 | refundInfo PARTIALLY_REFUNDED
    partial refundAmount = 0.07 ₾ | initialRefundAmount 0.07 ₾
    ✅ refund თანხა სწორია
 
-📊 ბალანსი: იყო 5.02 ₾ → დარჩა 4.95 ₾ (მოაკლდა 0.07 ₾) | უნდა მოკლებოდა 0.07 ₾
-   ✅ ბალანსი სწორად ჩამოიჭრა — მოაკლდა 0.07 ₾
+📊 ბალანსი: იყო 4.95 ₾ → დარჩა 4.88 ₾ (მოაკლდა 0.07 ₾) | უნდა მოკლებოდა 0.07 ₾
+   ✅ ბალანსი სწორად ჩამოიჭრა — მოაკლდა 0.07 ₾</pre></details><details class="test-item" data-status="pass">
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="name">პრე-ავტორიციის ორდერზე Partial რეფანდი - მერჩანტი — საკომისიო RECEIVER</span>
+            <span class="dur">93.1s</span>
+          </summary><pre class="log">✅ 0. Merchant commissionType → RECEIVER
+✅ Order Created (payWithPreAuth)
+✅ Payment page opened
+✅ OTP: 514193
+✅ Closed QR terminal modal
+✅ Clicked Skip button
+✅ Clicked Done button
+✅ 1. Pre-auth → TO_BE_CONFIRMED (tx: 58822)
+✅ Order Completed (amount: 0.17)
+✅ After complete → PENDING
+✅ 2. Captured(0.17) → SUCCESS
+✅ 3. Balance before refund: 4.88 ₾
+
+🔄 4. Refunding via ADMIN (PARTIAL 0.08)
+   ✅ Admin refund call successful (status 204)
+
+📊 refund დადასტურდა (PARTIAL): tx 58822 | refundInfo PARTIALLY_REFUNDED
+   partial refundAmount = 0.08 ₾ | initialRefundAmount 0.08 ₾
+   ✅ refund თანხა სწორია
+
+📊 ბალანსი: იყო 4.88 ₾ → დარჩა 4.8 ₾ (მოაკლდა 0.08 ₾) | უნდა მოკლებოდა 0.08 ₾
+   ✅ ბალანსი სწორად ჩამოიჭრა — მოაკლდა 0.08 ₾
 ✅ Restored: merchant commissionType=SENDER</pre></details></div>
   <script>
     (function () {
