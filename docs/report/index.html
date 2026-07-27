@@ -36,7 +36,7 @@
 </head>
 <body>
   <h1>🎭 Playwright Test Report</h1>
-  <div class="meta">7/27/2026, 5:57:24 PM</div>
+  <div class="meta">7/27/2026, 6:00:15 PM</div>
   <div class="summary">
     <button type="button" class="card active" data-filter="all">Total: 1</button>
     <button type="button" class="card pass" data-filter="pass">✅ Passed: 0</button>
@@ -48,8 +48,34 @@
             <span class="chev">▶</span>
             <span class="st" style="color:#f85149">❌ failed</span>
             <span class="name">Partial refund-ის შემდეგ Full refund უნდა დაერორდეს და ბალანსი არ უნდა შეიცვალოს</span>
-            <span class="dur">42.7s</span>
-          </summary><pre class="log">✅ 1. Order Created</pre><pre class="err">Error: OTP not found</pre></details></div>
+            <span class="dur">69.3s</span>
+          </summary><pre class="log">✅ 1. Order Created
+✅ 2. OTP: 517069
+✅ Closed QR terminal modal
+✅ Clicked Skip button
+✅ Clicked Done button
+✅ 3. Payment Status Confirmed
+
+🔄 Partial refund (0.05)
+
+📊 INTEGRATOR refund დადასტურდა (PARTIAL):
+   tx 59100: status PARTIALLY_REFUNDED | refundInfo PARTIALLY_REFUNDED | initialRefundAmount 0.05 ₾
+   ✅ ტრანზაქცია რეალურად PARTIALLY_REFUNDED
+✅ Partial refunded → ბალანსი: 0.95 → 0.9 ₾
+
+🔄 Full refund (უნდა დაერორდეს)
+❌ Full refund გაიარა: მოულოდნელად გაიარა: {"integratorOrderId":"e6d81ace-2962-467b-a969-f374d8140f44","status":"REFUND_REQUESTED","errorMessage":null}</pre><pre class="err">ApiAssertionError: 
+❌ API TEST FAILED
+───────────────────────────────────────────
+🔧 ოპერაცია:    Integrator refund — verification
+⚠️  პრობლემა:    full refund უნდა დაერორებულიყო partial-ის შემდეგ, მაგრამ გაიარა — მოულოდნელად გაიარა: {"integratorOrderId":"e6d81ace-2962-467b-a969-f374d8140f44","status":"REFUND_REQUESTED","errorMessage":null}
+📥 მიმდინარე შედეგი:
+{
+  "detail": "მოულოდნელად გაიარა: {\"integratorOrderId\":\"e6d81ace-2962-467b-a969-f374d8140f44\",\"status\":\"REFUND_REQUESTED\",\"errorMessage\":null}"
+}
+✅ მოსალოდნელი შედეგი: full refund partial-ის შემდეგ → error
+───────────────────────────────────────────
+</pre></details></div>
   <script>
     (function () {
       const cards = document.querySelectorAll('.card');
