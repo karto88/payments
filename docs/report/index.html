@@ -36,7 +36,7 @@
 </head>
 <body>
   <h1>🎭 Playwright Test Report</h1>
-  <div class="meta">7/27/2026, 7:18:03 PM</div>
+  <div class="meta">7/27/2026, 7:25:26 PM</div>
   <div class="summary">
     <button type="button" class="card active" data-filter="all">Total: 1</button>
     <button type="button" class="card pass" data-filter="pass">✅ Passed: 1</button>
@@ -47,28 +47,28 @@
           <summary class="test">
             <span class="chev">▶</span>
             <span class="st" style="color:#3fb950">✅ passed</span>
-            <span class="name">Partial refund-ის შემდეგ Full refund-ს net ეფექტი არ უნდა ჰქონდეს (ბალანსი უცვლელი)</span>
-            <span class="dur">76.2s</span>
+            <span class="name">Partial refund-ის შემდეგ Full refund-ს</span>
+            <span class="dur">70.9s</span>
           </summary><pre class="log">✅ 1. Order Created
-✅ 2. OTP: 543207
+✅ 2. OTP: 858979
 ✅ Closed QR terminal modal
 ✅ Clicked Skip button
 ✅ Clicked Done button
 ✅ 3. Payment Status Confirmed
-✅ 4. Balance before partial (stable): 1.13 ₾
+✅ 4. Balance before partial (stable): 1.19 ₾
 
 🔄 Partial refund (0.05)
 
 📊 INTEGRATOR refund დადასტურდა (PARTIAL):
-   tx 59103: status PARTIALLY_REFUNDED | refundInfo PARTIALLY_REFUNDED | initialRefundAmount 0.05 ₾
+   tx 59104: status PARTIALLY_REFUNDED | refundInfo PARTIALLY_REFUNDED | initialRefundAmount 0.05 ₾
    ✅ ტრანზაქცია რეალურად PARTIALLY_REFUNDED
-✅ Partial refunded → ბალანსი: 1.13 → 1.08 ₾
+✅ Partial refunded → ბალანსი: 1.19 → 1.14 ₾
 
 🔄 Full refund (partial-ის მერე)
    full refund response → status: REFUND_REQUESTED, error: null
 
 📊 full-ის მერე tx: refundInfo PARTIALLY_REFUNDED | initialRefundAmount 0.05 ₾ (partial იყო 0.05 ₾)
-   ℹ️ ბალანსი: after-partial 1.08 → after-full 1.19 ₾ (ინფოდ — settlement-ის გამო არასანდო)
+   ℹ️ ბალანსი: after-partial 1.14 → after-full 1.25 ₾ (ინფოდ — settlement-ის გამო არასანდო)
 ✅ full refund partial-ის მერე net ეფექტს არ ტოვებს — მხოლოდ partial 0.05 ₾ დარჩა დარეფანდილი</pre></details></div>
   <script>
     (function () {
