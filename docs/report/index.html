@@ -36,7 +36,7 @@
 </head>
 <body>
   <h1>🎭 Playwright Test Report</h1>
-  <div class="meta">7/27/2026, 6:00:15 PM</div>
+  <div class="meta">7/27/2026, 6:06:20 PM</div>
   <div class="summary">
     <button type="button" class="card active" data-filter="all">Total: 1</button>
     <button type="button" class="card pass" data-filter="pass">✅ Passed: 0</button>
@@ -47,10 +47,10 @@
           <summary class="test">
             <span class="chev">▶</span>
             <span class="st" style="color:#f85149">❌ failed</span>
-            <span class="name">Partial refund-ის შემდეგ Full refund უნდა დაერორდეს და ბალანსი არ უნდა შეიცვალოს</span>
-            <span class="dur">69.3s</span>
+            <span class="name">Partial refund-ის შემდეგ Full refund-ს net ეფექტი არ უნდა ჰქონდეს (ბალანსი უცვლელი)</span>
+            <span class="dur">91.3s</span>
           </summary><pre class="log">✅ 1. Order Created
-✅ 2. OTP: 517069
+✅ 2. OTP: 589052
 ✅ Closed QR terminal modal
 ✅ Clicked Skip button
 ✅ Clicked Done button
@@ -59,21 +59,25 @@
 🔄 Partial refund (0.05)
 
 📊 INTEGRATOR refund დადასტურდა (PARTIAL):
-   tx 59100: status PARTIALLY_REFUNDED | refundInfo PARTIALLY_REFUNDED | initialRefundAmount 0.05 ₾
+   tx 59101: status PARTIALLY_REFUNDED | refundInfo PARTIALLY_REFUNDED | initialRefundAmount 0.05 ₾
    ✅ ტრანზაქცია რეალურად PARTIALLY_REFUNDED
-✅ Partial refunded → ბალანსი: 0.95 → 0.9 ₾
+✅ Partial refunded → ბალანსი: 1.01 → 0.96 ₾
 
-🔄 Full refund (უნდა დაერორდეს)
-❌ Full refund გაიარა: მოულოდნელად გაიარა: {"integratorOrderId":"e6d81ace-2962-467b-a969-f374d8140f44","status":"REFUND_REQUESTED","errorMessage":null}</pre><pre class="err">ApiAssertionError: 
+🔄 Full refund (partial-ის მერე)
+   full refund response → status: REFUND_REQUESTED, error: null
+
+📊 ბალანსი full-ის მერე: 0.96 → 1.07 ₾ (ცვლილება -0.11 ₾)</pre><pre class="err">ApiAssertionError: 
 ❌ API TEST FAILED
 ───────────────────────────────────────────
 🔧 ოპერაცია:    Integrator refund — verification
-⚠️  პრობლემა:    full refund უნდა დაერორებულიყო partial-ის შემდეგ, მაგრამ გაიარა — მოულოდნელად გაიარა: {"integratorOrderId":"e6d81ace-2962-467b-a969-f374d8140f44","status":"REFUND_REQUESTED","errorMessage":null}
+⚠️  პრობლემა:    full refund-მა ბალანსი შეცვალა (-0.11 ₾) — partial-ის მერე net ეფექტი 0 უნდა იყოს (უნდა დაბრუნდეს)
 📥 მიმდინარე შედეგი:
 {
-  "detail": "მოულოდნელად გაიარა: {\"integratorOrderId\":\"e6d81ace-2962-467b-a969-f374d8140f44\",\"status\":\"REFUND_REQUESTED\",\"errorMessage\":null}"
+  "balanceAfterPartial": 0.96,
+  "balanceAfterFull": 1.07,
+  "changed": -0.11
 }
-✅ მოსალოდნელი შედეგი: full refund partial-ის შემდეგ → error
+✅ მოსალოდნელი შედეგი: ბალანსი უცვლელი — full refund partial-ის მერე net ეფექტს არ ტოვებს
 ───────────────────────────────────────────
 </pre></details></div>
   <script>
