@@ -36,7 +36,7 @@
 </head>
 <body>
   <h1>🎭 Playwright Test Report</h1>
-  <div class="meta">7/27/2026, 6:06:20 PM</div>
+  <div class="meta">7/27/2026, 6:58:20 PM</div>
   <div class="summary">
     <button type="button" class="card active" data-filter="all">Total: 1</button>
     <button type="button" class="card pass" data-filter="pass">✅ Passed: 0</button>
@@ -48,33 +48,34 @@
             <span class="chev">▶</span>
             <span class="st" style="color:#f85149">❌ failed</span>
             <span class="name">Partial refund-ის შემდეგ Full refund-ს net ეფექტი არ უნდა ჰქონდეს (ბალანსი უცვლელი)</span>
-            <span class="dur">91.3s</span>
+            <span class="dur">106.9s</span>
           </summary><pre class="log">✅ 1. Order Created
-✅ 2. OTP: 589052
+✅ 2. OTP: 915795
 ✅ Closed QR terminal modal
 ✅ Clicked Skip button
 ✅ Clicked Done button
 ✅ 3. Payment Status Confirmed
+✅ 4. Balance before partial (stable): 1.07 ₾
 
 🔄 Partial refund (0.05)
 
 📊 INTEGRATOR refund დადასტურდა (PARTIAL):
-   tx 59101: status PARTIALLY_REFUNDED | refundInfo PARTIALLY_REFUNDED | initialRefundAmount 0.05 ₾
+   tx 59102: status PARTIALLY_REFUNDED | refundInfo PARTIALLY_REFUNDED | initialRefundAmount 0.05 ₾
    ✅ ტრანზაქცია რეალურად PARTIALLY_REFUNDED
-✅ Partial refunded → ბალანსი: 1.01 → 0.96 ₾
+✅ Partial refunded → ბალანსი: 1.07 → 1.02 ₾
 
 🔄 Full refund (partial-ის მერე)
    full refund response → status: REFUND_REQUESTED, error: null
 
-📊 ბალანსი full-ის მერე: 0.96 → 1.07 ₾ (ცვლილება -0.11 ₾)</pre><pre class="err">ApiAssertionError: 
+📊 ბალანსი full-ის მერე: 1.02 → 1.13 ₾ (ცვლილება -0.11 ₾)</pre><pre class="err">ApiAssertionError: 
 ❌ API TEST FAILED
 ───────────────────────────────────────────
 🔧 ოპერაცია:    Integrator refund — verification
 ⚠️  პრობლემა:    full refund-მა ბალანსი შეცვალა (-0.11 ₾) — partial-ის მერე net ეფექტი 0 უნდა იყოს (უნდა დაბრუნდეს)
 📥 მიმდინარე შედეგი:
 {
-  "balanceAfterPartial": 0.96,
-  "balanceAfterFull": 1.07,
+  "balanceAfterPartial": 1.02,
+  "balanceAfterFull": 1.13,
   "changed": -0.11
 }
 ✅ მოსალოდნელი შედეგი: ბალანსი უცვლელი — full refund partial-ის მერე net ეფექტს არ ტოვებს
