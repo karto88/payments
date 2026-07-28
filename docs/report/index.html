@@ -36,51 +36,14 @@
 </head>
 <body>
   <h1>🎭 Playwright Test Report</h1>
-  <div class="meta">7/28/2026, 11:56:42 AM</div>
+  <div class="meta">7/28/2026, 3:50:51 PM</div>
   <div class="summary">
-    <button type="button" class="card active" data-filter="all">Total: 1</button>
+    <button type="button" class="card active" data-filter="all">Total: 0</button>
     <button type="button" class="card pass" data-filter="pass">✅ Passed: 0</button>
-    <button type="button" class="card fail" data-filter="fail">❌ Failed: 1</button>
+    <button type="button" class="card fail" data-filter="fail">❌ Failed: 0</button>
     <button type="button" class="card skip" data-filter="skip">⏭️ Skipped: 0</button>
   </div>
-  <div class="file-group"><div class="file">tests/Positive/refund-integrator.spec.ts</div><details class="test-item" data-status="fail" open>
-          <summary class="test">
-            <span class="chev">▶</span>
-            <span class="st" style="color:#f85149">❌ failed</span>
-            <span class="name">Partial refund-ის შემდეგ Full refund - ბარათით გადახდა</span>
-            <span class="dur">80.8s</span>
-          </summary><pre class="log">✅ 1. Order Created
-✅ 2. OTP: 943431
-✅ Closed QR terminal modal
-✅ Clicked Skip button
-✅ Clicked Done button
-✅ 3. Payment Status Confirmed
-✅ 4. Balance before partial (stable): 1.34 ₾
-
-🔄 Partial refund (0.05)
-
-📊 INTEGRATOR refund დადასტურდა (PARTIAL):
-   tx 59145: status PARTIALLY_REFUNDED | refundInfo PARTIALLY_REFUNDED | initialRefundAmount 0.05 ₾
-   ✅ ტრანზაქცია რეალურად PARTIALLY_REFUNDED
-✅ Partial refunded → ბალანსი: 1.34 → 1.29 ₾
-
-🔄 Full refund (partial-ის მერე)
-   full refund response → status: REFUND_REQUESTED, error: null
-
-📊 ბალანსი full(failed) refund-ის მერე (დასტაბილურებული): 1.29 → 1.35 ₾</pre><pre class="err">ApiAssertionError: 
-❌ API TEST FAILED
-───────────────────────────────────────────
-🔧 ოპერაცია:    Integrator refund — verification
-⚠️  პრობლემა:    failed full refund-ის მერე ბალანსი ვერ დაბრუნდა — არის 1.35 ₾, უნდა ყოფილიყო 1.29 ₾ (ცვლილება +0.06 ₾)
-📥 მიმდინარე შედეგი:
-{
-  "balanceAfterPartial": 1.29,
-  "balanceAfterFull": 1.35,
-  "changed": 0.06
-}
-✅ მოსალოდნელი შედეგი: ბალანსი ისევ after-partial-ის ტოლი — 1.29 ₾ (failed refund-ის თანხა უკან დაბრუნდა)
-───────────────────────────────────────────
-</pre></details></div>
+  
   <script>
     (function () {
       const cards = document.querySelectorAll('.card');
