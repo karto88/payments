@@ -36,51 +36,29 @@
 </head>
 <body>
   <h1>🎭 Playwright Test Report</h1>
-  <div class="meta">7/28/2026, 3:52:03 PM</div>
+  <div class="meta">7/28/2026, 6:38:26 PM</div>
   <div class="summary">
     <button type="button" class="card active" data-filter="all">Total: 1</button>
-    <button type="button" class="card pass" data-filter="pass">✅ Passed: 0</button>
-    <button type="button" class="card fail" data-filter="fail">❌ Failed: 1</button>
+    <button type="button" class="card pass" data-filter="pass">✅ Passed: 1</button>
+    <button type="button" class="card fail" data-filter="fail">❌ Failed: 0</button>
     <button type="button" class="card skip" data-filter="skip">⏭️ Skipped: 0</button>
   </div>
-  <div class="file-group"><div class="file">tests/Positive/refund-integrator.spec.ts</div><details class="test-item" data-status="fail" open>
+  <div class="file-group"><div class="file">tests/Positive/split-order.spec.ts</div><details class="test-item" data-status="pass">
           <summary class="test">
             <span class="chev">▶</span>
-            <span class="st" style="color:#f85149">❌ failed</span>
-            <span class="name">ინტეგრატორი - Partial refund-ის შემდეგ Full refund - ბარათით გადახდა</span>
-            <span class="dur">80.7s</span>
-          </summary><pre class="log">✅ 1. Order Created
-✅ 2. OTP: 096269
+            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="name">Split Order BRANCH and BRANCH</span>
+            <span class="dur">77.7s</span>
+          </summary><pre class="log">✅ Order Created
+✅ Payment page opened
+✅ OTP: 144349
 ✅ Closed QR terminal modal
 ✅ Clicked Skip button
 ✅ Clicked Done button
-✅ 3. Payment Status Confirmed
-✅ 4. Balance before partial (stable): 1.35 ₾
 
-🔄 Partial refund (0.05)
-
-📊 INTEGRATOR refund დადასტურდა (PARTIAL):
-   tx 59158: status PARTIALLY_REFUNDED | refundInfo PARTIALLY_REFUNDED | initialRefundAmount 0.05 ₾
-   ✅ ტრანზაქცია რეალურად PARTIALLY_REFUNDED
-✅ Partial refunded → ბალანსი: 1.35 → 1.3 ₾
-
-🔄 Full refund (partial-ის მერე)
-   full refund response → status: REFUND_REQUESTED, error: null
-
-📊 ბალანსი full(failed) refund-ის მერე (დასტაბილურებული): 1.3 → 1.36 ₾</pre><pre class="err">ApiAssertionError: 
-❌ API TEST FAILED
-───────────────────────────────────────────
-🔧 ოპერაცია:    Integrator refund — verification
-⚠️  პრობლემა:    failed full refund-ის მერე ბალანსი შეიცვალა (+0.06 ₾) — გახდა 1.36 ₾, ისევ 1.3 ₾ უნდა ყოფილიყო
-📥 მიმდინარე შედეგი:
-{
-  "balanceAfterPartial": 1.3,
-  "balanceAfterFull": 1.36,
-  "changed": 0.06
-}
-✅ მოსალოდნელი შედეგი: ბალანსი ზუსტად 1.3 ₾ — failed refund-მა არც უნდა დაუმატოს, არც უნდა მოაკლოს
-───────────────────────────────────────────
-</pre></details></div>
+✅ Split ორდერი გადახდილია:
+   parent 59210 = SUCCESS
+   children 59212 = SUCCESS (0.1 ლარი),  59211 = SUCCESS (0.1 ლარი)</pre></details></div>
   <script>
     (function () {
       const cards = document.querySelectorAll('.card');
