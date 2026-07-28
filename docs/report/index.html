@@ -36,7 +36,7 @@
 </head>
 <body>
   <h1>🎭 Playwright Test Report</h1>
-  <div class="meta">7/27/2026, 7:39:00 PM</div>
+  <div class="meta">7/28/2026, 10:48:42 AM</div>
   <div class="summary">
     <button type="button" class="card active" data-filter="all">Total: 1</button>
     <button type="button" class="card pass" data-filter="pass">✅ Passed: 0</button>
@@ -48,34 +48,34 @@
             <span class="chev">▶</span>
             <span class="st" style="color:#f85149">❌ failed</span>
             <span class="name">Partial refund-ის შემდეგ Full refund-ს</span>
-            <span class="dur">58.8s</span>
+            <span class="dur">61.4s</span>
           </summary><pre class="log">✅ 1. Order Created
-✅ 2. OTP: 329927
+✅ 2. OTP: 145079
 ✅ Closed QR terminal modal
 ✅ Clicked Skip button
 ✅ Clicked Done button
 ✅ 3. Payment Status Confirmed
-✅ 4. Balance before partial (stable): 1.25 ₾
+✅ 4. Balance before partial (stable): 1.31 ₾
 
 🔄 Partial refund (0.05)
 
 📊 INTEGRATOR refund დადასტურდა (PARTIAL):
-   tx 59105: status PARTIALLY_REFUNDED | refundInfo PARTIALLY_REFUNDED | initialRefundAmount 0.05 ₾
+   tx 59130: status PARTIALLY_REFUNDED | refundInfo PARTIALLY_REFUNDED | initialRefundAmount 0.05 ₾
    ✅ ტრანზაქცია რეალურად PARTIALLY_REFUNDED
-✅ Partial refunded → ბალანსი: 1.25 → 1.2 ₾
+✅ Partial refunded → ბალანსი: 1.31 → 1.26 ₾
 
 🔄 Full refund (partial-ის მერე)
    full refund response → status: REFUND_REQUESTED, error: null
 
-📊 ბალანსი full(failed)-ის მერე: 1.2 → 1.14 ₾ (ცვლილება -0.06 ₾)</pre><pre class="err">ApiAssertionError: 
+📊 ბალანსი full(failed)-ის მერე: 1.26 → 1.2 ₾ (ცვლილება -0.06 ₾)</pre><pre class="err">ApiAssertionError: 
 ❌ API TEST FAILED
 ───────────────────────────────────────────
 🔧 ოპერაცია:    Integrator refund — verification
-⚠️  პრობლემა:    failed full refund-ის მერე ბალანსი შეიცვალა (-0.06 ₾) — უცვლელი უნდა ყოფილიყო (1.2 ₾)
+⚠️  პრობლემა:    failed full refund-ის მერე ბალანსი შეიცვალა (-0.06 ₾) — უცვლელი უნდა ყოფილიყო (1.26 ₾)
 📥 მიმდინარე შედეგი:
 {
-  "balanceAfterPartial": 1.2,
-  "balanceAfterFull": 1.14,
+  "balanceAfterPartial": 1.26,
+  "balanceAfterFull": 1.2,
   "changed": -0.06
 }
 ✅ მოსალოდნელი შედეგი: ბალანსი უცვლელი — failed full refund-მა ბალანსი არ უნდა შეცვალოს
