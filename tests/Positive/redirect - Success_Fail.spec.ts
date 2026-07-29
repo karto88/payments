@@ -7,7 +7,7 @@ const FAIL_URL = 'https://www.istockphoto.com/photos/fail';
 
 test.describe('Success Redirect URL', () => {
   // 1️⃣ SUCCESS — TBC ბარათი → წარმატებული → successRedirectUri
-  test('success redirect', async ({ request }) => {
+  test('როცა ორდერს მიყვება success redirect', async ({ request }) => {
     const helper = new RedirectHelper(request);
 
     const finalUrl = await helper.createAndPay({
@@ -32,7 +32,7 @@ test.describe('Success Redirect URL', () => {
   });
 
   // 2️⃣ FAIL — CREDO ბარათი (ფული არ აქვს) → ჩავარდნა → failRedirectUri
-  test('fail redirect URL', async ({ request }) => {
+  test('როცა ორდერს მიყვება fail redirect URL', async ({ request }) => {
     const helper = new RedirectHelper(request);
 
     const finalUrl = await helper.createAndPay({

@@ -14,7 +14,7 @@ const INTEGRATOR_ID = '76880b28-9033-4d48-b21f-37a9a36ec5dd';
 const PHONE = '591030201';
 
 // ---- PERCENTAGE (group-ის STANDARD GEL default rate type) ----
-test('Balance check — Receiver commission PERCENTAGE', async ({ request }) => {
+test('ბალანსის შევსება — მერჩანტის საკომისიო არის Receiver და საკომისიო PERCENTAGE', async ({ request }) => {
   test.setTimeout(180000);
   await new CheckBalanceHelper(request).checkBalanceReflection({
     amount: 0.1,
@@ -30,7 +30,7 @@ test('Balance check — Receiver commission PERCENTAGE', async ({ request }) => 
 });
 
 // Sender commission — გადამხდელი იხდის საკომისიოს ზემოდან, ბალანსზე სრული amount აისახება
-test('Balance check — Sender commission PERCENTAGE', async ({ request }) => {
+test('ბალანსის შევსება — მერჩანტის საკომისიო არის Sender და საკომისიო PERCENTAGE', async ({ request }) => {
   test.setTimeout(180000);
   await new CheckBalanceHelper(request).checkBalanceReflection({
     amount: 0.1,
@@ -46,7 +46,7 @@ test('Balance check — Sender commission PERCENTAGE', async ({ request }) => {
 });
 
 // ---- FIXED (group-ის STANDARD GEL commission ფიქსირებულ თანხაზე) ----
-test('Balance check — Receiver commission FIXED', async ({ request }) => {
+test('ბალანსის შევსება — მერჩანტის საკომისიო არის Receiver და საკომისიო FIXED', async ({ request }) => {
   test.setTimeout(180000);
   await new CheckBalanceHelper(request).checkBalanceReflection({
     amount: 0.1,
@@ -61,7 +61,7 @@ test('Balance check — Receiver commission FIXED', async ({ request }) => {
   });
 });
 
-test('Balance check — Sender commission FIXED', async ({ request }) => {
+test('ბალანსის შევსება — მერჩანტის საკომისიო არის Sender და საკომისიო FIXED', async ({ request }) => {
   test.setTimeout(180000);
   await new CheckBalanceHelper(request).checkBalanceReflection({
     amount: 0.1,
@@ -84,11 +84,11 @@ test('Balance check — Sender commission FIXED', async ({ request }) => {
 const MULTI_RECEIVER_ID = '3196dbb0-c7b6-4d68-ad59-1232d5fd87b6';
 const MULTI_PHONE = '591030203';
 
-test.describe('Balance check — Multi-currency (591030203)', () => {
-  test('USD reflection', async ({ request }) => {
+test.describe('Balance check — Multi-currency', () => {
+  test('ბალანსის შევსება — USD', async ({ request }) => {
     test.setTimeout(180000);
     await new CheckBalanceHelper(request).checkBalanceReflection({
-      amount: 0.04,
+      amount: 0.05,
       receiverId: MULTI_RECEIVER_ID,
       receiverType: 'BRANCH',
       integratorId: INTEGRATOR_ID,
@@ -98,10 +98,10 @@ test.describe('Balance check — Multi-currency (591030203)', () => {
     });
   });
 
-  test('EUR reflection', async ({ request }) => {
+  test('ბალანსის შევსება — EUR', async ({ request }) => {
     test.setTimeout(180000);
     await new CheckBalanceHelper(request).checkBalanceReflection({
-      amount: 0.04,
+      amount: 0.05,
       receiverId: MULTI_RECEIVER_ID,
       receiverType: 'BRANCH',
       integratorId: INTEGRATOR_ID,

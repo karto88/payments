@@ -78,6 +78,30 @@ acquiringAmount = გადასახდელი / (1 − commission%)
 
 ---
 
+### 3.4. Refund-ის დროს ბალანსიდან ჩამოჭრა — sender vs receiver (კონკრეტული მაგალითებით)
+
+**Sender commission** (payer იხდის საკომისიოს ზემოდან):
+- გადახდა: payer იხდის `10 + 1` (საკომისიო), merchant-ს ერიცხება **სრული 10**
+- **full refund:** merchant კარგავს **`10 + 1 = 11`** (captured + საკომისიო)
+- balance `50 → 39`
+
+**Receiver commission** (merchant იხდის საკომისიოს):
+- გადახდა: payer იხდის `10`, მომხმარებელს უჩანს 10, merchant-ს კი ერიცხება **9** (`10 − 1` საკომისიო, თვითონ იხდის)
+- balance payment-ის მერე: `50 + 9 = 59`
+- **full refund:** merchant კარგავს **სრულ `10`-ს** (payer-ს სრული უბრუნდება), balance `59 → 49`
+- ანუ merchant-მა მიიღო 9, დაკარგა 10 → სუფთა ზარალი 1 (საკომისიო)
+
+**ფორმულა (full refund):** ჩამოჭრა = `captured + senderFee`
+- sender → `senderFee > 0` → `captured + fee`
+- receiver → `senderFee = 0` → `captured` (payer-ს captured უბრუნდება; receiver fee refund-ს არ ემატება)
+
+**Partial refund:** ჩამოჭრა = `refundAmount` (საკომისიო **არ** ემატება, ორივე ტიპზე).
+
+> 💡 კოდი ტრანზაქციიდან კითხულობს `senderCommissionAmount`-ს და თვითონ ერგება commission type-ს
+> (helper: [RefundPreAuthHelper.ts](utils/order-helpers/RefundPreAuthHelper.ts) — `getSenderFee`).
+
+---
+
 ## Status-ები (verify-ისთვის)
 - სრული refund (`refundAmount === amount`) → **`REFUNDED`**
 - ნაწილობრივი refund → **`PARTIALLY_REFUNDED`**

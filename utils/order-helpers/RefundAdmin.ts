@@ -21,7 +21,6 @@ interface RefundOrderConfig {
   refundAmount: number;
   ibanToCheck: string;
   balancePhone?: string; // ბალანსის/fee-ს device login ნომერი (default 591078180; 591030201 — receiver commission)
-  refundVia?: 'INTEGRATOR' | 'ADMIN'; // refund-ის მხარე: INTEGRATOR (ecommerce, default) | ADMIN (admin panel endpoint, tx id-ზე)
 }
 
 export class RefundAdmin {
@@ -100,14 +99,10 @@ export class RefundAdmin {
     const deviceToken = await new AuthDevicePage(this.request).authenticate(config.balancePhone || '591078180');
     const balanceBefore = await this.getBalance(deviceToken);
 
-    // Refund API call
+    // ADMIN refund (admin panel PUT) — status/initialRefundAmount + balance
     console.log(`\n🔄 5. Refunding: ${config.refundAmount} GEL`);
-    await this.refundOrder(accessToken, config);
-
-    // Refund verification — ვაცდით სანამ refund აისახება ტრანზაქციაში, ვიღებთ tx-ს
+    await this.refundViaAdmin(config);
     const transaction = await this.verifyRefund(config);
-
-    // ბალანსი refund-ის შემდეგ + შედარება
     const balanceAfter = await this.getBalanceAfterSettle(deviceToken, balanceBefore);
     this.verifyBalance(config, transaction, balanceBefore, balanceAfter);
   }
@@ -187,15 +182,6 @@ export class RefundAdmin {
     );
   }
 
-  /** refund-ის მხარის არჩევა: ADMIN panel (tx id) ან INTEGRATOR (ecommerce, encrypted) */
-  private async refundOrder(accessToken: string, config: RefundOrderConfig) {
-    if (config.refundVia === 'ADMIN') {
-      await this.refundViaAdmin(config);
-    } else {
-      await this.refundViaIntegrator(accessToken, config);
-    }
-  }
-
   /**
    * ADMIN panel refund — genericTransactionId-ზე (admin token, device-ის გარეშე).
    * full refund → amount: null | partial → amount: refundAmount.
@@ -222,41 +208,6 @@ export class RefundAdmin {
 
     if (!response.ok()) {
       throw new Error(`Admin refund failed: ${response.status()} - ${await response.text()}`);
-    }
-  }
-
-  private async refundViaIntegrator(accessToken: string, config: RefundOrderConfig) {
-    const paymentPage = new PaymentPage(this.request, null as any);
-
-    // Step 1: Encrypt refund data
-    const refundData = {
-      integratorId: config.integratorId,
-      integratorOrderId: this.integratorOrderId,
-      refundInitiator: 'INTEGRATOR',
-      amount: config.refundAmount,
-    };
-
-    const encrypted = await (paymentPage as any).encryptOrderData(accessToken, refundData);
-
-    // Step 2: Call refund endpoint
-    const response = await this.request.post(
-      `${API_CONFIG.ECOMMERCE.BASE_URL}${API_CONFIG.ECOMMERCE.ENDPOINTS.REFUND}`,
-      {
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        data: {
-          identifier: config.integratorId,
-          encryptedData: encrypted.encryptedData,
-          aes: true,
-          encryptedKeys: encrypted.encryptedKeys,
-        },
-      }
-    );
-
-    if (!response.ok()) {
-      const errorBody = await response.text();
-      throw new Error(`Refund failed: ${response.status()} - ${errorBody}`);
     }
   }
 

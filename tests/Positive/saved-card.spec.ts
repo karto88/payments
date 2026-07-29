@@ -4,7 +4,7 @@ import { assertCondition } from '../../utils/assertions';
 
 const OP = 'GET /integrator/card/order-id';
 
-test('Saved Card', async ({ request }, testInfo) => {
+test('Saved Card - იუზერი როცა ბარათს ამახსოვრებს', async ({ request }, testInfo) => {
   const helper = new SavedCardHelper(request);
 
   const cardData = await helper.createPayAndGetCardToken({

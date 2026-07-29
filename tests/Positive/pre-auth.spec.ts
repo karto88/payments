@@ -73,13 +73,13 @@ async function runPreAuth(request: APIRequestContext, authAmount: number, comple
 }
 
 // ნაწილობრივი complete — ავტორიზება 0.17, ქომფლითი 0.1 (დანარჩენი გადამხდელს უბრუნდება)
-test('Pre Authorization — Partial complete', async ({ request }) => {
+test('Pre Authorization გადახდა როცა ხდება — Partial complete', async ({ request }) => {
   test.setTimeout(180000);
   await runPreAuth(request, 0.17, 0.1);
 });
 
 // სრული complete — ავტორიზება 0.16, ქომფლითი 0.16 (მთელი ავტორიზებული თანხა)
-test('Pre Authorization — Full complete', async ({ request }) => {
+test('Pre Authorization გადახდა როცა ხდება — Full complete', async ({ request }) => {
   test.setTimeout(180000);
   await runPreAuth(request, 0.10, 0.10);
 });
