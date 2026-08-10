@@ -36,14 +36,25 @@
 </head>
 <body>
   <h1>🎭 Playwright Test Report</h1>
-  <div class="meta">8/10/2026, 5:14:51 PM</div>
+  <div class="meta">8/10/2026, 5:15:26 PM</div>
   <div class="summary">
-    <button type="button" class="card active" data-filter="all">Total: 0</button>
+    <button type="button" class="card active" data-filter="all">Total: 1</button>
     <button type="button" class="card pass" data-filter="pass">✅ Passed: 0</button>
-    <button type="button" class="card fail" data-filter="fail">❌ Failed: 0</button>
+    <button type="button" class="card fail" data-filter="fail">❌ Failed: 1</button>
     <button type="button" class="card skip" data-filter="skip">⏭️ Skipped: 0</button>
   </div>
-  
+  <div class="file-group"><div class="file">tests/Positive/open-banking.spec.ts</div><details class="test-item" data-status="fail" open>
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#f85149">❌ failed</span>
+            <span class="name">TBC Open Banking</span>
+            <span class="dur">31.3s</span>
+          </summary><pre class="log">✅ Order Created - TBC Open Banking
+✅ OTP: 2673
+✅ TBC Login completed</pre><pre class="err">TimeoutError: page.click: Timeout 15000ms exceeded.
+Call log:
+[2m  - waiting for locator('button.dropdown-header')[22m
+</pre></details></div>
   <script>
     (function () {
       const cards = document.querySelectorAll('.card');
