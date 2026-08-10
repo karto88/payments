@@ -36,35 +36,14 @@
 </head>
 <body>
   <h1>🎭 Playwright Test Report</h1>
-  <div class="meta">7/30/2026, 7:07:26 PM</div>
+  <div class="meta">8/10/2026, 5:07:59 PM</div>
   <div class="summary">
-    <button type="button" class="card active" data-filter="all">Total: 1</button>
-    <button type="button" class="card pass" data-filter="pass">✅ Passed: 1</button>
+    <button type="button" class="card active" data-filter="all">Total: 0</button>
+    <button type="button" class="card pass" data-filter="pass">✅ Passed: 0</button>
     <button type="button" class="card fail" data-filter="fail">❌ Failed: 0</button>
     <button type="button" class="card skip" data-filter="skip">⏭️ Skipped: 0</button>
   </div>
-  <div class="file-group"><div class="file">tests/Positive/balance-check.spec.ts</div><details class="test-item" data-status="pass">
-          <summary class="test">
-            <span class="chev">▶</span>
-            <span class="st" style="color:#3fb950">✅ passed</span>
-            <span class="name">ბალანსის შევსება — მერჩანტის საკომისიო არის Sender და საკომისიო FIXED</span>
-            <span class="dur">59.7s</span>
-          </summary><pre class="log">✅ Group updated: STANDARD GEL rateType=FIXED
-✅ Merchant updated: distributionFlow=BALANCE, commissionType=SENDER
-✅ Balance before: 5.21 GEL
-✅ Order Created
-✅ Payment page opened
-✅ OTP: 761647
-✅ Closed QR terminal modal
-✅ Clicked Skip button
-✅ Clicked Done button
-
-📊 მოსალოდნელი შედეგი — SENDER commission · GEL · distributionFlow: BALANCE
-   იუზერმა გადაიხადა: 0.1 + 0.1 (ფიქსირებული საკომისიო) = 0.2 GEL
-   merchant-ს დაერიცხა: სრული amount = 0.1 GEL
-   ბალანსი: იყო 5.21 GEL → გახდა 5.31 GEL (დაემატა 0.1 GEL)
-   ✅ ბალანსი წარმატებულად შეივსო (GEL)
-✅ Restored: group rateType=PERCENTAGE, merchant distributionFlow=STANDARD</pre></details></div>
+  
   <script>
     (function () {
       const cards = document.querySelectorAll('.card');
