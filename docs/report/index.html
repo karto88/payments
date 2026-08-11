@@ -36,21 +36,27 @@
 </head>
 <body>
   <h1>🎭 Playwright Test Report</h1>
-  <div class="meta">8/10/2026, 5:16:05 PM</div>
+  <div class="meta">8/11/2026, 5:34:18 PM</div>
   <div class="summary">
-    <button type="button" class="card active" data-filter="all">Total: 1</button>
+    <button type="button" class="card active" data-filter="all">Total: 2</button>
     <button type="button" class="card pass" data-filter="pass">✅ Passed: 1</button>
-    <button type="button" class="card fail" data-filter="fail">❌ Failed: 0</button>
+    <button type="button" class="card fail" data-filter="fail">❌ Failed: 1</button>
     <button type="button" class="card skip" data-filter="skip">⏭️ Skipped: 0</button>
   </div>
-  <div class="file-group"><div class="file">tests/Positive/open-banking.spec.ts</div><details class="test-item" data-status="pass">
+  <div class="file-group"><div class="file">tests/Positive/open-banking.spec.ts</div><details class="test-item" data-status="fail" open>
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#f85149">❌ failed</span>
+            <span class="name">BOG Open Banking</span>
+            <span class="dur">43.6s</span>
+          </summary><pre class="log">✅ Order Created - BOG Open Banking</pre><pre class="err">Error: OTP not found</pre></details><details class="test-item" data-status="pass">
           <summary class="test">
             <span class="chev">▶</span>
             <span class="st" style="color:#3fb950">✅ passed</span>
             <span class="name">TBC Open Banking</span>
-            <span class="dur">77.9s</span>
+            <span class="dur">72.4s</span>
           </summary><pre class="log">✅ Order Created - TBC Open Banking
-✅ OTP: 9936
+✅ OTP: 7357
 ✅ TBC Login completed
 ✅ Payment confirmed
 ℹ️ QR terminal modal not found
