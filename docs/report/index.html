@@ -36,121 +36,101 @@
 </head>
 <body>
   <h1>🎭 Playwright Test Report</h1>
-  <div class="meta">9/9/2026, 1:38:54 PM</div>
+  <div class="meta">9/9/2026, 1:49:46 PM</div>
   <div class="summary">
     <button type="button" class="card active" data-filter="all">Total: 8</button>
-    <button type="button" class="card pass" data-filter="pass">✅ Passed: 8</button>
-    <button type="button" class="card fail" data-filter="fail">❌ Failed: 0</button>
+    <button type="button" class="card pass" data-filter="pass">✅ Passed: 4</button>
+    <button type="button" class="card fail" data-filter="fail">❌ Failed: 4</button>
     <button type="button" class="card skip" data-filter="skip">⏭️ Skipped: 0</button>
   </div>
-  <div class="file-group"><div class="file">tests/Positive/refund-order.spec.ts</div><details class="test-item" data-status="pass">
+  <div class="file-group"><div class="file">tests/Positive/refund-order.spec.ts</div><details class="test-item" data-status="fail" open>
           <summary class="test">
             <span class="chev">▶</span>
-            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="st" style="color:#f85149">❌ failed</span>
             <span class="name">როცა მერჩანტი აკეთებს Partially Refund  - და საკომისიო არის Sender</span>
-            <span class="dur">56.0s</span>
+            <span class="dur">56.1s</span>
           </summary><pre class="log">✅ 1. Order Created
-✅ 2. OTP Sent: 280965
+✅ 2. OTP Sent: 479219
 ✅ 3. Payment Successful
 ✅ Closed QR terminal modal
 ✅ Clicked Skip button
 ✅ Clicked Done button
-✅ 4. Transaction ID: 65795 (senderFee: 0.01, receiverFee: 0)
+✅ 4. Transaction ID: 65817 (senderFee: 0.01, receiverFee: 0)
 
 🔄 5. Refunding: 0.05 GEL
-   Refund response status: 200
-✅ Refund API call successful (no response body)
-
-🔍 Verifying Transaction ID: 65795
-✅ 6. Refund Verified (PARTIALLY_REFUNDED)
-
-📊 მოსალოდნელი შედეგი — Device refund (PARTIAL) · SENDER commission
-   დაბრუნდა: 0.05 ₾
-   ბალანსს უნდა მოაკლდეს: 0.05 ₾ (partial → refundAmount = 0.05 (fee გარეშე))
-   ბალანსი: იყო 0.35 ₾ → გახდა 0.3 ₾ (მოაკლდა 0.05 ₾)
-   ✅ ბალანსი სწორად შემცირდა</pre></details><details class="test-item" data-status="pass">
+   Refund response status: 409</pre><pre class="err">Error: Refund failed: 409 - {"message":"Refund is not allowed when cash out mode is INSTANT.","statusCode":2513,"exceptionGroup":2}</pre></details><details class="test-item" data-status="fail" open>
           <summary class="test">
             <span class="chev">▶</span>
-            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="st" style="color:#f85149">❌ failed</span>
             <span class="name">როცა მერჩანტი აკეთებს Full Refund - Sender</span>
-            <span class="dur">69.0s</span>
+            <span class="dur">49.5s</span>
           </summary><pre class="log">✅ 1. Order Created
-✅ 2. OTP Sent: 239767
+✅ 2. OTP Sent: 873037
 ✅ 3. Payment Successful
 ✅ Closed QR terminal modal
 ✅ Clicked Skip button
 ✅ Clicked Done button
-✅ 4. Transaction ID: 65796 (senderFee: 0.01, receiverFee: 0)
+✅ 4. Transaction ID: 65818 (senderFee: 0.01, receiverFee: 0)
 
 🔄 5. Refunding: 0.1 GEL
-   Refund response status: 200
-✅ Refund API call successful (no response body)
-
-🔍 Verifying Transaction ID: 65796
-✅ 6. Refund Verified (REFUNDED)
-
-📊 მოსალოდნელი შედეგი — Device refund (FULL) · SENDER commission
-   დაბრუნდა: 0.1 ₾
-   ბალანსს უნდა მოაკლდეს: 0.11 ₾ (full → amount + fee = 0.1 + 0.01)
-   ბალანსი: იყო 0.3 ₾ → გახდა 0.19 ₾ (მოაკლდა 0.11 ₾)
-   ✅ ბალანსი სწორად შემცირდა</pre></details><details class="test-item" data-status="pass">
+   Refund response status: 409</pre><pre class="err">Error: Refund failed: 409 - {"message":"Refund is not allowed when cash out mode is INSTANT.","statusCode":2513,"exceptionGroup":2}</pre></details><details class="test-item" data-status="pass">
           <summary class="test">
             <span class="chev">▶</span>
             <span class="st" style="color:#3fb950">✅ passed</span>
             <span class="name">როცა მერჩანტი აკეთებს Partially Refund — და საკომისიო არის Receiver</span>
-            <span class="dur">61.6s</span>
+            <span class="dur">59.6s</span>
           </summary><pre class="log">✅ 1. Order Created
-✅ 2. OTP Sent: 106289
+✅ 2. OTP Sent: 946209
 ✅ 3. Payment Successful
 ✅ Closed QR terminal modal
 ✅ Clicked Skip button
 ✅ Clicked Done button
-✅ 4. Transaction ID: 65797 (senderFee: 0, receiverFee: 0.01)
+✅ 4. Transaction ID: 65819 (senderFee: 0, receiverFee: 0.01)
 
 🔄 5. Refunding: 0.05 GEL
    Refund response status: 200
 ✅ Refund API call successful (no response body)
 
-🔍 Verifying Transaction ID: 65797
+🔍 Verifying Transaction ID: 65819
 ✅ 6. Refund Verified (PARTIALLY_REFUNDED)
 
 📊 მოსალოდნელი შედეგი — Device refund (PARTIAL) · RECEIVER commission
    დაბრუნდა: 0.05 ₾
    ბალანსს უნდა მოაკლდეს: 0.05 ₾ (partial → refundAmount = 0.05)
-   ბალანსი: იყო 5.07 ₾ → გახდა 5.02 ₾ (მოაკლდა 0.05 ₾)
+   ბალანსი: იყო 4.77 ₾ → გახდა 4.72 ₾ (მოაკლდა 0.05 ₾)
    ✅ ბალანსი სწორად შემცირდა</pre></details><details class="test-item" data-status="pass">
           <summary class="test">
             <span class="chev">▶</span>
             <span class="st" style="color:#3fb950">✅ passed</span>
             <span class="name">როცა მერჩანტი აკეთებს Full Refund  — და საკომისიო არის Receiver</span>
-            <span class="dur">57.9s</span>
+            <span class="dur">58.2s</span>
           </summary><pre class="log">✅ 1. Order Created
-✅ 2. OTP Sent: 253654
+✅ 2. OTP Sent: 017832
 ✅ 3. Payment Successful
 ✅ Closed QR terminal modal
 ✅ Clicked Skip button
 ✅ Clicked Done button
-✅ 4. Transaction ID: 65798 (senderFee: 0, receiverFee: 0.01)
+✅ 4. Transaction ID: 65820 (senderFee: 0, receiverFee: 0.01)
 
 🔄 5. Refunding: 0.1 GEL
    Refund response status: 200
 ✅ Refund API call successful (no response body)
 
-🔍 Verifying Transaction ID: 65798
+🔍 Verifying Transaction ID: 65820
 ✅ 6. Refund Verified (REFUNDED)
 
 📊 მოსალოდნელი შედეგი — Device refund (FULL) · RECEIVER commission
    დაბრუნდა: 0.1 ₾
    ბალანსს უნდა მოაკლდეს: 0.1 ₾ (full → amount = 0.1)
-   ბალანსი: იყო 5.02 ₾ → გახდა 4.92 ₾ (მოაკლდა 0.1 ₾)
-   ✅ ბალანსი სწორად შემცირდა</pre></details><details class="test-item" data-status="pass">
+   ბალანსი: იყო 4.72 ₾ → გახდა 4.62 ₾ (მოაკლდა 0.1 ₾)
+   ✅ ბალანსი სწორად შემცირდა</pre></details><details class="test-item" data-status="fail" open>
           <summary class="test">
             <span class="chev">▶</span>
-            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="st" style="color:#f85149">❌ timedOut</span>
             <span class="name">როცა ადმინი აკეთებს Partially Refunded — და საკომისიო არის Sender</span>
-            <span class="dur">76.1s</span>
+            <span class="dur">120.0s</span>
           </summary><pre class="log">✅ 1. Order Created
-✅ 2. OTP Sent: 644433
+✅ 2. OTP Sent: 855158
 ✅ 3. Payment Successful
 ✅ Closed QR terminal modal
 ✅ Clicked Skip button
@@ -160,22 +140,16 @@
 🔄 5. Refunding: 0.05 GEL
 
 📊 შედეგი — PARTIALLY_REFUNDED
-   tx 65799: initialAmount 0.1 ₾ | acquiringAmount 0.11 ₾
+   tx 65821: initialAmount 0.1 ₾ | acquiringAmount 0.11 ₾
    receiverCommission 0% | senderCommission 0.1%
-   დარეფანდა: 0.05 ₾  |  მოსალოდნელი: 0.05 ₾  ✅
-
-📊 მოსალოდნელი შედეგი — Admin refund (PARTIAL)
-   დაბრუნდა: 0.05 ₾
-   ბალანსს უნდა მოაკლდეს: 0.05 ₾
-   ბალანსი: იყო 0.19 ₾ → გახდა 0.14 ₾ (მოაკლდა 0.05 ₾)
-   ✅ ბალანსი სწორად შემცირდა</pre></details><details class="test-item" data-status="pass">
+   დარეფანდა: 0.05 ₾  |  მოსალოდნელი: 0.05 ₾  ✅</pre><pre class="err">[31mTest timeout of 120000ms exceeded.[39m</pre></details><details class="test-item" data-status="fail" open>
           <summary class="test">
             <span class="chev">▶</span>
-            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="st" style="color:#f85149">❌ timedOut</span>
             <span class="name">როცა ადმინი აკეთებს Full Refunded — და საკომისიო არის Sender</span>
-            <span class="dur">65.5s</span>
+            <span class="dur">120.0s</span>
           </summary><pre class="log">✅ 1. Order Created
-✅ 2. OTP Sent: 500109
+✅ 2. OTP Sent: 556924
 ✅ 3. Payment Successful
 ✅ Closed QR terminal modal
 ✅ Clicked Skip button
@@ -185,22 +159,16 @@
 🔄 5. Refunding: 0.1 GEL
 
 📊 შედეგი — REFUNDED
-   tx 65800: initialAmount 0.1 ₾ | acquiringAmount 0.11 ₾
+   tx 65822: initialAmount 0.1 ₾ | acquiringAmount 0.11 ₾
    receiverCommission 0% | senderCommission 0.1%
-   დარეფანდა: 0.11 ₾  |  მოსალოდნელი: 0.11 ₾  ✅
-
-📊 მოსალოდნელი შედეგი — Admin refund (FULL)
-   დაბრუნდა: 0.1 ₾
-   ბალანსს უნდა მოაკლდეს: 0.11 ₾
-   ბალანსი: იყო 0.14 ₾ → გახდა 0.03 ₾ (მოაკლდა 0.11 ₾)
-   ✅ ბალანსი სწორად შემცირდა</pre></details><details class="test-item" data-status="pass">
+   დარეფანდა: 0.11 ₾  |  მოსალოდნელი: 0.11 ₾  ✅</pre><pre class="err">[31mTest timeout of 120000ms exceeded.[39m</pre></details><details class="test-item" data-status="pass">
           <summary class="test">
             <span class="chev">▶</span>
             <span class="st" style="color:#3fb950">✅ passed</span>
             <span class="name">როცა ადმინი აკეთებს Partially Refunded — და საკომისიო არის Receiver</span>
-            <span class="dur">60.6s</span>
+            <span class="dur">70.5s</span>
           </summary><pre class="log">✅ 1. Order Created
-✅ 2. OTP Sent: 916587
+✅ 2. OTP Sent: 272854
 ✅ 3. Payment Successful
 ✅ Closed QR terminal modal
 ✅ Clicked Skip button
@@ -210,14 +178,14 @@
 🔄 5. Refunding: 0.05 GEL
 
 📊 შედეგი — PARTIALLY_REFUNDED
-   tx 65815: initialAmount 0.1 ₾ | acquiringAmount 0.1 ₾
+   tx 65823: initialAmount 0.1 ₾ | acquiringAmount 0.1 ₾
    receiverCommission 0.03% | senderCommission 0%
    დარეფანდა: 0.05 ₾  |  მოსალოდნელი: 0.05 ₾  ✅
 
 📊 მოსალოდნელი შედეგი — Admin refund (PARTIAL)
    დაბრუნდა: 0.05 ₾
    ბალანსს უნდა მოაკლდეს: 0.05 ₾
-   ბალანსი: იყო 4.92 ₾ → გახდა 4.87 ₾ (მოაკლდა 0.05 ₾)
+   ბალანსი: იყო 4.62 ₾ → გახდა 4.57 ₾ (მოაკლდა 0.05 ₾)
    ✅ ბალანსი სწორად შემცირდა</pre></details><details class="test-item" data-status="pass">
           <summary class="test">
             <span class="chev">▶</span>
@@ -225,7 +193,7 @@
             <span class="name">როცა ადმინი აკეთებს Full Refunded — და საკომისიო არის Receiver</span>
             <span class="dur">65.0s</span>
           </summary><pre class="log">✅ 1. Order Created
-✅ 2. OTP Sent: 874922
+✅ 2. OTP Sent: 867286
 ✅ 3. Payment Successful
 ✅ Closed QR terminal modal
 ✅ Clicked Skip button
@@ -235,14 +203,14 @@
 🔄 5. Refunding: 0.1 GEL
 
 📊 შედეგი — REFUNDED
-   tx 65816: initialAmount 0.1 ₾ | acquiringAmount 0.1 ₾
+   tx 65824: initialAmount 0.1 ₾ | acquiringAmount 0.1 ₾
    receiverCommission 0.03% | senderCommission 0%
    დარეფანდა: 0.1 ₾  |  მოსალოდნელი: 0.1 ₾  ✅
 
 📊 მოსალოდნელი შედეგი — Admin refund (FULL)
    დაბრუნდა: 0.1 ₾
    ბალანსს უნდა მოაკლდეს: 0.1 ₾
-   ბალანსი: იყო 4.87 ₾ → გახდა 4.77 ₾ (მოაკლდა 0.1 ₾)
+   ბალანსი: იყო 4.57 ₾ → გახდა 4.47 ₾ (მოაკლდა 0.1 ₾)
    ✅ ბალანსი სწორად შემცირდა</pre></details></div>
   <script>
     (function () {
