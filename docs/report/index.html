@@ -36,24 +36,27 @@
 </head>
 <body>
   <h1>🎭 Playwright Test Report</h1>
-  <div class="meta">9/9/2026, 2:22:18 PM</div>
+  <div class="meta">9/25/2026, 1:11:45 PM</div>
   <div class="summary">
     <button type="button" class="card active" data-filter="all">Total: 1</button>
-    <button type="button" class="card pass" data-filter="pass">✅ Passed: 0</button>
-    <button type="button" class="card fail" data-filter="fail">❌ Failed: 1</button>
+    <button type="button" class="card pass" data-filter="pass">✅ Passed: 1</button>
+    <button type="button" class="card fail" data-filter="fail">❌ Failed: 0</button>
     <button type="button" class="card skip" data-filter="skip">⏭️ Skipped: 0</button>
   </div>
-  <div class="file-group"><div class="file">tests/Positive/split-order.spec.ts</div><details class="test-item" data-status="fail" open>
+  <div class="file-group"><div class="file">tests/Positive/all-methods.spec.ts</div><details class="test-item" data-status="pass">
           <summary class="test">
             <span class="chev">▶</span>
-            <span class="st" style="color:#f85149">❌ failed</span>
-            <span class="name">Split Order BRANCH and BRANCH</span>
-            <span class="dur">23.3s</span>
+            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="name">Card Payment TBC</span>
+            <span class="dur">50.9s</span>
           </summary><pre class="log">✅ Order Created
-✅ Payment page opened</pre><pre class="err">TimeoutError: locator.click: Timeout 15000ms exceeded.
-Call log:
-[2m  - waiting for locator('button').filter({ hasText: 'საბანკო ბარათი' })[22m
-</pre></details></div>
+✅ Payment page opened
+✅ OTP: 555223
+✅ Closed QR terminal modal
+✅ Clicked Skip button
+✅ Clicked Done button
+✅ Status update successful
+ℹ️ Transaction status: WAITING_FOR_SIGNATURE</pre></details></div>
   <script>
     (function () {
       const cards = document.querySelectorAll('.card');
