@@ -36,25 +36,34 @@
 </head>
 <body>
   <h1>🎭 Playwright Test Report</h1>
-  <div class="meta">9/25/2026, 2:00:57 PM</div>
+  <div class="meta">9/25/2026, 2:12:16 PM</div>
   <div class="summary">
     <button type="button" class="card active" data-filter="all">Total: 1</button>
-    <button type="button" class="card pass" data-filter="pass">✅ Passed: 0</button>
-    <button type="button" class="card fail" data-filter="fail">❌ Failed: 1</button>
+    <button type="button" class="card pass" data-filter="pass">✅ Passed: 1</button>
+    <button type="button" class="card fail" data-filter="fail">❌ Failed: 0</button>
     <button type="button" class="card skip" data-filter="skip">⏭️ Skipped: 0</button>
   </div>
-  <div class="file-group"><div class="file">tests/Positive/create-order.spec.ts</div><details class="test-item" data-status="fail" open>
+  <div class="file-group"><div class="file">tests/Positive/pre-auth.spec.ts</div><details class="test-item" data-status="pass">
           <summary class="test">
             <span class="chev">▶</span>
-            <span class="st" style="color:#f85149">❌ failed</span>
-            <span class="name">Create Order Only</span>
-            <span class="dur">38.3s</span>
-          </summary><pre class="log">✅ Order Created
+            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="name">Pre Authorization გადახდა როცა ხდება — Partial complete</span>
+            <span class="dur">109.6s</span>
+          </summary><pre class="log">✅ Order Created (payWithPreAuth)
+✅ Payment page opened
+✅ OTP: 714618
+✅ Closed QR terminal modal
+✅ Clicked Skip button
+✅ Clicked Done button
+✅ Stage 1: pre-auth → STATUS IS - TO_BE_CONFIRMED (order: b6eccbba-84d8-4f5c-855c-20e4a0688565, tx: 98356)
+✅ Order Completed (amount: 0.1)
+✅ After complete → WAITING_FOR_SIGNATURE
+✅ Stage 2: complete(0.1) → after: WAITING_FOR_SIGNATURE → final: WAITING_FOR_SIGNATURE (tx: 98356)
 
-🔗 Payment URL:
-https://web.appdev.keepz.me/pay?qrType=REQUEST&amp;receiverType=BRANCH&amp;receiverId=a1b9a5c5-9f01-42ee-a6e3-8853297caf49&amp;integratorId=76880b28-9033-4d48-b21f-37a9a36ec5dd&amp;integratorOrderId=bc5ac045-9ac3-4343-a5e5-5334610a55cf&amp;amount=0.1&amp;currency=GEL
-
-✅ Browser opened</pre><pre class="err">Error: page.waitForTimeout: Target page, context or browser has been closed</pre></details></div>
+📊 მოსალოდნელი შედეგი — Pre-Auth (PARTIAL)
+   ავტორიზებული: 0.17 | დავაქომფლითეთ: 0.1
+   distribution (ტრანზაქციაში): 0.1
+   ✅ პრე-ავტორიზაციით გადახდა წარმატებულია — distribution ემთხვევა დაქომფლითებულს (0.1)</pre></details></div>
   <script>
     (function () {
       const cards = document.querySelectorAll('.card');
