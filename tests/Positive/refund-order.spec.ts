@@ -12,7 +12,7 @@ const RECEIVER_RECEIVER = '292de25e-c01e-47c8-8e4f-8823aba25fc0'; // merchant 59
 // ============================================================
 //  DEVICE refund — device token-ით (ბალანსი მაშინვე ეჭრება)
 // ============================================================
-test.describe('Refund — DEVICE (Sender 591030202)', () => {
+test.describe('Refund — DEVICE', () => {
   test('როცა მერჩანტი აკეთებს Partially Refund  - და საკომისიო არის Sender', async ({ request }) => {
     await new RefundDevice(request).createAndPayOrder({
       amount: 0.1, receiverId: SENDER_RECEIVER, receiverType: 'BRANCH',
@@ -28,7 +28,7 @@ test.describe('Refund — DEVICE (Sender 591030202)', () => {
   });
 });
 
-test.describe('Refund — DEVICE (Receiver 591030201)', () => {
+test.describe('Refund — DEVICE Receiver 591030201', () => {
   test('როცა მერჩანტი აკეთებს Partially Refund — და საკომისიო არის Receiver', async ({ request }) => {
     await new RefundDevice(request).createAndPayOrder({
       amount: 0.1, receiverId: RECEIVER_RECEIVER, receiverType: 'BRANCH',
