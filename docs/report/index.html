@@ -36,14 +36,36 @@
 </head>
 <body>
   <h1>🎭 Playwright Test Report</h1>
-  <div class="meta">10/6/2026, 6:39:32 PM</div>
+  <div class="meta">10/6/2026, 6:39:48 PM</div>
   <div class="summary">
-    <button type="button" class="card active" data-filter="all">Total: 0</button>
-    <button type="button" class="card pass" data-filter="pass">✅ Passed: 0</button>
+    <button type="button" class="card active" data-filter="all">Total: 1</button>
+    <button type="button" class="card pass" data-filter="pass">✅ Passed: 1</button>
     <button type="button" class="card fail" data-filter="fail">❌ Failed: 0</button>
     <button type="button" class="card skip" data-filter="skip">⏭️ Skipped: 0</button>
   </div>
-  
+  <div class="file-group"><div class="file">tests/Positive/add-money.spec.ts</div><details class="test-item" data-status="pass">
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="name">Add money — standard გადახდა, distributionFlow MANUAL - GEL</span>
+            <span class="dur">57.5s</span>
+          </summary><pre class="log">✅ Merchant updated: distributionFlow=MANUAL
+✅ Balance before: 8.13 GEL
+✅ Payment URL: https://tiny.dev.keepz.me/yf79cwmk
+✅ Payment page opened
+✅ OTP: 835645
+✅ Closed QR terminal modal
+✅ Clicked Skip button
+✅ Clicked Done button
+
+📊 Add money — distributionFlow MANUAL · SENDER commission · GEL
+   საწყისი თანხა (initialAmount): 0.13 GEL
+   საკომისიო: sender 0.01 GEL, receiver 0 GEL
+   იუზერმა გადაიხადა: 0.13 + 0.01 = 0.14 GEL
+   ბალანსი: იყო 8.13 → გახდა 8.26 GEL (დაემატა 0.13, უნდა დამატებოდა 0.13)
+   ტრანზაქცია: operationType=TOP_UP, status=COLLECTED
+   ✅ ბალანსი აისახა, საკომისიო სწორად მოიწერა
+✅ Restored: merchant distributionFlow=STANDARD</pre></details></div>
   <script>
     (function () {
       const cards = document.querySelectorAll('.card');
