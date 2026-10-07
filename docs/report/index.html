@@ -36,7 +36,7 @@
 </head>
 <body>
   <h1>🎭 Playwright Test Report</h1>
-  <div class="meta">10/7/2026, 11:50:20 AM</div>
+  <div class="meta">10/7/2026, 1:02:50 PM</div>
   <div class="summary">
     <button type="button" class="card active" data-filter="all">Total: 1</button>
     <button type="button" class="card pass" data-filter="pass">✅ Passed: 0</button>
@@ -47,37 +47,19 @@
           <summary class="test">
             <span class="chev">▶</span>
             <span class="st" style="color:#f85149">❌ failed</span>
-            <span class="name">Add money — acquiring fail - არასაკმარისი ბალანსი</span>
-            <span class="dur">50.6s</span>
-          </summary><pre class="log">✅ Balance before: 8.51 GEL
-✅ Payment URL: https://tiny.dev.keepz.me/5n9xb5k9
-✅ Payment page opened
-✅ OTP: 48083</pre><pre class="err">TimeoutError: page.click: Timeout 15000ms exceeded.
-Call log:
-[2m  - waiting for locator('[name="verify"]')[22m
-[2m    - locator resolved to 2 elements. Proceeding with the first one: &lt;button type="submit" name="verify" tabindex="-1" value="verify" aria-hidden="true" onclick="return false;"&gt;&lt;/button&gt;[22m
-[2m  - attempting click action[22m
-[2m    2 × waiting for element to be visible, enabled and stable[22m
-[2m      - element is visible, enabled and stable[22m
-[2m      - scrolling into view if needed[22m
-[2m      - done scrolling[22m
-[2m      - element is outside of the viewport[22m
-[2m    - retrying click action[22m
-[2m    - waiting 20ms[22m
-[2m    2 × waiting for element to be visible, enabled and stable[22m
-[2m      - element is visible, enabled and stable[22m
-[2m      - scrolling into view if needed[22m
-[2m      - done scrolling[22m
-[2m      - element is outside of the viewport[22m
-[2m    - retrying click action[22m
-[2m      - waiting 100ms[22m
-[2m    29 × waiting for element to be visible, enabled and stable[22m
-[2m       - element is visible, enabled and stable[22m
-[2m       - scrolling into view if needed[22m
-[2m       - done scrolling[22m
-[2m       - element is outside of the viewport[22m
-[2m     - retrying click action[22m
-[2m       - waiting 500ms[22m
+            <span class="name">Add money — დღიურ ლიმიტზე მეტი</span>
+            <span class="dur">2.2s</span>
+          </summary><pre class="log">❌ add-money არ უარყო: HTTP 200 — {"value":"https://tiny.dev.keepz.me/2z9mfee5"}</pre><pre class="err">ApiAssertionError: 
+❌ API TEST FAILED
+───────────────────────────────────────────
+🔧 ოპერაცია:    POST /wallet/add-money (negative)
+⚠️  პრობლემა:    5001 GEL — დღიურ ლიმიტზე მეტი თანხა მიიღო და payment link დააბრუნა (HTTP 200)
+📥 მიმდინარე შედეგი:
+{
+  "value": "https://tiny.dev.keepz.me/2z9mfee5"
+}
+✅ მოსალოდნელი შედეგი: add-money უნდა ჩავარდეს ერორით (დღიური ლიმიტის გადაჭარბება), payment link არ უნდა დაბრუნდეს
+───────────────────────────────────────────
 </pre></details></div>
   <script>
     (function () {
