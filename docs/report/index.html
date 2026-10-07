@@ -36,28 +36,48 @@
 </head>
 <body>
   <h1>🎭 Playwright Test Report</h1>
-  <div class="meta">10/6/2026, 7:16:41 PM</div>
+  <div class="meta">10/7/2026, 11:50:20 AM</div>
   <div class="summary">
     <button type="button" class="card active" data-filter="all">Total: 1</button>
     <button type="button" class="card pass" data-filter="pass">✅ Passed: 0</button>
     <button type="button" class="card fail" data-filter="fail">❌ Failed: 1</button>
     <button type="button" class="card skip" data-filter="skip">⏭️ Skipped: 0</button>
   </div>
-  <div class="file-group"><div class="file">tests/Positive/add-money.spec.ts</div><details class="test-item" data-status="fail" open>
+  <div class="file-group"><div class="file">tests/Negative/add-money-negative.spec.ts</div><details class="test-item" data-status="fail" open>
           <summary class="test">
             <span class="chev">▶</span>
             <span class="st" style="color:#f85149">❌ failed</span>
-            <span class="name">Add money — Open Banking BOG, distributionFlow DIRECT - GEL</span>
-            <span class="dur">61.6s</span>
-          </summary><pre class="log">✅ Merchant updated: distributionFlow=DIRECT
-✅ Balance before: 8.26 GEL
-✅ Payment URL: https://tiny.dev.keepz.me/znj2p6bk
+            <span class="name">Add money — acquiring fail - არასაკმარისი ბალანსი</span>
+            <span class="dur">50.6s</span>
+          </summary><pre class="log">✅ Balance before: 8.51 GEL
+✅ Payment URL: https://tiny.dev.keepz.me/5n9xb5k9
 ✅ Payment page opened
-✅ OTP: 5519
-✅ BOG Login completed
-✅ Restored: merchant distributionFlow=STANDARD</pre><pre class="err">TimeoutError: locator.click: Timeout 15000ms exceeded.
+✅ OTP: 48083</pre><pre class="err">TimeoutError: page.click: Timeout 15000ms exceeded.
 Call log:
-[2m  - waiting for getByText('COMPLETE')[22m
+[2m  - waiting for locator('[name="verify"]')[22m
+[2m    - locator resolved to 2 elements. Proceeding with the first one: &lt;button type="submit" name="verify" tabindex="-1" value="verify" aria-hidden="true" onclick="return false;"&gt;&lt;/button&gt;[22m
+[2m  - attempting click action[22m
+[2m    2 × waiting for element to be visible, enabled and stable[22m
+[2m      - element is visible, enabled and stable[22m
+[2m      - scrolling into view if needed[22m
+[2m      - done scrolling[22m
+[2m      - element is outside of the viewport[22m
+[2m    - retrying click action[22m
+[2m    - waiting 20ms[22m
+[2m    2 × waiting for element to be visible, enabled and stable[22m
+[2m      - element is visible, enabled and stable[22m
+[2m      - scrolling into view if needed[22m
+[2m      - done scrolling[22m
+[2m      - element is outside of the viewport[22m
+[2m    - retrying click action[22m
+[2m      - waiting 100ms[22m
+[2m    29 × waiting for element to be visible, enabled and stable[22m
+[2m       - element is visible, enabled and stable[22m
+[2m       - scrolling into view if needed[22m
+[2m       - done scrolling[22m
+[2m       - element is outside of the viewport[22m
+[2m     - retrying click action[22m
+[2m       - waiting 500ms[22m
 </pre></details></div>
   <script>
     (function () {
