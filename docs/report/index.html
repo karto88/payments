@@ -36,10 +36,10 @@
 </head>
 <body>
   <h1>🎭 Playwright Test Report</h1>
-  <div class="meta">10/7/2026, 1:29:07 PM</div>
+  <div class="meta">10/7/2026, 1:30:42 PM</div>
   <div class="summary">
-    <button type="button" class="card active" data-filter="all">Total: 1</button>
-    <button type="button" class="card pass" data-filter="pass">✅ Passed: 1</button>
+    <button type="button" class="card active" data-filter="all">Total: 6</button>
+    <button type="button" class="card pass" data-filter="pass">✅ Passed: 6</button>
     <button type="button" class="card fail" data-filter="fail">❌ Failed: 0</button>
     <button type="button" class="card skip" data-filter="skip">⏭️ Skipped: 0</button>
   </div>
@@ -47,9 +47,44 @@
           <summary class="test">
             <span class="chev">▶</span>
             <span class="st" style="color:#3fb950">✅ passed</span>
-            <span class="name">Add money — დღიურ ლიმიტზე მეტი</span>
-            <span class="dur">1.7s</span>
-          </summary><pre class="log">📊 add-money 5001 GEL (დღიურ ლიმიტზე (5000) მეტი): HTTP 200 — {"value":"https://tiny.dev.keepz.me/264dnzcp"}</pre></details></div>
+            <span class="name">GEL - add-money - amount 0.77733 (2-ზე მეტი ათწილადი)</span>
+            <span class="dur">1.8s</span>
+          </summary><pre class="log">📊 add-money 0.77733 GEL (მძიმის შემდეგ 2-ზე მეტი ციფრი): HTTP 200 — {"value":"https://tiny.dev.keepz.me/yncs6ckk"}</pre></details><details class="test-item" data-status="pass">
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="name">GEL - add-money - amount -5</span>
+            <span class="dur">811ms</span>
+          </summary><pre class="log">📊 add-money -5 GEL (უარყოფითი თანხა): HTTP 400 — {"message":"Validation failed for argument [1] in public org.springframework.http.ResponseEntity&lt;me.keepz.keepzwalletpaymentservice.model.dto.GenericDto&lt;java.lang.String&gt;&gt; me.keepz.keepzwalletpaymentservice.controller.MerchantBalanceController.createAddMoneyLink(java.util.UUID,me.keepz.keepzwalletpaymentservice.model.param.AddMoneyRequest): [Field error in object 'addMoneyRequest' on field 'amount': rejected value [-5.0]; codes [Positive.addMoneyRequest.amount,Positive.amount,Positive.java.lang.Double,Positive]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [addMoneyRequest.amount,amount]; arguments []; default message [amount]]; default message [must be greater than 0]] ","statusCode":2270,"exceptionGroup":1}
+   ✅ add-money უარყო მოსალოდნელი ერორით</pre></details><details class="test-item" data-status="pass">
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="name">GEL - add-money - amount 9999995</span>
+            <span class="dur">801ms</span>
+          </summary><pre class="log">📊 add-money 9999995 GEL (endpoint-ის დიაპაზონზე (0.01–50000) მეტი): HTTP 409 — {"message":"Amount should be in range: 0.01-50000.0","statusCode":2030,"exceptionGroup":1}
+   ✅ add-money უარყო მოსალოდნელი ერორით</pre></details><details class="test-item" data-status="pass">
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="name">GEL - add-money - amount 0</span>
+            <span class="dur">801ms</span>
+          </summary><pre class="log">📊 add-money 0 GEL (ნულოვანი თანხა): HTTP 400 — {"message":"Validation failed for argument [1] in public org.springframework.http.ResponseEntity&lt;me.keepz.keepzwalletpaymentservice.model.dto.GenericDto&lt;java.lang.String&gt;&gt; me.keepz.keepzwalletpaymentservice.controller.MerchantBalanceController.createAddMoneyLink(java.util.UUID,me.keepz.keepzwalletpaymentservice.model.param.AddMoneyRequest): [Field error in object 'addMoneyRequest' on field 'amount': rejected value [0.0]; codes [Positive.addMoneyRequest.amount,Positive.amount,Positive.java.lang.Double,Positive]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [addMoneyRequest.amount,amount]; arguments []; default message [amount]]; default message [must be greater than 0]] ","statusCode":2270,"exceptionGroup":1}
+   ✅ add-money უარყო მოსალოდნელი ერორით</pre></details><details class="test-item" data-status="pass">
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="name">GEL - add-money - currencyCode is empty</span>
+            <span class="dur">765ms</span>
+          </summary><pre class="log">📊 add-money 0.13  (ცარიელი currencyCode): HTTP 400 — {"message":"Invalid request format","statusCode":1003,"exceptionGroup":1}
+   ✅ add-money უარყო მოსალოდნელი ერორით</pre></details><details class="test-item" data-status="pass">
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="name">GEL - add-money - currencyCode is gel</span>
+            <span class="dur">749ms</span>
+          </summary><pre class="log">📊 add-money 0.13 gel (currencyCode პატარა ასოებით (gel)): HTTP 400 — {"message":"Invalid request format","statusCode":1003,"exceptionGroup":1}
+   ✅ add-money უარყო მოსალოდნელი ერორით</pre></details></div>
   <script>
     (function () {
       const cards = document.querySelectorAll('.card');
