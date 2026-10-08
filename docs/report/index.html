@@ -36,36 +36,38 @@
 </head>
 <body>
   <h1>🎭 Playwright Test Report</h1>
-  <div class="meta">10/8/2026, 5:09:20 PM</div>
+  <div class="meta">10/8/2026, 5:12:10 PM</div>
   <div class="summary">
     <button type="button" class="card active" data-filter="all">Total: 1</button>
-    <button type="button" class="card pass" data-filter="pass">✅ Passed: 0</button>
-    <button type="button" class="card fail" data-filter="fail">❌ Failed: 1</button>
+    <button type="button" class="card pass" data-filter="pass">✅ Passed: 1</button>
+    <button type="button" class="card fail" data-filter="fail">❌ Failed: 0</button>
     <button type="button" class="card skip" data-filter="skip">⏭️ Skipped: 0</button>
   </div>
-  <div class="file-group"><div class="file">tests/Positive/add-money.spec.ts</div><details class="test-item" data-status="fail" open>
+  <div class="file-group"><div class="file">tests/Positive/add-money.spec.ts</div><details class="test-item" data-status="pass">
           <summary class="test">
             <span class="chev">▶</span>
-            <span class="st" style="color:#f85149">❌ failed</span>
-            <span class="name">Add money — standard გადახდა distributionFlow STANDARD - GEL</span>
-            <span class="dur">9.5s</span>
+            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="name">Add money — Open Banking BOG distributionFlow STANDARD - GEL</span>
+            <span class="dur">54.9s</span>
           </summary><pre class="log">✅ Merchant updated: distributionFlow=STANDARD
-✅ Balance before: 2.12 GEL
-✅ Payment URL: https://tiny.dev.keepz.me/2wfvx2j3
-✅ Restored: merchant distributionFlow=STANDARD</pre><pre class="err">Error: browserType.launchPersistentContext: Opening in existing browser session. This usually means that the profile is already in use by another instance of Chromium.
-Call log:
-[2m  - &lt;launching&gt; /Applications/Google Chrome.app/Contents/MacOS/Google Chrome --disable-field-trial-config --disable-background-networking --disable-background-timer-throttling --disable-backgrounding-occluded-windows --disable-back-forward-cache --disable-breakpad --disable-client-side-phishing-detection --disable-component-extensions-with-background-pages --disable-component-update --no-default-browser-check --disable-default-apps --disable-dev-shm-usage --disable-edgeupdater --disable-extensions --disable-features=AvoidUnnecessaryBeforeUnloadCheckSync,BoundaryEventDispatchTracksNodeRemoval,DestroyProfileOnBrowserClose,DialMediaRouteProvider,GlobalMediaControls,HttpsUpgrades,LensOverlay,MediaRouter,PaintHolding,ThirdPartyStoragePartitioning,Translate,AutoDeElevate,RenderDocument,OptimizationHints,msForceBrowserSignIn,msEdgeUpdateLaunchServicesPreferredVersion --enable-features=CDPScreenshotNewSurface --allow-pre-commit-input --disable-hang-monitor --disable-ipc-flooding-protection --disable-popup-blocking --disable-prompt-on-repost --disable-renderer-backgrounding --force-color-profile=srgb --metrics-recording-only --no-first-run --password-store=basic --use-mock-keychain --no-service-autorun --export-tagged-pdf --disable-search-engine-choice-screen --unsafely-disable-devtools-self-xss-warnings --edge-skip-compat-layer-relaunch --disable-infobars --disable-search-engine-choice-screen --disable-sync --enable-unsafe-swiftshader --no-sandbox --start-maximized --user-data-dir=/Users/keepz/Desktop/test/payments/playwright-card-data --remote-debugging-pipe about:blank[22m
-[2m  - &lt;launched&gt; pid=66454[22m
-[2m  - [pid=66454][out] Opening in existing browser session.[22m
-[2m  - [pid=66454] &lt;gracefully close start&gt;[22m
-[2m  - [pid=66454] &lt;kill&gt;[22m
-[2m  - [pid=66454] &lt;will force kill&gt;[22m
-[2m  - [pid=66454] exception while trying to kill process: Error: kill EPERM[22m
-[2m  - [pid=66454] &lt;process did exit: exitCode=0, signal=null&gt;[22m
-[2m  - [pid=66454] starting temporary directories cleanup[22m
-[2m  - [pid=66454] finished temporary directories cleanup[22m
-[2m  - [pid=66454] &lt;gracefully close end&gt;[22m
-</pre></details></div>
+✅ Balance before: 2.25 GEL
+✅ Payment URL: https://tiny.dev.keepz.me/44ewb8wr
+✅ Payment page opened
+✅ OTP: 6492
+✅ BOG Login completed
+✅ Payment confirmed
+✅ Closed QR terminal modal
+✅ Clicked Skip button
+✅ Clicked Done button
+
+📊 Add money — Open Banking BOG · distributionFlow STANDARD · SENDER commission · GEL
+   საწყისი თანხა (initialAmount): 0.13 GEL
+   საკომისიო: sender 0.01 GEL, receiver 0 GEL
+   იუზერმა გადაიხადა: 0.13 + 0.01 = 0.14 GEL
+   ბალანსი: იყო 2.25 → გახდა 2.38 GEL (დაემატა 0.13, უნდა დამატებოდა 0.13)
+   ტრანზაქცია: operationType=TOP_UP, status=COLLECTED
+   ✅ ბალანსი აისახა, საკომისიო სწორად მოიწერა
+✅ Restored: merchant distributionFlow=STANDARD</pre></details></div>
   <script>
     (function () {
       const cards = document.querySelectorAll('.card');
