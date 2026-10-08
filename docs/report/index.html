@@ -36,7 +36,7 @@
 </head>
 <body>
   <h1>🎭 Playwright Test Report</h1>
-  <div class="meta">10/8/2026, 2:40:31 PM</div>
+  <div class="meta">10/8/2026, 2:55:53 PM</div>
   <div class="summary">
     <button type="button" class="card active" data-filter="all">Total: 1</button>
     <button type="button" class="card pass" data-filter="pass">✅ Passed: 1</button>
@@ -47,11 +47,10 @@
           <summary class="test">
             <span class="chev">▶</span>
             <span class="st" style="color:#3fb950">✅ passed</span>
-            <span class="name">Add money  —  max ლიმიტზე მეტი - ვების გადახდის გვერდზე ვამოწმებთ</span>
-            <span class="dur">5.4s</span>
-          </summary><pre class="log">✅ Payment URL: https://tiny.dev.keepz.me/3mk5r7ek
-✅ Payment page opened
-📊 3001 GEL: ერორი გამოჩნდა ✅, ბარათის ფორმა არ გაიხსნა ✅</pre></details></div>
+            <span class="name">Add money endpoint - თანხა როცა დღიურ ლიმიტზე მეტია</span>
+            <span class="dur">1.5s</span>
+          </summary><pre class="log">📊 add-money 50001 GEL (endpoint-ის დიაპაზონზე (0.01–50000) მეტი): HTTP 409 — {"message":"Amount should be in range: 0.01-50000.0","statusCode":2030,"exceptionGroup":1}
+   ✅ add-money უარყო მოსალოდნელი ერორით</pre></details></div>
   <script>
     (function () {
       const cards = document.querySelectorAll('.card');
