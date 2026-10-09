@@ -36,36 +36,20 @@
 </head>
 <body>
   <h1>🎭 Playwright Test Report</h1>
-  <div class="meta">10/9/2026, 11:03:56 AM</div>
+  <div class="meta">10/9/2026, 12:27:01 PM</div>
   <div class="summary">
     <button type="button" class="card active" data-filter="all">Total: 1</button>
-    <button type="button" class="card pass" data-filter="pass">✅ Passed: 1</button>
-    <button type="button" class="card fail" data-filter="fail">❌ Failed: 0</button>
+    <button type="button" class="card pass" data-filter="pass">✅ Passed: 0</button>
+    <button type="button" class="card fail" data-filter="fail">❌ Failed: 1</button>
     <button type="button" class="card skip" data-filter="skip">⏭️ Skipped: 0</button>
   </div>
-  <div class="file-group"><div class="file">tests/Positive/add-money.spec.ts</div><details class="test-item" data-status="pass">
+  <div class="file-group"><div class="file">tests/Positive/open-banking.spec.ts</div><details class="test-item" data-status="fail" open>
           <summary class="test">
             <span class="chev">▶</span>
-            <span class="st" style="color:#3fb950">✅ passed</span>
-            <span class="name">Add money — standard გადახდა distributionFlow STANDARD - GEL</span>
-            <span class="dur">59.5s</span>
-          </summary><pre class="log">✅ Merchant updated: distributionFlow=STANDARD
-✅ Balance before: 2.03 GEL
-✅ Payment URL: https://tiny.dev.keepz.me/3kdnbpdd
-✅ Payment page opened
-✅ OTP: 485469
-✅ Closed QR terminal modal
-✅ Clicked Skip button
-✅ Clicked Done button
-
-📊 Add money — ბარათი TBC · distributionFlow STANDARD · SENDER commission · GEL
-   საწყისი თანხა (initialAmount): 0.13 GEL
-   საკომისიო: sender 0.01 GEL, receiver 0 GEL
-   იუზერმა გადაიხადა: 0.13 + 0.01 = 0.14 GEL
-   ბალანსი: იყო 2.03 → გახდა 2.16 GEL (დაემატა 0.13, უნდა დამატებოდა 0.13)
-   ტრანზაქცია: operationType=TOP_UP, status=COLLECTED
-   ✅ ბალანსი აისახა, საკომისიო სწორად მოიწერა
-✅ Restored: merchant distributionFlow=STANDARD</pre></details></div>
+            <span class="st" style="color:#f85149">❌ failed</span>
+            <span class="name">TBC Open Banking</span>
+            <span class="dur">71.5s</span>
+          </summary><pre class="log">✅ Order Created - TBC Open Banking</pre><pre class="err">Error: OTP not found</pre></details></div>
   <script>
     (function () {
       const cards = document.querySelectorAll('.card');
