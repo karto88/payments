@@ -36,7 +36,7 @@
 </head>
 <body>
   <h1>🎭 Playwright Test Report</h1>
-  <div class="meta">10/9/2026, 2:34:17 PM</div>
+  <div class="meta">10/9/2026, 2:37:28 PM</div>
   <div class="summary">
     <button type="button" class="card active" data-filter="all">Total: 1</button>
     <button type="button" class="card pass" data-filter="pass">✅ Passed: 0</button>
@@ -48,37 +48,16 @@
             <span class="chev">▶</span>
             <span class="st" style="color:#f85149">❌ failed</span>
             <span class="name">refund ბალანსზე მეტი თანხით over balance - ბალანსი უცვლელი</span>
-            <span class="dur">72.8s</span>
-          </summary><pre class="log">✅ 1. Order Created
-✅ 2. OTP: 817570
+            <span class="dur">68.6s</span>
+          </summary><pre class="log">✅ Merchant updated: distributionFlow=STANDARD
+✅ 1. Order Created
+✅ 2. OTP: 643835
 ✅ Closed QR terminal modal
 ✅ Clicked Skip button
 ✅ Clicked Done button
 ✅ 3. Payment Status Confirmed
 
-🔄 5. Refunding FULL 0.2 ₾ (ბალანსზე 0.39 ₾)
-✅ 6. Refund requested → REFUND_REQUESTED
-
-📊 INTEGRATOR refund დადასტურდა (FULL):
-   tx 110538: status REFUNDED | refundInfo REFUNDED | initialRefundAmount 0.21 ₾
-   ✅ ტრანზაქცია რეალურად REFUNDED
-
-📊 Over balance refund — გადახდილი 0.2 ₾, ბალანსზე იყო 0.39 ₾
-   refund: REFUNDED · 0.21 ₾ (უნდა იყოს REFUNDED · 0.2)
-   ბალანსი: იყო 0.39 → დარჩა 0.18 ₾ (ცვლილება -0.21, უნდა იყოს 0)</pre><pre class="err">ApiAssertionError: 
-❌ API TEST FAILED
-───────────────────────────────────────────
-🔧 ოპერაცია:    Integrator refund — verification
-⚠️  პრობლემა:    ბალანსზე მეტი refund-ის შემდეგ ბალანსი შეიცვალა (-0.21 ₾)
-📥 მიმდინარე შედეგი:
-{
-  "balanceBefore": 0.39,
-  "balanceAfter": 0.18,
-  "changed": -0.21
-}
-✅ მოსალოდნელი შედეგი: ბალანსი უცვლელი — ბალანსზე მეტი refund over balance-ად უნდა ჩაიწეროს
-───────────────────────────────────────────
-</pre></details></div>
+🔄 5. Refunding FULL 0.5 ₾ (ბალანსზე 0.18 ₾)</pre><pre class="err">Error: Refund failed: 400 - {"message":"Insufficient merchant balance for refund.","statusCode":6130,"exceptionGroup":2}</pre></details></div>
   <script>
     (function () {
       const cards = document.querySelectorAll('.card');
