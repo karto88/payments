@@ -36,38 +36,38 @@
 </head>
 <body>
   <h1>🎭 Playwright Test Report</h1>
-  <div class="meta">10/9/2026, 2:46:45 PM</div>
+  <div class="meta">10/9/2026, 4:47:25 PM</div>
   <div class="summary">
     <button type="button" class="card active" data-filter="all">Total: 1</button>
-    <button type="button" class="card pass" data-filter="pass">✅ Passed: 1</button>
-    <button type="button" class="card fail" data-filter="fail">❌ Failed: 0</button>
+    <button type="button" class="card pass" data-filter="pass">✅ Passed: 0</button>
+    <button type="button" class="card fail" data-filter="fail">❌ Failed: 1</button>
     <button type="button" class="card skip" data-filter="skip">⏭️ Skipped: 0</button>
   </div>
-  <div class="file-group"><div class="file">tests/Positive/refund-integrator.spec.ts</div><details class="test-item" data-status="pass">
+  <div class="file-group"><div class="file">tests/Positive/refund-integrator.spec.ts</div><details class="test-item" data-status="fail" open>
           <summary class="test">
             <span class="chev">▶</span>
-            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="st" style="color:#f85149">❌ failed</span>
             <span class="name">refund ბალანსზე მეტი თანხით over balance - ბალანსი უცვლელი</span>
-            <span class="dur">83.0s</span>
+            <span class="dur">67.7s</span>
           </summary><pre class="log">✅ Merchant updated: distributionFlow=STANDARD
 ✅ 1. Order Created
-✅ 2. OTP: 466426
+✅ 2. OTP: 548247
 ✅ Closed QR terminal modal
 ✅ Clicked Skip button
 ✅ Clicked Done button
-✅ 3. Payment Status Confirmed
-
-🔄 5. Refunding FULL 0.2 ₾ (ბალანსზე 0.18 ₾)
-✅ 6. Refund requested → REFUND_REQUESTED
-
-📊 INTEGRATOR refund დადასტურდა (FULL):
-   tx 110542: status REFUNDED | refundInfo REFUNDED | initialRefundAmount 0.21 ₾
-   ✅ ტრანზაქცია რეალურად REFUNDED
-
-📊 Over balance refund — გადახდილი 0.2 ₾, ბალანსზე იყო 0.18 ₾
-   refund: REFUNDED · 0.21 ₾ (უნდა იყოს REFUNDED · 0.2)
-   ბალანსი: იყო 0.18 → დარჩა 0.18 ₾ (ცვლილება 0, უნდა იყოს 0)
-   ✅ refund შესრულდა, ბალანსი უცვლელია</pre></details></div>
+✅ 3. Payment Status Confirmed</pre><pre class="err">ApiAssertionError: 
+❌ API TEST FAILED
+───────────────────────────────────────────
+🔧 ოპერაცია:    Integrator refund — verification
+⚠️  პრობლემა:    ბალანსი (0.26 ₾) refund-ის თანხაზე (0.2 ₾) ნაკლები არ არის — over balance ვერ შემოწმდება
+📥 მიმდინარე შედეგი:
+{
+  "balanceBefore": 0.26,
+  "refundAmount": 0.2
+}
+✅ მოსალოდნელი შედეგი: ბალანსი &lt; 0.2 ₾ (refund ბალანსზე მეტი უნდა იყოს)
+───────────────────────────────────────────
+</pre></details></div>
   <script>
     (function () {
       const cards = document.querySelectorAll('.card');
