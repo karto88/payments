@@ -36,33 +36,35 @@
 </head>
 <body>
   <h1>🎭 Playwright Test Report</h1>
-  <div class="meta">10/12/2026, 10:39:18 AM</div>
+  <div class="meta">10/12/2026, 10:44:29 AM</div>
   <div class="summary">
     <button type="button" class="card active" data-filter="all">Total: 1</button>
     <button type="button" class="card pass" data-filter="pass">✅ Passed: 1</button>
     <button type="button" class="card fail" data-filter="fail">❌ Failed: 0</button>
     <button type="button" class="card skip" data-filter="skip">⏭️ Skipped: 0</button>
   </div>
-  <div class="file-group"><div class="file">tests/Positive/auto-refund.spec.ts</div><details class="test-item" data-status="pass">
+  <div class="file-group"><div class="file">tests/Positive/refund-integrator.spec.ts</div><details class="test-item" data-status="pass">
           <summary class="test">
             <span class="chev">▶</span>
             <span class="st" style="color:#3fb950">✅ passed</span>
-            <span class="name">Auto refund — დაქენსელებულ ორდერზე გადახდა - GEL</span>
-            <span class="dur">94.3s</span>
-          </summary><pre class="log">✅ Balance before: 11.11 GEL
-✅ Order Created
-✅ Payment URL: https://web.appdev.keepz.me/pay?qrType=REQUEST&amp;receiverType=BRANCH&amp;receiverId=3196dbb0-c7b6-4d68-ad59-1232d5fd87b6&amp;integratorId=76880b28-9033-4d48-b21f-37a9a36ec5dd&amp;integratorOrderId=cccd4351-c5e6-437e-9e12-da5e5b11610c&amp;amount=0.17&amp;currency=GEL
-✅ Payment page opened
-✅ Order canceled → CANCELLED
-✅ OTP: 000082
-ℹ️ QR terminal modal not found
-ℹ️ Skip button not present — გამოვტოვე
-ℹ️ Done button not present — გამოვტოვე
+            <span class="name">როცა ინტეგრატორი Partially Refunded აკეთებს — და Merchant საკომისიო არის Sender</span>
+            <span class="dur">66.0s</span>
+          </summary><pre class="log">✅ 1. Order Created
+✅ 2. OTP: 647345
+✅ Closed QR terminal modal
+✅ Clicked Skip button
+✅ Clicked Done button
+✅ 3. Payment Status Confirmed
 
-📊 Auto refund — დაქენსელებულ ორდერზე გადახდა · 0.17 GEL
-   ტრანზაქცია: status=REFUNDED · refundedAmount=0.17 (უნდა იყოს REFUNDED · 0.17)
-   ბალანსი: იყო 11.11 → დარჩა 11.11 GEL (ცვლილება 0, უნდა იყოს 0)
-   ✅ auto refund შესრულდა, ბალანსი უცვლელია</pre></details></div>
+🔄 5. Refunding (PARTIAL 0.05)
+✅ 6. Refund requested → REFUND_REQUESTED
+
+📊 INTEGRATOR refund დადასტურდა (PARTIAL):
+   tx 110609: status PARTIALLY_REFUNDED | refundInfo PARTIALLY_REFUNDED | initialRefundAmount 0.05 ₾
+   ✅ ტრანზაქცია რეალურად PARTIALLY_REFUNDED
+
+📊 ბალანსი: იყო 4.98 ₾ → დარჩა 4.93 ₾ (მოაკლდა 0.05 ₾) | დარეფანდა 0.05 ₾
+   ✅ ბალანსი სწორად შემცირდა — მოაკლდა 0.05 ₾ = დარეფანდილი</pre></details></div>
   <script>
     (function () {
       const cards = document.querySelectorAll('.card');
