@@ -36,77 +36,14 @@
 </head>
 <body>
   <h1>🎭 Playwright Test Report</h1>
-  <div class="meta">10/12/2026, 7:03:39 PM</div>
+  <div class="meta">10/13/2026, 12:15:41 PM</div>
   <div class="summary">
-    <button type="button" class="card active" data-filter="all">Total: 1</button>
-    <button type="button" class="card pass" data-filter="pass">✅ Passed: 1</button>
+    <button type="button" class="card active" data-filter="all">Total: 0</button>
+    <button type="button" class="card pass" data-filter="pass">✅ Passed: 0</button>
     <button type="button" class="card fail" data-filter="fail">❌ Failed: 0</button>
     <button type="button" class="card skip" data-filter="skip">⏭️ Skipped: 0</button>
   </div>
-  <div class="file-group"><div class="file">tests/Positive/refund-reports.spec.ts</div><details class="test-item" data-status="pass">
-          <summary class="test">
-            <span class="chev">▶</span>
-            <span class="st" style="color:#3fb950">✅ passed</span>
-            <span class="name">Refund Reports Module - ინტეგრატორი refund - In Balance - partial და full რეფანდი</span>
-            <span class="dur">162.9s</span>
-          </summary><pre class="log">✅ Merchant updated: distributionFlow=BALANCE
-✅ Merchant: stromae refund report · distributionFlow=BALANCE
-✅ Order Created — 0.2 GEL
-✅ OTP: 988265
-✅ Closed QR terminal modal
-✅ Clicked Skip button
-✅ Clicked Done button
-✅ Payment SUCCESS (tx 110756)
-✅ Order Created — 0.2 GEL
-✅ OTP: 128704
-✅ Closed QR terminal modal
-✅ Clicked Skip button
-✅ Clicked Done button
-✅ Payment SUCCESS (tx 110757)
-✅ Partial refund via INTEGRATOR — 0.1 GEL (tx 110757, PARTIALLY_REFUNDED)
-✅ Order Created — 0.1 GEL
-✅ OTP: 108771
-✅ Closed QR terminal modal
-✅ Clicked Skip button
-✅ Clicked Done button
-✅ Payment SUCCESS (tx 110758)
-✅ Full refund via INTEGRATOR — 0.11 GEL (tx 110758, REFUNDED_BY_INTEGRATOR)
-
-📊 Refund report details — 2026-10-12
-   tx 110757 (partial): refund 4142
-      refundAmount:   მოსალოდნელი 0.1 · მოვიდა 0.1 ✅
-      originalAmount: მოსალოდნელი 0.2 · მოვიდა 0.2 ✅
-      currency:       მოსალოდნელი GEL · მოვიდა GEL ✅
-      refundStatus:   მოსალოდნელი SUCCESS · მოვიდა SUCCESS ✅
-      refundSource:   IN_BALANCE
-   tx 110758 (full): refund 4143
-      refundAmount:   მოსალოდნელი 0.11 · მოვიდა 0.11 ✅
-      originalAmount: მოსალოდნელი 0.1 · მოვიდა 0.1 ✅
-      currency:       მოსალოდნელი GEL · მოვიდა GEL ✅
-      refundStatus:   მოსალოდნელი SUCCESS · მოვიდა SUCCESS ✅
-      refundSource:   IN_BALANCE
-   ✅ details-ში ყველა refund სწორად ჩანს
-
-📊 Refund report summary — 2026-10-12
-   refund 4143: tx 110758 · 0.11 GEL (0.11 GEL) · IN_BALANCE
-   refund 4142: tx 110757 · 0.1 GEL (0.1 GEL) · IN_BALANCE
-   Refund Count: იყო 8 → გახდა 10 (უნდა იყოს 10) ✅
-   GEL: იყო 0.91 + 0.21 = 1.12 · მოვიდა 1.12 ✅
-   Total Amount (GEL): იყო 0.91 + 0.21 = 1.12 · მოვიდა 1.12 ✅
-   ✅ summary სწორად აისახა
-
-📊 Refund report — In Balance / Over Balance (2026-10-12)
-   tx 110757 · 0.1 GEL: source მოსალოდნელი IN_BALANCE · მოვიდა IN_BALANCE ✅
-   tx 110758 · 0.11 GEL: source მოსალოდნელი IN_BALANCE · მოვიდა IN_BALANCE ✅
-   OVER_BALANCE: count იყო 6 + 0 = 6 · მოვიდა 6 ✅
-      GEL: იყო 0.65 + 0 = 0.65 · მოვიდა 0.65 ✅
-   IN_BALANCE: count იყო 2 + 2 = 4 · მოვიდა 4 ✅
-      GEL: იყო 0.26 + 0.21 = 0.47 · მოვიდა 0.47 ✅
-   სულ: count იყო 8 + 2 = 10 · მოვიდა 10 ✅
-      GEL: იყო 0.91 + 0.21 = 1.12 · მოვიდა 1.12 ✅
-   ✅ In Balance / Over Balance სწორად აისახა
-✅ Merchant updated: distributionFlow=STANDARD
-✅ Restored: merchant distributionFlow=STANDARD</pre></details></div>
+  
   <script>
     (function () {
       const cards = document.querySelectorAll('.card');
