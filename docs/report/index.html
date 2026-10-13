@@ -36,163 +36,48 @@
 </head>
 <body>
   <h1>🎭 Playwright Test Report</h1>
-  <div class="meta">10/13/2026, 12:19:57 PM</div>
+  <div class="meta">10/13/2026, 3:29:50 PM</div>
   <div class="summary">
     <button type="button" class="card active" data-filter="all">Total: 1</button>
-    <button type="button" class="card pass" data-filter="pass">✅ Passed: 0</button>
-    <button type="button" class="card fail" data-filter="fail">❌ Failed: 1</button>
+    <button type="button" class="card pass" data-filter="pass">✅ Passed: 1</button>
+    <button type="button" class="card fail" data-filter="fail">❌ Failed: 0</button>
     <button type="button" class="card skip" data-filter="skip">⏭️ Skipped: 0</button>
   </div>
-  <div class="file-group"><div class="file">tests/Positive/refund-reports.spec.ts</div><details class="test-item" data-status="fail" open>
+  <div class="file-group"><div class="file">tests/Positive/refund-reports.spec.ts</div><details class="test-item" data-status="pass">
           <summary class="test">
             <span class="chev">▶</span>
-            <span class="st" style="color:#f85149">❌ failed</span>
-            <span class="name">Refund Reports Module - ადმინი refund - Over Balance - full  partial</span>
-            <span class="dur">957.1s</span>
+            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="name">Refund Reports Module - ინტეგრატორი refund - TBC Open Banking - Over Balance</span>
+            <span class="dur">74.4s</span>
           </summary><pre class="log">✅ Merchant updated: distributionFlow=STANDARD
 ✅ Merchant: stromae refund report · distributionFlow=STANDARD
 ✅ Balance before cash-out: {"GEL":0,"USD":0,"EUR":0}
 ✅ Balance after cash-out: {"GEL":0,"USD":0,"EUR":0}
-✅ Order Created — 0.1 GEL
-✅ OTP: 992693
+✅ Order Created — 0.1 GEL (TBC Open Banking)
+✅ OTP: 0049
+✅ TBC Open Banking payment confirmed
 ✅ Closed QR terminal modal
 ✅ Clicked Skip button
 ✅ Clicked Done button
-✅ Payment SUCCESS (tx 110862)
-✅ Full refund via ADMIN — 0.11 GEL (tx 110862, REFUNDED_BY_KEEPZ)
-✅ Order Created — 0.2 GEL
-✅ OTP: 340808
-✅ Closed QR terminal modal
-✅ Clicked Skip button
-✅ Clicked Done button
-✅ Payment SUCCESS (tx 110863)
-✅ Partial refund via ADMIN — 0.1 GEL (tx 110863, PARTIALLY_REFUNDED)
-✅ Order Created — 0.1 USD
-✅ OTP: 883667
-✅ Closed QR terminal modal
-✅ Clicked Skip button
-✅ Clicked Done button
-✅ Payment SUCCESS (tx 110864)
-✅ Full refund via ADMIN — 0.11 USD (tx 110864, REFUNDED_BY_KEEPZ)
-✅ Order Created — 0.2 USD
-✅ OTP: 516850
-✅ Closed QR terminal modal
-✅ Clicked Skip button
-✅ Clicked Done button
-✅ Payment SUCCESS (tx 110865)
-✅ Partial refund via ADMIN — 0.1 USD (tx 110865, PARTIALLY_REFUNDED)
-✅ Order Created — 0.1 EUR
-✅ OTP: 296894
-✅ Closed QR terminal modal
-✅ Clicked Skip button
-✅ Clicked Done button
-✅ Payment SUCCESS (tx 110866)
-✅ Full refund via ADMIN — 0.11 EUR (tx 110866, REFUNDED_BY_KEEPZ)
-✅ Order Created — 0.2 EUR
-✅ OTP: 187555
-✅ Closed QR terminal modal
-✅ Clicked Skip button
-✅ Clicked Done button
-✅ Payment SUCCESS (tx 110867)
-✅ Partial refund via ADMIN — 0.1 EUR (tx 110867, PARTIALLY_REFUNDED)
-⏳ report-ში ჯერ არ ჩანს: tx 110866 — ველოდებით დისტრიბუციას (~10 წთ-მდე)
+✅ Payment SUCCESS (tx 110900)
+⏳ OB refund Initiated — ველოდებით Success-ს (~4 წთ-მდე)
+✅ Full refund via INTEGRATOR — 0.11 GEL (tx 110900, REFUNDED_BY_INTEGRATOR)
+
+📊 Refund Reports — 2026-10-13
+   Refund Count:       იყო 20 → გახდა 21 — გაკეთდა 1 refund (უნდა 1) ✅
+   Total Amount (GEL): იყო 4.53 → გახდა 4.64 — დაემატა 0.11 (უნდა 0.11) ✅
+   Currency Breakdown: GEL იყო 1.05 → გახდა 1.16 — დაემატა 0.11 (უნდა 0.11) ✅
+   Currency Breakdown: EUR იყო 0.63 → გახდა 0.63 — დაემატა 0 (უნდა 0) ✅
+   Currency Breakdown: USD იყო 0.63 → გახდა 0.63 — დაემატა 0 (უნდა 0) ✅
+
+📊 Refund Report Details — 2026-10-13
+   tx 110900 → OVER_BALANCE (უნდა OVER_BALANCE) ✅
+   In Balance  : იყო 6 → გახდა 6 — დაემატა 0 (უნდა 0) ✅
+   Over Balance: იყო 14 → გახდა 15 — დაემატა 1 (უნდა 1) ✅
+✅ Balance before cash-out: {"GEL":0,"USD":0,"EUR":0}
+✅ Balance after cash-out: {"GEL":0,"USD":0,"EUR":0}
 ✅ Merchant updated: distributionFlow=STANDARD
-✅ Restored: merchant distributionFlow=STANDARD</pre><pre class="err">ApiAssertionError: 
-❌ API TEST FAILED
-───────────────────────────────────────────
-🔧 ოპერაცია:    POST /refund-reports/details
-⚠️  პრობლემა:    details-ში ჩვენი refund-ებიდან მოიძებნა 5/6
-📥 მიმდინარე შედეგი:
-[
-  {
-    "refundEventId": 4156,
-    "refundDate": "2026-10-13T12:25:23",
-    "refundAmount": 0.1,
-    "refundCurrency": "EUR",
-    "refundAmountGel": 0.29,
-    "originalTransactionId": 110867,
-    "originalTransactionDate": "2026-10-13T12:24:41",
-    "originalAmount": 0.2,
-    "originalCurrency": "EUR",
-    "distributionSuccessDate": "2026-10-13T12:24:57",
-    "distributionFlow": "STANDARD",
-    "branchName": "stromae refund report",
-    "refundStatus": "SUCCESS",
-    "refundInitiator": "12322",
-    "refundSource": "OVER_BALANCE"
-  },
-  {
-    "refundEventId": 4154,
-    "refundDate": "2026-10-13T12:23:36",
-    "refundAmount": 0.1,
-    "refundCurrency": "USD",
-    "refundAmountGel": 0.26,
-    "originalTransactionId": 110865,
-    "originalTransactionDate": "2026-10-13T12:22:52",
-    "originalAmount": 0.2,
-    "originalCurrency": "USD",
-    "distributionSuccessDate": "2026-10-13T12:23:05",
-    "distributionFlow": "STANDARD",
-    "branchName": "stromae refund report",
-    "refundStatus": "SUCCESS",
-    "refundInitiator": "12322",
-    "refundSource": "OVER_BALANCE"
-  },
-  {
-    "refundEventId": 4153,
-    "refundDate": "2026-10-13T12:22:42",
-    "refundAmount": 0.11,
-    "refundCurrency": "USD",
-    "refundAmountGel": 0.29,
-    "originalTransactionId": 110864,
-    "originalTransactionDate": "2026-10-13T12:22:00",
-    "originalAmount": 0.1,
-    "originalCurrency": "USD",
-    "distributionSuccessDate": "2026-10-13T12:23:11",
-    "distributionFlow": "STANDARD",
-    "branchName": "stromae refund report",
-    "refundStatus": "SUCCESS",
-    "refundInitiator": "12322",
-    "refundSource": "OVER_BALANCE"
-  },
-  {
-    "refundEventId": 4152,
-    "refundDate": "2026-10-13T12:21:48",
-    "refundAmount": 0.1,
-    "refundCurrency": "GEL",
-    "refundAmountGel": 0.1,
-    "originalTransactionId": 110863,
-    "originalTransactionDate": "2026-10-13T12:21:05",
-    "originalAmount": 0.2,
-    "originalCurrency": "GEL",
-    "distributionSuccessDate": "2026-10-13T12:21:33",
-    "distributionFlow": "STANDARD",
-    "branchName": "stromae refund report",
-    "refundStatus": "SUCCESS",
-    "refundInitiator": "12322",
-    "refundSource": "OVER_BALANCE"
-  },
-  {
-    "refundEventId": 4151,
-    "refundDate": "2026-10-13T12:20:53",
-    "refundAmount": 0.11,
-    "refundCurrency": "GEL",
-    "refundAmountGel": 0.11,
-    "originalTransactionId": 110862,
-    "originalTransactionDate": "2026-10-13T12:20:10",
-    "originalAmount": 0.1,
-    "originalCurrency": "GEL",
-    "distributionSuccessDate": "2026-10-13T12:20:38",
-    "distributionFlow": "STANDARD",
-    "branchName": "stromae refund report",
-    "refundStatus": "SUCCESS",
-    "refundInitiator": "12322",
-    "refundSource": "OVER_BALANCE"
-  }
-]
-✅ მოსალოდნელი შედეგი: ყველა refund details-ში: tx 110862, 110863, 110864, 110865, 110866, 110867
-───────────────────────────────────────────
-</pre></details></div>
+✅ Restored: merchant distributionFlow=STANDARD</pre></details></div>
   <script>
     (function () {
       const cards = document.querySelectorAll('.card');
