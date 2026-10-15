@@ -22,6 +22,7 @@ class JiraReporter {
   onTestEnd(test, result) {
     if (!this.enabled) return;
     if (result.status !== 'failed' && result.status !== 'timedOut') return;
+    if (test.expectedStatus === 'failed') return; // test.fail() — ცნობილი ბაგი, ახალი ticket არ სჭირდება
 
     const err = (result.errors && result.errors[0]) || result.error || {};
     const message = err.message || '';

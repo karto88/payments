@@ -4,7 +4,8 @@ import { Page, BrowserContext } from '@playwright/test';
 export async function fillOTPAndVerify(page: Page, otp: string) {
   await page.waitForSelector('input[name="code"]', { timeout: 10000 });
   await page.fill('input[name="code"]', otp);
-  await page.click('[name="verify"]');
+  // გვერდზე 2 [name="verify"]-ია — პირველი დამალულია (aria-hidden, ეკრანის გარეთ), ვაჭერთ ხილულს
+  await page.click('[name="verify"]:not([aria-hidden="true"])');
 }
 
 // TBC OTP (#Verification)

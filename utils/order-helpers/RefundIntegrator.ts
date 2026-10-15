@@ -10,6 +10,7 @@ import { CARDS } from '../../config/cards.config';
 import { API_CONFIG } from '../../config/api.config';
 import { INTEGRATORS } from '../../config/integrators.config';
 import { assertField, assertCondition } from '../assertions';
+import { AddMoneyHelper } from './AddMoneyHelper';
 
 const OP = 'Integrator refund — verification';
 
@@ -65,7 +66,7 @@ export class RefundIntegrator {
     const page = await context.newPage();
     await page.goto(paymentUrl);
 
-    await page.locator('button', { hasText: 'საბანკო ბარათი' }).click();
+    await page.locator('button', { hasText: /საბანკო ბარათი|Bank card/ }).click();
     await page.waitForTimeout(2000);
     await page.locator('#cardNumber').fill(CARDS.TBC.number);
     await page.locator('#cardExpirationDateCustom').fill(CARDS.TBC.expiry);
@@ -118,6 +119,7 @@ export class RefundIntegrator {
       { balanceBefore, balanceAfter, deducted, refunded }
     );
     console.log(`   ✅ ბალანსი სწორად შემცირდა — მოაკლდა ${deducted} ₾ = დარეფანდილი`);
+    return tx; // admin ტრანზაქცია (id = refund report-ის originalTransactionId)
   }
 
   /**
@@ -150,7 +152,7 @@ export class RefundIntegrator {
     });
     const page = await context.newPage();
     await page.goto(paymentUrl);
-    await page.locator('button', { hasText: 'საბანკო ბარათი' }).click();
+    await page.locator('button', { hasText: /საბანკო ბარათი|Bank card/ }).click();
     await page.waitForTimeout(2000);
     await page.locator('#cardNumber').fill(CARDS.TBC.number);
     await page.locator('#cardExpirationDateCustom').fill(CARDS.TBC.expiry);
@@ -209,6 +211,95 @@ export class RefundIntegrator {
       { balanceAfterPartial, balanceAfterFull, changed }
     );
     console.log(`✅ ბალანსი ისევ ${balanceAfterPartial} ₾ — failed refund-ს ბალანსი არ შეუცვლია`);
+  }
+
+  /**
+   * Over balance — ინტეგრატორი არეფანდებს merchant-ის ბალანსზე მეტ თანხას (მაგ. ბალანსი 0.19, refund 0.2).
+   * refund-ი დაშვებულია და უნდა შესრულდეს (REFUNDED), მაგრამ ბალანსი უცვლელი რჩება —
+   * ნაკლული თანხა ბალანსის დეტალებში over balance-ად ჩაიწერება.
+   */
+  async refundOverBalance(config: IntegratorRefundConfig) {
+    // STANDARD flow — გადახდა IBAN-ზე წავიდეს, ბალანსზე არ ჩაჯდეს (BALANCE-ზე refund ბალანსიდან ჩვეულებრივად მოიჭრება)
+    await new AddMoneyHelper(this.request).updateMerchant({ distributionFlow: 'STANDARD' });
+    console.log('✅ Merchant updated: distributionFlow=STANDARD');
+
+    const authPage = new AuthPage(this.request);
+    const paymentPage = new PaymentPage(this.request, null as any);
+    const gmail = new GmailHelper(process.env.GMAIL_USER!, process.env.GMAIL_APP_PASSWORD!);
+    await gmail.deleteOldOTPEmails();
+
+    const accessToken = await authPage.authenticate();
+
+    // 1. ორდერი
+    const { paymentUrl, integratorOrderId } = await paymentPage.createPaymentOrder(accessToken, {
+      amount: config.amount,
+      receiverId: config.receiverId,
+      receiverType: config.receiverType,
+      integratorId: config.integratorId,
+    });
+    this.integratorOrderId = integratorOrderId;
+    console.log('✅ 1. Order Created');
+
+    // 2. გადახდა (TBC)
+    const context = await chromium.launchPersistentContext('./playwright-card-data', {
+      headless: false,
+      channel: 'chrome',
+    });
+    const page = await context.newPage();
+    await page.goto(paymentUrl);
+    await page.locator('button', { hasText: /საბანკო ბარათი|Bank card/ }).click();
+    await page.waitForTimeout(2000);
+    await page.locator('#cardNumber').fill(CARDS.TBC.number);
+    await page.locator('#cardExpirationDateCustom').fill(CARDS.TBC.expiry);
+    await page.locator('#cvc2').fill(CARDS.TBC.cvv);
+    await page.locator('#payment-submit').click();
+    await page.waitForLoadState('networkidle');
+    const otp = await gmail.getLatestOTP(30, undefined, 'TBC');
+    console.log(`✅ 2. OTP: ${otp}`);
+    await fillOTPAndVerifyTBC(page, otp);
+    await page.waitForLoadState('networkidle');
+    await closePaymentSuccess(page, context);
+
+    // 3. გადახდის status SUCCESS
+    await new TransactionChecker(this.request).checkTransactionStatus(config.ibanToCheck);
+    console.log('✅ 3. Payment Status Confirmed');
+
+    // 4. ბალანსი refund-ის წინ
+    const deviceToken = await new AuthDevicePage(this.request).authenticate(config.balancePhone || '591078180');
+    const balanceBefore = await this.getStableBalance(deviceToken);
+    console.log(`✅ 4. Balance before refund: ${balanceBefore} ₾ (refund ${config.amount} ₾${balanceBefore < config.amount ? ' — ბალანსზე მეტი' : ' — ⚠️ ბალანსზე მეტი არ არის'})`);
+
+    // 5. FULL refund — ბალანსზე მეტი თანხა, მაგრამ ინტეგრატორს შეუძლია
+    console.log(`\n🔄 5. Refunding FULL ${config.amount} ₾ (ბალანსზე ${balanceBefore} ₾)`);
+    const refundResult = await this.refund(accessToken, config, true);
+    assertCondition(
+      OP,
+      refundResult?.status === 'REFUND_REQUESTED' && !refundResult?.errorMessage,
+      `refund ვერ მოთხოვნდა (status: ${refundResult?.status}, error: ${refundResult?.errorMessage})`,
+      'status === REFUND_REQUESTED, errorMessage === null',
+      refundResult
+    );
+    console.log(`✅ 6. Refund requested → ${refundResult.status}`);
+
+    // 6. refund შესრულდა — ტრანზაქცია REFUNDED
+    const tx = await this.verifyRefunded(config, true);
+
+    // 7. ბალანსი უცვლელი (ნაკლული თანხა over balance-ში მიდის)
+    const balanceAfter = await this.getStableBalance(deviceToken);
+    const changed = Math.round((balanceAfter - balanceBefore) * 100) / 100;
+
+    console.log(`\n📊 Over balance refund — გადახდილი ${config.amount} ₾, ბალანსზე იყო ${balanceBefore} ₾`);
+    console.log(`   refund: ${tx?.status ?? '-'} · ${tx?.initialRefundAmount ?? '-'} ₾ (უნდა იყოს REFUNDED · ${config.amount})`);
+    console.log(`   ბალანსი: იყო ${balanceBefore} → დარჩა ${balanceAfter} ₾ (ცვლილება ${changed}, უნდა იყოს 0)`);
+    assertCondition(
+      OP,
+      Math.abs(changed) < 0.001,
+      `ბალანსზე მეტი refund-ის შემდეგ ბალანსი შეიცვალა (${changed} ₾)`,
+      'ბალანსი უცვლელი — ბალანსზე მეტი refund over balance-ად უნდა ჩაიწეროს',
+      { balanceBefore, balanceAfter, changed }
+    );
+    console.log('   ✅ refund შესრულდა, ბალანსი უცვლელია');
+    return tx; // admin ტრანზაქცია (id = refund report-ის originalTransactionId)
   }
 
   /** refund: encrypt → POST /order/refund → decrypt (integrator private key-ით) */
@@ -270,7 +361,8 @@ export class RefundIntegrator {
         'https://newadmin.dev.keepz.me/api/transaction/filter',
         { headers: { 'Authorization': `Bearer ${adminToken}`, 'Content-Type': 'application/json' }, data: {} }
       );
-      tx = (await resp.json()).value.content.find((t: any) => t.iban === config.ibanToCheck);
+      // IBAN რამდენიმე merchant-ს აქვს საერთო — თანხითაც ვამოწმებთ, სხვისი ტრანზაქცია რომ არ აგვერიოს
+      tx = (await resp.json()).value.content.find((t: any) => t.iban === config.ibanToCheck && t.initialAmount === config.amount);
       if (tx && tx.refundInfo === expectedRefundInfo) break;
     }
 

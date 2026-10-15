@@ -99,6 +99,37 @@ export class GmailHelper {
     throw new Error('OTP not found');
   }
 
+  /**
+   * მეილი სათაურით (subjectIncludes), რომელიც `since`-ის შემდეგ მოვიდა — აბრუნებს მის დანართს (pdf/xlsx და ა.შ.).
+   * ვაპოლინგებთ timeoutSeconds-მდე. აბრუნებს { subject, from, date, filename, content }.
+   */
+  async getLatestAttachment(subjectIncludes: string, since: Date, timeoutSeconds = 60) {
+    const startTime = Date.now();
+    while (Date.now() - startTime < timeoutSeconds * 1000) {
+      try {
+        const connection = await imaps.connect(this.config);
+        await connection.openBox('INBOX');
+        // IMAP SINCE მხოლოდ თარიღს ადარებს — დღის დასაწყისიდან ვიღებთ და დროს ქვემოთ ვფილტრავთ
+        const messages = await connection.search([['SINCE', since]], { bodies: [''], markSeen: false });
+        for (let i = messages.length - 1; i >= 0; i--) {
+          const all = messages[i].parts.find((part: any) => part.which === '');
+          if (!all) continue;
+          const parsed = await simpleParser(all.body);
+          const attachment = parsed.attachments?.[0];
+          if ((parsed.subject || '').includes(subjectIncludes) && parsed.date && parsed.date >= since && attachment) {
+            await connection.end();
+            return { subject: parsed.subject || '', from: parsed.from?.text || '', date: parsed.date, filename: attachment.filename || '', content: attachment.content as Buffer };
+          }
+        }
+        await connection.end();
+      } catch (error: any) {
+        if (error.message?.includes('Invalid credentials')) throw new Error('Gmail auth failed');
+      }
+      await new Promise((resolve) => setTimeout(resolve, 3000));
+    }
+    throw new Error(`Email "${subjectIncludes}" not found`);
+  }
+
   async deleteOldOTPEmails(): Promise<number> {
     try {
       const connection = await imaps.connect(this.config);

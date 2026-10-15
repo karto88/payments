@@ -195,6 +195,35 @@ export class PaymentPage {
   }
 
   /**
+   * Cancel order (encrypt body → DELETE order/cancel → decrypt response)
+   * იგივე encrypt→request→decrypt პატერნი რაც getOrderStatus, ოღონდ DELETE და body-ში returnCheckDetails არ არის.
+   * დაშვებულია მხოლოდ INITIAL / PROCESSING სტატუსზე. წარმატებისას: { integratorOrderId, status: CANCELED }
+   */
+  async cancelOrder(accessToken: string, integratorId: string, integratorOrderId: string) {
+    const encrypted = await this.encryptOrderData(accessToken, { integratorId, integratorOrderId });
+
+    const response = await this.request.delete(
+      `${this.baseUrl}/ecommerce-service/api/integrator/order/cancel`,
+      {
+        params: {
+          identifier: integratorId,
+          encryptedData: encrypted.encryptedData,
+          encryptedKeys: encrypted.encryptedKeys,
+          aes: true,
+        },
+      }
+    );
+
+    if (!response.ok()) {
+      const errorBody = await response.text();
+      throw new Error(`Cancel order failed: ${response.status()} - ${errorBody}`);
+    }
+
+    const cancelResult = await response.json();
+    return await this.decryptData(accessToken, cancelResult.encryptedData, cancelResult.encryptedKeys);
+  }
+
+  /**
    * Get saved card token (encrypt body → GET card/order-id → decrypt response)
    * იგივე encrypt→GET→decrypt პატერნი რაც getOrderStatus,
    * ოღონდ card/order-id endpoint-ზე და encrypt body-ში returnCheckDetails არ არის.

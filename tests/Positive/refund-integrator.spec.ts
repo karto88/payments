@@ -79,3 +79,21 @@ test.describe('Refund — INTEGRATOR (Partial → Full — ბალანსი
     });
   });
 });
+
+// Over balance — ინტეგრატორი არეფანდებს merchant-ის ბალანსზე მეტ თანხას.
+// merchant 591078180 (receiver db1bb73d, SENDER, STANDARD flow — გადახდა IBAN-ზე მიდის, ბალანსზე არა).
+// ბალანსი 0.5-ზე ნაკლები უნდა იყოს. refund შესრულდება (REFUNDED), ბალანსი უცვლელი,
+// ნაკლული თანხა ბალანსის დეტალებში over balance-ად ჩაიწერება.
+test.describe('Refund — INTEGRATOR (591078180)', () => {
+  test('refund ბალანსზე მეტი თანხით over balance - ბალანსი უცვლელი', async ({ request }) => {
+    test.setTimeout(240000);
+    await new RefundIntegrator(request).refundOverBalance({
+      amount: 0.5,
+      receiverId: 'db1bb73d-30cf-4718-ad2b-bc25cd13b09c',
+      receiverType: 'BRANCH',
+      integratorId: INTEGRATOR_ID,
+      ibanToCheck: IBAN, // refundAmount omit → FULL
+      balancePhone: '591078180',
+    });
+  });
+});

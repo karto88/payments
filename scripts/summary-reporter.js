@@ -24,12 +24,14 @@ class SummaryReporter {
       .map((c) => (typeof c === 'string' ? c : c.toString('utf8')))
       .join('')
       .trim();
+    // test.fail() — მოსალოდნელი ჩავარდნა (ცნობილი ბაგი) passed-ად ითვლება, როგორც Playwright-ში
+    const expectedFail = test.expectedStatus === 'failed' && result.status === 'failed';
     this.results.push({
       title: test.title,
       file: path.relative(process.cwd(), test.location.file).replace(/\\/g, '/'),
-      status: result.status, // passed | failed | timedOut | skipped
+      status: expectedFail ? 'passed' : result.status, // passed | failed | timedOut | skipped
       durationMs: result.duration,
-      error: err ? err.message || String(err) : null, // ჩავარდნის მიზეზი
+      error: err && !expectedFail ? err.message || String(err) : null, // ჩავარდნის მიზეზი
       stdout, // ტესტის ლოგები
     });
   }
