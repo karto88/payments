@@ -36,7 +36,7 @@
 </head>
 <body>
   <h1>🎭 Playwright Test Report</h1>
-  <div class="meta">10/13/2026, 3:29:50 PM</div>
+  <div class="meta">10/19/2026, 11:20:25 AM</div>
   <div class="summary">
     <button type="button" class="card active" data-filter="all">Total: 1</button>
     <button type="button" class="card pass" data-filter="pass">✅ Passed: 1</button>
@@ -47,33 +47,30 @@
           <summary class="test">
             <span class="chev">▶</span>
             <span class="st" style="color:#3fb950">✅ passed</span>
-            <span class="name">Refund Reports Module - ინტეგრატორი refund - TBC Open Banking - Over Balance</span>
-            <span class="dur">74.4s</span>
-          </summary><pre class="log">✅ Merchant updated: distributionFlow=STANDARD
-✅ Merchant: stromae refund report · distributionFlow=STANDARD
-✅ Balance before cash-out: {"GEL":0,"USD":0,"EUR":0}
-✅ Balance after cash-out: {"GEL":0,"USD":0,"EUR":0}
-✅ Order Created — 0.1 GEL (TBC Open Banking)
-✅ OTP: 0049
-✅ TBC Open Banking payment confirmed
-✅ Closed QR terminal modal
-✅ Clicked Skip button
-✅ Clicked Done button
-✅ Payment SUCCESS (tx 110900)
-⏳ OB refund Initiated — ველოდებით Success-ს (~4 წთ-მდე)
-✅ Full refund via INTEGRATOR — 0.11 GEL (tx 110900, REFUNDED_BY_INTEGRATOR)
+            <span class="name">Refund Reports Module - მეილზე მოსული Excel</span>
+            <span class="dur">8.5s</span>
+          </summary><pre class="log">✅ Report sent (id 22) → keepz07011@mailinator.com,nika@keepz.me,d.kartozia@keepz.me
+✅ Email received: "Refund Report — stromae refund report" from noreply@keepz.me · refund-report_stromae_refund_report_2026-10.xlsx
 
-📊 Refund Reports — 2026-10-13
-   Refund Count:       იყო 20 → გახდა 21 — გაკეთდა 1 refund (უნდა 1) ✅
-   Total Amount (GEL): იყო 4.53 → გახდა 4.64 — დაემატა 0.11 (უნდა 0.11) ✅
-   Currency Breakdown: GEL იყო 1.05 → გახდა 1.16 — დაემატა 0.11 (უნდა 0.11) ✅
-   Currency Breakdown: EUR იყო 0.63 → გახდა 0.63 — დაემატა 0 (უნდა 0) ✅
-   Currency Breakdown: USD იყო 0.63 → გახდა 0.63 — დაემატა 0 (უნდა 0) ✅
-
-📊 Refund Report Details — 2026-10-13
-   tx 110900 → OVER_BALANCE (უნდა OVER_BALANCE) ✅
-   In Balance  : იყო 6 → გახდა 6 — დაემატა 0 (უნდა 0) ✅
-   Over Balance: იყო 14 → გახდა 15 — დაემატა 1 (უნდა 1) ✅
+📊 Send report — 2026-10-01 → 2026-10-19 · მიმდინარე (მეილი) vs მოსალოდნელი (ადმინკა)
+   სტრიქონები: მიმდინარე 42 · მოსალოდნელი 42 ✅
+   ყველა 42 სტრიქონი ველ-ველ ემთხვევა ✅
+   Over Balance refunds count:      მიმდინარე 32 · მოსალოდნელი 32 ✅
+   Over Balance refunds in EUR:     მიმდინარე 0.63 · მოსალოდნელი 0.63 ✅
+   Over Balance refunds in USD:     მიმდინარე 0.63 · მოსალოდნელი 0.63 ✅
+   Over Balance refunds in GEL:     მიმდინარე 2.43 · მოსალოდნელი 2.43 ✅
+   In Balance refunds count:        მიმდინარე 10 · მოსალოდნელი 10 ✅
+   In Balance refunds in EUR:       მიმდინარე 0.21 · მოსალოდნელი 0.21 ✅
+   In Balance refunds in USD:       მიმდინარე 0.21 · მოსალოდნელი 0.21 ✅
+   In Balance refunds in GEL:       მიმდინარე 0.68 · მოსალოდნელი 0.68 ✅
+   Total refunds:                   მიმდინარე 42 · მოსალოდნელი 42 ✅
+   Total in EUR:                    მიმდინარე 0.84 · მოსალოდნელი 0.84 ✅
+   Total in USD:                    მიმდინარე 0.84 · მოსალოდნელი 0.84 ✅
+   Total in GEL:                    მიმდინარე 3.11 · მოსალოდნელი 3.11 ✅
+   Grand total (GEL equivalent):    მიმდინარე 7.75 · მოსალოდნელი 7.75 ✅
+   Refund Count:  მიმდინარე 42 (send response 42) · მოსალოდნელი 42 (summary) ✅
+   Total (GEL):   მიმდინარე 7.75 · მოსალოდნელი 7.75 (summary) ✅
+   ✅ მეილზე მოსული Excel = ადმინკის მონაცემები
 ✅ Balance before cash-out: {"GEL":0,"USD":0,"EUR":0}
 ✅ Balance after cash-out: {"GEL":0,"USD":0,"EUR":0}
 ✅ Merchant updated: distributionFlow=STANDARD
