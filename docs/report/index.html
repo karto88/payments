@@ -36,46 +36,33 @@
 </head>
 <body>
   <h1>🎭 Playwright Test Report</h1>
-  <div class="meta">10/20/2026, 7:34:55 PM</div>
+  <div class="meta">10/21/2026, 8:54:01 PM</div>
   <div class="summary">
-    <button type="button" class="card active" data-filter="all">Total: 1</button>
+    <button type="button" class="card active" data-filter="all">Total: 2</button>
     <button type="button" class="card pass" data-filter="pass">✅ Passed: 1</button>
-    <button type="button" class="card fail" data-filter="fail">❌ Failed: 0</button>
+    <button type="button" class="card fail" data-filter="fail">❌ Failed: 1</button>
     <button type="button" class="card skip" data-filter="skip">⏭️ Skipped: 0</button>
   </div>
-  <div class="file-group"><div class="file">tests/Positive/refund-reports.spec.ts</div><details class="test-item" data-status="pass">
+  <div class="file-group"><div class="file">tests/Positive/Card token-payment.spec.ts</div><details class="test-item" data-status="fail" open>
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#f85149">❌ failed</span>
+            <span class="name">დამახსოვრებული ბარათით გადახდა როცა — amount არის 0</span>
+            <span class="dur">56.2s</span>
+          </summary><pre class="log">✅ Order Created (saveCard + CREDO)
+✅ Payment page opened
+✅ OTP: 805416
+
+❌ Error 6026: amount must be in range: 0.01-12000.0</pre><pre class="err">Error: Order failed: amount must be in range: 0.01-12000.0</pre></details><details class="test-item" data-status="pass">
           <summary class="test">
             <span class="chev">▶</span>
             <span class="st" style="color:#3fb950">✅ passed</span>
-            <span class="name">Refund Reports Module - ინტეგრატორი refund - Over Balance - full და partial</span>
-            <span class="dur">348.4s</span>
-          </summary><pre class="log">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-▶ ინტეგრატორი refund - Over Balance - full და partial
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-✅ Full refund via INTEGRATOR — 0.11 GEL (tx 112024, REFUNDED_BY_INTEGRATOR)
-✅ Partial refund via INTEGRATOR — 0.1 GEL (tx 112025, PARTIALLY_REFUNDED)
-✅ Full refund via INTEGRATOR — 0.11 USD (tx 112026, REFUNDED_BY_INTEGRATOR)
-✅ Partial refund via INTEGRATOR — 0.1 USD (tx 112027, PARTIALLY_REFUNDED)
-✅ Full refund via INTEGRATOR — 0.11 EUR (tx 112028, REFUNDED_BY_INTEGRATOR)
-✅ Partial refund via INTEGRATOR — 0.1 EUR (tx 112029, PARTIALLY_REFUNDED)
-
-📊 Refund Reports — 2026-10-20
-   Refund Count:       იყო 23 → გახდა 29 — გაკეთდა 6 refund (უნდა 6) ✅
-   Total Amount (GEL): იყო 4.16 → გახდა 5.53 — დაემატა 1.37 (უნდა 1.37) ✅
-   Currency Breakdown: GEL იყო 1.58 → გახდა 1.79 — დაემატა 0.21 (უნდა 0.21) ✅
-   Currency Breakdown: EUR იყო 0.32 → გახდა 0.53 — დაემატა 0.21 (უნდა 0.21) ✅
-   Currency Breakdown: USD იყო 0.63 → გახდა 0.84 — დაემატა 0.21 (უნდა 0.21) ✅
-
-📊 Refund Report Details — 2026-10-20
-   tx 112024 → OVER_BALANCE (უნდა OVER_BALANCE) ✅
-   tx 112025 → OVER_BALANCE (უნდა OVER_BALANCE) ✅
-   tx 112026 → OVER_BALANCE (უნდა OVER_BALANCE) ✅
-   tx 112027 → OVER_BALANCE (უნდა OVER_BALANCE) ✅
-   tx 112028 → OVER_BALANCE (უნდა OVER_BALANCE) ✅
-   tx 112029 → OVER_BALANCE (უნდა OVER_BALANCE) ✅
-   In Balance  : იყო 6 → გახდა 6 — დაემატა 0 (უნდა 0) ✅
-   Over Balance: იყო 17 → გახდა 23 — დაემატა 6 (უნდა 6) ✅
-━━━ ✅ ინტეგრატორი refund - Over Balance - full და partial — გავიდა (5.8 წთ)</pre></details></div>
+            <span class="name">დამახსოვრებული ბარათით გადახდა როცა — amount არის 0.1</span>
+            <span class="dur">54.2s</span>
+          </summary><pre class="log">✅ Order Created (saveCard + CREDO)
+✅ Payment page opened
+✅ OTP: 264258
+✅ Test PASSED: token payment შესრულდა (amount 0.1)</pre></details></div>
   <script>
     (function () {
       const cards = document.querySelectorAll('.card');
