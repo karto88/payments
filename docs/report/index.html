@@ -36,44 +36,14 @@
 </head>
 <body>
   <h1>🎭 Playwright Test Report</h1>
-  <div class="meta">10/28/2026, 12:33:04 PM</div>
+  <div class="meta">10/28/2026, 6:44:38 PM</div>
   <div class="summary">
-    <button type="button" class="card active" data-filter="all">Total: 1</button>
+    <button type="button" class="card active" data-filter="all">Total: 0</button>
     <button type="button" class="card pass" data-filter="pass">✅ Passed: 0</button>
-    <button type="button" class="card fail" data-filter="fail">❌ Failed: 1</button>
+    <button type="button" class="card fail" data-filter="fail">❌ Failed: 0</button>
     <button type="button" class="card skip" data-filter="skip">⏭️ Skipped: 0</button>
   </div>
-  <div class="file-group"><div class="file">tests/Prod/order-list-prod.spec.ts</div><details class="test-item" data-status="fail" open>
-          <summary class="test">
-            <span class="chev">▶</span>
-            <span class="st" style="color:#f85149">❌ failed</span>
-            <span class="name">PROD - Order list — ერთი წელი</span>
-            <span class="dur">2.5s</span>
-          </summary><pre class="log">📋 Order list (PROD) — 2025-10-28 00:00:00 → 2026-10-28 23:59:59
-   ორდერები: 153 · sumAmount 21.03 · refundedAmount 13.19
-   SUCCESS 137 · refunded 13 · partially refunded 3
-📋 Order list (PROD) — 2025-10-28 00:00:00 → 2026-10-28 23:59:59 · branch aad4c8a0-2a23-461a-9e43-c372d5ce44a4
-   ორდერები: 0 · sumAmount 0 · refundedAmount 0
-   SUCCESS 0 · refunded 0 · partially refunded 0
-   ფილიალი aad4c8a0-2a23-461a-9e43-c372d5ce44a4: სრულ სიაში 85 · branchId ფილტრით 0 ❌</pre><pre class="err">ApiAssertionError: 
-❌ API TEST FAILED
-───────────────────────────────────────────
-🔧 ოპერაცია:    GET /integrator/order/list (PROD, branchId)
-⚠️  პრობლემა:    branchId ფილტრით მოვიდა 0 ორდერი, სრულ სიაში ამ ფილიალის 85 ორდერია
-📥 მიმდინარე შედეგი:
-{
-  "branchId": "aad4c8a0-2a23-461a-9e43-c372d5ce44a4",
-  "filtered": 0,
-  "inFullList": 85,
-  "example": [
-    "70754b85-8de4-42bc-b120-c261872cd8ad",
-    "2a387fac-9826-4713-aa58-8024f43f1a36",
-    "06bd3cf1-0b52-4caf-b235-a5b4bf166559"
-  ]
-}
-✅ მოსალოდნელი შედეგი: branchId=aad4c8a0-2a23-461a-9e43-c372d5ce44a4 → 85 ორდერი
-───────────────────────────────────────────
-</pre></details></div>
+  
   <script>
     (function () {
       const cards = document.querySelectorAll('.card');
