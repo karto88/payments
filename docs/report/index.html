@@ -36,14 +36,36 @@
 </head>
 <body>
   <h1>🎭 Playwright Test Report</h1>
-  <div class="meta">10/30/2026, 11:53:48 PM</div>
+  <div class="meta">10/30/2026, 11:54:11 PM</div>
   <div class="summary">
-    <button type="button" class="card active" data-filter="all">Total: 0</button>
+    <button type="button" class="card active" data-filter="all">Total: 1</button>
     <button type="button" class="card pass" data-filter="pass">✅ Passed: 0</button>
-    <button type="button" class="card fail" data-filter="fail">❌ Failed: 0</button>
+    <button type="button" class="card fail" data-filter="fail">❌ Failed: 1</button>
     <button type="button" class="card skip" data-filter="skip">⏭️ Skipped: 0</button>
   </div>
-  
+  <div class="file-group"><div class="file">tests/Positive/add-money.spec.ts</div><details class="test-item" data-status="fail" open>
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#f85149">❌ failed</span>
+            <span class="name">Add money — standard გადახდა - EUR</span>
+            <span class="dur">127.9s</span>
+          </summary><pre class="log">✅ Balance before: 0.19 EUR
+✅ Payment URL: https://tiny.dev.keepz.me/2muwft3t
+✅ Payment page opened
+✅ OTP: 156700
+✅ Restored: merchant distributionFlow=STANDARD</pre><pre class="err">ApiAssertionError: 
+❌ API TEST FAILED
+───────────────────────────────────────────
+🔧 ოპერაცია:    POST /generic-transaction/filter (Balance Top-up)
+⚠️  პრობლემა:    ტრანზაქციების სიაში ვერ მოიძებნა 0.07 EUR-ის top-up ტრანზაქცია
+📥 მიმდინარე შედეგი:
+{
+  "amount": 0.07,
+  "currencyCode": "EUR"
+}
+✅ მოსალოდნელი შედეგი: ტრანზაქცია initialAmount=0.07, currencyCode=EUR
+───────────────────────────────────────────
+</pre></details></div>
   <script>
     (function () {
       const cards = document.querySelectorAll('.card');
