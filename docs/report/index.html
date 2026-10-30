@@ -36,14 +36,23 @@
 </head>
 <body>
   <h1>🎭 Playwright Test Report</h1>
-  <div class="meta">10/28/2026, 6:45:14 PM</div>
+  <div class="meta">10/30/2026, 3:02:16 PM</div>
   <div class="summary">
-    <button type="button" class="card active" data-filter="all">Total: 0</button>
+    <button type="button" class="card active" data-filter="all">Total: 1</button>
     <button type="button" class="card pass" data-filter="pass">✅ Passed: 0</button>
-    <button type="button" class="card fail" data-filter="fail">❌ Failed: 0</button>
+    <button type="button" class="card fail" data-filter="fail">❌ Failed: 1</button>
     <button type="button" class="card skip" data-filter="skip">⏭️ Skipped: 0</button>
   </div>
-  
+  <div class="file-group"><div class="file">tests/Positive/gepa-order-list.spec.ts</div><details class="test-item" data-status="fail" open>
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#f85149">❌ failed</span>
+            <span class="name">GEPA order list</span>
+            <span class="dur">30.5s</span>
+          </summary><pre class="log">✅ Order Created — fba9c128-2d88-4b8a-ab15-bb5e83b73c01 · branchId 3b72f2c9-6787-4079-aa3f-094ffa91dacd</pre><pre class="err">TimeoutError: locator.click: Timeout 15000ms exceeded.
+Call log:
+[2m  - waiting for locator('button').filter({ hasText: 'საბანკო ბარათი' })[22m
+</pre></details></div>
   <script>
     (function () {
       const cards = document.querySelectorAll('.card');
