@@ -36,7 +36,7 @@
 </head>
 <body>
   <h1>🎭 Playwright Test Report</h1>
-  <div class="meta">11/2/2026, 2:08:15 PM</div>
+  <div class="meta">11/2/2026, 2:08:48 PM</div>
   <div class="summary">
     <button type="button" class="card active" data-filter="all">Total: 1</button>
     <button type="button" class="card pass" data-filter="pass">✅ Passed: 0</button>
@@ -48,10 +48,18 @@
             <span class="chev">▶</span>
             <span class="st" style="color:#f85149">❌ failed</span>
             <span class="name">Bank Accounts — BOG-ის დაკავშირება (Connect bank → finalise)</span>
-            <span class="dur">20.2s</span>
-          </summary><pre class="err">TimeoutError: locator.click: Timeout 15000ms exceeded.
-Call log:
-[2m  - waiting for getByRole('button', { name: 'Connect bank' }).first()[22m
+            <span class="dur">47.7s</span>
+          </summary><pre class="err">ApiAssertionError: 
+❌ API TEST FAILED
+───────────────────────────────────────────
+🔧 ოპერაცია:    Connect bank (BOG) → finalise
+⚠️  პრობლემა:    ბანკმა ადმინ პანელში არ დააბრუნა — გადავიდა https://account-ob.bog.ge/auth/realms/bog/login-actions/authenticate
+📥 მიმდინარე შედეგი:
+{
+  "landedOn": "https://account-ob.bog.ge/auth/realms/bog/login-actions/authenticate"
+}
+✅ მოსალოდნელი შედეგი: redirect https://dashboard.dev.keepz.me (web callback) → finalise
+───────────────────────────────────────────
 </pre></details></div>
   <script>
     (function () {
