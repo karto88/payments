@@ -36,20 +36,604 @@
 </head>
 <body>
   <h1>🎭 Playwright Test Report</h1>
-  <div class="meta">11/3/2026, 7:48:22 PM</div>
+  <div class="meta">11/3/2026, 7:49:25 PM</div>
   <div class="summary">
-    <button type="button" class="card active" data-filter="all">Total: 1</button>
-    <button type="button" class="card pass" data-filter="pass">✅ Passed: 1</button>
-    <button type="button" class="card fail" data-filter="fail">❌ Failed: 0</button>
+    <button type="button" class="card active" data-filter="all">Total: 12</button>
+    <button type="button" class="card pass" data-filter="pass">✅ Passed: 9</button>
+    <button type="button" class="card fail" data-filter="fail">❌ Failed: 3</button>
     <button type="button" class="card skip" data-filter="skip">⏭️ Skipped: 0</button>
   </div>
-  <div class="file-group"><div class="file">tests/Positive/bank-accounts.spec.ts</div><details class="test-item" data-status="pass">
+  <div class="file-group"><div class="file">tests/Positive/bank-accounts.spec.ts</div><details class="test-item" data-status="fail" open>
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#f85149">❌ failed</span>
+            <span class="name">Bank Accounts — consent-ების სია (ანგარიშები, ბალანსი, ლიმიტი)</span>
+            <span class="dur">536ms</span>
+          </summary><pre class="err">ApiAssertionError: 
+❌ API TEST FAILED
+───────────────────────────────────────────
+🔧 ოპერაცია:    GET /bank-account/consents
+⚠️  პრობლემა:    callsUsedToday 11 &gt; frequencyPerDay 4
+📥 მიმდინარე შედეგი:
+{
+  "id": 19,
+  "consentId": "3tAQ4SGdcPx4QdDuVSHS6XNpgYdZ7WWlLMB2s-PWdkXBzsq0yCsGxIwlWZeo-c3TmEU-F7I4ljZemj3zpXycXShL0oLDR83ZV8guP9DzVis=_=_psGLvQpt9Q",
+  "providerId": 2,
+  "provider": "BOG",
+  "providerName": "საქართველო",
+  "providerImage": "https://wallet-keepz-s3.s3.eu-central-1.amazonaws.com/ob/BOG.png",
+  "name": "QA BOG test",
+  "visibility": "SHARED",
+  "status": "valid",
+  "validUntil": "9999-12-31",
+  "frequencyPerDay": 4,
+  "callsUsedToday": 11,
+  "lastSyncAt": "2026-11-03T15:49:12",
+  "lastSyncFailed": false,
+  "lastSyncError": null,
+  "createdAt": "2026-11-03T19:48:32",
+  "createdByAdminId": 12322,
+  "accounts": [
+    {
+      "id": 14,
+      "resourceId": "151df986-1d32-45ae-bf1a-24349e01f592",
+      "iban": "GE45BG0000000499454358",
+      "currency": "GEL",
+      "displayName": "მომსახურე ლარი",
+      "canFetchBalance": true,
+      "canFetchTransactions": true,
+      "active": true,
+      "balanceAmount": 0,
+      "balanceType": "interimAvailable",
+      "balances": [
+        {
+          "_links": null,
+          "ownerName": null,
+          "balanceType": "interimAvailable",
+          "balanceAmount": {
+            "amount": "0",
+            "currency": "GEL"
+          },
+          "referenceDate": null,
+          "lastChangeDateTime": null,
+          "creditLimitIncluded": null,
+          "lastCommittedTransaction": null
+        },
+        {
+          "_links": null,
+          "ownerName": null,
+          "balanceType": "interimBooked",
+          "balanceAmount": {
+            "amount": "0",
+            "currency": "GEL"
+          },
+          "referenceDate": null,
+          "lastChangeDateTime": null,
+          "creditLimitIncluded": null,
+          "lastCommittedTransaction": null
+        }
+      ],
+      "balanceFetchedAt": "2026-11-03T15:49:10",
+      "balanceFailed": false,
+      "balanceError": null,
+      "transactionsSyncedAt": "2026-11-03T15:49:12",
+      "transactionsFailed": false,
+      "transactionsError": null
+    },
+    {
+      "id": 12,
+      "resourceId": "ef01a08b-84f5-4e68-8819-c79471d71015",
+      "iban": "GE62BG0000000610917722",
+      "currency": "EUR",
+      "displayName": "სადებეტო ბარათი ვალუტა",
+      "canFetchBalance": true,
+      "canFetchTransactions": true,
+      "active": true,
+      "balanceAmount": 0,
+      "balanceType": "interimAvailable",
+      "balances": [
+        {
+          "_links": null,
+          "ownerName": null,
+          "balanceType": "interimAvailable",
+          "balanceAmount": {
+            "amount": "0",
+            "currency": "EUR"
+          },
+          "referenceDate": null,
+          "lastChangeDateTime": null,
+          "creditLimitIncluded": null,
+          "lastCommittedTransaction": null
+        },
+        {
+          "_links": null,
+          "ownerName": null,
+          "balanceType": "interimBooked",
+          "balanceAmount": {
+            "amount": "0",
+            "currency": "EUR"
+          },
+          "referenceDate": null,
+          "lastChangeDateTime": null,
+          "creditLimitIncluded": null,
+          "lastCommittedTransaction": null
+        }
+      ],
+      "balanceFetchedAt": "2026-11-03T15:49:07",
+      "balanceFailed": false,
+      "balanceError": null,
+      "transactionsSyncedAt": "2026-11-03T15:49:08",
+      "transactionsFailed": false,
+      "transactionsError": null
+    },
+    {
+      "id": 11,
+      "resourceId": "ddd9a4a5-071b-4c83-af86-43e00cb15117",
+      "iban": "GE62BG0000000610917722",
+      "currency": "GBP",
+      "displayName": "სადებეტო ბარათი ვალუტა",
+      "canFetchBalance": true,
+      "canFetchTransactions": true,
+      "active": true,
+      "balanceAmount": 0,
+      "balanceType": "interimAvailable",
+      "balances": [
+        {
+          "_links": null,
+          "ownerName": null,
+          "balanceType": "interimAvailable",
+          "balanceAmount": {
+            "amount": "0",
+            "currency": "GBP"
+          },
+          "referenceDate": null,
+          "lastChangeDateTime": null,
+          "creditLimitIncluded": null,
+          "lastCommittedTransaction": null
+        },
+        {
+          "_links": null,
+          "ownerName": null,
+          "balanceType": "interimBooked",
+          "balanceAmount": {
+            "amount": "0",
+            "currency": "GBP"
+          },
+          "referenceDate": null,
+          "lastChangeDateTime": null,
+          "creditLimitIncluded": null,
+          "lastCommittedTransaction": null
+        }
+      ],
+      "balanceFetchedAt": "2026-11-03T15:49:05",
+      "balanceFailed": false,
+      "balanceError": null,
+      "transactionsSyncedAt": "2026-11-03T15:49:06",
+      "transactionsFailed": false,
+      "transactionsError": null
+    },
+    {
+      "id": 10,
+      "resourceId": "81fa60cd-4572-4996-8432-48e25dc353f5",
+      "iban": "GE62BG0000000610917722",
+      "currency": "GEL",
+      "displayName": "სადებეტო ბარათი ლარი",
+      "canFetchBalance": true,
+      "canFetchTransactions": true,
+      "active": true,
+      "balanceAmount": 0,
+      "balanceType": "interimAvailable",
+      "balances": [
+        {
+          "_links": null,
+          "ownerName": null,
+          "balanceType": "interimAvailable",
+          "balanceAmount": {
+            "amount": "0",
+            "currency": "GEL"
+          },
+          "referenceDate": null,
+          "lastChangeDateTime": null,
+          "creditLimitIncluded": null,
+          "lastCommittedTransaction": null
+        },
+        {
+          "_links": null,
+          "ownerName": null,
+          "balanceType": "interimBooked",
+          "balanceAmount": {
+            "amount": "0",
+            "currency": "GEL"
+          },
+          "referenceDate": null,
+          "lastChangeDateTime": null,
+          "creditLimitIncluded": null,
+          "lastCommittedTransaction": null
+        }
+      ],
+      "balanceFetchedAt": "2026-11-03T15:49:03",
+      "balanceFailed": false,
+      "balanceError": null,
+      "transactionsSyncedAt": "2026-11-03T15:49:05",
+      "transactionsFailed": false,
+      "transactionsError": null
+    },
+    {
+      "id": 13,
+      "resourceId": "16d28b48-cc11-47d8-a9dc-457b1803cf89",
+      "iban": "GE62BG0000000610917722",
+      "currency": "USD",
+      "displayName": "სადებეტო ბარათი ვალუტა",
+      "canFetchBalance": true,
+      "canFetchTransactions": true,
+      "active": true,
+      "balanceAmount": 13.4,
+      "balanceType": "interimAvailable",
+      "balances": [
+        {
+          "_links": null,
+          "ownerName": null,
+          "balanceType": "interimAvailable",
+          "balanceAmount": {
+            "amount": "13.4",
+            "currency": "USD"
+          },
+          "referenceDate": null,
+          "lastChangeDateTime": null,
+          "creditLimitIncluded": null,
+          "lastCommittedTransaction": null
+        },
+        {
+          "_links": null,
+          "ownerName": null,
+          "balanceType": "interimBooked",
+          "balanceAmount": {
+            "amount": "13.4",
+            "currency": "USD"
+          },
+          "referenceDate": null,
+          "lastChangeDateTime": null,
+          "creditLimitIncluded": null,
+          "lastCommittedTransaction": null
+        }
+      ],
+      "balanceFetchedAt": "2026-11-03T15:49:08",
+      "balanceFailed": false,
+      "balanceError": null,
+      "transactionsSyncedAt": "2026-11-03T15:49:10",
+      "transactionsFailed": false,
+      "transactionsError": null
+    }
+  ]
+}
+✅ მოსალოდნელი შედეგი: callsUsedToday ≤ frequencyPerDay
+───────────────────────────────────────────
+</pre></details><details class="test-item" data-status="fail" open>
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#f85149">❌ failed</span>
+            <span class="name">Bank Accounts — ბალანსის განახლება (refresh)</span>
+            <span class="dur">553ms</span>
+          </summary><pre class="err">ApiAssertionError: 
+❌ API TEST FAILED
+───────────────────────────────────────────
+🔧 ოპერაცია:    POST /bank-account/consents/{id}/refresh
+⚠️  პრობლემა:    დღიური ლიმიტი ამოწურულია (11/4)
+📥 მიმდინარე შედეგი:
+{
+  "id": 19,
+  "consentId": "3tAQ4SGdcPx4QdDuVSHS6XNpgYdZ7WWlLMB2s-PWdkXBzsq0yCsGxIwlWZeo-c3TmEU-F7I4ljZemj3zpXycXShL0oLDR83ZV8guP9DzVis=_=_psGLvQpt9Q",
+  "providerId": 2,
+  "provider": "BOG",
+  "providerName": "საქართველო",
+  "providerImage": "https://wallet-keepz-s3.s3.eu-central-1.amazonaws.com/ob/BOG.png",
+  "name": "QA BOG test",
+  "visibility": "SHARED",
+  "status": "valid",
+  "validUntil": "9999-12-31",
+  "frequencyPerDay": 4,
+  "callsUsedToday": 11,
+  "lastSyncAt": "2026-11-03T15:49:12",
+  "lastSyncFailed": false,
+  "lastSyncError": null,
+  "createdAt": "2026-11-03T19:48:32",
+  "createdByAdminId": 12322,
+  "accounts": [
+    {
+      "id": 14,
+      "resourceId": "151df986-1d32-45ae-bf1a-24349e01f592",
+      "iban": "GE45BG0000000499454358",
+      "currency": "GEL",
+      "displayName": "მომსახურე ლარი",
+      "canFetchBalance": true,
+      "canFetchTransactions": true,
+      "active": true,
+      "balanceAmount": 0,
+      "balanceType": "interimAvailable",
+      "balances": [
+        {
+          "_links": null,
+          "ownerName": null,
+          "balanceType": "interimAvailable",
+          "balanceAmount": {
+            "amount": "0",
+            "currency": "GEL"
+          },
+          "referenceDate": null,
+          "lastChangeDateTime": null,
+          "creditLimitIncluded": null,
+          "lastCommittedTransaction": null
+        },
+        {
+          "_links": null,
+          "ownerName": null,
+          "balanceType": "interimBooked",
+          "balanceAmount": {
+            "amount": "0",
+            "currency": "GEL"
+          },
+          "referenceDate": null,
+          "lastChangeDateTime": null,
+          "creditLimitIncluded": null,
+          "lastCommittedTransaction": null
+        }
+      ],
+      "balanceFetchedAt": "2026-11-03T15:49:10",
+      "balanceFailed": false,
+      "balanceError": null,
+      "transactionsSyncedAt": "2026-11-03T15:49:12",
+      "transactionsFailed": false,
+      "transactionsError": null
+    },
+    {
+      "id": 12,
+      "resourceId": "ef01a08b-84f5-4e68-8819-c79471d71015",
+      "iban": "GE62BG0000000610917722",
+      "currency": "EUR",
+      "displayName": "სადებეტო ბარათი ვალუტა",
+      "canFetchBalance": true,
+      "canFetchTransactions": true,
+      "active": true,
+      "balanceAmount": 0,
+      "balanceType": "interimAvailable",
+      "balances": [
+        {
+          "_links": null,
+          "ownerName": null,
+          "balanceType": "interimAvailable",
+          "balanceAmount": {
+            "amount": "0",
+            "currency": "EUR"
+          },
+          "referenceDate": null,
+          "lastChangeDateTime": null,
+          "creditLimitIncluded": null,
+          "lastCommittedTransaction": null
+        },
+        {
+          "_links": null,
+          "ownerName": null,
+          "balanceType": "interimBooked",
+          "balanceAmount": {
+            "amount": "0",
+            "currency": "EUR"
+          },
+          "referenceDate": null,
+          "lastChangeDateTime": null,
+          "creditLimitIncluded": null,
+          "lastCommittedTransaction": null
+        }
+      ],
+      "balanceFetchedAt": "2026-11-03T15:49:07",
+      "balanceFailed": false,
+      "balanceError": null,
+      "transactionsSyncedAt": "2026-11-03T15:49:08",
+      "transactionsFailed": false,
+      "transactionsError": null
+    },
+    {
+      "id": 11,
+      "resourceId": "ddd9a4a5-071b-4c83-af86-43e00cb15117",
+      "iban": "GE62BG0000000610917722",
+      "currency": "GBP",
+      "displayName": "სადებეტო ბარათი ვალუტა",
+      "canFetchBalance": true,
+      "canFetchTransactions": true,
+      "active": true,
+      "balanceAmount": 0,
+      "balanceType": "interimAvailable",
+      "balances": [
+        {
+          "_links": null,
+          "ownerName": null,
+          "balanceType": "interimAvailable",
+          "balanceAmount": {
+            "amount": "0",
+            "currency": "GBP"
+          },
+          "referenceDate": null,
+          "lastChangeDateTime": null,
+          "creditLimitIncluded": null,
+          "lastCommittedTransaction": null
+        },
+        {
+          "_links": null,
+          "ownerName": null,
+          "balanceType": "interimBooked",
+          "balanceAmount": {
+            "amount": "0",
+            "currency": "GBP"
+          },
+          "referenceDate": null,
+          "lastChangeDateTime": null,
+          "creditLimitIncluded": null,
+          "lastCommittedTransaction": null
+        }
+      ],
+      "balanceFetchedAt": "2026-11-03T15:49:05",
+      "balanceFailed": false,
+      "balanceError": null,
+      "transactionsSyncedAt": "2026-11-03T15:49:06",
+      "transactionsFailed": false,
+      "transactionsError": null
+    },
+    {
+      "id": 10,
+      "resourceId": "81fa60cd-4572-4996-8432-48e25dc353f5",
+      "iban": "GE62BG0000000610917722",
+      "currency": "GEL",
+      "displayName": "სადებეტო ბარათი ლარი",
+      "canFetchBalance": true,
+      "canFetchTransactions": true,
+      "active": true,
+      "balanceAmount": 0,
+      "balanceType": "interimAvailable",
+      "balances": [
+        {
+          "_links": null,
+          "ownerName": null,
+          "balanceType": "interimAvailable",
+          "balanceAmount": {
+            "amount": "0",
+            "currency": "GEL"
+          },
+          "referenceDate": null,
+          "lastChangeDateTime": null,
+          "creditLimitIncluded": null,
+          "lastCommittedTransaction": null
+        },
+        {
+          "_links": null,
+          "ownerName": null,
+          "balanceType": "interimBooked",
+          "balanceAmount": {
+            "amount": "0",
+            "currency": "GEL"
+          },
+          "referenceDate": null,
+          "lastChangeDateTime": null,
+          "creditLimitIncluded": null,
+          "lastCommittedTransaction": null
+        }
+      ],
+      "balanceFetchedAt": "2026-11-03T15:49:03",
+      "balanceFailed": false,
+      "balanceError": null,
+      "transactionsSyncedAt": "2026-11-03T15:49:05",
+      "transactionsFailed": false,
+      "transactionsError": null
+    },
+    {
+      "id": 13,
+      "resourceId": "16d28b48-cc11-47d8-a9dc-457b1803cf89",
+      "iban": "GE62BG0000000610917722",
+      "currency": "USD",
+      "displayName": "სადებეტო ბარათი ვალუტა",
+      "canFetchBalance": true,
+      "canFetchTransactions": true,
+      "active": true,
+      "balanceAmount": 13.4,
+      "balanceType": "interimAvailable",
+      "balances": [
+        {
+          "_links": null,
+          "ownerName": null,
+          "balanceType": "interimAvailable",
+          "balanceAmount": {
+            "amount": "13.4",
+            "currency": "USD"
+          },
+          "referenceDate": null,
+          "lastChangeDateTime": null,
+          "creditLimitIncluded": null,
+          "lastCommittedTransaction": null
+        },
+        {
+          "_links": null,
+          "ownerName": null,
+          "balanceType": "interimBooked",
+          "balanceAmount": {
+            "amount": "13.4",
+            "currency": "USD"
+          },
+          "referenceDate": null,
+          "lastChangeDateTime": null,
+          "creditLimitIncluded": null,
+          "lastCommittedTransaction": null
+        }
+      ],
+      "balanceFetchedAt": "2026-11-03T15:49:08",
+      "balanceFailed": false,
+      "balanceError": null,
+      "transactionsSyncedAt": "2026-11-03T15:49:10",
+      "transactionsFailed": false,
+      "transactionsError": null
+    }
+  ]
+}
+✅ მოსალოდნელი შედეგი: მინიმუმ 1 განახლება დარჩენილი
+───────────────────────────────────────────
+</pre></details><details class="test-item" data-status="pass">
           <summary class="test">
             <span class="chev">▶</span>
             <span class="st" style="color:#3fb950">✅ passed</span>
-            <span class="name">Bank Accounts — BOG-ის დაკავშირება (Connect bank → finalise)</span>
-            <span class="dur">50.8s</span>
-          </summary><pre class="log">🏦 საქართველო "QA BOG test" #19 — valid · ანგარიშები 5 · valid until 9999-12-31</pre></details></div>
+            <span class="name">Bank Accounts — ტრანზაქციების სია (ჯერ უახლესი)</span>
+            <span class="dur">587ms</span>
+          </summary><pre class="log">📄 ტრანზაქციები: 124 · გვერდი 1/7 (size 20)</pre></details><details class="test-item" data-status="pass">
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="name">Bank Accounts — ტრანზაქციის დეტალები (ბანკის სრული პასუხი)</span>
+            <span class="dur">390ms</span>
+          </summary><pre class="log">🧾 49865985887FEEFEE128647768757 — -0.56 GEL · raw ველები: valueDate, bookingDate, transactionId, entryReference, creditorAccount, transactionAmount, remittanceInformationUnstructured</pre></details><details class="test-item" data-status="pass">
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="name">Bank Accounts — ფილტრი: ბანკი</span>
+            <span class="dur">414ms</span>
+          </summary><pre class="log">📄 ტრანზაქციები: 124 · გვერდი 1/7 (size 20)</pre></details><details class="test-item" data-status="pass">
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="name">Bank Accounts — ფილტრი: ანგარიში (ბანკის გარეშე)</span>
+            <span class="dur">422ms</span>
+          </summary><pre class="log">📄 ტრანზაქციები: 50 · გვერდი 1/3 (size 20)</pre></details><details class="test-item" data-status="pass">
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="name">Bank Accounts — ფილტრი: IBAN (ბანკის გარეშე)</span>
+            <span class="dur">423ms</span>
+          </summary><pre class="log">📄 ტრანზაქციები: 50 · გვერდი 1/3 (size 20)</pre></details><details class="test-item" data-status="pass">
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="name">Bank Accounts — ფილტრი: თარიღები (ბოლო 7 დღე)</span>
+            <span class="dur">295ms</span>
+          </summary><pre class="log">📄 ტრანზაქციები: 10 · გვერდი 1/1 (size 20)</pre></details><details class="test-item" data-status="pass">
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="name">Bank Accounts — ძიება: Transaction ID (ნაწილობრივი)</span>
+            <span class="dur">407ms</span>
+          </summary><pre class="log">📄 ტრანზაქციები: 9 · გვერდი 1/1 (size 20)</pre></details><details class="test-item" data-status="fail" open>
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#f85149">❌ failed</span>
+            <span class="name">Bank Accounts — ძიება: Recipient IBAN (ნაწილობრივი)</span>
+            <span class="dur">293ms</span>
+          </summary><pre class="err">TypeError: Cannot read properties of undefined (reading 'slice')</pre></details><details class="test-item" data-status="pass">
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="name">Bank Accounts — ფილტრი + ძიება ერთად (ბანკი + თარიღები + Transaction ID)</span>
+            <span class="dur">674ms</span>
+          </summary><pre class="log">📄 ტრანზაქციები: 9 · გვერდი 1/1 (size 20)</pre></details><details class="test-item" data-status="pass">
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="name">Bank Accounts — პაგინაცია (size 10)</span>
+            <span class="dur">441ms</span>
+          </summary><pre class="log">📄 ტრანზაქციები: 124 · გვერდი 1/13 (size 10)</pre></details></div>
   <script>
     (function () {
       const cards = document.querySelectorAll('.card');
