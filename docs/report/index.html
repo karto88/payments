@@ -36,62 +36,747 @@
 </head>
 <body>
   <h1>🎭 Playwright Test Report</h1>
-  <div class="meta">11/5/2026, 7:20:14 PM</div>
+  <div class="meta">11/5/2026, 7:21:31 PM</div>
   <div class="summary">
-    <button type="button" class="card active" data-filter="all">Total: 6</button>
-    <button type="button" class="card pass" data-filter="pass">✅ Passed: 2</button>
-    <button type="button" class="card fail" data-filter="fail">❌ Failed: 4</button>
+    <button type="button" class="card active" data-filter="all">Total: 136</button>
+    <button type="button" class="card pass" data-filter="pass">✅ Passed: 123</button>
+    <button type="button" class="card fail" data-filter="fail">❌ Failed: 13</button>
     <button type="button" class="card skip" data-filter="skip">⏭️ Skipped: 0</button>
   </div>
-  <div class="file-group"><div class="file">tests/RS/Negative/rs-business-negative.spec.ts</div><details class="test-item" data-status="fail" open>
+  <div class="file-group"><div class="file">tests/RS/Negative/rs-business-negative.spec.ts</div><details class="test-item" data-status="pass">
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="name">RS Business Negative — RESIDENT ident 8 ციფრი (9-ის ქვედა ზღვარი −1) → 1480</span>
+            <span class="dur">700ms</span>
+          </summary><pre class="log">✅ Rejected — POST /api/distributor-hub-business (RESIDENT: identificationNumber = "12345678") → HTTP 400 / code 1480</pre></details><details class="test-item" data-status="pass">
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="name">RS Business Negative — RESIDENT ident 10 ციფრი (9 და 11 შორის) → 1480</span>
+            <span class="dur">343ms</span>
+          </summary><pre class="log">✅ Rejected — POST /api/distributor-hub-business (RESIDENT: identificationNumber = "1234567890") → HTTP 400 / code 1480</pre></details><details class="test-item" data-status="pass">
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="name">RS Business Negative — RESIDENT ident 12 ციფრი (11-ის ზედა ზღვარი +1) → 1480</span>
+            <span class="dur">360ms</span>
+          </summary><pre class="log">✅ Rejected — POST /api/distributor-hub-business (RESIDENT: identificationNumber = "123456789012") → HTTP 400 / code 1480</pre></details><details class="test-item" data-status="pass">
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="name">RS Business Negative — RESIDENT ident ასოებით (9 სიმბოლო) → 1480</span>
+            <span class="dur">343ms</span>
+          </summary><pre class="log">✅ Rejected — POST /api/distributor-hub-business (RESIDENT: identificationNumber = "12345678a") → HTTP 400 / code 1480</pre></details><details class="test-item" data-status="pass">
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="name">RS Business Negative — RESIDENT ident space-ით (9 სიმბოლო) → 1480</span>
+            <span class="dur">339ms</span>
+          </summary><pre class="log">✅ Rejected — POST /api/distributor-hub-business (RESIDENT: identificationNumber = "1234 5678") → HTTP 400 / code 1480</pre></details><details class="test-item" data-status="pass">
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="name">RS Business Negative — RESIDENT ident აკლია → 1480</span>
+            <span class="dur">337ms</span>
+          </summary><pre class="log">✅ Rejected — POST /api/distributor-hub-business (RESIDENT: identificationNumber აკლია) → HTTP 400 / code 1480</pre></details><details class="test-item" data-status="pass">
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="name">RS Business Negative — RESIDENT ident ცარიელი "" → 1480</span>
+            <span class="dur">339ms</span>
+          </summary><pre class="log">✅ Rejected — POST /api/distributor-hub-business (RESIDENT: identificationNumber = "") → HTTP 400 / code 1480</pre></details><details class="test-item" data-status="pass">
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="name">RS Business Negative — ident დაკავებულია (შექმნა) → 409 / 1481</span>
+            <span class="dur">790ms</span>
+          </summary><pre class="log">✅ Business Created — QA Pagac - Wolf · RESIDENT · 995046316 · b1473b30-1b0d-403e-9d2c-62b8143efc67
+✅ Rejected — POST /api/distributor-hub-business (identificationNumber დაკავებულია: 995046316) → HTTP 409 / code 1481</pre></details><details class="test-item" data-status="pass">
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="name">RS Business Negative — ident დაკავებულია (სხვა ბიზნესის რედაქტირება) → 409 / 1481</span>
+            <span class="dur">938ms</span>
+          </summary><pre class="log">✅ Business Created — QA Hessel Hilpert LLC · RESIDENT · 933974367 · 439a04d2-7d76-4a1a-b8ab-85dfe33d74b1
+✅ Business Created — QA Okuneva, Cormier and Upton · RESIDENT · 912668779 · 02ec4cfe-6b3d-4471-ba68-0802472fa6f4
+✅ Rejected — PUT /api/distributor-hub-business (identificationNumber დაკავებულია: 933974367) → HTTP 409 / code 1481</pre></details><details class="test-item" data-status="pass">
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="name">RS Business Negative — FOREIGN ident 26 სიმბოლო (25-ის ზედა ზღვარი +1) → 1001</span>
+            <span class="dur">332ms</span>
+          </summary><pre class="log">✅ Rejected — POST /api/distributor-hub-business (FOREIGN: identificationNumber = "FFFFFFFFFFFFFFFFFFFFFFFFFF") → HTTP 400 / code 1001</pre></details><details class="test-item" data-status="pass">
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="name">RS Business Negative — personalNumberAlt 8 ციფრი → 1480</span>
+            <span class="dur">353ms</span>
+          </summary><pre class="log">✅ Rejected — POST /api/distributor-hub-business (RESIDENT: personalNumberAlt = "12345678") → HTTP 400 / code 1480</pre></details><details class="test-item" data-status="pass">
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="name">RS Business Negative — personalNumberAlt 10 ციფრი → 1480</span>
+            <span class="dur">354ms</span>
+          </summary><pre class="log">✅ Rejected — POST /api/distributor-hub-business (RESIDENT: personalNumberAlt = "1234567890") → HTTP 400 / code 1480</pre></details><details class="test-item" data-status="pass">
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="name">RS Business Negative — personalNumberAlt 12 ციფრი → 400</span>
+            <span class="dur">348ms</span>
+          </summary><pre class="log">✅ Rejected — POST /api/distributor-hub-business (RESIDENT: personalNumberAlt = "123456789012") → HTTP 400 / code 1001</pre></details><details class="test-item" data-status="pass">
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="name">RS Business Negative — ownerFullName აკლია → 1480</span>
+            <span class="dur">252ms</span>
+          </summary><pre class="log">✅ Rejected — POST /api/distributor-hub-business (RESIDENT: ownerFullName აკლია) → HTTP 400 / code 1480</pre></details><details class="test-item" data-status="pass">
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="name">RS Business Negative — ownerFullName მხოლოდ space-ები → 1480</span>
+            <span class="dur">255ms</span>
+          </summary><pre class="log">✅ Rejected — POST /api/distributor-hub-business (RESIDENT: ownerFullName = "   ") → HTTP 400 / code 1480</pre></details><details class="test-item" data-status="pass">
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="name">RS Business Negative — ownerFullName 251 სიმბოლო (250 +1) → 1001</span>
+            <span class="dur">362ms</span>
+          </summary><pre class="log">✅ Rejected — POST /api/distributor-hub-business (RESIDENT: ownerFullName 251 სიმბოლო) → HTTP 400 / code 1001</pre></details><details class="test-item" data-status="pass">
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="name">RS Business Negative — operDate აკლია → 1480</span>
+            <span class="dur">333ms</span>
+          </summary><pre class="log">✅ Rejected — POST /api/distributor-hub-business (RESIDENT: operDate აკლია) → HTTP 400 / code 1480</pre></details><details class="test-item" data-status="pass">
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="name">RS Business Negative — operDate არასწორი ფორმატი 05.11.2026 → 1003</span>
+            <span class="dur">339ms</span>
+          </summary><pre class="log">✅ Rejected — POST /api/distributor-hub-business (RESIDENT: operDate = "05.11.2026") → HTTP 400 / code 1003</pre></details><details class="test-item" data-status="pass">
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="name">RS Business Negative — operDate არარსებული თარიღი 2026-02-30 → 1003</span>
+            <span class="dur">322ms</span>
+          </summary><pre class="log">✅ Rejected — POST /api/distributor-hub-business (RESIDENT: operDate = "2026-02-30") → HTTP 400 / code 1003</pre></details><details class="test-item" data-status="pass">
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="name">RS Business Negative — RESIDENT knownDate აკლია → 1480</span>
+            <span class="dur">324ms</span>
+          </summary><pre class="log">✅ Rejected — POST /api/distributor-hub-business (RESIDENT: knownDate აკლია) → HTTP 400 / code 1480</pre></details><details class="test-item" data-status="pass">
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="name">RS Business Negative — residency აკლია → 1480</span>
+            <span class="dur">345ms</span>
+          </summary><pre class="log">✅ Rejected — POST /api/distributor-hub-business (RESIDENT: residency აკლია) → HTTP 400 / code 1480</pre></details><details class="test-item" data-status="pass">
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="name">RS Business Negative — residency არავალიდური ALIEN → 1003</span>
+            <span class="dur">332ms</span>
+          </summary><pre class="log">✅ Rejected — POST /api/distributor-hub-business (RESIDENT: residency = "ALIEN") → HTTP 400 / code 1003</pre></details><details class="test-item" data-status="pass">
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="name">RS Business Negative — FOREIGN legalAddressCountry აკლია → 1480</span>
+            <span class="dur">336ms</span>
+          </summary><pre class="log">✅ Rejected — POST /api/distributor-hub-business (FOREIGN: legalAddressCountry აკლია) → HTTP 400 / code 1480</pre></details><details class="test-item" data-status="pass">
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="name">RS Business Negative — FOREIGN legalAddressCity აკლია → 1480</span>
+            <span class="dur">330ms</span>
+          </summary><pre class="log">✅ Rejected — POST /api/distributor-hub-business (FOREIGN: legalAddressCity აკლია) → HTTP 400 / code 1480</pre></details><details class="test-item" data-status="pass">
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="name">RS Business Negative — FOREIGN legalAddressLine აკლია → 1480</span>
+            <span class="dur">345ms</span>
+          </summary><pre class="log">✅ Rejected — POST /api/distributor-hub-business (FOREIGN: legalAddressLine აკლია) → HTTP 400 / code 1480</pre></details><details class="test-item" data-status="pass">
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="name">RS Business Negative — FOREIGN actualAddressCountry აკლია → 1480</span>
+            <span class="dur">356ms</span>
+          </summary><pre class="log">✅ Rejected — POST /api/distributor-hub-business (FOREIGN: actualAddressCountry აკლია) → HTTP 400 / code 1480</pre></details><details class="test-item" data-status="pass">
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="name">RS Business Negative — FOREIGN actualAddressCity აკლია → 1480</span>
+            <span class="dur">355ms</span>
+          </summary><pre class="log">✅ Rejected — POST /api/distributor-hub-business (FOREIGN: actualAddressCity აკლია) → HTTP 400 / code 1480</pre></details><details class="test-item" data-status="pass">
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="name">RS Business Negative — FOREIGN actualAddressLine აკლია → 1480</span>
+            <span class="dur">344ms</span>
+          </summary><pre class="log">✅ Rejected — POST /api/distributor-hub-business (FOREIGN: actualAddressLine აკლია) → HTTP 400 / code 1480</pre></details><details class="test-item" data-status="pass">
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="name">RS Business Negative — FOREIGN legalAddressCountry 101 სიმბოლო (100 +1) → 1001</span>
+            <span class="dur">375ms</span>
+          </summary><pre class="log">✅ Rejected — POST /api/distributor-hub-business (FOREIGN: legalAddressCountry 101 სიმბოლო) → HTTP 400 / code 1001</pre></details><details class="test-item" data-status="pass">
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="name">RS Business Negative — FOREIGN legalAddressLine 251 სიმბოლო (250 +1) → 1001</span>
+            <span class="dur">349ms</span>
+          </summary><pre class="log">✅ Rejected — POST /api/distributor-hub-business (FOREIGN: legalAddressLine 251 სიმბოლო) → HTTP 400 / code 1001</pre></details><details class="test-item" data-status="pass">
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="name">RS Business Negative — FOREIGN stateRegAuthority 251 სიმბოლო (250 +1) → 1001</span>
+            <span class="dur">343ms</span>
+          </summary><pre class="log">✅ Rejected — POST /api/distributor-hub-business (FOREIGN: stateRegAuthority 251 სიმბოლო) → HTTP 400 / code 1001</pre></details><details class="test-item" data-status="pass">
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="name">RS Business Negative — რედაქტირება ძველი version-ით → 409 / 1482</span>
+            <span class="dur">871ms</span>
+          </summary><pre class="log">✅ Business Created — QA Mraz - Kessler · RESIDENT · 993601552 · ddfdf67c-686a-456a-9c45-9f6d8777f4fa
+✅ Rejected — PUT /api/distributor-hub-business/{id} (staleVersion) → HTTP 409 / code 1482</pre></details><details class="test-item" data-status="pass">
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="name">RS Business Negative — რედაქტირება version-ის გარეშე → 1001</span>
+            <span class="dur">757ms</span>
+          </summary><pre class="log">✅ Business Created — QA Rempel, Feeney and Fadel · RESIDENT · 961931538 · 7f8c86f2-8f39-4f0b-a4ba-c6a4241169ad
+✅ Rejected — PUT /api/distributor-hub-business/{id} (noVersion) → HTTP 400 / code 1001</pre></details><details class="test-item" data-status="pass">
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="name">RS Business Negative — რედაქტირება არავალიდური ident-ით (8 ციფრი) → 1480</span>
+            <span class="dur">742ms</span>
+          </summary><pre class="log">✅ Business Created — QA Prosacco, Schroeder and Lebsack · RESIDENT · 945109853 · d8d34f82-356b-4999-abf4-529e143d5083
+✅ Rejected — PUT /api/distributor-hub-business/{id} (invalidIdent) → HTTP 400 / code 1480</pre></details><details class="test-item" data-status="pass">
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="name">RS Business Negative — არარსებული ბიზნესის რედაქტირება → 404 / 1479</span>
+            <span class="dur">624ms</span>
+          </summary><pre class="log">✅ Business Created — QA Grady, Waelchi and Mosciski · RESIDENT · 964709010 · 5209dc54-cdb9-4402-9b85-585b5a0e9998
+✅ Rejected — PUT /api/distributor-hub-business/{id} (unknownBusiness) → HTTP 404 / code 1479</pre></details><details class="test-item" data-status="pass">
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="name">RS Business Negative — GET არარსებული id → 404 / 1479</span>
+            <span class="dur">278ms</span>
+          </summary><pre class="log">✅ Rejected — GET /api/distributor-hub-business/00000000-0000-0000-0000-000000000000 → HTTP 404 / code 1479</pre></details><details class="test-item" data-status="pass">
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="name">RS Business Negative — GET არავალიდური uuid → 400 / 1002</span>
+            <span class="dur">257ms</span>
+          </summary><pre class="log">✅ Rejected — GET /api/distributor-hub-business/abc → HTTP 400 / code 1002</pre></details><details class="test-item" data-status="pass">
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="name">RS Business Negative — filter residency არავალიდური → 1001</span>
+            <span class="dur">260ms</span>
+          </summary><pre class="log">✅ Rejected — GET /api/distributor-hub-business/filter (residency = "ALIEN") → HTTP 400 / code 1001</pre></details><details class="test-item" data-status="pass">
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="name">RS Business Negative — filter pageSize ტექსტი "abc" → 1001</span>
+            <span class="dur">252ms</span>
+          </summary><pre class="log">✅ Rejected — GET /api/distributor-hub-business/filter (pageSize = "abc") → HTTP 400 / code 1001</pre></details><details class="test-item" data-status="fail" open>
           <summary class="test">
             <span class="chev">▶</span>
             <span class="st" style="color:#f85149">❌ failed</span>
             <span class="name">RS Business Negative — filter name "%" → მხოლოდ სახელები "%"-ით</span>
-            <span class="dur">877ms</span>
+            <span class="dur">357ms</span>
           </summary><pre class="err">ApiAssertionError: 
 ❌ API TEST FAILED
 ───────────────────────────────────────────
 🔧 ოპერაცია:    GET /api/distributor-hub-business/filter (name = "%")
-⚠️  პრობლემა:    130 ჩანაწერი მოვიდა, მათ შორის 50 სახელში "%" არ შეიცავს — "%" wildcard-ად მუშაობს
+⚠️  პრობლემა:    138 ჩანაწერი მოვიდა, მათ შორის 50 სახელში "%" არ შეიცავს — "%" wildcard-ად მუშაობს
 📥 მიმდინარე შედეგი:
 {
-  "totalElements": 130,
+  "totalElements": 138,
   "sample": [
-    "QA Probe 2643",
-    "QA F 6095",
-    "QA Probe 0290 x"
+    "QA Grady, Waelchi and Mosciski",
+    "QA Prosacco, Schroeder and Lebsack",
+    "QA Rempel, Feeney and Fadel"
   ]
 }
 ✅ მოსალოდნელი შედეგი: მხოლოდ სახელები, რომლებიც "%"-ს შეიცავს (სიმბოლო ტექსტად, არა wildcard-ად)
-───────────────────────────────────────────
-</pre></details></div><div class="file-group"><div class="file">tests/RS/Negative/rs-client-negative.spec.ts</div><details class="test-item" data-status="fail" open>
-          <summary class="test">
-            <span class="chev">▶</span>
-            <span class="st" style="color:#f85149">❌ failed</span>
-            <span class="name">RS Client Negative — clientName = არსებული + ბოლოში space → 1186</span>
-            <span class="dur">1.0s</span>
-          </summary><pre class="err">ApiAssertionError: 
-❌ API TEST FAILED
-───────────────────────────────────────────
-🔧 ოპერაცია:    POST /api/distributor-hub-client (clientName = "QA Mraz Prosacco Inc " — არსებული + ბოლოში space)
-⚠️  პრობლემა:    მოვიდა HTTP 201 — API-მ არავალიდური მონაცემი მიიღო და შეინახა
-📥 მიმდინარე შედეგი:
-{
-  "value": {
-    "clientId": "9f0cd6e2-2956-403e-a9c0-ef3ec8463188",
-    "clientSecret": "ieM7sUlOYut2To"
-  }
-}
-✅ მოსალოდნელი შედეგი: HTTP 400 / code 1186
 ───────────────────────────────────────────
 </pre></details><details class="test-item" data-status="fail" open>
           <summary class="test">
             <span class="chev">▶</span>
             <span class="st" style="color:#f85149">❌ failed</span>
+            <span class="name">RS Business Negative — filter pageSize 0 (ქვედა ზღვარი) → 400</span>
+            <span class="dur">506ms</span>
+          </summary><pre class="err">ApiAssertionError: 
+❌ API TEST FAILED
+───────────────────────────────────────────
+🔧 ოპერაცია:    GET /api/distributor-hub-business/filter (pageIndex = 1, pageSize = 0)
+⚠️  პრობლემა:    მოვიდა HTTP 500 / code 1000 — სერვერის შეცდომა (500), ვალიდაცია არ მუშაობს
+📥 მიმდინარე შედეგი:
+{
+  "message": "An unexpected error occurred. Please contact support with reference ID: 5ebf0d32-503b-4dcc-87a3-594836e37676",
+  "statusCode": 1000,
+  "exceptionGroup": 6
+}
+✅ მოსალოდნელი შედეგი: HTTP 400
+───────────────────────────────────────────
+</pre></details><details class="test-item" data-status="fail" open>
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#f85149">❌ failed</span>
+            <span class="name">RS Business Negative — filter pageSize -1 → 400</span>
+            <span class="dur">521ms</span>
+          </summary><pre class="err">ApiAssertionError: 
+❌ API TEST FAILED
+───────────────────────────────────────────
+🔧 ოპერაცია:    GET /api/distributor-hub-business/filter (pageIndex = 1, pageSize = -1)
+⚠️  პრობლემა:    მოვიდა HTTP 500 / code 1000 — სერვერის შეცდომა (500), ვალიდაცია არ მუშაობს
+📥 მიმდინარე შედეგი:
+{
+  "message": "An unexpected error occurred. Please contact support with reference ID: 34228b04-3b7f-4559-88c3-78933cfff10e",
+  "statusCode": 1000,
+  "exceptionGroup": 6
+}
+✅ მოსალოდნელი შედეგი: HTTP 400
+───────────────────────────────────────────
+</pre></details></div><div class="file-group"><div class="file">tests/RS/Negative/rs-client-negative.spec.ts</div><details class="test-item" data-status="pass">
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="name">RS Client Negative — scheme აკლია → 1488</span>
+            <span class="dur">686ms</span>
+          </summary><pre class="log">✅ Rejected — POST /api/distributor-hub-client (scheme აკლია) → HTTP 400 / code 1488</pre></details><details class="test-item" data-status="pass">
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="name">RS Client Negative — scheme არავალიდური BANK → 1003</span>
+            <span class="dur">379ms</span>
+          </summary><pre class="log">✅ Rejected — POST /api/distributor-hub-client (scheme = "BANK") → HTTP 400 / code 1003</pre></details><details class="test-item" data-status="pass">
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="name">RS Client Negative — SYSTEM_OPERATOR + businessId → 1484</span>
+            <span class="dur">879ms</span>
+          </summary><pre class="log">✅ Business Created — QA Hilpert - Champlin · RESIDENT · 939075580 · 68c17887-cbdb-4c80-8a5a-cfd365eaa93c
+✅ Rejected — POST /api/distributor-hub-client (scheme = "SYSTEM_OPERATOR") → HTTP 400 / code 1484</pre></details><details class="test-item" data-status="pass">
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="name">RS Client Negative — არარსებული businessId → 404 / 1479</span>
+            <span class="dur">449ms</span>
+          </summary><pre class="log">✅ Rejected — POST /api/distributor-hub-client (businessId 36 სიმბოლო) → HTTP 404 / code 1479</pre></details><details class="test-item" data-status="pass">
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="name">RS Client Negative — businessId არავალიდური uuid → 1003</span>
+            <span class="dur">358ms</span>
+          </summary><pre class="log">✅ Rejected — POST /api/distributor-hub-client (businessId = "abc") → HTTP 400 / code 1003</pre></details><details class="test-item" data-status="pass">
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="name">RS Client Negative — clientName აკლია → 1001</span>
+            <span class="dur">266ms</span>
+          </summary><pre class="log">✅ Rejected — POST /api/distributor-hub-client (clientName აკლია) → HTTP 400 / code 1001</pre></details><details class="test-item" data-status="pass">
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="name">RS Client Negative — clientName მხოლოდ space-ები → 1001</span>
+            <span class="dur">277ms</span>
+          </summary><pre class="log">✅ Rejected — POST /api/distributor-hub-client (clientName = "   ") → HTTP 400 / code 1001</pre></details><details class="test-item" data-status="fail" open>
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#f85149">❌ failed</span>
+            <span class="name">RS Client Negative — clientName 256 სიმბოლო → 400</span>
+            <span class="dur">360ms</span>
+          </summary><pre class="err">ApiAssertionError: 
+❌ API TEST FAILED
+───────────────────────────────────────────
+🔧 ოპერაცია:    POST /api/distributor-hub-client (clientName 256 სიმბოლო)
+⚠️  პრობლემა:    მოვიდა HTTP 500 / code 1000 — სერვერის შეცდომა (500), ვალიდაცია არ მუშაობს
+📥 მიმდინარე შედეგი:
+{
+  "message": "An unexpected error occurred. Please contact support with reference ID: 85917039-a506-4391-9996-99df286fc4ec",
+  "statusCode": 1000,
+  "exceptionGroup": 6
+}
+✅ მოსალოდნელი შედეგი: HTTP 400
+───────────────────────────────────────────
+</pre></details><details class="test-item" data-status="pass">
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="name">RS Client Negative — clientName დაკავებულია (შექმნა) → 1186</span>
+            <span class="dur">868ms</span>
+          </summary><pre class="log">✅ Rejected — POST /api/distributor-hub-client (clientName დაკავებულია: QA Gislason, Nienow and Ledner) → HTTP 400 / code 1186</pre></details><details class="test-item" data-status="pass">
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="name">RS Client Negative — clientName დაკავებულია (სხვა კლიენტის update) → 1186</span>
+            <span class="dur">921ms</span>
+          </summary><pre class="log">✅ Rejected — POST (update) /api/distributor-hub-client (clientName დაკავებულია: QA Dibbert, Nienow and Kautzer) → HTTP 400 / code 1186</pre></details><details class="test-item" data-status="fail" open>
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#f85149">❌ failed</span>
+            <span class="name">RS Client Negative — clientName = არსებული + ბოლოში space → 1186</span>
+            <span class="dur">628ms</span>
+          </summary><pre class="err">ApiAssertionError: 
+❌ API TEST FAILED
+───────────────────────────────────────────
+🔧 ოპერაცია:    POST /api/distributor-hub-client (clientName = "QA Nienow Mosciski Inc " — არსებული + ბოლოში space)
+⚠️  პრობლემა:    მოვიდა HTTP 201 — API-მ არავალიდური მონაცემი მიიღო და შეინახა
+📥 მიმდინარე შედეგი:
+{
+  "value": {
+    "clientId": "2db663f4-859f-4522-85ee-420383ba6e93",
+    "clientSecret": "oibgXIt0Pw9vdF"
+  }
+}
+✅ მოსალოდნელი შედეგი: HTTP 400 / code 1186
+───────────────────────────────────────────
+</pre></details><details class="test-item" data-status="pass">
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="name">RS Client Negative — distributeMethod აკლია → 1001</span>
+            <span class="dur">673ms</span>
+          </summary><pre class="log">✅ Rejected — POST /api/distributor-hub-client (distributeMethod აკლია) → HTTP 400 / code 1001</pre></details><details class="test-item" data-status="pass">
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="name">RS Client Negative — distributeMethod არავალიდური CASH → 1003</span>
+            <span class="dur">383ms</span>
+          </summary><pre class="log">✅ Rejected — POST /api/distributor-hub-client (distributeMethod = "CASH") → HTTP 400 / code 1003</pre></details><details class="test-item" data-status="pass">
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="name">RS Client Negative — distributionStrategy აკლია → 1001</span>
+            <span class="dur">356ms</span>
+          </summary><pre class="log">✅ Rejected — POST /api/distributor-hub-client (distributionStrategy აკლია) → HTTP 400 / code 1001</pre></details><details class="test-item" data-status="pass">
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="name">RS Client Negative — distributionStrategy არავალიდური FAST → 1003</span>
+            <span class="dur">365ms</span>
+          </summary><pre class="log">✅ Rejected — POST /api/distributor-hub-client (distributionStrategy = "FAST") → HTTP 400 / code 1003</pre></details><details class="test-item" data-status="pass">
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="name">RS Client Negative — currencyConfigs აკლია → 1001</span>
+            <span class="dur">378ms</span>
+          </summary><pre class="log">✅ Rejected — POST /api/distributor-hub-client (currencyConfigs აკლია) → HTTP 400 / code 1001</pre></details><details class="test-item" data-status="pass">
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="name">RS Client Negative — currencyConfigs ცარიელი {} → 1001</span>
+            <span class="dur">349ms</span>
+          </summary><pre class="log">✅ Rejected — POST /api/distributor-hub-client (currencyConfigs = {}) → HTTP 400 / code 1001</pre></details><details class="test-item" data-status="pass">
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="name">RS Client Negative — GEL ცარიელი სია [] → 404 / 1232</span>
+            <span class="dur">415ms</span>
+          </summary><pre class="log">✅ Rejected — POST /api/distributor-hub-client (currencyConfigs = {"GEL":[]}) → HTTP 404 / code 1232</pre></details><details class="test-item" data-status="pass">
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="name">RS Client Negative — DEFAULT provider-ის გარეშე (მხოლოდ TBC) → 404 / 1232</span>
+            <span class="dur">383ms</span>
+          </summary><pre class="log">✅ Rejected — POST /api/distributor-hub-client (currencyConfigs = {"GEL":[{"provider":"TBC","minTransactionAmount":0.01,"maxTransactionAmount":100000,"commissionTiers":[{"commission":0,"commissionRateType":"FIXED","startAmount":0}]}]}) → HTTP 404 / code 1232</pre></details><details class="test-item" data-status="pass">
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="name">RS Client Negative — DEFAULT provider ორჯერ → 404 / 1232</span>
+            <span class="dur">371ms</span>
+          </summary><pre class="log">✅ Rejected — POST /api/distributor-hub-client (currencyConfigs = {"GEL":[{"provider":"DEFAULT","minTransactionAmount":0.01,"maxTransactionAmount":100000,"commissionTiers":[{"commission":0,"commissionRateType":"FIXED","startAmount":0}]},{"provider":"DEFAULT","minTransactionAmount":0.01,"maxTransactionAmount":100000,"commissionTiers":[{"commission":0,"commissionRateType":"FIXED","startAmount":0}]}]}) → HTTP 404 / code 1232</pre></details><details class="test-item" data-status="pass">
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="name">RS Client Negative — არარსებული ვალუტა XYZ → 1003</span>
+            <span class="dur">470ms</span>
+          </summary><pre class="log">✅ Rejected — POST /api/distributor-hub-client (currencyConfigs = {"XYZ":[{"provider":"DEFAULT","minTransactionAmount":0.01,"maxTransactionAmount":100000,"commissionTiers":[{"commission":0,"commissionRateType":"FIXED","startAmount":0}]}]}) → HTTP 400 / code 1003</pre></details><details class="test-item" data-status="pass">
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="name">RS Client Negative — minTransactionAmount 0 (ქვედა ზღვარი) → 1001</span>
+            <span class="dur">480ms</span>
+          </summary><pre class="log">✅ Rejected — POST /api/distributor-hub-client (currencyConfigs = {"GEL":[{"provider":"DEFAULT","minTransactionAmount":0,"maxTransactionAmount":100000,"commissionTiers":[{"commission":0,"commissionRateType":"FIXED","startAmount":0}]}]}) → HTTP 400 / code 1001</pre></details><details class="test-item" data-status="pass">
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="name">RS Client Negative — minTransactionAmount -0.01 → 1001</span>
+            <span class="dur">483ms</span>
+          </summary><pre class="log">✅ Rejected — POST /api/distributor-hub-client (currencyConfigs = {"GEL":[{"provider":"DEFAULT","minTransactionAmount":-0.01,"maxTransactionAmount":100000,"commissionTiers":[{"commission":0,"commissionRateType":"FIXED","startAmount":0}]}]}) → HTTP 400 / code 1001</pre></details><details class="test-item" data-status="pass">
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="name">RS Client Negative — minTransactionAmount აკლია → 1001</span>
+            <span class="dur">416ms</span>
+          </summary><pre class="log">✅ Rejected — POST /api/distributor-hub-client (currencyConfigs = {"GEL":[{"provider":"DEFAULT","maxTransactionAmount":100000,"commissionTiers":[{"commission":0,"commissionRateType":"FIXED","startAmount":0}]}]}) → HTTP 400 / code 1001</pre></details><details class="test-item" data-status="pass">
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="name">RS Client Negative — maxTransactionAmount 0 → 1001</span>
+            <span class="dur">414ms</span>
+          </summary><pre class="log">✅ Rejected — POST /api/distributor-hub-client (currencyConfigs = {"GEL":[{"provider":"DEFAULT","minTransactionAmount":0.01,"maxTransactionAmount":0,"commissionTiers":[{"commission":0,"commissionRateType":"FIXED","startAmount":0}]}]}) → HTTP 400 / code 1001</pre></details><details class="test-item" data-status="pass">
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="name">RS Client Negative — maxTransactionAmount -1 → 1001</span>
+            <span class="dur">400ms</span>
+          </summary><pre class="log">✅ Rejected — POST /api/distributor-hub-client (currencyConfigs = {"GEL":[{"provider":"DEFAULT","minTransactionAmount":0.01,"maxTransactionAmount":-1,"commissionTiers":[{"commission":0,"commissionRateType":"FIXED","startAmount":0}]}]}) → HTTP 400 / code 1001</pre></details><details class="test-item" data-status="fail" open>
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#f85149">❌ failed</span>
+            <span class="name">RS Client Negative — min &gt; max (100 &gt; 10) → 400</span>
+            <span class="dur">445ms</span>
+          </summary><pre class="err">ApiAssertionError: 
+❌ API TEST FAILED
+───────────────────────────────────────────
+🔧 ოპერაცია:    POST /api/distributor-hub-client (currencyConfigs = {"GEL":[{"provider":"DEFAULT","minTransactionAmount":100,"maxTransactionAmount":10,"commissionTiers":[{"commission":0,"commissionRateType":"FIXED","startAmount":0}]}]})
+⚠️  პრობლემა:    მოვიდა HTTP 201 — API-მ არავალიდური მონაცემი მიიღო და შეინახა
+📥 მიმდინარე შედეგი:
+{
+  "value": {
+    "clientId": "96e39c80-c9a2-4b57-8264-98709b8957e3",
+    "clientSecret": "cZGXd5DNvlAMHp"
+  }
+}
+✅ მოსალოდნელი შედეგი: HTTP 400
+───────────────────────────────────────────
+</pre></details><details class="test-item" data-status="pass">
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="name">RS Client Negative — commissionTiers ცარიელი [] → 1001</span>
+            <span class="dur">590ms</span>
+          </summary><pre class="log">✅ Rejected — POST /api/distributor-hub-client (currencyConfigs = {"GEL":[{"provider":"DEFAULT","minTransactionAmount":0.01,"maxTransactionAmount":100000,"commissionTiers":[]}]}) → HTTP 400 / code 1001</pre></details><details class="test-item" data-status="pass">
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="name">RS Client Negative — FIXED საკომისიო -1 → 1001</span>
+            <span class="dur">348ms</span>
+          </summary><pre class="log">✅ Rejected — POST /api/distributor-hub-client (currencyConfigs = {"GEL":[{"provider":"DEFAULT","minTransactionAmount":0.01,"maxTransactionAmount":100000,"commissionTiers":[{"commission":-1,"commissionRateType":"FIXED","startAmount":0}]}]}) → HTTP 400 / code 1001</pre></details><details class="test-item" data-status="pass">
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="name">RS Client Negative — PERCENTAGE -0.01 (0-ის ქვედა ზღვარი −0.01) → 1001</span>
+            <span class="dur">369ms</span>
+          </summary><pre class="log">✅ Rejected — POST /api/distributor-hub-client (currencyConfigs = {"GEL":[{"provider":"DEFAULT","minTransactionAmount":0.01,"maxTransactionAmount":100000,"commissionTiers":[{"commission":-0.01,"commissionRateType":"PERCENTAGE","startAmount":0}]}]}) → HTTP 400 / code 1001</pre></details><details class="test-item" data-status="fail" open>
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#f85149">❌ failed</span>
+            <span class="name">RS Client Negative — PERCENTAGE 100.01 (100-ის ზედა ზღვარი +0.01) → 400</span>
+            <span class="dur">384ms</span>
+          </summary><pre class="err">ApiAssertionError: 
+❌ API TEST FAILED
+───────────────────────────────────────────
+🔧 ოპერაცია:    POST /api/distributor-hub-client (currencyConfigs = {"GEL":[{"provider":"DEFAULT","minTransactionAmount":0.01,"maxTransactionAmount":100000,"commissionTiers":[{"commission":100.01,"commissionRateType":"PERCENTAGE","startAmount":0}]}]})
+⚠️  პრობლემა:    მოვიდა HTTP 201 — API-მ არავალიდური მონაცემი მიიღო და შეინახა
+📥 მიმდინარე შედეგი:
+{
+  "value": {
+    "clientId": "963cb154-709d-44d2-9b4c-c761974a1f1e",
+    "clientSecret": "d8atmF5LTr5xuA"
+  }
+}
+✅ მოსალოდნელი შედეგი: HTTP 400
+───────────────────────────────────────────
+</pre></details><details class="test-item" data-status="fail" open>
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#f85149">❌ failed</span>
+            <span class="name">RS Client Negative — PERCENTAGE 1000 → 400</span>
+            <span class="dur">640ms</span>
+          </summary><pre class="err">ApiAssertionError: 
+❌ API TEST FAILED
+───────────────────────────────────────────
+🔧 ოპერაცია:    POST /api/distributor-hub-client (currencyConfigs = {"GEL":[{"provider":"DEFAULT","minTransactionAmount":0.01,"maxTransactionAmount":100000,"commissionTiers":[{"commission":1000,"commissionRateType":"PERCENTAGE","startAmount":0}]}]})
+⚠️  პრობლემა:    მოვიდა HTTP 201 — API-მ არავალიდური მონაცემი მიიღო და შეინახა
+📥 მიმდინარე შედეგი:
+{
+  "value": {
+    "clientId": "1dcda3fd-3f29-43b5-9d6d-b1c642c4df98",
+    "clientSecret": "K6D55DJHXGbSfC"
+  }
+}
+✅ მოსალოდნელი შედეგი: HTTP 400
+───────────────────────────────────────────
+</pre></details><details class="test-item" data-status="pass">
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="name">RS Client Negative — commissionRateType არავალიდური → 1003</span>
+            <span class="dur">596ms</span>
+          </summary><pre class="log">✅ Rejected — POST /api/distributor-hub-client (currencyConfigs = {"GEL":[{"provider":"DEFAULT","minTransactionAmount":0.01,"maxTransactionAmount":100000,"commissionTiers":[{"commission":0,"commissionRateType":"X","startAmount":0}]}]}) → HTTP 400 / code 1003</pre></details><details class="test-item" data-status="pass">
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="name">RS Client Negative — startAmount -1 → 1001</span>
+            <span class="dur">357ms</span>
+          </summary><pre class="log">✅ Rejected — POST /api/distributor-hub-client (currencyConfigs = {"GEL":[{"provider":"DEFAULT","minTransactionAmount":0.01,"maxTransactionAmount":100000,"commissionTiers":[{"commission":0,"commissionRateType":"FIXED","startAmount":-1}]}]}) → HTTP 400 / code 1001</pre></details><details class="test-item" data-status="pass">
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="name">RS Client Negative — minCommissionAmount 0 → 1001</span>
+            <span class="dur">354ms</span>
+          </summary><pre class="log">✅ Rejected — POST /api/distributor-hub-client (currencyConfigs = {"GEL":[{"provider":"DEFAULT","minTransactionAmount":0.01,"maxTransactionAmount":100000,"commissionTiers":[{"commission":0,"commissionRateType":"FIXED","startAmount":0,"minCommissionAmount":0}]}]}) → HTTP 400 / code 1001</pre></details><details class="test-item" data-status="pass">
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="name">RS Client Negative — maxCommissionAmount 0 → 1001</span>
+            <span class="dur">360ms</span>
+          </summary><pre class="log">✅ Rejected — POST /api/distributor-hub-client (currencyConfigs = {"GEL":[{"provider":"DEFAULT","minTransactionAmount":0.01,"maxTransactionAmount":100000,"commissionTiers":[{"commission":0,"commissionRateType":"FIXED","startAmount":0,"maxCommissionAmount":0}]}]}) → HTTP 400 / code 1001</pre></details><details class="test-item" data-status="fail" open>
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#f85149">❌ failed</span>
+            <span class="name">RS Client Negative — minCommissionAmount &gt; maxCommissionAmount (10 &gt; 1) → 400</span>
+            <span class="dur">448ms</span>
+          </summary><pre class="err">ApiAssertionError: 
+❌ API TEST FAILED
+───────────────────────────────────────────
+🔧 ოპერაცია:    POST /api/distributor-hub-client (currencyConfigs = {"GEL":[{"provider":"DEFAULT","minTransactionAmount":0.01,"maxTransactionAmount":100000,"commissionTiers":[{"commission":5,"commissionRateType":"PERCENTAGE","startAmount":0,"minCommissionAmount":10,"maxCommissionAmount":1}]}]})
+⚠️  პრობლემა:    მოვიდა HTTP 201 — API-მ არავალიდური მონაცემი მიიღო და შეინახა
+📥 მიმდინარე შედეგი:
+{
+  "value": {
+    "clientId": "fd8fd0ba-f9ba-40b7-8849-308ebfbd4dbb",
+    "clientSecret": "EsuVzGQMVih0b5"
+  }
+}
+✅ მოსალოდნელი შედეგი: HTTP 400
+───────────────────────────────────────────
+</pre></details><details class="test-item" data-status="fail" open>
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#f85149">❌ failed</span>
+            <span class="name">RS Client Negative — 2 tier ერთი startAmount-ით (0 და 0) → 400</span>
+            <span class="dur">669ms</span>
+          </summary><pre class="err">ApiAssertionError: 
+❌ API TEST FAILED
+───────────────────────────────────────────
+🔧 ოპერაცია:    POST /api/distributor-hub-client (currencyConfigs = {"GEL":[{"provider":"DEFAULT","minTransactionAmount":0.01,"maxTransactionAmount":100000,"commissionTiers":[{"commission":1,"commissionRateType":"FIXED","startAmount":0},{"commission":2,"commissionRateType":"FIXED","startAmount":0}]}]})
+⚠️  პრობლემა:    მოვიდა HTTP 201 — API-მ არავალიდური მონაცემი მიიღო და შეინახა
+📥 მიმდინარე შედეგი:
+{
+  "value": {
+    "clientId": "99e37dab-4af3-44af-af81-5fc208c2a2d0",
+    "clientSecret": "F1VdzMjNfjId89"
+  }
+}
+✅ მოსალოდნელი შედეგი: HTTP 400
+───────────────────────────────────────────
+</pre></details><details class="test-item" data-status="pass">
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="name">RS Client Negative — მიბმა: SYSTEM_OPERATOR კლიენტი → 1484</span>
+            <span class="dur">1.2s</span>
+          </summary><pre class="log">✅ Business Created — QA Mosciski - Zieme · RESIDENT · 940799544 · 7f3dfc3a-4c59-450d-b540-2828863e8648
+✅ Rejected — POST /api/distributor-hub-business/{id}/clients (systemOperator) → HTTP 400 / code 1484</pre></details><details class="test-item" data-status="pass">
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="name">RS Client Negative — მიბმა: ცარიელი clientIds [] → 1001</span>
+            <span class="dur">738ms</span>
+          </summary><pre class="log">✅ Business Created — QA Prosacco - Weissnat · RESIDENT · 942076597 · d06f0ce5-94ad-4a3c-9708-a7c8b2eebf31
+✅ Rejected — POST /api/distributor-hub-business/{id}/clients (emptyList) → HTTP 400 / code 1001</pre></details><details class="test-item" data-status="pass">
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="name">RS Client Negative — მიბმა: clientIds [null] → 1001</span>
+            <span class="dur">774ms</span>
+          </summary><pre class="log">✅ Business Created — QA Durgan Bogan Inc · RESIDENT · 956268360 · 83795a89-87c7-443b-9f22-b4dede51ebe2
+✅ Rejected — POST /api/distributor-hub-business/{id}/clients (nullId) → HTTP 400 / code 1001</pre></details><details class="test-item" data-status="pass">
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="name">RS Client Negative — მიბმა: არარსებული კლიენტი → 404 / 1188</span>
+            <span class="dur">778ms</span>
+          </summary><pre class="log">✅ Business Created — QA Weissnat, Kessler and Weissnat · RESIDENT · 967743655 · 02d18734-3446-4be5-972c-106082995e5a
+✅ Rejected — POST /api/distributor-hub-business/{id}/clients (unknownClient) → HTTP 404 / code 1188</pre></details><details class="test-item" data-status="pass">
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="name">RS Client Negative — მიბმა: არარსებული ბიზნესი → 404 / 1479</span>
+            <span class="dur">1.0s</span>
+          </summary><pre class="log">✅ Business Created — QA Feeney Hessel LLC · RESIDENT · 913304169 · b58901f9-faf8-4aa9-a788-3f3f32dd62f6
+✅ Rejected — POST /api/distributor-hub-business/{id}/clients (unknownBusiness) → HTTP 404 / code 1479</pre></details><details class="test-item" data-status="pass">
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="name">RS Client Negative — მიბმა: კლიენტი უკვე სხვა ბიზნესზეა → 409 / 1485</span>
+            <span class="dur">1.2s</span>
+          </summary><pre class="log">✅ Business Created — QA Grady Fadel LLC · RESIDENT · 966882497 · cdcf321b-db21-4a4d-9611-c090d9e63d15
+✅ Business Created — QA Schroeder Jacobi Inc · RESIDENT · 994394871 · c6e74cc2-0e7a-47b5-839c-d35ab9d5caba
+✅ Rejected — POST /api/distributor-hub-business/{id}/clients (otherBusiness) → HTTP 409 / code 1485</pre></details><details class="test-item" data-status="pass">
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="name">RS Client Negative — მოხსნა: კლიენტი ამ ბიზნესზე არ არის → 404 / 1491</span>
+            <span class="dur">1.2s</span>
+          </summary><pre class="log">✅ Business Created — QA Yost - Jacobi · RESIDENT · 961409429 · c532c1ff-ee14-458f-a222-e1ad406c34bd
+✅ Business Created — QA Nienow, Ernser and Lebsack · RESIDENT · 957508491 · 4a9cc8a8-51c4-4247-9b83-13465bd91726
+✅ Rejected — DELETE /api/distributor-hub-business/{id}/clients/{clientId} (notInBusiness) → HTTP 404 / code 1491</pre></details><details class="test-item" data-status="pass">
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="name">RS Client Negative — მოხსნა: არარსებული ბიზნესი → 404 / 1479</span>
+            <span class="dur">1.2s</span>
+          </summary><pre class="log">✅ Business Created — QA Runolfsdottir - Bednar · RESIDENT · 993746699 · 260cd87a-941e-4441-8544-45c7472bdb49
+✅ Business Created — QA Kessler - Zieme · RESIDENT · 966165430 · 2d46efaf-a4f1-4732-8e8a-68ffc5f0857f
+✅ Rejected — DELETE /api/distributor-hub-business/{id}/clients/{clientId} (unknownBusiness) → HTTP 404 / code 1479</pre></details><details class="test-item" data-status="pass">
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="name">RS Client Negative — update: scheme-ის შეცვლა WALLET → SYSTEM_OPERATOR → 409 / 1487</span>
+            <span class="dur">973ms</span>
+          </summary><pre class="log">✅ Business Created — QA Champlin - Kessler · RESIDENT · 999573770 · 7bf87546-aa6a-4cb0-8b62-c597a1db89ac
+✅ Rejected — POST /api/distributor-hub-client — update (changeScheme) → HTTP 409 / code 1487</pre></details><details class="test-item" data-status="pass">
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="name">RS Client Negative — update: სხვა ბიზნესზე გადატანა → 409 / 1485</span>
+            <span class="dur">1.2s</span>
+          </summary><pre class="log">✅ Business Created — QA Dibbert - Bogan · RESIDENT · 905624361 · 165960d3-2432-4891-88ea-1812b4f2f286
+✅ Business Created — QA Veum, Lebsack and Weissnat · RESIDENT · 947236177 · c9adfcee-5529-4e3d-a920-0effb9481a3a
+✅ Rejected — POST /api/distributor-hub-client — update (otherBusiness) → HTTP 409 / code 1485</pre></details><details class="test-item" data-status="fail" open>
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#f85149">❌ failed</span>
+            <span class="name">RS Client Negative — update: status-ის გარეშე → 400</span>
+            <span class="dur">914ms</span>
+          </summary><pre class="log">✅ Business Created — QA Mraz, Wolf and Lockman · RESIDENT · 940502888 · 60289bdf-863f-48ff-ad7a-11eea426d173</pre><pre class="err">ApiAssertionError: 
+❌ API TEST FAILED
+───────────────────────────────────────────
+🔧 ოპერაცია:    POST /api/distributor-hub-client — update (noStatus)
+⚠️  პრობლემა:    მოვიდა HTTP 500 / code 1000 — სერვერის შეცდომა (500), ვალიდაცია არ მუშაობს
+📥 მიმდინარე შედეგი:
+{
+  "message": "An unexpected error occurred. Please contact support with reference ID: 558396c5-6e5a-47e1-a0b0-fff8937ce4d0",
+  "statusCode": 1000,
+  "exceptionGroup": 6
+}
+✅ მოსალოდნელი შედეგი: HTTP 400
+───────────────────────────────────────────
+</pre></details><details class="test-item" data-status="pass">
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="name">RS Client Negative — update: არარსებული integratorId → 404 / 1188</span>
+            <span class="dur">1.2s</span>
+          </summary><pre class="log">✅ Business Created — QA Mraz - Schaden · RESIDENT · 915855135 · f4282869-9f44-49bd-8eef-af8e9b0b6178
+✅ Rejected — POST /api/distributor-hub-client — update (unknownClient) → HTTP 404 / code 1188</pre></details><details class="test-item" data-status="fail" open>
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#f85149">❌ failed</span>
             <span class="name">RS Client Negative — update: PERCENTAGE 500 → 400</span>
-            <span class="dur">1.5s</span>
-          </summary><pre class="log">✅ Business Created — QA Bogan, Mraz and Kessler · RESIDENT · 961317574 · 1529f578-9d93-4016-abe9-e3c1c0e1debc</pre><pre class="err">ApiAssertionError: 
+            <span class="dur">943ms</span>
+          </summary><pre class="log">✅ Business Created — QA Runolfsdottir Champlin LLC · RESIDENT · 903793940 · 28b6020b-baad-4233-8a43-36d02c567871</pre><pre class="err">ApiAssertionError: 
 ❌ API TEST FAILED
 ───────────────────────────────────────────
 🔧 ოპერაცია:    POST /api/distributor-hub-client — update (percentOver100)
@@ -105,19 +790,19 @@
             <span class="chev">▶</span>
             <span class="st" style="color:#3fb950">✅ passed</span>
             <span class="name">RS Client Negative — ბალანსი: amount 0 → 1001</span>
-            <span class="dur">1.2s</span>
+            <span class="dur">839ms</span>
           </summary><pre class="log">✅ Rejected — PUT /api/distributor-hub-client/{id} — ბალანსი (amount = 0, currency = "GEL") → HTTP 400 / code 1001</pre></details><details class="test-item" data-status="pass">
           <summary class="test">
             <span class="chev">▶</span>
             <span class="st" style="color:#3fb950">✅ passed</span>
             <span class="name">RS Client Negative — ბალანსი: არარსებული ვალუტა XYZ → 1002</span>
-            <span class="dur">702ms</span>
+            <span class="dur">591ms</span>
           </summary><pre class="log">✅ Rejected — PUT /api/distributor-hub-client/{id} — ბალანსი (amount = 1, currency = "XYZ") → HTTP 400 / code 1002</pre></details><details class="test-item" data-status="fail" open>
           <summary class="test">
             <span class="chev">▶</span>
             <span class="st" style="color:#f85149">❌ failed</span>
             <span class="name">RS Client Negative — ბალანსი: amount-ის გარეშე → 400</span>
-            <span class="dur">626ms</span>
+            <span class="dur">514ms</span>
           </summary><pre class="err">ApiAssertionError: 
 ❌ API TEST FAILED
 ───────────────────────────────────────────
@@ -125,13 +810,281 @@
 ⚠️  პრობლემა:    მოვიდა HTTP 500 / code 1000 — სერვერის შეცდომა (500), ვალიდაცია არ მუშაობს
 📥 მიმდინარე შედეგი:
 {
-  "message": "An unexpected error occurred. Please contact support with reference ID: 179c6fc7-528d-4dc4-b76d-e2f4b76bd9b7",
+  "message": "An unexpected error occurred. Please contact support with reference ID: 112d15e2-3bb6-40bf-a41b-49969aea41a5",
   "statusCode": 1000,
   "exceptionGroup": 6
 }
 ✅ მოსალოდნელი შედეგი: HTTP 400
 ───────────────────────────────────────────
-</pre></details></div>
+</pre></details><details class="test-item" data-status="pass">
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="name">RS Client Negative — GET არარსებული კლიენტი → 400 / 1185</span>
+            <span class="dur">507ms</span>
+          </summary><pre class="log">✅ Rejected — GET /api/distributor-hub-client/00000000-0000-0000-0000-000000000000 → HTTP 400 / code 1185</pre></details></div><div class="file-group"><div class="file">tests/RS/Positive/rs-business.spec.ts</div><details class="test-item" data-status="pass">
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="name">RS Business — RESIDENT პ-ნ 9 ციფრი</span>
+            <span class="dur">394ms</span>
+          </summary><pre class="log">✅ Business Created — QA Sporer - Durgan · RESIDENT · 985187634 · 0e73dcb7-7008-43f6-a80c-3a29045840da</pre></details><details class="test-item" data-status="pass">
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="name">RS Business — RESIDENT პ-ნ 11 ციფრი</span>
+            <span class="dur">383ms</span>
+          </summary><pre class="log">✅ Business Created — QA Fadel, Bogan and Durgan · RESIDENT · 93640260789 · 03844811-3143-48d4-b6e6-5dc1c94e1b4c</pre></details><details class="test-item" data-status="pass">
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="name">RS Business — RESIDENT ალტერნატიული პირადი ნომრით</span>
+            <span class="dur">408ms</span>
+          </summary><pre class="log">✅ Business Created — QA Kessler, Bartell and Ledner · RESIDENT · 912542188 · 472596d5-db34-4923-8ca7-ca2c0da412e1</pre></details><details class="test-item" data-status="pass">
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="name">RS Business — FOREIGN მისამართებით ident</span>
+            <span class="dur">391ms</span>
+          </summary><pre class="log">✅ Business Created — QA Cormier Durgan Inc · FOREIGN · QA-FRN-30812311 · 7582157f-25eb-4e8c-94f4-451a94e43fde</pre></details><details class="test-item" data-status="pass">
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="name">RS Business — FOREIGN ident-ის გარეშე</span>
+            <span class="dur">407ms</span>
+          </summary><pre class="log">✅ Business Created — QA Reichert Veum Group · FOREIGN · (no ident) · 835014a2-c928-446b-9803-ee4ee79669b8</pre></details><details class="test-item" data-status="pass">
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="name">RS Business — FOREIGN state registration ველებით</span>
+            <span class="dur">404ms</span>
+          </summary><pre class="log">✅ Business Created — QA Runolfsdottir Gutkowski Inc · FOREIGN · QA-FRN-66673088 · 70e88228-d20a-47d9-8c0d-5bfa720ac666</pre></details><details class="test-item" data-status="pass">
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="name">RS Business — ფილტრი: identificationNumber 1 ჩანაწერი</span>
+            <span class="dur">470ms</span>
+          </summary><pre class="log">✅ Business Created — QA Berge Schaden and Sons · RESIDENT · 923141490 · 5dc52677-e097-4191-9186-15097ac9f400</pre></details><details class="test-item" data-status="pass">
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="name">RS Business — ფილტრი: identificationNumber ნომრის დასაწყისი</span>
+            <span class="dur">467ms</span>
+          </summary><pre class="log">✅ Business Created — QA Hermiston Schaden and Sons · RESIDENT · 957913329 · fc1575e7-1b3d-4b2e-a513-0548f252befc</pre></details><details class="test-item" data-status="pass">
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="name">RS Business — ფილტრი: ალტერნატიული პირადი ნომრით</span>
+            <span class="dur">465ms</span>
+          </summary><pre class="log">✅ Business Created — QA Kemmer - Hessel · RESIDENT · 907524788 · 524751fb-11e8-418b-bdb0-83678b87756c</pre></details><details class="test-item" data-status="pass">
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="name">RS Business — ფილტრი: name სახელის ნაწილი, სხვა რეგისტრით</span>
+            <span class="dur">480ms</span>
+          </summary><pre class="log">✅ Business Created — QA Champlin Ernser Group · RESIDENT · 997908890 · b6c29f44-6f39-4332-a4d3-c7286d88ed93</pre></details><details class="test-item" data-status="pass">
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="name">RS Business — ფილტრი: residency -  RESIDENT</span>
+            <span class="dur">554ms</span>
+          </summary><pre class="log">✅ Business Created — QA Champlin - Bartell · RESIDENT · 915163566 · b4bf65f2-2448-4656-a5e4-595da0681e15</pre></details><details class="test-item" data-status="pass">
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="name">RS Business — ფილტრი: residency - FOREIGN</span>
+            <span class="dur">473ms</span>
+          </summary><pre class="log">✅ Business Created — QA Jaskolski Lockman Group · FOREIGN · QA-FRN-80658190 · 701600e7-06f8-48cc-965d-0126b24c215a</pre></details><details class="test-item" data-status="pass">
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="name">RS Business — რედაქტირება: სახელი, თარიღები, ალტ. ნომერი</span>
+            <span class="dur">824ms</span>
+          </summary><pre class="log">✅ Business Created — QA Kemmer Kessler Inc · RESIDENT · 926298189 · bf7cd178-8b6b-403e-9df3-5a6456d6f670
+✅ Business Updated (details) — QA Yost - Quigley · version 0 → 1</pre></details><details class="test-item" data-status="pass">
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="name">RS Business — რედაქტირება: identificationNumber ახალ ნომერზე</span>
+            <span class="dur">892ms</span>
+          </summary><pre class="log">✅ Business Created — QA Ernser, Schaden and Zieme · RESIDENT · 950634651 · 7aef0cd9-1e50-459e-8439-252f8a331db9
+✅ Business Updated (ident) — QA Ernser, Schaden and Zieme · version 0 → 1</pre></details><details class="test-item" data-status="pass">
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="name">RS Business — რედაქტირება: FOREIGN მისამართები და state registration</span>
+            <span class="dur">906ms</span>
+          </summary><pre class="log">✅ Business Created — QA Wolf, Mraz and Abshire · FOREIGN · QA-FRN-36830592 · b736cb70-1f05-4594-88b0-a1110cfd1bd6
+✅ Business Updated (foreignAddresses) — QA Wolf, Mraz and Abshire · version 0 → 1</pre></details><details class="test-item" data-status="pass">
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="name">RS Business — რედაქტირება: RESIDENT → FOREIGN (RS-ში გაგზავნამდე)</span>
+            <span class="dur">848ms</span>
+          </summary><pre class="log">✅ Business Created — QA Waelchi Champlin and Sons · RESIDENT · 907354688 · 3b664035-8273-46e3-b40c-9d27ca6cb8a9
+✅ Business Updated (residencyToForeign) — QA Waelchi Champlin and Sons · version 0 → 1</pre></details><details class="test-item" data-status="pass">
+          <summary class="test">
+            <span class="chev"></span>
+            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="name">RS Business — პაგინაცია pageSize 5 - გვერდი 1  2, newest first</span>
+            <span class="dur">365ms</span>
+          </summary></details></div><div class="file-group"><div class="file">tests/RS/Positive/rs-client.spec.ts</div><details class="test-item" data-status="pass">
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="name">RS Client — WALLET ბიზნესით (businessId შექმნისას)</span>
+            <span class="dur">1.5s</span>
+          </summary><pre class="log">✅ Business Created — QA Mosciski - Stamm · RESIDENT · 918005412 · 2276b27a-f90a-41e2-8b50-a61e2322cd4f
+✅ Client Created — QA Pagac, Reichert and Kuhn · WALLET · 7eb2d8c0-70b1-4b58-8a3f-6744ac23e0a8 · business 2276b27a-f90a-41e2-8b50-a61e2322cd4f</pre></details><details class="test-item" data-status="pass">
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="name">RS Client — WALLET ბიზნესის გარეშე (თავისუფალ სიაშია)</span>
+            <span class="dur">708ms</span>
+          </summary><pre class="log">✅ Client Created — QA Kessler - Kessler · WALLET · 540f3273-829b-4088-8579-2a788e1e1b0d</pre></details><details class="test-item" data-status="pass">
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="name">RS Client — SYSTEM_OPERATOR ბიზნესის გარეშე (თავისუფალ სიაში არ არის)</span>
+            <span class="dur">677ms</span>
+          </summary><pre class="log">✅ Client Created — QA Reichert Kautzer Group · SYSTEM_OPERATOR · 53a181e5-5b38-4908-84e0-948f3cea3422</pre></details><details class="test-item" data-status="pass">
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="name">RS Client — distributeMethod RECEIVER_ID</span>
+            <span class="dur">1.6s</span>
+          </summary><pre class="log">✅ Business Created — QA Torphy Champlin LLC · RESIDENT · 932404941 · afcc5592-8ad5-4a5a-b32b-20b6d60bf2c2
+✅ Client Created — QA Lockman - Pagac · WALLET · dec79689-fa6b-44fe-b4c5-6cb3f6378fec · business afcc5592-8ad5-4a5a-b32b-20b6d60bf2c2</pre></details><details class="test-item" data-status="pass">
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="name">RS Client — distributionStrategy MANUAL</span>
+            <span class="dur">1.6s</span>
+          </summary><pre class="log">✅ Business Created — QA Marvin - Yost · RESIDENT · 982454896 · aee8b71e-8915-4765-b972-046c38f8027e
+✅ Client Created — QA Durgan - Berge · WALLET · 9879a885-5381-47e4-acbb-35e0b4c665b3 · business aee8b71e-8915-4765-b972-046c38f8027e</pre></details><details class="test-item" data-status="pass">
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="name">RS Client — distributionStrategy TREASURY</span>
+            <span class="dur">1.4s</span>
+          </summary><pre class="log">✅ Business Created — QA Rempel, Hessel and Kautzer · RESIDENT · 912213568 · e81d21c4-8a75-437d-8b6c-1fab0d32c144
+✅ Client Created — QA Kemmer Bartell Group · WALLET · 96c8a1af-8894-4de7-8f56-b8cd48d1c823 · business e81d21c4-8a75-437d-8b6c-1fab0d32c144</pre></details><details class="test-item" data-status="pass">
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="name">RS Client — distributionStrategy TESTING</span>
+            <span class="dur">1.4s</span>
+          </summary><pre class="log">✅ Business Created — QA Mosciski, Bednar and Bogan · RESIDENT · 999684345 · 93656069-2bc5-4bd5-9522-eb3b940ef958
+✅ Client Created — QA Wuckert, Ledner and Fadel · WALLET · cde7896a-72b7-4536-b2a8-5f1258fcfa2b · business 93656069-2bc5-4bd5-9522-eb3b940ef958</pre></details><details class="test-item" data-status="pass">
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="name">RS Client — საკომისიო FIXED 1 GEL</span>
+            <span class="dur">1.4s</span>
+          </summary><pre class="log">✅ Business Created — QA Gutkowski Abshire LLC · RESIDENT · 908966144 · b8106a7b-cbb6-4722-bdb1-26b970982fe0
+✅ Client Created — QA Weissnat - Gutkowski · WALLET · 94dd1eed-97dc-4fe8-9d77-fcb8558e294d · business b8106a7b-cbb6-4722-bdb1-26b970982fe0</pre></details><details class="test-item" data-status="pass">
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="name">RS Client — საკომისიო PERCENTAGE 2.5%</span>
+            <span class="dur">1.5s</span>
+          </summary><pre class="log">✅ Business Created — QA Dibbert, Waelchi and Okuneva · RESIDENT · 998097234 · 429ffe38-4773-4553-9bc3-bebcce6bc3ea
+✅ Client Created — QA Mosciski - Tromp · WALLET · a6df4d72-aed1-4f4e-a79c-82bc23439b31 · business 429ffe38-4773-4553-9bc3-bebcce6bc3ea</pre></details><details class="test-item" data-status="pass">
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="name">RS Client — საკომისიო PERCENTAGE 100% (ზედა ზღვარი)</span>
+            <span class="dur">1.4s</span>
+          </summary><pre class="log">✅ Business Created — QA Wolf, Okuneva and Torphy · RESIDENT · 955651643 · 24685e31-14c2-4584-8ae1-72450e633cec
+✅ Client Created — QA Sporer - Champlin · WALLET · 3397c263-8273-42da-9ab2-220815791051 · business 24685e31-14c2-4584-8ae1-72450e633cec</pre></details><details class="test-item" data-status="pass">
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="name">RS Client — საკომისიო PERCENTAGE min / max საკომისიოს თანხით</span>
+            <span class="dur">1.4s</span>
+          </summary><pre class="log">✅ Business Created — QA Rempel - Ledner · RESIDENT · 944385690 · 62a782b0-04c4-4d67-89c3-c5e4e057b3ab
+✅ Client Created — QA Weissnat - Marvin · WALLET · c6c70f08-8463-44d7-a78e-999c321e8acd · business 62a782b0-04c4-4d67-89c3-c5e4e057b3ab</pre></details><details class="test-item" data-status="pass">
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="name">RS Client — საკომისიოს 2 tier (0-დან FIXED, 1000-დან PERCENTAGE)</span>
+            <span class="dur">1.4s</span>
+          </summary><pre class="log">✅ Business Created — QA Jacobi, Yost and Nienow · RESIDENT · 901827740 · 92cf9cf0-75a0-4ec8-9f81-774b93fc9979
+✅ Client Created — QA Fadel, Hilpert and Wuckert · WALLET · dd52882c-ae56-4714-ba6e-f8bd505d0b67 · business 92cf9cf0-75a0-4ec8-9f81-774b93fc9979</pre></details><details class="test-item" data-status="pass">
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="name">RS Client — ლიმიტები: min 0.01 (ქვედა ზღვარი), max 1 000 000</span>
+            <span class="dur">1.3s</span>
+          </summary><pre class="log">✅ Business Created — QA Pagac Torphy and Sons · RESIDENT · 907714167 · c8053463-cb5e-4c78-9512-ef109b083df6
+✅ Client Created — QA Pagac, Nienow and Kautzer · WALLET · c724ca7f-aa02-4d4c-8ec9-ecf55b1a60e4 · business c8053463-cb5e-4c78-9512-ef109b083df6</pre></details><details class="test-item" data-status="pass">
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="name">RS Client — ლიმიტები: min = max (10 = 10)</span>
+            <span class="dur">1.3s</span>
+          </summary><pre class="log">✅ Business Created — QA Gislason - Bartell · RESIDENT · 963085219 · da79674c-1bd2-40e3-9286-6b0307a9ab66
+✅ Client Created — QA Ernser Hilpert Group · WALLET · d354cef3-207a-4d3b-a7e6-f5de813168a5 · business da79674c-1bd2-40e3-9286-6b0307a9ab66</pre></details><details class="test-item" data-status="pass">
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="name">RS Client — რამდენიმე provider (DEFAULT + TBC + BOG)</span>
+            <span class="dur">1.3s</span>
+          </summary><pre class="log">✅ Business Created — QA Grady, Runolfsdottir and Lockman · RESIDENT · 962799808 · e30c2bc4-7117-4a77-bb57-c9b3bb035188
+✅ Client Created — QA Cormier - Upton · WALLET · abe7e3bf-e3dd-4d01-970b-4be5c6b2c10a · business e30c2bc4-7117-4a77-bb57-c9b3bb035188</pre></details><details class="test-item" data-status="pass">
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="name">RS Client — რამდენიმე ვალუტა (GEL + USD + EUR)</span>
+            <span class="dur">1.4s</span>
+          </summary><pre class="log">✅ Business Created — QA Champlin Jacobi LLC · RESIDENT · 998820114 · cab02ab3-65ea-43cc-9d54-445bf4481c9c
+✅ Client Created — QA Kautzer - Okuneva · WALLET · a426fb62-ecc4-494c-b0f1-a24a479507e0 · business cab02ab3-65ea-43cc-9d54-445bf4481c9c</pre></details><details class="test-item" data-status="pass">
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="name">RS Client — ბიზნესზე მიბმა: 1 კლიენტი</span>
+            <span class="dur">1.8s</span>
+          </summary><pre class="log">✅ Business Created — QA Waelchi - Jacobi · RESIDENT · 987359150 · 2df1206e-3e78-449e-bac9-27b118494797
+✅ Client Created — QA Dibbert Sporer LLC · WALLET · a6381b76-fe10-45a6-b216-71c0910b2171
+✅ Linked 1 client(s) → business 2df1206e-3e78-449e-bac9-27b118494797</pre></details><details class="test-item" data-status="pass">
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="name">RS Client — ბიზნესზე მიბმა: 2 კლიენტი ერთი request-ით</span>
+            <span class="dur">3.1s</span>
+          </summary><pre class="log">✅ Business Created — QA Ledner - Upton · RESIDENT · 982494657 · 8e186b95-19de-4d12-85e0-db0769bb78a2
+✅ Client Created — QA Kemmer, Abshire and Zieme · WALLET · 5a59fbe5-aa0e-438e-becd-cd214893800e
+✅ Client Created — QA Kuhn, Abshire and Prosacco · WALLET · b9b7d596-0c09-4227-8811-03c508036600
+✅ Linked 2 client(s) → business 8e186b95-19de-4d12-85e0-db0769bb78a2</pre></details><details class="test-item" data-status="pass">
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="name">RS Client — ბიზნესიდან მოხსნა - Unlink</span>
+            <span class="dur">1.3s</span>
+          </summary><pre class="log">✅ Business Created — QA Gutkowski Grady and Sons · RESIDENT · 943151563 · b6f34001-440f-4762-9c4e-cf53bdf4e2be
+✅ Client Created — QA Jaskolski, Feeney and Tromp · WALLET · ce474383-a0f9-4c36-9314-5df44155e107 · business b6f34001-440f-4762-9c4e-cf53bdf4e2be
+✅ Unlinked client ce474383-a0f9-4c36-9314-5df44155e107 ← business b6f34001-440f-4762-9c4e-cf53bdf4e2be</pre></details><details class="test-item" data-status="pass">
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="name">RS Client — ფილტრი: searchText = სახელის ნაწილი</span>
+            <span class="dur">1.0s</span>
+          </summary><pre class="log">✅ Business Created — QA Hessel Bednar and Sons · RESIDENT · 911018516 · 9d818fb1-6646-4462-b5a8-2815596e9e0f
+✅ Client Created — QA Mosciski - Wolf · WALLET · 13a9044d-d248-4d94-a773-e57fde027f66 · business 9d818fb1-6646-4462-b5a8-2815596e9e0f</pre></details><details class="test-item" data-status="pass">
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="name">RS Client — ფილტრი: searchText = clientId</span>
+            <span class="dur">1.0s</span>
+          </summary><pre class="log">✅ Business Created — QA Yost, Durgan and Mraz · RESIDENT · 986047805 · a765ba23-722c-423b-8fe9-09d30bea71cb
+✅ Client Created — QA Pagac, Kuhn and Hane · WALLET · 8d36cb72-5756-4f79-a368-0c3be5e600d4 · business a765ba23-722c-423b-8fe9-09d30bea71cb</pre></details><details class="test-item" data-status="pass">
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="name">RS Client — ფილტრი: showMock = false → mock კლიენტი დამალულია</span>
+            <span class="dur">1.0s</span>
+          </summary><pre class="log">✅ Business Created — QA Mosciski, Cormier and Pagac · RESIDENT · 925879908 · e7ffa51f-4a04-456d-8d26-cd7d53281204
+✅ Client Created — QA Reichert, Veum and Grady · WALLET · 9a6c11ce-de22-4e30-8c4b-95c196fa58c2 · business e7ffa51f-4a04-456d-8d26-cd7d53281204</pre></details></div>
   <script>
     (function () {
       const cards = document.querySelectorAll('.card');
