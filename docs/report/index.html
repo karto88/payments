@@ -36,26 +36,161 @@
 </head>
 <body>
   <h1>🎭 Playwright Test Report</h1>
-  <div class="meta">11/5/2026, 7:40:25 PM</div>
+  <div class="meta">11/5/2026, 7:40:57 PM</div>
   <div class="summary">
-    <button type="button" class="card active" data-filter="all">Total: 2</button>
+    <button type="button" class="card active" data-filter="all">Total: 7</button>
     <button type="button" class="card pass" data-filter="pass">✅ Passed: 2</button>
-    <button type="button" class="card fail" data-filter="fail">❌ Failed: 0</button>
+    <button type="button" class="card fail" data-filter="fail">❌ Failed: 5</button>
     <button type="button" class="card skip" data-filter="skip">⏭️ Skipped: 0</button>
   </div>
   <div class="file-group"><div class="file">tests/RS/Negative/rs-business-negative.spec.ts</div><details class="test-item" data-status="pass">
           <summary class="test">
             <span class="chev">▶</span>
             <span class="st" style="color:#3fb950">✅ passed</span>
-            <span class="name">RS Business Negative — ownerFullName მხოლოდ space-ები → 1480</span>
-            <span class="dur">538ms</span>
-          </summary><pre class="log">✅ Rejected — POST /api/distributor-hub-business (RESIDENT: ownerFullName = "   ") → HTTP 400 / code 1480</pre></details></div><div class="file-group"><div class="file">tests/RS/Negative/rs-client-negative.spec.ts</div><details class="test-item" data-status="pass">
+            <span class="name">RS Business Negative — ownerFullName მხოლოდ tab / newline → 1480</span>
+            <span class="dur">581ms</span>
+          </summary><pre class="log">✅ Rejected — POST /api/distributor-hub-business (RESIDENT: ownerFullName = " \t\n ") → HTTP 400 / code 1480</pre></details><details class="test-item" data-status="fail" open>
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#f85149">❌ failed</span>
+            <span class="name">RS Business Negative — ownerFullName მხოლოდ non-breaking space (\u00A0) → 1480</span>
+            <span class="dur">290ms</span>
+          </summary><pre class="err">ApiAssertionError: 
+❌ API TEST FAILED
+───────────────────────────────────────────
+🔧 ოპერაცია:    POST /api/distributor-hub-business (RESIDENT: ownerFullName = "   ")
+⚠️  პრობლემა:    მოვიდა HTTP 200 — API-მ არავალიდური მონაცემი მიიღო და შეინახა
+📥 მიმდინარე შედეგი:
+{
+  "value": {
+    "id": "01a375a3-55ec-470f-a23c-b41ff8bef94f",
+    "identificationNumber": "983588620",
+    "residency": "RESIDENT",
+    "personalNumberAlt": null,
+    "ownerFullName": "   ",
+    "operDate": "2026-10-06",
+    "knownDate": "2026-10-26",
+    "legalAddressCountry": null,
+    "legalAddressCity": null,
+    "legalAddressLine": null,
+    "actualAddressCountry": null,
+    "actualAddressCity": null,
+    "actualAddressLine": null,
+    "stateRegAuthority": null,
+    "stateRegDocNumber": null,
+    "stateRegDocDate": null,
+    "createdAt": "2026-11-05T19:40:58",
+    "updatedAt": "2026-11-05T19:40:58",
+    "version": 0,
+    "suggestedOperDate": null,
+    "clients": []
+  }
+}
+✅ მოსალოდნელი შედეგი: HTTP 400 / code 1480 / errors[] → ownerFullName
+───────────────────────────────────────────
+</pre></details><details class="test-item" data-status="fail" open>
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#f85149">❌ failed</span>
+            <span class="name">RS Business Negative — ownerFullName მხოლოდ zero-width space (\u200B) → 1480</span>
+            <span class="dur">653ms</span>
+          </summary><pre class="err">ApiAssertionError: 
+❌ API TEST FAILED
+───────────────────────────────────────────
+🔧 ოპერაცია:    POST /api/distributor-hub-business (RESIDENT: ownerFullName = "​​​")
+⚠️  პრობლემა:    მოვიდა HTTP 200 — API-მ არავალიდური მონაცემი მიიღო და შეინახა
+📥 მიმდინარე შედეგი:
+{
+  "value": {
+    "id": "9842ce80-dccc-4b6f-ab60-9c1c707664b7",
+    "identificationNumber": "995281598",
+    "residency": "RESIDENT",
+    "personalNumberAlt": null,
+    "ownerFullName": "​​​",
+    "operDate": "2026-10-06",
+    "knownDate": "2026-10-26",
+    "legalAddressCountry": null,
+    "legalAddressCity": null,
+    "legalAddressLine": null,
+    "actualAddressCountry": null,
+    "actualAddressCity": null,
+    "actualAddressLine": null,
+    "stateRegAuthority": null,
+    "stateRegDocNumber": null,
+    "stateRegDocDate": null,
+    "createdAt": "2026-11-05T19:40:59",
+    "updatedAt": "2026-11-05T19:40:59",
+    "version": 0,
+    "suggestedOperDate": null,
+    "clients": []
+  }
+}
+✅ მოსალოდნელი შედეგი: HTTP 400 / code 1480 / errors[] → ownerFullName
+───────────────────────────────────────────
+</pre></details></div><div class="file-group"><div class="file">tests/RS/Negative/rs-client-negative.spec.ts</div><details class="test-item" data-status="pass">
           <summary class="test">
             <span class="chev">▶</span>
             <span class="st" style="color:#3fb950">✅ passed</span>
-            <span class="name">RS Client Negative — clientName მხოლოდ space-ები → 1001</span>
-            <span class="dur">254ms</span>
-          </summary><pre class="log">✅ Rejected — POST /api/distributor-hub-client (clientName = "   ") → HTTP 400 / code 1001</pre></details></div>
+            <span class="name">RS Client Negative — clientName მხოლოდ tab / newline → 1001</span>
+            <span class="dur">582ms</span>
+          </summary><pre class="log">✅ Rejected — POST /api/distributor-hub-client (clientName = " \t\n ") → HTTP 400 / code 1001</pre></details><details class="test-item" data-status="fail" open>
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#f85149">❌ failed</span>
+            <span class="name">RS Client Negative — clientName მხოლოდ non-breaking space (\u00A0) → 1001</span>
+            <span class="dur">299ms</span>
+          </summary><pre class="err">ApiAssertionError: 
+❌ API TEST FAILED
+───────────────────────────────────────────
+🔧 ოპერაცია:    POST /api/distributor-hub-client (clientName = "   ")
+⚠️  პრობლემა:    მოვიდა HTTP 400 / code 1186
+📥 მიმდინარე შედეგი:
+{
+  "message": "Distributor Client with this name already exists",
+  "statusCode": 1186,
+  "exceptionGroup": 1
+}
+✅ მოსალოდნელი შედეგი: HTTP 400 / code 1001 / errors[] → clientName
+───────────────────────────────────────────
+</pre></details><details class="test-item" data-status="fail" open>
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#f85149">❌ failed</span>
+            <span class="name">RS Client Negative — clientName მხოლოდ zero-width space (\u200B) → 1001</span>
+            <span class="dur">658ms</span>
+          </summary><pre class="err">ApiAssertionError: 
+❌ API TEST FAILED
+───────────────────────────────────────────
+🔧 ოპერაცია:    POST /api/distributor-hub-client (clientName = "​​​")
+⚠️  პრობლემა:    მოვიდა HTTP 400 / code 1186
+📥 მიმდინარე შედეგი:
+{
+  "message": "Distributor Client with this name already exists",
+  "statusCode": 1186,
+  "exceptionGroup": 1
+}
+✅ მოსალოდნელი შედეგი: HTTP 400 / code 1001 / errors[] → clientName
+───────────────────────────────────────────
+</pre></details><details class="test-item" data-status="fail" open>
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#f85149">❌ failed</span>
+            <span class="name">RS Client Negative — clientName მხოლოდ ideographic space (\u3000) → 1001</span>
+            <span class="dur">642ms</span>
+          </summary><pre class="err">ApiAssertionError: 
+❌ API TEST FAILED
+───────────────────────────────────────────
+🔧 ოპერაცია:    POST /api/distributor-hub-client (clientName = "　")
+⚠️  პრობლემა:    მოვიდა HTTP 400 / code 1186
+📥 მიმდინარე შედეგი:
+{
+  "message": "Distributor Client with this name already exists",
+  "statusCode": 1186,
+  "exceptionGroup": 1
+}
+✅ მოსალოდნელი შედეგი: HTTP 400 / code 1001 / errors[] → clientName
+───────────────────────────────────────────
+</pre></details></div>
   <script>
     (function () {
       const cards = document.querySelectorAll('.card');
