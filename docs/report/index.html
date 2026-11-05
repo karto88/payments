@@ -36,20 +36,157 @@
 </head>
 <body>
   <h1>🎭 Playwright Test Report</h1>
-  <div class="meta">11/3/2026, 7:49:46 PM</div>
+  <div class="meta">11/5/2026, 3:19:40 PM</div>
   <div class="summary">
-    <button type="button" class="card active" data-filter="all">Total: 1</button>
-    <button type="button" class="card pass" data-filter="pass">✅ Passed: 0</button>
-    <button type="button" class="card fail" data-filter="fail">❌ Failed: 1</button>
+    <button type="button" class="card active" data-filter="all">Total: 22</button>
+    <button type="button" class="card pass" data-filter="pass">✅ Passed: 22</button>
+    <button type="button" class="card fail" data-filter="fail">❌ Failed: 0</button>
     <button type="button" class="card skip" data-filter="skip">⏭️ Skipped: 0</button>
   </div>
-  <div class="file-group"><div class="file">tests/Positive/bank-accounts.spec.ts</div><details class="test-item" data-status="fail" open>
+  <div class="file-group"><div class="file">tests/Positive/RS/rs-business.spec.ts</div><details class="test-item" data-status="pass">
           <summary class="test">
             <span class="chev">▶</span>
-            <span class="st" style="color:#f85149">❌ failed</span>
-            <span class="name">Bank Accounts — ძიება: Recipient IBAN (ნაწილობრივი)</span>
-            <span class="dur">671ms</span>
-          </summary><pre class="err">TypeError: Cannot read properties of undefined (reading 'slice')</pre></details></div>
+            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="name">RS Business — RESIDENT, ს/კ (9 ციფრი)</span>
+            <span class="dur">989ms</span>
+          </summary><pre class="log">✅ Business Created — RESIDENT · 924381485 · 380d1064-34b5-4108-ae3c-80121b58126c</pre></details><details class="test-item" data-status="pass">
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="name">RS Business — RESIDENT, პ/ნ (11 ციფრი)</span>
+            <span class="dur">679ms</span>
+          </summary><pre class="log">✅ Business Created — RESIDENT · 99105401720 · 6534354e-e017-4e06-905b-eaa8ba108a05</pre></details><details class="test-item" data-status="pass">
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="name">RS Business — RESIDENT, ალტერნატიული პირადი ნომრით</span>
+            <span class="dur">609ms</span>
+          </summary><pre class="log">✅ Business Created — RESIDENT · 953564838 · 234bef30-a199-4bb1-b581-0689cc6676f8</pre></details><details class="test-item" data-status="pass">
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="name">RS Business — FOREIGN, მისამართებით + ident</span>
+            <span class="dur">529ms</span>
+          </summary><pre class="log">✅ Business Created — FOREIGN · QA-FRN-97627291 · 38861038-64c0-4c4f-bd6d-be9074600e62</pre></details><details class="test-item" data-status="pass">
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="name">RS Business — FOREIGN, ident-ის გარეშე</span>
+            <span class="dur">669ms</span>
+          </summary><pre class="log">✅ Business Created — FOREIGN · (no ident) · 5bcd51ae-01a2-45b1-a35b-01cc09cc6f00</pre></details><details class="test-item" data-status="pass">
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="name">RS Business — FOREIGN, state registration ველებით</span>
+            <span class="dur">693ms</span>
+          </summary><pre class="log">✅ Business Created — FOREIGN · QA-FRN-65953192 · bc0e44ec-a423-4b8b-a0ad-97231037a7b2</pre></details><details class="test-item" data-status="pass">
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="name">RS Business — ფილტრი: identificationNumber (სრული ნომერი → 1 ჩანაწერი)</span>
+            <span class="dur">843ms</span>
+          </summary><pre class="log">✅ Business Created — RESIDENT · 956162388 · 4c25399b-3c65-4cdb-bcab-ee1de91476c4</pre></details><details class="test-item" data-status="pass">
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="name">RS Business — ფილტრი: identificationNumber (ნომრის დასაწყისი)</span>
+            <span class="dur">683ms</span>
+          </summary><pre class="log">✅ Business Created — RESIDENT · 922915010 · 146c1811-63f3-403e-a002-7eac4e8e708f</pre></details><details class="test-item" data-status="pass">
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="name">RS Business — ფილტრი: ალტერნატიული პირადი ნომრით</span>
+            <span class="dur">855ms</span>
+          </summary><pre class="log">✅ Business Created — RESIDENT · 929655525 · ad5311a6-c93b-43bc-998b-340b7abe202c</pre></details><details class="test-item" data-status="pass">
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="name">RS Business — ფილტრი: name (სახელის ნაწილი, სხვა რეგისტრით)</span>
+            <span class="dur">679ms</span>
+          </summary><pre class="log">✅ Business Created — RESIDENT · 940130602 · 31332716-a789-4098-a8e3-f2adb476501f</pre></details><details class="test-item" data-status="pass">
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="name">RS Business — ფილტრი: residency = RESIDENT</span>
+            <span class="dur">759ms</span>
+          </summary><pre class="log">✅ Business Created — RESIDENT · 909188458 · 9cdf2ff8-3a01-43ee-b2c2-18a640963b72</pre></details><details class="test-item" data-status="pass">
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="name">RS Business — ფილტრი: residency = FOREIGN</span>
+            <span class="dur">653ms</span>
+          </summary><pre class="log">✅ Business Created — FOREIGN · QA-FRN-81277642 · 1586c6b9-0560-4222-b5ed-dd053e726864</pre></details><details class="test-item" data-status="pass">
+          <summary class="test">
+            <span class="chev"></span>
+            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="name">RS Business — პაგინაცია (pageSize 5, გვერდი 1 / 2, newest first)</span>
+            <span class="dur">680ms</span>
+          </summary></details></div><div class="file-group"><div class="file">tests/Positive/RS/rs-client.spec.ts</div><details class="test-item" data-status="pass">
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="name">RS Client — WALLET ბიზნესით (businessId შექმნისას)</span>
+            <span class="dur">2.0s</span>
+          </summary><pre class="log">✅ Business Created — RESIDENT · 909457515 · a8928456-eee5-42b4-b65c-01513a873aac
+✅ Client Created — WALLET · 4d0f0bd0-0893-4d70-98e1-169572464e56 · business a8928456-eee5-42b4-b65c-01513a873aac</pre></details><details class="test-item" data-status="pass">
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="name">RS Client — WALLET ბიზნესის გარეშე (თავისუფალ სიაშია)</span>
+            <span class="dur">840ms</span>
+          </summary><pre class="log">✅ Client Created — WALLET · 5765ab2d-8186-43ba-9114-5064ec71fa8d</pre></details><details class="test-item" data-status="pass">
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="name">RS Client — SYSTEM_OPERATOR ბიზნესის გარეშე (თავისუფალ სიაში არ არის)</span>
+            <span class="dur">1.1s</span>
+          </summary><pre class="log">✅ Client Created — SYSTEM_OPERATOR · 5a2eb49a-5df8-4fcb-8ebc-195171c37bd4</pre></details><details class="test-item" data-status="pass">
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="name">RS Client — ბიზნესზე მიბმა: 1 კლიენტი</span>
+            <span class="dur">2.2s</span>
+          </summary><pre class="log">✅ Business Created — RESIDENT · 981640564 · 4852d3c8-1b80-44dd-bce1-359bb10b791e
+✅ Client Created — WALLET · a1785d67-eec2-4e45-8a3d-7c8e0e8e083a
+✅ Linked 1 client(s) → business 4852d3c8-1b80-44dd-bce1-359bb10b791e</pre></details><details class="test-item" data-status="pass">
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="name">RS Client — ბიზნესზე მიბმა: 2 კლიენტი ერთი request-ით</span>
+            <span class="dur">2.9s</span>
+          </summary><pre class="log">✅ Business Created — RESIDENT · 985726232 · 77504576-5ff2-45dc-99bc-ad585f4121b2
+✅ Client Created — WALLET · 02ae752c-1acf-456b-81a7-76e30af88d62
+✅ Client Created — WALLET · 26ad2e91-f386-41c4-a576-287b17f79d02
+✅ Linked 2 client(s) → business 77504576-5ff2-45dc-99bc-ad585f4121b2</pre></details><details class="test-item" data-status="pass">
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="name">RS Client — ბიზნესიდან მოხსნა (Unlink)</span>
+            <span class="dur">2.2s</span>
+          </summary><pre class="log">✅ Business Created — RESIDENT · 948257411 · b761944d-1d83-4c6f-b633-96d9bc8caa72
+✅ Client Created — WALLET · 45f38ed2-45bb-4438-a4ad-2a1abbb7ff80 · business b761944d-1d83-4c6f-b633-96d9bc8caa72
+✅ Unlinked client 45f38ed2-45bb-4438-a4ad-2a1abbb7ff80 ← business b761944d-1d83-4c6f-b633-96d9bc8caa72</pre></details><details class="test-item" data-status="pass">
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="name">RS Client — ფილტრი: searchText = სახელის ნაწილი</span>
+            <span class="dur">1.9s</span>
+          </summary><pre class="log">✅ Business Created — RESIDENT · 930109262 · 62e6a963-ae44-4725-bf1c-4a5ee446e1e7
+✅ Client Created — WALLET · b06a66ca-279b-4530-a223-698704a8cb28 · business 62e6a963-ae44-4725-bf1c-4a5ee446e1e7</pre></details><details class="test-item" data-status="pass">
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="name">RS Client — ფილტრი: searchText = clientId</span>
+            <span class="dur">1.6s</span>
+          </summary><pre class="log">✅ Business Created — RESIDENT · 917210125 · 4e856164-f250-4adf-b478-a3a76c30d64b
+✅ Client Created — WALLET · fbfbe115-e893-40c2-a3bf-bc51d9597ec5 · business 4e856164-f250-4adf-b478-a3a76c30d64b</pre></details><details class="test-item" data-status="pass">
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="name">RS Client — ფილტრი: showMock = false → mock კლიენტი დამალულია</span>
+            <span class="dur">1.6s</span>
+          </summary><pre class="log">✅ Business Created — RESIDENT · 935795787 · 4f9fe3ea-b431-48ae-b591-206815994928
+✅ Client Created — WALLET · 5207f1af-5c34-4e30-a088-13d7fb276f5e · business 4f9fe3ea-b431-48ae-b591-206815994928</pre></details></div>
   <script>
     (function () {
       const cards = document.querySelectorAll('.card');
