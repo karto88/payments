@@ -36,34 +36,26 @@
 </head>
 <body>
   <h1>🎭 Playwright Test Report</h1>
-  <div class="meta">11/5/2026, 7:30:52 PM</div>
+  <div class="meta">11/5/2026, 7:40:25 PM</div>
   <div class="summary">
-    <button type="button" class="card active" data-filter="all">Total: 1</button>
-    <button type="button" class="card pass" data-filter="pass">✅ Passed: 0</button>
-    <button type="button" class="card fail" data-filter="fail">❌ Failed: 1</button>
+    <button type="button" class="card active" data-filter="all">Total: 2</button>
+    <button type="button" class="card pass" data-filter="pass">✅ Passed: 2</button>
+    <button type="button" class="card fail" data-filter="fail">❌ Failed: 0</button>
     <button type="button" class="card skip" data-filter="skip">⏭️ Skipped: 0</button>
   </div>
-  <div class="file-group"><div class="file">tests/RS/Negative/rs-client-negative.spec.ts</div><details class="test-item" data-status="fail" open>
+  <div class="file-group"><div class="file">tests/RS/Negative/rs-business-negative.spec.ts</div><details class="test-item" data-status="pass">
           <summary class="test">
             <span class="chev">▶</span>
-            <span class="st" style="color:#f85149">❌ failed</span>
-            <span class="name">RS Client Negative — PERCENTAGE 1000 → 400</span>
-            <span class="dur">666ms</span>
-          </summary><pre class="err">ApiAssertionError: 
-❌ API TEST FAILED
-───────────────────────────────────────────
-🔧 ოპერაცია:    POST /api/distributor-hub-client (currencyConfigs = {"GEL":[{"provider":"DEFAULT","minTransactionAmount":0.01,"maxTransactionAmount":100000,"commissionTiers":[{"commission":1000,"commissionRateType":"PERCENTAGE","startAmount":0}]}]})
-⚠️  პრობლემა:    მოვიდა HTTP 201 — API-მ არავალიდური მონაცემი მიიღო და შეინახა
-📥 მიმდინარე შედეგი:
-{
-  "value": {
-    "clientId": "56cb96f7-13f8-4da5-84b5-39b80940c440",
-    "clientSecret": "BXwbi51zxOXyRt"
-  }
-}
-✅ მოსალოდნელი შედეგი: HTTP 400
-───────────────────────────────────────────
-</pre></details></div>
+            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="name">RS Business Negative — ownerFullName მხოლოდ space-ები → 1480</span>
+            <span class="dur">538ms</span>
+          </summary><pre class="log">✅ Rejected — POST /api/distributor-hub-business (RESIDENT: ownerFullName = "   ") → HTTP 400 / code 1480</pre></details></div><div class="file-group"><div class="file">tests/RS/Negative/rs-client-negative.spec.ts</div><details class="test-item" data-status="pass">
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="name">RS Client Negative — clientName მხოლოდ space-ები → 1001</span>
+            <span class="dur">254ms</span>
+          </summary><pre class="log">✅ Rejected — POST /api/distributor-hub-client (clientName = "   ") → HTTP 400 / code 1001</pre></details></div>
   <script>
     (function () {
       const cards = document.querySelectorAll('.card');
