@@ -36,21 +36,48 @@
 </head>
 <body>
   <h1>🎭 Playwright Test Report</h1>
-  <div class="meta">11/5/2026, 3:27:53 PM</div>
+  <div class="meta">11/5/2026, 4:40:06 PM</div>
   <div class="summary">
     <button type="button" class="card active" data-filter="all">Total: 1</button>
-    <button type="button" class="card pass" data-filter="pass">✅ Passed: 1</button>
-    <button type="button" class="card fail" data-filter="fail">❌ Failed: 0</button>
+    <button type="button" class="card pass" data-filter="pass">✅ Passed: 0</button>
+    <button type="button" class="card fail" data-filter="fail">❌ Failed: 1</button>
     <button type="button" class="card skip" data-filter="skip">⏭️ Skipped: 0</button>
   </div>
-  <div class="file-group"><div class="file">tests/Positive/RS/rs-client.spec.ts</div><details class="test-item" data-status="pass">
+  <div class="file-group"><div class="file">tests/Positive/add-money.spec.ts</div><details class="test-item" data-status="fail" open>
           <summary class="test">
             <span class="chev">▶</span>
-            <span class="st" style="color:#3fb950">✅ passed</span>
-            <span class="name">RS Client — WALLET ბიზნესით (businessId შექმნისას)</span>
-            <span class="dur">2.1s</span>
-          </summary><pre class="log">✅ Business Created — QA Hermiston Hane and Sons · RESIDENT · 964239487 · 06f89407-5649-401c-bac1-9251e3d15714
-✅ Client Created — QA Nolan Feeney Inc · WALLET · cc6edc04-0777-4e2d-84be-feee3a646ff0 · business 06f89407-5649-401c-bac1-9251e3d15714</pre></details></div>
+            <span class="st" style="color:#f85149">❌ failed</span>
+            <span class="name">Add money — standard გადახდა distributionFlow MANUAL - ვალუტა არის GEL</span>
+            <span class="dur">67.8s</span>
+          </summary><pre class="log">✅ Merchant updated: distributionFlow=MANUAL
+✅ Balance before: 6.13 GEL
+✅ Payment URL: https://tiny.dev.keepz.me/yfnumruc
+✅ Payment page opened
+✅ OTP: 052348
+
+📊 Add money — ბარათი TBC · distributionFlow MANUAL · SENDER commission · GEL
+   საწყისი თანხა (initialAmount): 0.13 GEL
+   საკომისიო: sender 0 GEL, receiver 0.01 GEL
+   იუზერმა გადაიხადა: 0.13 + 0 = 0.13 GEL
+   ბალანსი: იყო 6.13 → გახდა 6.25 GEL (დაემატა 0.12, უნდა დამატებოდა 0.13)
+   ტრანზაქცია: operationType=TOP_UP, status=COLLECTED
+✅ Restored: merchant distributionFlow=STANDARD</pre><pre class="err">ApiAssertionError: 
+❌ API TEST FAILED
+───────────────────────────────────────────
+🔧 ოპერაცია:    Balance Top-up (add money)
+⚠️  პრობლემა:    distributionFlow=MANUAL: ბალანსზე არასწორად აისახა — დაემატა 0.12 GEL, უნდა დამატებოდა 0.13 GEL
+📥 მიმდინარე შედეგი:
+{
+  "balanceBefore": 6.13,
+  "balanceAfter": 6.25,
+  "added": 0.12,
+  "expected": 0.13,
+  "senderFee": 0,
+  "receiverFee": 0.01
+}
+✅ მოსალოდნელი შედეგი: SENDER commission → ბალანსზე სრული amount = 0.13 GEL
+───────────────────────────────────────────
+</pre></details></div>
   <script>
     (function () {
       const cards = document.querySelectorAll('.card');
