@@ -36,44 +36,37 @@
 </head>
 <body>
   <h1>🎭 Playwright Test Report</h1>
-  <div class="meta">11/7/2026, 3:52:54 PM</div>
+  <div class="meta">11/7/2026, 3:59:28 PM</div>
   <div class="summary">
-    <button type="button" class="card active" data-filter="all">Total: 4</button>
-    <button type="button" class="card pass" data-filter="pass">✅ Passed: 4</button>
+    <button type="button" class="card active" data-filter="all">Total: 2</button>
+    <button type="button" class="card pass" data-filter="pass">✅ Passed: 1</button>
     <button type="button" class="card fail" data-filter="fail">❌ Failed: 0</button>
     <button type="button" class="card skip" data-filter="skip">⏭️ Skipped: 0</button>
   </div>
-  <div class="file-group"><div class="file">tests/RS/Positive/rs-lien.spec.ts</div><details class="test-item" data-status="pass">
+  <div class="file-group"><div class="file">tests/Negative/add-money-negative.spec.ts</div><details class="test-item" data-status="pass">
           <summary class="test">
             <span class="chev">▶</span>
             <span class="st" style="color:#3fb950">✅ passed</span>
-            <span class="name">ბიზნესს ჰყავს 1 wallet: ბალანსი 1 ₾, ყადაღა 0.5 ₾ (თავისუფალია 0.5 ₾) → wallet გადარიცხავს 0.3 ₾-ს → გადის, გაყინული 0.5 ₾ ხელუხლებელია</span>
-            <span class="dur">7.4s</span>
-          </summary><pre class="log">✅ Lien 0.5 ₾ on 953831000 — wallet 29d8153c-19b5-462e-acd4-1dbfb047e564: balance 1 / held 0.5
-✅ Transfer 0.3 ₾ OK — held 0.5 ₾ untouched</pre></details><details class="test-item" data-status="pass">
+            <span class="name">Add money — ბარათის max ლიმიტზე მეტი თანხა</span>
+            <span class="dur">18.1s</span>
+          </summary><pre class="log">✅ Payment URL: https://tiny.dev.keepz.me/522hve84
+✅ Payment page opened
+✅ Clicked: Bank card (standard)
+
+📊 Add money — ბარათის max ლიმიტზე მეტი თანხა · 3001 GEL
+   მოსალოდნელი შედეგი: გამოჩნდეს ერორის მოდალი „Amount should be in range" და გადახდა დაიბლოკოს
+   ერორის მოდალი: „Amount should be in range" ✅
+   გადახდა: დაიბლოკა — ბარათის მონაცემების შესაყვან გვერდზე არ გადავიდა ✅
+✅ Modal closed (OK)</pre></details><details class="test-item" data-status="fail">
           <summary class="test">
             <span class="chev">▶</span>
-            <span class="st" style="color:#3fb950">✅ passed</span>
-            <span class="name">ზღვარი: ბალანსი 1 ₾, ყადაღა 0.5 ₾ → wallet გადარიცხავს ზუსტად თავისუფალ 0.5 ₾-ს → გადის, თავისუფალი ხდება 0</span>
-            <span class="dur">6.1s</span>
-          </summary><pre class="log">✅ Lien 0.5 ₾ on 915067807 — wallet 607b024e-f22f-49c0-b582-4c2ee3ffd238: balance 1 / held 0.5
-✅ Transfer 0.5 ₾ OK — held 0.5 ₾ untouched</pre></details><details class="test-item" data-status="pass">
-          <summary class="test">
-            <span class="chev">▶</span>
-            <span class="st" style="color:#3fb950">✅ passed</span>
-            <span class="name">RS ხსნის ყადაღას: ბალანსი 1 ₾, ყადაღა 1 ₾ → მოხსნა (Withdrawn) → ფული თავისუფლდება → wallet გადარიცხავს 0.5 ₾-ს → გადის</span>
-            <span class="dur">8.5s</span>
-          </summary><pre class="log">✅ Lien 1 ₾ on 992452797 — wallet 035dd6bf-f417-48ab-9af6-57f2d4813191: balance 1 / held 1
-✅ Transfer 0.5 ₾ OK — held 0 ₾ untouched</pre></details><details class="test-item" data-status="pass">
-          <summary class="test">
-            <span class="chev">▶</span>
-            <span class="st" style="color:#3fb950">✅ passed</span>
-            <span class="name">ბიზნესს ჰყავს wallet A (0.5 ₾), ყადაღა 1 ₾ → ემატება wallet B (1 ₾) → ადმინი აჭერს Reallocate → A თავისუფლდება → wallet გადარიცხავს A-დან 0.3 ₾-ს → გადის</span>
-            <span class="dur">10.2s</span>
-          </summary><pre class="log">✅ Lien 1 ₾ on 937349142 — wallet 8742f206-73fd-4693-8d98-f57532946be8: balance 0.5 / held 0.5
-✅ Transfer 0.3 ₾ rejected (5038) — available 0 ₾
-✅ Transfer 0.3 ₾ OK — held 0 ₾ untouched
-✅ Second wallet after lien — admin</pre></details></div>
+            <span class="st" style="color:#f85149">❌ interrupted</span>
+            <span class="name">Add money — არასწორი CVV</span>
+            <span class="dur">42.7s</span>
+          </summary><pre class="log">✅ Balance before: 6.79 GEL
+✅ Payment URL: https://tiny.dev.keepz.me/2t36x25w
+✅ Payment page opened
+✅ Submitted — wrong CVV (444)</pre></details></div>
   <script>
     (function () {
       const cards = document.querySelectorAll('.card');
