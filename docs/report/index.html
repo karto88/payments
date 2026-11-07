@@ -36,28 +36,479 @@
 </head>
 <body>
   <h1>🎭 Playwright Test Report</h1>
-  <div class="meta">11/7/2026, 5:02:20 PM</div>
+  <div class="meta">11/7/2026, 5:19:03 PM</div>
   <div class="summary">
-    <button type="button" class="card active" data-filter="all">Total: 2</button>
-    <button type="button" class="card pass" data-filter="pass">✅ Passed: 2</button>
-    <button type="button" class="card fail" data-filter="fail">❌ Failed: 0</button>
-    <button type="button" class="card skip" data-filter="skip">⏭️ Skipped: 0</button>
+    <button type="button" class="card active" data-filter="all">Total: 51</button>
+    <button type="button" class="card pass" data-filter="pass">✅ Passed: 45</button>
+    <button type="button" class="card fail" data-filter="fail">❌ Failed: 4</button>
+    <button type="button" class="card skip" data-filter="skip">⏭️ Skipped: 2</button>
   </div>
-  <div class="file-group"><div class="file">tests/RS/Positive/rs-lien.spec.ts</div><details class="test-item" data-status="pass">
+  <div class="file-group"><div class="file">tests/RS/Negative/rs-lien-negative.spec.ts</div><details class="test-item" data-status="pass">
           <summary class="test">
             <span class="chev">▶</span>
             <span class="st" style="color:#3fb950">✅ passed</span>
-            <span class="name">ზღვარი, საკომისიო 0.05 ₾: ბალანსი 1 ₾, ყადაღა 0.9 ₾ (თავისუფალია 0.1 ₾) → wallet გადარიცხავს 0.05 ₾-ს (+ საკომისიო = ზუსტად 0.1 ₾) → გადის, ბალანსი 0.9 ₾, გაყინული 0.9 ₾ ხელუხლებელია</span>
+            <span class="name">ბიზნესს ჰყავს 1 wallet: ბალანსი 1 ₾, ყადაღა 1 ₾ (მთლიანად გაყინულია) → wallet ცდილობს 0.5 ₾-ის გადარიცხვას → უარი, ბალანსი უცვლელი</span>
             <span class="dur">6.8s</span>
-          </summary><pre class="log">✅ Lien 0.9 ₾ on 968303429 — wallet 212d3dca-f63b-4115-b655-44f8c178e1a5: balance 1 / held 0.9
-✅ Transfer 0.05 ₾ + fee 0.05 OK — held 0.9 ₾ untouched</pre></details><details class="test-item" data-status="pass">
+          </summary><pre class="log">✅ Lien 1 ₾ on 983674136 — wallet 081666e4-0d62-448f-8ad2-db3b569a2c4d: balance 1 / held 1
+✅ Transfer 0.5 ₾ rejected (5038) — available 0 ₾</pre></details><details class="test-item" data-status="pass">
           <summary class="test">
             <span class="chev">▶</span>
             <span class="st" style="color:#3fb950">✅ passed</span>
-            <span class="name">საკომისიო 10%: ბალანსი 1 ₾, ყადაღა 0.9 ₾ (თავისუფალია 0.1 ₾) → wallet გადარიცხავს 0.09 ₾-ს (+ 10% = 0.009 → 0.01 ₾) → გადის, ბალანსი 0.9 ₾, გაყინული ხელუხლებელია</span>
+            <span class="name">ბიზნესს ჰყავს 1 wallet: ბალანსი 1 ₾, ყადაღა 0.5 ₾ (თავისუფალია 0.5 ₾) → wallet ცდილობს 0.6 ₾-ს (თავისუფალზე მეტს, ბალანსზე ნაკლებს) → უარი</span>
+            <span class="dur">5.9s</span>
+          </summary><pre class="log">✅ Lien 0.5 ₾ on 905051748 — wallet 3f4baf8c-8d9f-434e-924d-bdb844caa1b8: balance 1 / held 0.5
+✅ Transfer 0.6 ₾ rejected (5038) — available 0.5 ₾</pre></details><details class="test-item" data-status="pass">
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="name">ზღვარი: ბალანსი 1 ₾, ყადაღა 0.5 ₾ → wallet ცდილობს 0.51 ₾-ს (თავისუფალზე 1 თეთრით მეტს) → უარი</span>
+            <span class="dur">5.9s</span>
+          </summary><pre class="log">✅ Lien 0.5 ₾ on 963455295 — wallet 76d5b6bb-6b95-4af4-98af-d85e7fa680f0: balance 1 / held 0.5
+✅ Transfer 0.51 ₾ rejected (5038) — available 0.5 ₾</pre></details><details class="test-item" data-status="pass">
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="name">ყადაღა ფულზე მეტია: ბალანსი 0.5 ₾, ყადაღა 1 ₾ (ნაწილობრივ გაყინულია, თავისუფალი 0) → wallet ცდილობს 0.1 ₾-ს → უარი</span>
+            <span class="dur">5.9s</span>
+          </summary><pre class="log">✅ Lien 1 ₾ on 923392578 — wallet 53680538-030b-49c4-aa0e-3d64b511fc40: balance 0.5 / held 0.5
+✅ Transfer 0.1 ₾ rejected (5038) — available 0 ₾</pre></details><details class="test-item" data-status="pass">
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="name">საკომისიო 0.05 ₾ (ფიქსირებული): ბალანსი 1 ₾, ყადაღა 0.9 ₾ (თავისუფალია 0.1 ₾) → wallet ცდილობს ზუსტად 0.1 ₾-ს (+ საკომისიო = 0.15 ₾) → უარი</span>
+            <span class="dur">6.0s</span>
+          </summary><pre class="log">✅ Lien 0.9 ₾ on 939525663 — wallet e5a29494-3abc-4a2b-a74b-99313d7761dc: balance 1 / held 0.9
+✅ Transfer 0.1 ₾ rejected (5038) — available 0.1 ₾</pre></details><details class="test-item" data-status="pass">
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="name">ზღვარი, საკომისიო 0.05 ₾: ბალანსი 1 ₾, ყადაღა 0.9 ₾ (თავისუფალია 0.1 ₾) → wallet ცდილობს 0.06 ₾-ს (+ საკომისიო = 0.11 ₾, 1 თეთრით მეტი) → უარი</span>
+            <span class="dur">6.0s</span>
+          </summary><pre class="log">✅ Lien 0.9 ₾ on 945535058 — wallet 7cf38466-ab70-460b-9ac0-f759979b8371: balance 1 / held 0.9
+✅ Transfer 0.06 ₾ rejected (5038) — available 0.1 ₾</pre></details><details class="test-item" data-status="pass">
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="name">საკომისიო 10%: ბალანსი 1 ₾, ყადაღა 0.9 ₾ (თავისუფალია 0.1 ₾) → wallet ცდილობს ზუსტად 0.1 ₾-ს (+ 10% = 0.11 ₾) → უარი</span>
+            <span class="dur">6.0s</span>
+          </summary><pre class="log">✅ Lien 0.9 ₾ on 970707546 — wallet 26093cdf-ac35-48f5-8dc5-ef077a466946: balance 1 / held 0.9
+✅ Transfer 0.1 ₾ rejected (5038) — available 0.1 ₾</pre></details><details class="test-item" data-status="pass">
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="name">ადმინი ყადაღის დროს: ბალანსი 1 ₾, ყადაღა 0.7 ₾ (თავისუფალია 0.3 ₾) → ადმინი ბალანსიდან ჩამოჭრის 0.5 ₾-ს (თავისუფალზე მეტს) → უარი, ბალანსი უცვლელი</span>
+            <span class="dur">5.9s</span>
+          </summary><pre class="log">✅ Lien 0.7 ₾ on 983026040 — wallet 49580af6-ba52-40c7-9ec0-53e3cd6ca7a9: balance 1 / held 0.7
+✅ Admin debit 0.5 ₾ — REJECTED</pre></details><details class="test-item" data-status="pass">
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="name">ყადაღის დროს wallet-ის ბიზნესიდან მოხსნა (Unlink) → უარი, wallet ბიზნესზე რჩება</span>
+            <span class="dur">5.7s</span>
+          </summary><pre class="log">✅ Lien 1 ₾ on 971306525 — wallet 49501678-6e77-41f2-92fe-5c1a38958f6a: balance 1 / held 1
+✅ Unlink blocked (1492) — client stays on business</pre></details><details class="test-item" data-status="pass">
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="name">RS ხსნის ყადაღას, რომელიც ჩვენთან არ არსებობს → უარი (code 22 — ყადაღის ნომერი ვერ მოიძებნა)</span>
+            <span class="dur">110ms</span>
+          </summary><pre class="log">✅ Unknown lien withdraw → code 22</pre></details><details class="test-item" data-status="pass">
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="name">RS იგივე ნომრით მეორედ აგზავნის ყადაღას → უარი (code 21), ფული ორჯერ არ იყინება</span>
+            <span class="dur">6.6s</span>
+          </summary><pre class="log">✅ Lien 0.5 ₾ on 966696401 — wallet ec96daba-c7a6-4c1a-b67c-a7f433e73e4b: balance 1 / held 0.5
+✅ Duplicate lien → code 21, amount unchanged</pre></details><details class="test-item" data-status="pass">
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="name">RS ცდილობს არსებული ყადაღის თანხის შეცვლას იმავე ნომრით (0.5 ₾ → 1 ₾) → უარი (code 21), გაყინული 0.5 ₾ უცვლელი</span>
+            <span class="dur">6.5s</span>
+          </summary><pre class="log">✅ Lien 0.5 ₾ on 947677386 — wallet 41d494e9-24d1-4923-b99e-8be56d392b57: balance 1 / held 0.5
+✅ Duplicate lien (0.5 → 1) → code 21, amount unchanged</pre></details><details class="test-item" data-status="pass">
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="name">RS იგივე შეტყობინებას ხელახლა აგზავნის (კავშირის პრობლემა) → ახალი ყადაღა არ იქმნება, ფული ორჯერ არ იყინება</span>
+            <span class="dur">6.6s</span>
+          </summary><pre class="log">✅ Resend — no duplicate lien</pre></details><details class="test-item" data-status="pass">
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="name">ყადაღა 0 ₾ → უარი (code 6), არაფერი იყინება</span>
+            <span class="dur">3.4s</span>
+          </summary><pre class="log">✅ Lien amount "0" → code 6</pre></details><details class="test-item" data-status="pass">
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="name">ყადაღა უარყოფითი თანხით (−1 ₾) → უარი (code 6), არაფერი იყინება</span>
+            <span class="dur">3.4s</span>
+          </summary><pre class="log">✅ Lien amount "-1" → code 6</pre></details><details class="test-item" data-status="pass">
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="name">ყადაღა 1 თეთრზე ნაკლები (0.001 ₾) → უარი (code 6), არაფერი იყინება</span>
+            <span class="dur">3.4s</span>
+          </summary><pre class="log">✅ Lien amount "0.001" → code 6</pre></details><details class="test-item" data-status="pass">
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="name">ყადაღა ტექსტით თანხის ნაცვლად ("abc") → უარი (code 6), არაფერი იყინება</span>
+            <span class="dur">3.4s</span>
+          </summary><pre class="log">✅ Lien amount "abc" → code 6</pre></details><details class="test-item" data-status="pass">
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="name">ბიზნესს RS რეგისტრაცია არ აქვს → ყადაღა არ ედება (code 1 — გადამხდელი ვერ მოიძებნა)</span>
+            <span class="dur">491ms</span>
+          </summary><pre class="log">✅ Lien not applied — noRegistration</pre></details><details class="test-item" data-status="pass">
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="name">ბიზნესი RS-ში რეგისტრირებულია, მაგრამ wallet არ ჰყავს → ყადაღა არ ედება (code 13 — ღია ანგარიში არ აქვს)</span>
+            <span class="dur">2.9s</span>
+          </summary><pre class="log">✅ Lien not applied — noWallet</pre></details><details class="test-item" data-status="pass">
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="name">ბიზნესის RS რეგისტრაცია გაუქმებულია (Cancel) → ყადაღა არ ედება (code 1 — გადამხდელი ვერ მოიძებნა)</span>
+            <span class="dur">4.2s</span>
+          </summary><pre class="log">✅ Lien not applied — cancelled</pre></details><details class="test-item" data-status="fail" open>
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#f85149">❌ failed</span>
+            <span class="name">ყადაღა 0.125 ₾ (3 ციფრი მძიმის შემდეგ) → უარი (code 6), არაფერი იყინება — მოთხოვნილზე მეტი (0.13) არ უნდა გაიყინოს 🐞</span>
+            <span class="dur">3.5s</span>
+          </summary><pre class="err">ApiAssertionError: 
+❌ API TEST FAILED
+───────────────────────────────────────────
+🔧 ოპერაცია:    POST $SIM/orders/lien (RS → ყადაღა)
+⚠️  პრობლემა:    code null: null
+📥 მიმდინარე შედეგი:
+[
+  {
+    "type": "Lien",
+    "key": "QA-L-1794057642885",
+    "code": null,
+    "identNumber": null,
+    "description": null
+  }
+]
+✅ მოსალოდნელი შედეგი: items[0].code = 6
+───────────────────────────────────────────
+</pre></details><details class="test-item" data-status="pass">
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="name">ყადაღა 8-ციფრიან ident-ზე (12345678) → უარი (code 1 — გადამხდელი ვერ მოიძებნა)</span>
+            <span class="dur">940ms</span>
+          </summary><pre class="log">✅ Lien on "12345678" → code 1</pre></details><details class="test-item" data-status="pass">
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="name">ყადაღა 10-ციფრიან ident-ზე (1234567890) → უარი (code 1)</span>
+            <span class="dur">399ms</span>
+          </summary><pre class="log">✅ Lien on "1234567890" → code 1</pre></details><details class="test-item" data-status="pass">
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="name">ყადაღა ident-ზე ასოებით (abcdefghi) → უარი (code 1)</span>
+            <span class="dur">489ms</span>
+          </summary><pre class="log">✅ Lien on "abcdefghi" → code 1</pre></details><details class="test-item" data-status="pass">
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="name">ყადაღა ცარიელ ident-ზე → უარი (code 1)</span>
+            <span class="dur">686ms</span>
+          </summary><pre class="log">✅ Lien on "" → code 1</pre></details><details class="test-item" data-status="pass">
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="name">ყადაღა ყალბი RS ხელმოწერით → მთელი შეტყობინება უარყოფილია (code 4), ყადაღა არ ინახება, ფული არ იყინება</span>
+            <span class="dur">9.1s</span>
+          </summary><pre class="log">✅ Forged signature → code 4, nothing stored</pre></details><details class="test-item" data-status="pass">
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="name">RS-მა ყადაღა მოხსნა (Withdrawn) → ადმინი მაინც აჭერს Reallocate → ფული თავიდან არ იყინება, ყადაღა Withdrawn რჩება</span>
+            <span class="dur">15.1s</span>
+          </summary><pre class="log">✅ Lien 0.5 ₾ on 991627959 — wallet 164fbe3d-6fba-45e1-a9c6-b55c53bcf8e6: balance 1 / held 0.5
+✅ Reallocate on withdrawn lien — nothing re-held</pre></details><details class="test-item" data-status="pass">
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="name">RS ეკითხება ident-ზე, რომელიც ჩვენთან არ არის → ვპასუხობთ შეცდომით code 1 (გადამხდელი ვერ მოიძებნა)</span>
+            <span class="dur">2.7s</span>
+          </summary><pre class="log">✅ CheckPayer unknown → code 1</pre></details><details class="test-item" data-status="pass">
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="name">RS ეკითხება ბიზნესზე, რომელიც რეგისტრირებულია, მაგრამ wallet არ აქვს → ვპასუხობთ შეცდომით code 13 (ღია ანგარიში არ აქვს)</span>
+            <span class="dur">5.3s</span>
+          </summary><pre class="log">✅ CheckPayer noWallet → code 13</pre></details><details class="test-item" data-status="skip">
+          <summary class="test">
+            <span class="chev"></span>
+            <span class="st" style="color:#7d8590">⏭️ skipped</span>
+            <span class="name">Keepz-ის საკომისიო (settlement) ყადაღის დროს → მხოლოდ თავისუფალი თანხიდან, არ ჰყოფნის → უარი (5089) — საჭიროა დეველოპერი settlement-ის გასაშვებად</span>
+            <span class="dur">0ms</span>
+          </summary></details><details class="test-item" data-status="skip">
+          <summary class="test">
+            <span class="chev"></span>
+            <span class="st" style="color:#7d8590">⏭️ skipped</span>
+            <span class="name">ადმინი RS_RESTRICTION_MANAGE უფლების გარეშე → Reallocate holds აკრძალულია (403) — საჭიროა მეორე, შეზღუდული ადმინი</span>
+            <span class="dur">0ms</span>
+          </summary></details></div><div class="file-group"><div class="file">tests/RS/Positive/rs-lien.spec.ts</div><details class="test-item" data-status="pass">
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="name">ადმინი ყადაღის დროს: ბალანსი 1 ₾, ყადაღა 0.7 ₾ (თავისუფალია 0.3 ₾) → ადმინი ბალანსიდან ჩამოჭრის 0.3 ₾-ს → გადის, გაყინული 0.7 ₾ რჩება</span>
+            <span class="dur">5.9s</span>
+          </summary><pre class="log">✅ Lien 0.7 ₾ on 977450482 — wallet 05cb5cff-7892-40c4-ad8f-60e4b9eb7f46: balance 1 / held 0.7
+✅ Admin debit 0.3 ₾ — OK</pre></details><details class="test-item" data-status="pass">
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="name">ბალანსი 0 ₾ → ყადაღა 0.5 ₾ → ყადაღა მიღებულია, მაგრამ გასაყინი არაფერია (Pending — ელოდება ფულს)</span>
+            <span class="dur">6.1s</span>
+          </summary><pre class="log">✅ Lien 0.5 ₾ on 915805265 — wallet 9803781c-0721-46df-bba9-42ab67487f6d: balance 0 / held 0
+✅ Transfer 0.1 ₾ rejected (5038) — available 0 ₾</pre></details><details class="test-item" data-status="fail" open>
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#f85149">❌ failed</span>
+            <span class="name">ყადაღა ფულზე მეტია: ბალანსი 0.5 ₾, ყადაღა 1 ₾ → ადმინი ავსებს ბალანსს 0.5 ₾-ით → ახალი ფულიც იყინება, wallet ვერ გადარიცხავს 0.1 ₾-ს, ყადაღა მთლიანად დაფარულია (Fully restricted)</span>
+            <span class="dur">37.9s</span>
+          </summary><pre class="log">✅ Lien 1 ₾ on 913916201 — wallet 56bac148-6ae1-4752-9db0-30a326b432ea: balance 0.5 / held 0.5
+✅ Transfer 0.1 ₾ rejected (5038) — available 0 ₾</pre><pre class="err">ApiAssertionError: 
+❌ API TEST FAILED
+───────────────────────────────────────────
+🔧 ოპერაცია:    GET /api/v1/rs/restrictions?rsNumber=QA-L-1794057693592
+⚠️  პრობლემა:    status PARTIALLY_RESTRICTED, restricted 0.5, Waiting for funds: 0.50 GEL short
+📥 მიმდინარე შედეგი:
+{
+  "id": "dc950a3f-404f-41cf-aeec-b5f21a2bcac4",
+  "partner": "keepz",
+  "type": "LIEN",
+  "rsNumber": "QA-L-1794057693592",
+  "personId": "913916201",
+  "personIdAlt": null,
+  "personName": null,
+  "currency": "GEL",
+  "requestedAmount": 1,
+  "restrictedAmount": 0.5,
+  "executedAmount": 0,
+  "remainingAmount": 1,
+  "priority": null,
+  "collectionStatus": null,
+  "status": "PARTIALLY_RESTRICTED",
+  "statusTooltip": "Only part of the requested Lien amount is currently restricted. Future incoming funds may also be restricted.",
+  "statusReason": "Waiting for funds: 0.50 GEL short",
+  "uncoverable": false,
+  "enforcementEnabled": true,
+  "imported": false,
+  "revAccount": null,
+  "revCode": null,
+  "receivedAt": "2026-11-07T13:21:33.656495Z",
+  "receivedMessageId": "00000000000261107172133621",
+  "effectiveBusinessDay": "2026-11-09",
+  "replacedById": null,
+  "replacesNumbers": null,
+  "withdrawnAt": null,
+  "returnedAt": null
+}
+✅ მოსალოდნელი შედეგი: status FULLY_RESTRICTED, restricted 1
+───────────────────────────────────────────
+</pre></details><details class="test-item" data-status="fail" open>
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#f85149">❌ failed</span>
+            <span class="name">ნაწილობრივი შევსება: ბალანსი 0.5 ₾, ყადაღა 1 ₾ → ადმინი ავსებს ბალანსს 0.4 ₾-ით → გაყინულია 0.9 ₾, აკლია 0.10 ₾ (ისევ Partially restricted), დარჩენილი ვალი 1 ₾</span>
+            <span class="dur">38.8s</span>
+          </summary><pre class="log">✅ Lien 1 ₾ on 964860917 — wallet 6c440b1d-d358-4a69-befb-d90288fbfd6a: balance 0.5 / held 0.5
+✅ Transfer 0.1 ₾ rejected (5038) — available 0 ₾</pre><pre class="err">ApiAssertionError: 
+❌ API TEST FAILED
+───────────────────────────────────────────
+🔧 ოპერაცია:    GET /api/v1/rs/restrictions?rsNumber=QA-L-1794057732501
+⚠️  პრობლემა:    status PARTIALLY_RESTRICTED, restricted 0.5, Waiting for funds: 0.50 GEL short
+📥 მიმდინარე შედეგი:
+{
+  "id": "03e369e2-073c-4add-b05e-f253d10c42aa",
+  "partner": "keepz",
+  "type": "LIEN",
+  "rsNumber": "QA-L-1794057732501",
+  "personId": "964860917",
+  "personIdAlt": null,
+  "personName": null,
+  "currency": "GEL",
+  "requestedAmount": 1,
+  "restrictedAmount": 0.5,
+  "executedAmount": 0,
+  "remainingAmount": 1,
+  "priority": null,
+  "collectionStatus": null,
+  "status": "PARTIALLY_RESTRICTED",
+  "statusTooltip": "Only part of the requested Lien amount is currently restricted. Future incoming funds may also be restricted.",
+  "statusReason": "Waiting for funds: 0.50 GEL short",
+  "uncoverable": false,
+  "enforcementEnabled": true,
+  "imported": false,
+  "revAccount": null,
+  "revCode": null,
+  "receivedAt": "2026-11-07T13:22:12.572987Z",
+  "receivedMessageId": "00000000000261107172212628",
+  "effectiveBusinessDay": "2026-11-09",
+  "replacedById": null,
+  "replacesNumbers": null,
+  "withdrawnAt": null,
+  "returnedAt": null
+}
+✅ მოსალოდნელი შედეგი: status PARTIALLY_RESTRICTED, restricted 0.9
+───────────────────────────────────────────
+</pre></details><details class="test-item" data-status="fail" open>
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#f85149">❌ failed</span>
+            <span class="name">ცარიელი wallet: ბალანსი 0 ₾, ყადაღა 1 ₾ (Pending) → ადმინი ავსებს ბალანსს 0.4 ₾-ით → გაყინულია 0.4 ₾, აკლია 0.60 ₾ (Partially restricted), დარჩენილი ვალი 1 ₾</span>
+            <span class="dur">38.6s</span>
+          </summary><pre class="log">✅ Lien 1 ₾ on 912363943 — wallet 9e27fc1b-ca4d-46c2-bda9-45f09cc9d9bc: balance 0 / held 0
+✅ Transfer 0.1 ₾ rejected (5038) — available 0 ₾</pre><pre class="err">ApiAssertionError: 
+❌ API TEST FAILED
+───────────────────────────────────────────
+🔧 ოპერაცია:    GET /api/v1/rs/restrictions?rsNumber=QA-L-1794057771546
+⚠️  პრობლემა:    status PENDING, restricted 0, Waiting for funds: 1.00 GEL short
+📥 მიმდინარე შედეგი:
+{
+  "id": "064a8e77-4d04-438d-a850-f7e02707e8bc",
+  "partner": "keepz",
+  "type": "LIEN",
+  "rsNumber": "QA-L-1794057771546",
+  "personId": "912363943",
+  "personIdAlt": null,
+  "personName": null,
+  "currency": "GEL",
+  "requestedAmount": 1,
+  "restrictedAmount": 0,
+  "executedAmount": 0,
+  "remainingAmount": 1,
+  "priority": null,
+  "collectionStatus": null,
+  "status": "PENDING",
+  "statusTooltip": "The Lien has been received and is awaiting available funds.",
+  "statusReason": "Waiting for funds: 1.00 GEL short",
+  "uncoverable": false,
+  "enforcementEnabled": true,
+  "imported": false,
+  "revAccount": null,
+  "revCode": null,
+  "receivedAt": "2026-11-07T13:22:51.611055Z",
+  "receivedMessageId": "00000000000261107172251632",
+  "effectiveBusinessDay": "2026-11-09",
+  "replacedById": null,
+  "replacesNumbers": null,
+  "withdrawnAt": null,
+  "returnedAt": null
+}
+✅ მოსალოდნელი შედეგი: status PARTIALLY_RESTRICTED, restricted 0.4
+───────────────────────────────────────────
+</pre></details><details class="test-item" data-status="pass">
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="name">RS-მა შეცდომით 0.5 ₾-იანი ყადაღა გამოაგზავნა → ხსნის მას → იმავე ბიზნესზე აგზავნის ახალს 1 ₾-ზე → ძველი Withdrawn, გაყინულია მხოლოდ 1 ₾ (ორმაგად არა)</span>
+            <span class="dur">11.0s</span>
+          </summary><pre class="log">✅ Lien 0.5 ₾ on 933623425 — wallet 946fcb65-dae9-4ffa-9d67-288039cae8bf: balance 1 / held 0.5
+✅ Lien 0.5 withdrawn → new lien 1 — held 1</pre></details><details class="test-item" data-status="pass">
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="name">RS ხსნის ნაწილობრივ გაყინულ ყადაღას: ბალანსი 0.5 ₾, ყადაღა 1 ₾ (Partially restricted) → მოხსნა → Withdrawn, მთელი 0.5 ₾ თავისუფლდება</span>
+            <span class="dur">7.9s</span>
+          </summary><pre class="log">✅ Lien 1 ₾ on 975519774 — wallet 887f8054-9256-4c53-92e6-fb1c25d28405: balance 0.5 / held 0.5
+✅ Partially restricted lien withdrawn — held 0</pre></details><details class="test-item" data-status="pass">
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="name">ერთ wallet-ზე 2 ყადაღა: ბალანსი 1 ₾, ყადაღები 0.3 ₾ + 0.4 ₾ → გაყინულია 0.7 ₾ → RS ხსნის პირველს → გაყინული რჩება 0.4 ₾ → პირველის მოხსნა მეორედ არაფერს ცვლის</span>
+            <span class="dur">11.2s</span>
+          </summary><pre class="log">✅ Lien 0.3 ₾ on 985681341 — wallet 4004f169-c043-4f09-bf10-abd64c4f7565: balance 1 / held 0.3
+✅ Two liens 0.3 + 0.4 → withdraw first → held 0.4</pre></details><details class="test-item" data-status="pass">
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="name">ყადაღის მოხსნის შემდეგ wallet-ის ბიზნესიდან მოხსნა (Unlink) → გადის</span>
+            <span class="dur">8.3s</span>
+          </summary><pre class="log">✅ Lien 1 ₾ on 927394500 — wallet 0c772cfc-e207-4fe2-ad28-1e1c417900a4: balance 1 / held 1
+✅ Unlink after withdraw — OK</pre></details><details class="test-item" data-status="pass">
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="name">რეგისტრაცია გაგზავნილია და ელოდება RS-ის დადასტურებას (Pending) → მოდის ყადაღა 0.5 ₾ → რეგისტრაცია ხდება Approved, ყადაღა იდება</span>
+            <span class="dur">3.4s</span>
+          </summary><pre class="log">✅ submitted registration → APPROVED by LIEN</pre></details><details class="test-item" data-status="pass">
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="name">რეგისტრაცია შექმნილია, მაგრამ RS-ში არ გაგზავნილა (Not submitted) → მოდის ყადაღა 0.5 ₾ → რეგისტრაცია ხდება Approved, ყადაღა იდება</span>
+            <span class="dur">3.4s</span>
+          </summary><pre class="log">✅ notSubmitted registration → APPROVED by LIEN</pre></details><details class="test-item" data-status="pass">
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="name">ბიზნესს 2 wallet: A — 0.3 ₾, B — 0.6 ₾ → ყადაღა 0.5 ₾ → იყინება მხოლოდ B (ჯერ ყველაზე დიდი ბალანსი), A თავისუფალია</span>
             <span class="dur">6.2s</span>
-          </summary><pre class="log">✅ Lien 0.9 ₾ on 901487391 — wallet 753ca04c-a954-4446-8a1c-1e60159b7a5b: balance 1 / held 0.9
-✅ Transfer 0.09 ₾ + fee 0.01 OK — held 0.9 ₾ untouched</pre></details></div>
+          </summary><pre class="log">✅ Two wallets A 0.3 / B 0.6, lien 0.5 → held A 0 / B 0.5</pre></details><details class="test-item" data-status="pass">
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="name">ბიზნესს 2 wallet: A — 0.3 ₾, B — 0.6 ₾ → ყადაღა 1 ₾ (ჯამზე მეტი) → ორივე მთლიანად იყინება, აკლია 0.1 ₾ (Partially restricted)</span>
+            <span class="dur">6.2s</span>
+          </summary><pre class="log">✅ Two wallets A 0.3 / B 0.6, lien 1 → held A 0.3 / B 0.6</pre></details><details class="test-item" data-status="pass">
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="name">ბიზნესს ჰყავს A wallet 0.5 ₾, ყადაღა 1 ₾ (A მთლიანად გაყინულია) → ემატება B wallet (1 ₾) → A ცდილობს 0.3 ₾-ის გადარიცხვას → უარი → ადმინი აჭერს Reallocate → იყინება B, A თავისუფლდება</span>
+            <span class="dur">9.6s</span>
+          </summary><pre class="log">✅ Lien 1 ₾ on 963586231 — wallet 09e7f2cd-40d4-43da-939d-30f88564f3c9: balance 0.5 / held 0.5
+✅ Transfer 0.3 ₾ rejected (5038) — available 0 ₾
+✅ Second wallet after lien — admin</pre></details><details class="test-item" data-status="pass">
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="name">wallet-ს მხოლოდ დოლარი აქვს (1 $) → ყადაღა 0.5 ₾ → არაფერი იყინება, ყადაღა Pending (ელოდება ლარს)</span>
+            <span class="dur">5.6s</span>
+          </summary><pre class="log">✅ Other currency (usdOnly) — GEL held 0, USD untouched</pre></details><details class="test-item" data-status="pass">
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="name">wallet შეუზღუდავი ბალანსით (unlimited) → ყადაღა 0.5 ₾ → არაფერი იყინება, ყადაღა Pending ("wallet-ს ფულის გაყინვა არ შეუძლია")</span>
+            <span class="dur">5.5s</span>
+          </summary><pre class="log">✅ Unlimited wallet — no hold</pre></details><details class="test-item" data-status="pass">
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="name">ყადაღის დროს wallet-ს გამორთავენ (status false) → გაყინული ფული გაყინული რჩება, ყადაღა უცვლელი</span>
+            <span class="dur">11.1s</span>
+          </summary><pre class="log">✅ Lien 0.5 ₾ on 901275586 — wallet 03ffeda3-6ca3-4b7a-b6ae-74f7e6a7db3b: balance 1 / held 0.5
+✅ Deactivated wallet — hold kept</pre></details><details class="test-item" data-status="pass">
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="name">ყადაღის დროს ადმინი ცვლის ბიზნესის სახელს (Edit business) → ყადაღა და გაყინული ფული ადგილზე რჩება</span>
+            <span class="dur">12.1s</span>
+          </summary><pre class="log">✅ Lien 0.5 ₾ on 941873711 — wallet 1580f259-0ed2-4987-a3c5-2957c7f96299: balance 1 / held 0.5
+✅ Business edited — lien kept</pre></details><details class="test-item" data-status="pass">
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="name">Foreign ბიზნესი (1 ₾) → RS აგზავნის ყადაღას 0.5 ₾ ალტერნატიული პირადი ნომრით → wallet-ზე იყინება 0.5 ₾</span>
+            <span class="dur">5.4s</span>
+          </summary><pre class="log">✅ Foreign lien by personIdAlt 94057908518 — held 0.5</pre></details><details class="test-item" data-status="pass">
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="name">RS ეკითხება ჩვენს ბიზნესზე (Approved + wallet) → ვპასუხობთ "ჩვენი კლიენტია" (შეცდომის გარეშე)</span>
+            <span class="dur">5.9s</span>
+          </summary><pre class="log">✅ CheckPayer ours → ours</pre></details></div>
   <script>
     (function () {
       const cards = document.querySelectorAll('.card');
