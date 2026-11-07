@@ -36,22 +36,35 @@
 </head>
 <body>
   <h1>🎭 Playwright Test Report</h1>
-  <div class="meta">11/7/2026, 4:42:30 PM</div>
+  <div class="meta">11/7/2026, 5:01:50 PM</div>
   <div class="summary">
-    <button type="button" class="card active" data-filter="all">Total: 1</button>
-    <button type="button" class="card pass" data-filter="pass">✅ Passed: 1</button>
+    <button type="button" class="card active" data-filter="all">Total: 3</button>
+    <button type="button" class="card pass" data-filter="pass">✅ Passed: 3</button>
     <button type="button" class="card fail" data-filter="fail">❌ Failed: 0</button>
     <button type="button" class="card skip" data-filter="skip">⏭️ Skipped: 0</button>
   </div>
-  <div class="file-group"><div class="file">tests/RS/Positive/rs-lien.spec.ts</div><details class="test-item" data-status="pass">
+  <div class="file-group"><div class="file">tests/RS/Negative/rs-lien-negative.spec.ts</div><details class="test-item" data-status="pass">
           <summary class="test">
             <span class="chev">▶</span>
             <span class="st" style="color:#3fb950">✅ passed</span>
-            <span class="name">ბიზნესს ჰყავს wallet A (0.5 ₾), ყადაღა 1 ₾ (აკლია 0.5 ₾) → ემატება wallet B (1 ₾) → Reallocate-ის გარეშე, 15 წუთში სისტემა თვითონ ანაწილებს: იყინება B (1 ₾), A თავისუფლდება</span>
-            <span class="dur">932.0s</span>
-          </summary><pre class="log">✅ Lien 1 ₾ on 992334352 — wallet 2ba46422-dfae-4b67-95dc-9dc802458320: balance 0.5 / held 0.5
-✅ Transfer 0.3 ₾ rejected (5038) — available 0 ₾
-✅ Second wallet after lien — auto</pre></details></div>
+            <span class="name">საკომისიო 0.05 ₾ (ფიქსირებული): ბალანსი 1 ₾, ყადაღა 0.9 ₾ (თავისუფალია 0.1 ₾) → wallet ცდილობს ზუსტად 0.1 ₾-ს (+ საკომისიო = 0.15 ₾) → უარი</span>
+            <span class="dur">7.0s</span>
+          </summary><pre class="log">✅ Lien 0.9 ₾ on 981603478 — wallet e684639a-62be-4794-b161-5aaa06da4290: balance 1 / held 0.9
+✅ Transfer 0.1 ₾ rejected (5038) — available 0.1 ₾</pre></details><details class="test-item" data-status="pass">
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="name">ზღვარი, საკომისიო 0.05 ₾: ბალანსი 1 ₾, ყადაღა 0.9 ₾ (თავისუფალია 0.1 ₾) → wallet ცდილობს 0.06 ₾-ს (+ საკომისიო = 0.11 ₾, 1 თეთრით მეტი) → უარი</span>
+            <span class="dur">6.2s</span>
+          </summary><pre class="log">✅ Lien 0.9 ₾ on 951270749 — wallet bb237c18-85a8-4134-bd82-1d589ae219b3: balance 1 / held 0.9
+✅ Transfer 0.06 ₾ rejected (5038) — available 0.1 ₾</pre></details><details class="test-item" data-status="pass">
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="name">საკომისიო 10%: ბალანსი 1 ₾, ყადაღა 0.9 ₾ (თავისუფალია 0.1 ₾) → wallet ცდილობს ზუსტად 0.1 ₾-ს (+ 10% = 0.11 ₾) → უარი</span>
+            <span class="dur">6.2s</span>
+          </summary><pre class="log">✅ Lien 0.9 ₾ on 924610176 — wallet dab9badb-9a6a-4349-a666-5aab230a1eb6: balance 1 / held 0.9
+✅ Transfer 0.1 ₾ rejected (5038) — available 0.1 ₾</pre></details></div>
   <script>
     (function () {
       const cards = document.querySelectorAll('.card');
