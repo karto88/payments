@@ -36,29 +36,21 @@
 </head>
 <body>
   <h1>🎭 Playwright Test Report</h1>
-  <div class="meta">11/9/2026, 6:43:26 PM</div>
+  <div class="meta">11/9/2026, 6:43:48 PM</div>
   <div class="summary">
     <button type="button" class="card active" data-filter="all">Total: 1</button>
-    <button type="button" class="card pass" data-filter="pass">✅ Passed: 0</button>
-    <button type="button" class="card fail" data-filter="fail">❌ Failed: 1</button>
+    <button type="button" class="card pass" data-filter="pass">✅ Passed: 1</button>
+    <button type="button" class="card fail" data-filter="fail">❌ Failed: 0</button>
     <button type="button" class="card skip" data-filter="skip">⏭️ Skipped: 0</button>
   </div>
-  <div class="file-group"><div class="file">tests/RS/Front/rs-front.spec.ts</div><details class="test-item" data-status="fail" open>
+  <div class="file-group"><div class="file">tests/RS/Front/rs-front.spec.ts</div><details class="test-item" data-status="pass">
           <summary class="test">
             <span class="chev">▶</span>
-            <span class="st" style="color:#f85149">❌ failed</span>
+            <span class="st" style="color:#3fb950">✅ passed</span>
             <span class="name">UI: ბიზნესის შექმნა → wallet-ის მიბმა → რეგისტრაცია თავისით იქმნება (Not submitted) → Submit to RS → Pending RS approval → RS ადასტურებს → Approved, Wallets ტაბზე ჩანს wallet</span>
-            <span class="dur">8.2s</span>
-          </summary><pre class="err">ApiAssertionError: 
-❌ API TEST FAILED
-───────────────────────────────────────────
-🔧 ოპერაცია:    UI (dashboard.dev.keepz.me) Dist. Businesses
-⚠️  პრობლემა:    wallet ან რეგისტრაცია (Not submitted) ბიზნესის გვერდზე არ ჩანს
-📥 მიმდინარე შედეგი:
-"Davit Kartozia | • | 591078180 | QA Reichert Mraz Group | Edit business | Link clients | RS data | Residency status | Resident | Owner identification number | 957216911 | Alternative personal number | - | Client number | - | Operation date | 10 Oct 2026 | Known date | 30 Oct 2026 | Updated | 09 Nov 2026, 18:43 | RS registration | Register to RS | Not registered with RS. | Wallet clients | No clients linked. Link a Wallet client so RS can register it. | © | Keepz | 2026 | Contact us | Business created | Clients linked"
-✅ მოსალოდნელი შედეგი: Wallet clients: QA Abshire Bartell Group; RS registration: Not submitted (თავისით შეიქმნა)
-───────────────────────────────────────────
-</pre></details></div>
+            <span class="dur">20.7s</span>
+          </summary><pre class="log">✅ Business QA Tromp Nolan Group (912364472) created from UI — wallet linked, registration Approved
+✅ UI: QA Tromp Nolan Group (912364472) — Approved, wallet QA Abshire, Wolf and Kautzer linked to RS registration</pre></details></div>
   <script>
     (function () {
       const cards = document.querySelectorAll('.card');
