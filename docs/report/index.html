@@ -36,96 +36,26 @@
 </head>
 <body>
   <h1>🎭 Playwright Test Report</h1>
-  <div class="meta">11/9/2026, 6:59:18 PM</div>
+  <div class="meta">11/9/2026, 7:01:31 PM</div>
   <div class="summary">
-    <button type="button" class="card active" data-filter="all">Total: 10</button>
-    <button type="button" class="card pass" data-filter="pass">✅ Passed: 8</button>
-    <button type="button" class="card fail" data-filter="fail">❌ Failed: 2</button>
+    <button type="button" class="card active" data-filter="all">Total: 2</button>
+    <button type="button" class="card pass" data-filter="pass">✅ Passed: 2</button>
+    <button type="button" class="card fail" data-filter="fail">❌ Failed: 0</button>
     <button type="button" class="card skip" data-filter="skip">⏭️ Skipped: 0</button>
   </div>
   <div class="file-group"><div class="file">tests/RS/Front/rs-front-business.spec.ts</div><details class="test-item" data-status="pass">
           <summary class="test">
             <span class="chev">▶</span>
             <span class="st" style="color:#3fb950">✅ passed</span>
-            <span class="name">UI: Create business — Resident → toast "Business created" → ბიზნესის გვერდზე სწორი მონაცემები, Register to RS → API-ში ყველა ველი შენახულია → სიაში პირველია (0 კლიენტი)</span>
-            <span class="dur">9.7s</span>
-          </summary><pre class="log">✅ UI: Resident business QA Prosacco Lebsack Inc (984821605) created — first in list</pre></details><details class="test-item" data-status="pass">
-          <summary class="test">
-            <span class="chev">▶</span>
-            <span class="st" style="color:#3fb950">✅ passed</span>
-            <span class="name">UI: Create business — Foreign (მისამართებით) → toast "Business created" → ბიზნესის გვერდზე Foreign → API-ში მისამართებიც შენახულია → სიაში პირველია</span>
-            <span class="dur">9.1s</span>
-          </summary><pre class="log">✅ UI: Foreign business QA Zieme Fadel and Sons (QA-FRN-35011594) created — first in list</pre></details><details class="test-item" data-status="pass">
-          <summary class="test">
-            <span class="chev">▶</span>
-            <span class="st" style="color:#3fb950">✅ passed</span>
-            <span class="name">UI: Create business — Resident, ცარიელი ფორმა → Create → წითლად: Owner full name, Owner identification number, Operation date, Known date; ბიზნესი არ იქმნება</span>
-            <span class="dur">6.1s</span>
-          </summary><pre class="log">✅ UI: Resident empty form rejected — required: ownerFullName, identNumber, operDate, knownDate</pre></details><details class="test-item" data-status="pass">
-          <summary class="test">
-            <span class="chev">▶</span>
-            <span class="st" style="color:#3fb950">✅ passed</span>
-            <span class="name">UI: Create business — Foreign, ცარიელი ფორმა → Create → წითლად: Owner full name, Operation date და 6 მისამართის ველი; ბიზნესი არ იქმნება</span>
-            <span class="dur">6.3s</span>
-          </summary><pre class="log">✅ UI: Foreign empty form rejected — required: ownerFullName, operDate, legalAddressCountry, legalAddressCity, legalAddressLine, actualAddressCountry, actualAddressCity, actualAddressLine</pre></details><details class="test-item" data-status="fail" open>
-          <summary class="test">
-            <span class="chev">▶</span>
-            <span class="st" style="color:#f85149">❌ failed</span>
             <span class="name">UI: ძებნა identification number-ით → სიაში მხოლოდ ეს ბიზნესი</span>
-            <span class="dur">6.2s</span>
-          </summary><pre class="err">ApiAssertionError: 
-❌ API TEST FAILED
-───────────────────────────────────────────
-🔧 ოპერაცია:    UI Dist. Businesses — ძებნა
-⚠️  პრობლემა:    1 მწკრივი: 
-📥 მიმდინარე შედეგი:
-[
-  [
-    ""
-  ]
-]
-✅ მოსალოდნელი შედეგი: ზუსტად 1: QA Fadel, Mraz and Kemmer 922267637
-───────────────────────────────────────────
-</pre></details><details class="test-item" data-status="pass">
+            <span class="dur">6.6s</span>
+          </summary><pre class="log">✅ UI: search 983739773 → 1 business</pre></details><details class="test-item" data-status="pass">
           <summary class="test">
             <span class="chev">▶</span>
             <span class="st" style="color:#3fb950">✅ passed</span>
-            <span class="name">UI: ფილტრი Owner-ით → სიაში მხოლოდ ამ სახელის ბიზნესები</span>
-            <span class="dur">8.4s</span>
-          </summary><pre class="log">✅ UI: filter Owner "QA Lockman, Yost and Weissnat" → 1 row(s)</pre></details><details class="test-item" data-status="pass">
-          <summary class="test">
-            <span class="chev">▶</span>
-            <span class="st" style="color:#3fb950">✅ passed</span>
-            <span class="name">UI: ფილტრი Residency = Resident → სიაში მხოლოდ Resident ბიზნესები</span>
-            <span class="dur">7.3s</span>
-          </summary><pre class="log">✅ UI: filter Residency Resident → 10 row(s), all Resident</pre></details><details class="test-item" data-status="pass">
-          <summary class="test">
-            <span class="chev">▶</span>
-            <span class="st" style="color:#3fb950">✅ passed</span>
-            <span class="name">UI: ფილტრი Residency = Foreign → სიაში მხოლოდ Foreign ბიზნესები</span>
-            <span class="dur">7.2s</span>
-          </summary><pre class="log">✅ UI: filter Residency Foreign → 10 row(s), all Foreign</pre></details><details class="test-item" data-status="pass">
-          <summary class="test">
-            <span class="chev">▶</span>
-            <span class="st" style="color:#3fb950">✅ passed</span>
-            <span class="name">UI: Wallet კლიენტი ბიზნესის გარეშე → "Clients without business" ტაბში ჩანს (სახელი, Client ID, Active), რიცხვი +1</span>
-            <span class="dur">7.2s</span>
-          </summary><pre class="log">✅ UI: wallet QA Fadel, Stamm and Schaden listed in Clients without business (77 → 78)</pre></details><details class="test-item" data-status="fail" open>
-          <summary class="test">
-            <span class="chev">▶</span>
-            <span class="st" style="color:#f85149">❌ failed</span>
             <span class="name">UI: "Clients without business" → კლიენტის მწკრივიდან Create business → ბანერი "will be linked", Operation date = კლიენტის შექმნის თარიღი → Create → wallet ბიზნესზე მიბმულია, რეგისტრაცია Not submitted, კლიენტი ტაბიდან ქრება (რიცხვი −1)</span>
-            <span class="dur">6.5s</span>
-          </summary><pre class="err">ApiAssertionError: 
-❌ API TEST FAILED
-───────────────────────────────────────────
-🔧 ოპერაცია:    UI Dist. Businesses — ბიზნესის გვერდი
-⚠️  პრობლემა:    ბიზნესის გვერდზე wallet / Operation date არ ჩანს
-📥 მიმდინარე შედეგი:
-"Davit Kartozia | • | 591078180 | Businesses | Businesses | Clients without business | 79 | These Wallet clients can't be registered with RS until they belong to a business. | Client\tClient ID\tStatus\tCreated\tActions | QA RS Client 50113079 | 45f38ed2-45bb-4438-a4ad-2a1abbb7ff80 | Active | 05 Nov 2026 | 15:20:00 | Create business | QA Berge - Marvin | 153a04f3-9801-4479-b7ff-da4e307e3d24 | Active | 05 Nov 2026 | 15:24:16 | Create business | QA Rempel, Jacobi and Okuneva | c027afc3-340f-480d-9cb1-0b0b665cbdd0 | Active | 05 Nov 2026 | 15:25:18 | Create business | QA Probe 08062256 | d24b783f-bfc8-4275-adeb-e883e0f912a7 | Active | 05 Nov 2026 | 19:06:30 | Create business | QA PROBE 08062256 | c0d40bcd-c23e-4b17-aa85-16abbdc40be8 | Active | 05 Nov 2026 | 19:06:30 | Create business | QA Probe 67148811 | cfeb075c-0d9b-41d6-a3dc-a2c23e5a079c | Active | 05 Nov 2026 | 19:06:32 | Create business | QA Probe 88865910 | bf3ee3e6-e443-49c1-8a5a-f359fad00ac6 | Active | 05 Nov 2026 | 19:06:32 | Create business | QA Probe 29775184 | 303c74e3-c6a3-4da6-8096-edd50664a9f5 | Active | 05 Nov 2026 | 19:06:33 | Create business | QA Probe 28736937 | 8fd462e4-e941-4227-b736-7122c7a7ac3c | Active | 05 Nov 2026 | 19:06:33 | Create business | QA Probe 82618552 | 6d9085c1-6da7-482e-99b4-2096ab4963ea | Active | 05 Nov 2026 | 19:06:33 | Create business | QA Probe 22257211 | e34e1879-d72a-47f5-a8e5-46316718b4ca | Active | 05 Nov 2026 | 19:06:34 | Create business | QA Probe 41721114 | 8e95006a-97ed-4746-9c8c-df6d75c59eb4 | Active | 05 Nov 2026 | 19:06:34 | Create business | QA Probe 68475698 | 1a1abf1f-23f1-42b9-9b0d-617ac4879823 | Active | 05 Nov 2026 | 19:06:34 | Create business | QA Probe 52154782 | ae524ec6-4213-4f4a-83d7-3134dae41712 | Active | 05 Nov 2026 | 19:06:35 | Create business | QA Probe 69844140 | 585807ce-45a0-4dd9-b5ad-ce0c4923ccff | Active | 05 Nov 2026 | 19:06:35 | Create business | QA Probe Multi 1793891250086 | f03b4fe7-d99a-4fff-a655-22d55694f439 | Active | 05 Nov 2026 | 19:07:30 | Create business | QA Hilpert Lebsack Inc | f882d8ae-2b8a-494a-bd6d-f62ddc69eda5 | Active | 05 Nov 2026 | 19:12:04 | Create business | QA Runolfsdottir - Bednar | 2db2bd80-bfbf-4a7f-892d-682cad6630f9 | Active | 05 Nov 2026 | 19:12:05 | Create business | QA Wuckert, Mosciski and Mraz | 9b436cf3-7042-48c5-afb0-c22ca2558efd | Active | 05 Nov 2026 | 19:12:05 | Create business | QA Quigley, Abshire and Mraz | 588ee62c-e301-4c22-b7c1-4a716855ebab | Active | 05 Nov 2026 | 19:12:14 | Create business | QA Waelchi - Fadel | 68a65244-1bd8-4524-9a74-64c3ac9260ea | Active | 05 Nov 2026 | 19:12:16 | Create business | QA Berge - Grady | d9c6d330-3c64-4b7d-92d1-97d1e0f1dab7 | Active | 05 Nov 2026 | 19:12:18 | Create business | QA Grady Hane LLC | 9e26b006-c86a-49c1-b680-993e5be90f70 | Active | 05 Nov 2026 | 19:12:21 | Create business | QA Torphy, Lockman and Kuhn | 5dbf7990-d471-41b0-9605-bf08771faf02 | Active | 05 Nov 2026 | 19:12:22 | Create business | QA Marvin - Jacobi | 068d6f2d-42b2-42f8-8ea6-6de98c2e9026 | Active | 05 Nov 2026 | 19:12:28 | Create business | QA Prosacco, Hessel and Cormier | 715783e0-75d7-4edd-ae9f-378ae3caaac6 | Active | 05 Nov 2026 | 19:12:53 | Create business | QA Kautzer, Nolan and Ledner | e4a67d90-912c-4a71-9d2b-17077cf4f474 | Active | 05 Nov 2026 | 19:13:22 | Create business | QA Trim 009568 | 736aed98-55f4-4ea5-8d86-7d3a9985cd1a | Active | 05 Nov 2026 | 19:19:05 | Create business | QA Probe 19162856 | c96779a4-8671-4b30-a425-ebf2e9db5862 | Active | 05 Nov 2026 | 19:19:05 | Create business | QA Probe 19162856 | eed9d9a8-9355-4d8d-8527-0a13a0e173e2 | Active | 05 Nov 2026 | 19:19:05 | Create business | QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ20269869 | 9c853a8a-86cb-4115-9858-05f57a2d388b | Active | 05 Nov 2026 | 19:19:06 | Create business | QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ46594828 | 37b81ee2-ccbe-4f4e-9c00-7a5899ae9af2 | Active | 05 Nov 2026 | 19:19:06 | Create business | QA Probe 14955437 | d881a289-bfee-4dd0-8f83-26d135ff061f | Active | 05 Nov 2026 | 19:19:06 | Create business | QA Probe 69351193 | 32a6a87f-c35d-433c-8bd0-7056f03f447f | Active | 05 Nov 2026 | 19:19:07 | Create business | QA Probe 19739417 | 0afcde46-649d-4b15-876e-1d4f451bb430 | Active | 05 Nov 2026 | 19:19:07 | Create business | QA Probe 96949368 | e38c6f99-441b-42ad-9c26-5dbe4435d346 | Active | 05 Nov 2026 | 19:19:08 | Create business | QA Probe 92904994 | 244c89f0-16da-4350-8d14-23d57f37905f | Active | 05 Nov 2026 | 19:19:08 | Create business | QA Probe 20197886 | c119f397-51e4-45b6-ad58-63fd2623fe7f | Active | 05 Nov 2026 | 19:19:08 | Create business | QA Probe 34160414 | 18608ccf-39a7-47d9-a90a-a89b0c2205a0 | Active | 05 Nov 2026 | 19:19:09 | Create business | QA Probe 82683298 | 5f857727-c354-4306-a5ff-7922519e79c4 | Active | 05 Nov 2026 | 19:19:10 | Create business | QA Mraz Prosacco Inc | 5ad8bc40-7631-463c-ac03-215b4125b6b9 | Active | 05 Nov 2026 | 19:20:16 | Create business | QA Mraz Prosacco Inc | 9f0cd6e2-2956-403e-a9c0-ef3ec8463188 | Active | 05 Nov 2026 | 19:20:16 | Create business | QA Schaden Feeney Inc | dc3046f7-651e-453c-a9ea-f3ecfada116e | Active | 05 Nov 2026 | 19:20:19 | Create business | QA Berge, Hermiston and Quigley | 8d3915b1-8d22-4304-a8ca-0480cc77513a | Active | 05 Nov 2026 | 19:20:20 | Create business | QA Lebsack, Kemmer and Ledner | 3b8139d4-4186-4f78-8563-b9c1a21799c2 | Active | 05 Nov 2026 | 19:20:21 | Create business | QA Gislason, Nienow and Ledner | b17da659-f56d-4d56-863d-e3f4655a8d9e | Active | 05 Nov 2026 | 19:21:54 | Create business | QA Dibbert, Nienow and Kautzer | bf49cb05-2bae-4763-b505-c3dd2e713dbb | Active | 05 Nov 2026 | 19:21:55 | Create business | QA Hane, Jacobi and Weissnat | e0f93a43-889f-42c0-bc5c-8eaa84a616f8 | Active | 05 Nov 2026 | 19:21:55 | Create business | QA Nienow Mosciski Inc | 1286c7ed-ca96-42f4-bc72-e4082415c7d9 | Active | 05 Nov 2026 | 19:21:56 | Create business | QA Nienow Mosciski Inc | 2db663f4-859f-4522-85ee-420383ba6e93 | Active | 05 Nov 2026 | 19:21:56 | Create business | QA Hessel Schaden LLC | 96e39c80-c9a2-4b57-8264-98709b8957e3 | Active | 05 Nov 2026 | 19:22:03 | Create business | QA Tromp Bogan Inc | 963cb154-709d-44d2-9b4c-c761974a1f1e | Active | 05 Nov 2026 | 19:22:06 | Create business | QA Prosacco, Kuhn and Hilpert | 1dcda3fd-3f29-43b5-9d6d-b1c642c4df98 | Active | 05 Nov 2026 | 19:22:07 | Create business | QA Grady Schroeder LLC | fd8fd0ba-f9ba-40b7-8849-308ebfbd4dbb | Active | 05 Nov 2026 | 19:22:09 | Create business | QA Dibbert, Bednar and Hane | 99e37dab-4af3-44af-af81-5fc208c2a2d0 | Active | 05 Nov 2026 | 19:22:10 | Create business | QA Schroeder Cormier LLC | b251bb2e-f120-428d-a3c2-f52e680ef3d2 | Active | 05 Nov 2026 | 19:22:15 | Create business | QA Marvin, Mosciski and Feeney | 97af25b2-ab41-46c1-aab1-8c5801625568 | Active | 05 Nov 2026 | 19:22:26 | Create business | QA Grady, Mosciski and Stamm | 854477e3-e2cf-4f1b-a0ff-7ac0934f14da | Active | 05 Nov 2026 | 19:22:26 | Create business | QA Kessler Prosacco Group | e9de8a04-de03-4dfb-8187-bc654584397c | Active | 05 Nov 2026 | 19:22:27 | Create business | QA Kessler - Kessler | 540f3273-829b-4088-8579-2a788e1e1b0d | Active | 05 Nov 2026 | 19:22:39 | Create business | QA Jaskolski, Feeney and Tromp | ce474383-a0f9-4c36-9314-5df44155e107 | Active | 05 Nov 2026 | 19:23:04 | Create business | QA Cormier - Stamm | 56cb96f7-13f8-4da5-84b5-39b80940c440 | Active | 05 Nov 2026 | 19:30:53 | Create business | 0ffedaa8-4e7d-4e50-bae0-61d4d9cd6dd6 | Active | 05 Nov 2026 | 19:40:30 | Create business | ​​​ | d32cf566-60bf-4aec-bcbd-a40b888e1f7e | Active | 05 Nov 2026 | 19:40:31 | Create business | 3fa7cb62-0c0b-43e8-a9a0-919a602b47ed | Active | 05 Nov 2026 | 19:40:31 | Create business | QA RegProbe 333317 | 82d1e30e-2361-47e0-9766-c4eadd0e4d75 | Active | 06 Nov 2026 | 17:38:53 | Create business | QA RegProbe3 455967 W | d962e75b-67e7-434d-a19b-5ebaed4feec6 | Active | 06 Nov 2026 | 17:40:56 | Create business | QA Okuneva - Bartell | f1ce915d-28ff-48a9-a92f-6b2adb8a3abc | Active | 06 Nov 2026 | 17:45:41 | Create business | QA Lebsack - Tromp | bc9c0a24-e874-45ee-83ab-fc1bba243321 | Active | 06 Nov 2026 | 17:48:11 | Create business | QA Kemmer Kessler Inc | 9dc964ff-5218-4a7d-8378-c105bf2df4db | Active | 06 Nov 2026 | 17:50:35 | Create business | QA Hilpert - Hermiston | 7fb90a6c-f44b-452f-921e-7e0eb69aaf60 | Active | 06 Nov 2026 | 17:50:35 | Create business | QA Wolf, Grady and Jacobi | 115f3c37-00f1-40b8-af15-b6663d0d2d50 | Active | 06 Nov 2026 | 17:53:46 | Create business | QA Lien Probe 00826 | f141df7f-e528-4c04-90a5-5fb1c86b6270 | Active | 07 Nov 2026 | 15:14:29 | Create business | QA Stamm Sporer Group | 55399d6c-3d23-4836-8389-3612613c9818 | Active | 07 Nov 2026 | 15:22:11 | Create business | QA Zieme Bogan and Sons | f550b188-a478-41c9-996d-3c9cb39928ec | Active | 07 Nov 2026 | 16:54:25 | Create business | QA Waelchi, Tromp and Grady | 0c772cfc-e207-4fe2-ad28-1e1c417900a4 | Active | 07 Nov 2026 | 17:23:57 | Create business | QA UI Wallet 902488 | e2de1377-39c0-47ac-93e3-bfe84bfb2d62 | Active | 09 Nov 2026 | 18:30:23 | Create business | QA Fadel, Stamm and Schaden | f7d7f57c-285a-43cd-9fbc-245bfaa2e168 | Active | 09 Nov 2026 | 19:00:25 | Create business | QA Prosacco Prosacco LLC | f184d58c-66a4-44c5-bfb6-b76718e01445 | Active | 09 Nov 2026 | 19:00:27 | Create business | © | Keepz | 2026 | Contact us | Business created"
-✅ მოსალოდნელი შედეგი: Wallet clients: QA Prosacco Prosacco LLC; Operation date 09 Nov 2026
-───────────────────────────────────────────
-</pre></details></div>
+            <span class="dur">10.3s</span>
+          </summary><pre class="log">✅ UI: business QA Mraz, Gutkowski and Marvin created from client QA Berge - Kessler — linked, left the free list</pre></details></div>
   <script>
     (function () {
       const cards = document.querySelectorAll('.card');
