@@ -5,9 +5,10 @@ import { APIRequestContext } from '@playwright/test';
  * ადმინის ავტორიზაცია (Pre-login → Login)
  */
 export class AdminAuthPage {
-  private baseUrl = 'https://newadmin.dev.keepz.me';
-
-  constructor(private request: APIRequestContext) {}
+  constructor(
+    private request: APIRequestContext,
+    private baseUrl = 'https://newadmin.dev.keepz.me' // prod: https://newadmin.keepz.me
+  ) {}
 
   /**
    * Step 1: Pre-login

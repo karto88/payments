@@ -21,7 +21,7 @@ test('Add money — standard გადახდა distributionFlow STANDARD - G
   });
 });
 
-test('Add money — standard გადახდა distributionFlow MANUAL - GEL', async ({ request }) => {
+test('Add money — standard გადახდა distributionFlow MANUAL - ვალუტა არის GEL', async ({ request }) => {
   test.setTimeout(180000);
   await new AddMoneyHelper(request).addMoneyAndPay({
     amount: 0.13,

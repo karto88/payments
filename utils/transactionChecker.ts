@@ -41,7 +41,6 @@ export class TransactionChecker {
     if (distributionStatus === 'WAITING_FOR_SIGNATURE') {
       try {
         await this.updateTransactionStatus(adminToken, id);
-        console.log('✅ Status update successful');
       } catch (error) {
         console.log('❌ Status update failed:', error);
         throw error;

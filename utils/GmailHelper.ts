@@ -18,7 +18,7 @@ export class GmailHelper {
     };
   }
 
-  async getLatestOTP(timeoutSeconds = 20, fromEmail?: string, bank?: 'BOG' | 'TBC' | 'CREDO'): Promise<string> {
+  async getLatestOTP(timeoutSeconds = 20, fromEmail?: string, bank?: 'BOG' | 'TBC' | 'CREDO' | 'LIBERTY'): Promise<string> {
     const startTime = Date.now();
 
     while (Date.now() - startTime < timeoutSeconds * 1000) {
@@ -55,8 +55,8 @@ export class GmailHelper {
             if (emailAge < 30000) {
               // თუ bank მითითებულია, შევამოწმოთ Subject-ში
               if (bank) {
-                const bankInSubject = bank === 'CREDO'
-                  ? emailSubject.toLowerCase().includes('credo')
+                const bankInSubject = bank === 'CREDO' || bank === 'LIBERTY'
+                  ? emailSubject.toLowerCase().includes(bank.toLowerCase())
                   : emailSubject.includes(`${bank} OTP`);
 
                 if (!bankInSubject) {
@@ -74,6 +74,9 @@ export class GmailHelper {
                 otpMatch = emailSubject.match(/(\d{4,6})/);
                 if (!otpMatch) otpMatch = emailBody.match(/\b(\d{4,6})\b/);
               }
+
+              // LIBERTY — subject "Liberty", body "SMS Code: 1234"
+              if (!otpMatch && bank === 'LIBERTY') otpMatch = emailBody.match(/SMS Code:\s*(\d{4,6})/i);
 
               // Fallback: ნებისმიერი 4-6 ციფრი
               if (!otpMatch) otpMatch = emailBody.match(/\b(\d{4,6})\b/);
@@ -140,7 +143,10 @@ export class GmailHelper {
           ['SUBJECT', 'BOG OTP'],
           ['OR',
             ['SUBJECT', 'TBC OTP'],
-            ['SUBJECT', 'CREDO']
+            ['OR',
+              ['SUBJECT', 'CREDO'],
+              ['SUBJECT', 'Liberty']
+            ]
           ]
         ]
       ];

@@ -56,6 +56,12 @@ const ADD_MONEY_REFUNDS = [
   { amount: 0.2, currency: 'EUR' as const, refundAmount: 0.1 }, // partial
 ];
 
+// ყოველი ტესტის დასაწყისში — სახელი (ლოგში ცალკე ჩანდეს, რომელი ტესტი მიდის)
+test.beforeEach(async ({}, testInfo) => {
+  const line = '━'.repeat(60);
+  console.log(`\n${line}\n▶ ${testInfo.title.replace('Refund Reports Module - ', '')}\n${line}`);
+});
+
 test.describe('Refund Reports Module', () => {
   // ---------- ინტეგრატორი ----------
 
@@ -186,8 +192,13 @@ test.describe('Refund Reports Module', () => {
 });
 
 // ყოველი ტესტის შემდეგ ბალანსს ვანულებთ (cash-out) — ტესტი რომც ჩავარდეს, ბალანსზე თანხა არ დარჩეს
-test.afterEach(async ({ request }) => {
+test.afterEach(async ({ request }, testInfo) => {
   await new RefundReportsHelper(request).cashOutAllBalance(MERCHANT.phone, MERCHANT.merchantId, IBAN);
+
+  // ტესტის ბოლოს — შედეგი სახელით (გავიდა / ჩავარდა + დრო)
+  const passed = testInfo.status === testInfo.expectedStatus;
+  const minutes = (testInfo.duration / 60000).toFixed(1);
+  console.log(`━━━ ${passed ? '✅' : '❌'} ${testInfo.title.replace('Refund Reports Module - ', '')} — ${passed ? 'გავიდა' : 'ჩავარდა'} (${minutes} წთ)\n`);
 });
 
 // ტესტების შემდეგ merchant-ს საწყისი distributionFlow (STANDARD) ვუბრუნებთ — ტესტი რომც ჩავარდეს
@@ -195,7 +206,6 @@ test.afterAll(async () => {
   const ctx = await playwrightRequest.newContext();
   try {
     await new RefundReportsHelper(ctx).updateMerchantFlow('STANDARD');
-    console.log('✅ Restored: merchant distributionFlow=STANDARD');
   } finally {
     await ctx.dispose();
   }

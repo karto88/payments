@@ -14,7 +14,8 @@ const PHONE = '591078180';
 //  და ვამოწმებთ ერორს / წარუმატებელ გადახდას (ბალანსი არ უნდა დაირიცხოს)
 // ============================================================
 
-test('Add money  —  max ლიმიტზე მეტი - ვების გადახდის გვერდზე ვამოწმებთ', async ({ request }) => {
+// ბარათის (STANDARD) max ლიმიტზე მეტი თანხა — გადახდის გვერდზე ერორის მოდალი, გადახდა იბლოკება
+test('Add money — ბარათის max ლიმიტზე მეტი თანხა', async ({ request }) => {
   test.setTimeout(120000);
   await new AddMoneyNegativeHelper(request).expectPageAmountRangeError({
     amount: 3001,
@@ -22,7 +23,7 @@ test('Add money  —  max ლიმიტზე მეტი - ვების �
   });
 });
 
-test('Add money  — არასწორი CVV', async ({ request }) => {
+test('Add money — არასწორი CVV', async ({ request }) => {
   test.setTimeout(180000);
   await new AddMoneyNegativeHelper(request).payWithWrongCvv({
     amount: 0.13,
@@ -44,6 +45,16 @@ test('Add money — payment link-ით გადახდა', async ({ request
   await new AddMoneyNegativeHelper(request).payPaymentLinkBalanceNotCredited({
     paymentLink: 'https://www.web.appdev.keepz.me/pay?qrType=CUSTOM&receiverType=BRANCH&receiverId=db1bb73d-30cf-4718-ad2b-bc25cd13b09c&productId=987f208a-6e9e-448c-9233-d393557f8ace',
     amount: 0.1,
+    phone: PHONE,
+  });
+});
+
+// add money ლინკი შეიქმნა და გაიხსნა, მაგრამ არ გადაიხადა (Pending) — ბალანსი მხოლოდ acquiring-ის შემდეგ ერიცხება:
+// ბალანსი არ უნდა გაიზარდოს, ისტორიაში TOP_UP არ უნდა ჩანდეს
+test('Add money — გადახდის დაინიცირება', async ({ request }) => {
+  test.setTimeout(120000);
+  await new AddMoneyNegativeHelper(request).expectAbandonedLinkNotCredited({
+    amount: 0.13,
     phone: PHONE,
   });
 });
@@ -78,14 +89,16 @@ test('GEL - add money - amount -5', async ({ request }) => {
   });
 });
 
-test('GEL - add money - amount 9999995 ', async ({ request }) => {
+// endpoint-ის ზედა ზღვარი = ჯგუფის გადახდის მეთოდების ყველაზე დიდი max ლიმიტი (ჯგუფის ცვლილებისას იცვლება:
+// OB 50000 იყო → 50000, OB 4000-ზე ჩამოსვლის შემდეგ INSTALLMENT 12000) — ამიტომ ზუსტ რიცხვს არ ვადარებთ
+test('GEL - add money - amount 9999995', async ({ request }) => {
   await new AddMoneyNegativeHelper(request).expectAddMoneyRejected({
     amount: 9999995,
     currencyCode: 'GEL',
     phone: PHONE,
-    reason: 'endpoint-ის დიაპაზონზე (0.01–50000) მეტი',
+    reason: 'endpoint-ის დიაპაზონზე მეტი',
     expectedHttpStatus: 409,
-    expectedError: { message: 'Amount should be in range: 0.01-50000.0', statusCode: 2030, exceptionGroup: 1 },
+    expectedError: { messageContains: 'Amount should be in range: 0.01-', statusCode: 2030, exceptionGroup: 1 },
   });
 });
 
@@ -119,5 +132,17 @@ test('GEL - add money - currencyCode is lowercase gel', async ({ request }) => {
     reason: 'currencyCode პატარა ასოებით (gel)',
     expectedHttpStatus: 400,
     expectedError: { message: 'Invalid request format', statusCode: 1003, exceptionGroup: 1 },
+  });
+});
+
+// ვალუტა, რომელიც add money-ზე ჩართული არ არის (მხოლოდ GEL / USD / EUR) — RUB merchant-ის ბალანსის სიაში ჩანს, მაგრამ დაშვებული არ არის
+test('add money - ვალუტა რომელიც ჩართული არ არის (RUB)', async ({ request }) => {
+  await new AddMoneyNegativeHelper(request).expectAddMoneyRejected({
+    amount: 0.13,
+    currencyCode: 'RUB',
+    phone: PHONE,
+    reason: 'ვალუტა ჩართული არ არის (RUB)',
+    expectedHttpStatus: 400,
+    expectedError: { message: 'Initial currency not allowed!', statusCode: 2426, exceptionGroup: 1 },
   });
 });

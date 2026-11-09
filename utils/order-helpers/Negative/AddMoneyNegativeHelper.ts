@@ -9,6 +9,7 @@ const OP_ADD_MONEY = 'POST /wallet/add-money (negative)';
 const OP_PAGE = 'Add money — payment page (negative)';
 const OP_FAILED = 'Add money — failed payment (negative)';
 const OP_PAYMENT_LINK = 'Payment link — ბალანსი არ უნდა გაიზარდოს';
+const OP_ABANDONED = 'Add money — მიტოვებული ლინკი (Pending)';
 
 /**
  * Balance Top-up (KD-2355) — ნეგატიური ქეისები. reuse: AddMoneyHelper (add-money, ბალანსი, BOG ბარათი).
@@ -40,7 +41,8 @@ export class AddMoneyNegativeHelper extends AddMoneyHelper {
       const modalText = modalShown ? (await modalTitle.innerText()).trim() : null;
       const cardFormOpened = (await page.locator('#cardNumber').count()) > 0;
 
-      console.log(`\n📊 ${config.amount} GEL — ბარათის ლიმიტზე (3000) მეტი თანხა`);
+      console.log(`\n📊 Add money — ბარათის max ლიმიტზე მეტი თანხა · ${config.amount} GEL`);
+      console.log('   მოსალოდნელი შედეგი: გამოჩნდეს ერორის მოდალი „Amount should be in range" და გადახდა დაიბლოკოს');
       console.log(`   ერორის მოდალი: ${modalShown ? `„${modalText}" ✅` : 'არ გამოჩნდა ❌'}`);
       console.log(`   გადახდა: ${cardFormOpened ? 'ბარათის მონაცემების შესაყვანი გვერდი მაინც გაიხსნა ❌' : 'დაიბლოკა — ბარათის მონაცემების შესაყვან გვერდზე არ გადავიდა ✅'}`);
       assertCondition(
@@ -102,6 +104,7 @@ export class AddMoneyNegativeHelper extends AddMoneyHelper {
     const mark = (ok: boolean) => (ok ? '✅' : '❌');
     const status = response.status();
     console.log(`\n📊 add-money ${config.amount} ${config.currencyCode || '(ცარიელი)'} — ${config.reason}`);
+    console.log('   მოსალოდნელი შედეგი: add-money ერორს აბრუნებს, payment link არ იქმნება');
     if (!rejected) {
       console.log(`   მოსალოდნელი: ერორი, payment link არ უნდა დაბრუნდეს · მოვიდა: HTTP ${status}, payment link ❌`);
     } else if (!config.expectedHttpStatus && !config.expectedError) {
@@ -229,8 +232,9 @@ export class AddMoneyNegativeHelper extends AddMoneyHelper {
     const newTopUp = newTxs.find((t: any) => t.operationType === 'TOP_UP' && t.initialAmount === config.amount);
 
     console.log(`\n📊 Add money — ${caseName} · ${config.amount} GEL`);
-    console.log(`   ბალანსი: იყო ${balanceBefore} → გახდა ${balanceAfter} GEL (ცვლილება ${changed})`);
-    console.log(`   ისტორიაში ახალი TOP_UP: ${newTopUp ? `ჩანს ❌ (status=${newTopUp.status})` : 'არ ჩანს ✅'}`);
+    console.log('   მოსალოდნელი შედეგი: გადახდა ჩავარდეს — ბალანსი არ უნდა გაიზარდოს, ისტორიაში TOP_UP არ უნდა ჩანდეს');
+    console.log(`   ბალანსი: იყო ${balanceBefore} → გახდა ${balanceAfter} GEL (ცვლილება ${changed}) ${Math.abs(changed) < 0.001 ? '✅' : '❌'}`);
+    console.log(`   ისტორიაში ახალი TOP_UP: ${newTopUp ? `ჩანს (status=${newTopUp.status}) ❌` : 'არ ჩანს ✅'}`);
 
     assertCondition(
       OP_FAILED,
@@ -247,6 +251,54 @@ export class AddMoneyNegativeHelper extends AddMoneyHelper {
       newTopUp
     );
     console.log('   ✅ ბალანსი არ დაირიცხა, ისტორიაში არ ჩანს');
+  }
+
+  /**
+   * მიტოვებული add money ლინკი — ლინკს ვქმნით და ვხსნით, მაგრამ არ ვიხდით (Pending).
+   * ბალანსი მხოლოდ acquiring-ის შემდეგ ერიცხება → ბალანსი არ უნდა გაიზარდოს და ისტორიაში ახალი TOP_UP არ უნდა გამოჩნდეს.
+   */
+  async expectAbandonedLinkNotCredited(config: { amount: number; phone?: string }) {
+    const deviceToken = await new AuthDevicePage(this.request).authenticate(config.phone || '591078180');
+    const balanceBefore = await this.getBalance(deviceToken, 'GEL');
+    const idsBefore = new Set((await this.getTransactions(deviceToken)).map((t: any) => t.id));
+    console.log(`✅ Balance before: ${balanceBefore} GEL`);
+
+    const paymentUrl = await this.addMoney(deviceToken, config.amount, 'GEL');
+    console.log(`✅ Payment URL: ${paymentUrl}`);
+
+    // ვხსნით და ვტოვებთ გადახდის გარეშე
+    const browser = await chromium.launch({ headless: false, channel: 'chrome' });
+    try {
+      const page = await browser.newPage();
+      await page.goto(paymentUrl);
+      await page.locator('button', { hasText: /საბანკო ბარათი|Bank card/ }).waitFor({ state: 'visible' });
+      console.log('✅ Payment page opened — გადახდის გარეშე ვხურავთ');
+      await page.waitForTimeout(3000);
+    } finally {
+      await browser.close();
+    }
+
+    // ბალანსი არ უნდა შეიცვალოს — ~30წმ ვაპოლინგებთ
+    let balanceAfter = balanceBefore;
+    for (let i = 0; i < 10; i++) {
+      await new Promise((resolve) => setTimeout(resolve, 3000));
+      balanceAfter = await this.getBalance(deviceToken, 'GEL');
+      if (Math.abs(balanceAfter - balanceBefore) > 0.001) break;
+    }
+    const changed = Math.round((balanceAfter - balanceBefore) * 100) / 100;
+    const newTopUp = (await this.getTransactions(deviceToken)).find((t: any) =>
+      !idsBefore.has(t.id) && t.operationType === 'TOP_UP' && t.initialAmount === config.amount);
+
+    console.log(`\n📊 Add money — გადახდის დაინიცირება (ლინკი გაიხსნა, გადახდა არ მომხდარა) · ${config.amount} GEL`);
+    console.log('   მოსალოდნელი შედეგი: ბალანსი არ უნდა გაიზარდოს, ისტორიაში TOP_UP არ უნდა ჩანდეს');
+    console.log(`   ბალანსი: იყო ${balanceBefore} → გახდა ${balanceAfter} GEL (ცვლილება ${changed}) ${Math.abs(changed) < 0.001 ? '✅' : '❌'}`);
+    console.log(`   ისტორიაში ახალი TOP_UP: ${newTopUp ? `ჩანს (status=${newTopUp.status}) ❌` : 'არ ჩანს ✅'}`);
+
+    assertCondition(OP_ABANDONED, Math.abs(changed) < 0.001, `გადაუხდელ (Pending) top-up-ზე ბალანსი შეიცვალა (${changed} GEL)`,
+      'ბალანსი უცვლელი — თანხა მხოლოდ acquiring-ის შემდეგ ერიცხება', { balanceBefore, balanceAfter, changed });
+    assertCondition(OP_ABANDONED, !newTopUp, 'გადაუხდელი (Pending) top-up ჩანს merchant-ის ისტორიაში',
+      'Pending top-up ისტორიაში არ უნდა ჩანდეს', newTopUp);
+    console.log('   ✅ ბალანსი არ შეცვლილა, Pending top-up ისტორიაში არ ჩანს');
   }
 
   /**
@@ -294,9 +346,10 @@ export class AddMoneyNegativeHelper extends AddMoneyHelper {
     }
     const changed = Math.round((balanceAfter - balanceBefore) * 100) / 100;
 
-    console.log(`\n📊 Payment link — ${config.amount} GEL (STANDARD flow)`);
-    console.log(`   ტრანზაქცია: ${tx ? `tx ${tx.id} · operationType=${tx.operationType} · status=${tx.status}` : 'ვერ მოიძებნა ❌'} (TOP_UP არ უნდა იყოს)`);
-    console.log(`   ბალანსი: იყო ${balanceBefore} → გახდა ${balanceAfter} GEL (ცვლილება ${changed}, უნდა იყოს 0)`);
+    console.log(`\n📊 Add money — payment link-ით გადახდა · ${config.amount} GEL (STANDARD flow)`);
+    console.log('   მოსალოდნელი შედეგი: ჩვეულებრივი გადახდაა და არა add money — ტრანზაქცია TOP_UP არ არის, ბალანსი არ უნდა გაიზარდოს');
+    console.log(`   ტრანზაქცია: ${tx ? `tx ${tx.id} · operationType=${tx.operationType} · status=${tx.status} ${tx.operationType !== 'TOP_UP' ? '✅' : '❌'}` : 'ვერ მოიძებნა ❌'}`);
+    console.log(`   ბალანსი: იყო ${balanceBefore} → გახდა ${balanceAfter} GEL (ცვლილება ${changed}) ${Math.abs(changed) < 0.001 ? '✅' : '❌'}`);
 
     assertCondition(OP_PAYMENT_LINK, !!tx, `payment link-ით გადახდის ტრანზაქცია ვერ მოიძებნა (${config.amount} GEL)`,
       `ახალი ტრანზაქცია ${config.amount} GEL`, { paymentLink: config.paymentLink });

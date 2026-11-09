@@ -21,3 +21,14 @@ export { InvoiceHelper } from './InvoiceHelper';
 export { AddMoneyHelper } from './AddMoneyHelper';
 export { AutoRefundHelper } from './AutoRefundHelper';
 export { RefundReportsHelper } from './RefundReportsHelper';
+export { OrderListHelper } from './OrderListHelper';
+export { GepaOrderListHelper } from './GepaOrderListHelper';
+export { BankAccountsHelper } from './BankAccountsHelper';
+
+// RS (Revenue Service) — Distributor Hub business / client (KD-2237)
+export { RsBusinessHelper } from './RS/RsBusinessHelper';
+export { RsClientHelper } from './RS/RsClientHelper';
+export { RsRegistrationHelper } from './RS/RsRegistrationHelper';
+export { RsLienHelper } from './RS/RsLienHelper';
+export { RsMerchantLienHelper } from './RS/RsMerchantLienHelper';
+export { RsNegativeHelper } from './RS/Negative/RsNegativeHelper';

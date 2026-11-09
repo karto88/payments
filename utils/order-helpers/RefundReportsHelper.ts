@@ -1,4 +1,4 @@
-import { APIRequestContext, chromium } from '@playwright/test';
+import { APIRequestContext, chromium, test } from '@playwright/test';
 import { AdminAuthPage } from '../../pages/AdminAuthPage';
 import { AuthPage } from '../../pages/AuthPage';
 import { AuthDevicePage } from '../../pages/AuthDevicePage';
@@ -108,6 +108,31 @@ export class RefundReportsHelper {
     return this.adminToken;
   }
 
+  /**
+   * ტესტის ერთი ნაწილი (მაგ. „3/6 · USD full 0.1") — Playwright step-ად (დრო report-ში),
+   * ჩავარდნისას ერორის თავში ეწერება რომელი ნაწილი ჩავარდა (ტერმინალშიც და report-შიც).
+   */
+  private async part<T>(label: string, fn: () => Promise<T>): Promise<T> {
+    try {
+      const result = await test.step(label, fn);
+      return result;
+    } catch (e: any) {
+      console.log(`── ❌ ${label} — ჩავარდა`);
+      const prefix = `❌ ჩავარდა: ${label}\n`;
+      if (e instanceof Error) {
+        e.message = prefix + e.message;
+        if (e.stack) e.stack = prefix + e.stack;
+      }
+      throw e;
+    }
+  }
+
+  /** ნაწილის სახელი: „2/6 · GEL partial 0.1 (გადახდა 0.2)" */
+  private static partLabel(i: number, total: number, step: { amount: number; currency: string; refundAmount?: number; payWith?: string }, what = '') {
+    const kind = step.refundAmount === undefined ? `full ${step.amount}` : `partial ${step.refundAmount} (გადახდა ${step.amount})`;
+    return `${total > 1 ? `${i + 1}/${total} · ` : ''}${what}${step.currency} ${kind}${step.payWith === 'OB_TBC' ? ' · TBC Open Banking' : ''}`;
+  }
+
   // ============================================================
   //  ტესტები (spec-იდან ერთი გამოძახებით)
   // ============================================================
@@ -118,17 +143,22 @@ export class RefundReportsHelper {
    * checkExcel: true → Excel-იც (preview) გადმოიწერება ტესტამდე და ბოლოს, და მოწმდება.
    */
   async checkOverBalanceRefunds(config: RefundReportCheckConfig & { iban: string; refunds: RefundStep[]; period?: ReportPeriod; checkExcel?: boolean }) {
-    await this.updateMerchantFlow('STANDARD');
-    await this.expectMerchantFlow(config.merchantId, 'STANDARD');
-    await this.cashOutAllBalance(config.phone, config.merchantId, config.iban);
-
     const range = RefundReportsHelper.period(config.period);
-    const before = await this.snapshot(config.merchantId, range, config.checkExcel);
+    const before = await this.part('მომზადება — STANDARD flow · ბალანსი 0 · report-ი ტესტამდე', async () => {
+      await this.updateMerchantFlow('STANDARD');
+      await this.expectMerchantFlow(config.merchantId, 'STANDARD');
+      await this.cashOutAllBalance(config.phone, config.merchantId, config.iban);
+      return this.snapshot(config.merchantId, range, config.checkExcel);
+    });
 
     const refunds: OurRefund[] = [];
-    for (const step of config.refunds) refunds.push(await this.payAndRefund({ ...this.order(config), ...step }));
+    for (const [i, step] of config.refunds.entries()) {
+      refunds.push(await this.part(RefundReportsHelper.partLabel(i, config.refunds.length, step, 'გადახდა + refund · '),
+        () => this.payAndRefund({ ...this.order(config), ...step })));
+    }
 
-    await this.compareReport(config.merchantId, range, before, refunds, refunds.map(() => 'OVER_BALANCE' as RefundSource));
+    await this.part('Report-ის შედარება (Over Balance)', () =>
+      this.compareReport(config.merchantId, range, before, refunds, refunds.map(() => 'OVER_BALANCE' as RefundSource)));
   }
 
   /**
@@ -140,17 +170,25 @@ export class RefundReportsHelper {
     balanceTopUpPayments: Array<{ amount: number; currency: 'GEL' | 'USD' | 'EUR' }>; // refund-ის გარეშე — ბალანსის შესავსებად
     refunds: RefundStep[];                                                            // შემდეგი გადახდები — თითოეულს ვარეფანდებთ
   }) {
-    await this.updateMerchantFlow('BALANCE');
-    await this.expectMerchantFlow(config.merchantId, 'BALANCE');
-
     const range = RefundReportsHelper.period('DAY');
-    const before = await this.snapshot(config.merchantId, range);
+    const before = await this.part('მომზადება — BALANCE flow · report-ი ტესტამდე', async () => {
+      await this.updateMerchantFlow('BALANCE');
+      await this.expectMerchantFlow(config.merchantId, 'BALANCE');
+      return this.snapshot(config.merchantId, range);
+    });
 
-    for (const topUp of config.balanceTopUpPayments) await this.payOnly({ ...this.order(config), ...topUp });
+    for (const [i, topUp] of config.balanceTopUpPayments.entries()) {
+      await this.part(`ბალანსის შევსება ${i + 1}/${config.balanceTopUpPayments.length} · ${topUp.amount} ${topUp.currency}`,
+        () => this.payOnly({ ...this.order(config), ...topUp }));
+    }
     const refunds: OurRefund[] = [];
-    for (const step of config.refunds) refunds.push(await this.payAndRefund({ ...this.order(config), ...step }));
+    for (const [i, step] of config.refunds.entries()) {
+      refunds.push(await this.part(RefundReportsHelper.partLabel(i, config.refunds.length, step, 'გადახდა + refund · '),
+        () => this.payAndRefund({ ...this.order(config), ...step })));
+    }
 
-    await this.compareReport(config.merchantId, range, before, refunds, refunds.map(() => 'IN_BALANCE' as RefundSource));
+    await this.part('Report-ის შედარება (In Balance)', () =>
+      this.compareReport(config.merchantId, range, before, refunds, refunds.map(() => 'IN_BALANCE' as RefundSource)));
   }
 
   private order(config: RefundReportCheckConfig) {
@@ -525,22 +563,9 @@ export class RefundReportsHelper {
       await this.refundByTransactionId(config.refundVia, transactionId, config.phone, isFull ? config.amount : config.refundAmount!, isFull);
     } else {
       // INTEGRATOR — full → amount არ იგზავნება | partial → amount
-      const refundData: any = { integratorId: config.integratorId, integratorOrderId, refundInitiator: 'INTEGRATOR' };
-      if (!isFull) refundData.amount = config.refundAmount;
-      const encrypted = await paymentPage.encryptOrderData(accessToken, refundData);
-      const response = await this.request.post(`${API_CONFIG.ECOMMERCE.BASE_URL}${API_CONFIG.ECOMMERCE.ENDPOINTS.REFUND}`, {
-        headers: { 'Content-Type': 'application/json' },
-        data: { identifier: config.integratorId, encryptedData: encrypted.encryptedData, aes: true, encryptedKeys: encrypted.encryptedKeys },
-      });
-      const respJson = await response.json().catch(() => ({}));
-      assertCondition(OP_REFUND, response.ok(), `refund ვერ მოთხოვნდა (HTTP ${response.status()})`, 'HTTP 200', respJson);
-      const dec = await this.request.post('https://gateway.dev.keepz.me/payment-service/api/v1/test/decryptAES', {
-        headers: { 'Authorization': `Bearer ${accessToken}`, 'Content-Type': 'application/json' },
-        data: { encryptedData: respJson.encryptedData, encryptedAESProperties: respJson.encryptedKeys, privateKey: INTEGRATORS.DEFAULT.PRIVATE_KEY },
-      });
-      const val = (await dec.json()).value;
-      const refundResult = typeof val === 'string' ? JSON.parse(val) : val;
-      assertField(OP_REFUND, refundResult, 'status', 'REFUND_REQUESTED');
+      const res = await this.integratorRefund(accessToken, config.integratorId, integratorOrderId, isFull ? undefined : config.refundAmount);
+      assertCondition(OP_REFUND, res.ok, `refund ვერ მოთხოვნდა (HTTP ${res.status})`, 'HTTP 200', res.body);
+      assertField(OP_REFUND, res.result, 'status', 'REFUND_REQUESTED');
     }
 
     // 4. refund-ის დასრულების მოლოდინი — full → REFUNDED_BY_* | partial → PARTIALLY_REFUNDED
@@ -565,6 +590,31 @@ export class RefundReportsHelper {
    *   ADMIN    — PUT /transaction/refund { amount, genericTransactionId } (full → amount: null)
    *   MERCHANT — POST /generic-transaction/refund { amount, genericTransactionId }, device token (full → amount = გადახდის თანხა)
    */
+  /**
+   * INTEGRATOR refund — encrypt → POST ecommerce /order/refund → decrypt. შემოწმების გარეშე (ok / status / body / result) —
+   *   assert-ს გამომძახებელი აკეთებს. amount არ არის → full refund
+   */
+  async integratorRefund(accessToken: string, integratorId: string, integratorOrderId: string, amount?: number) {
+    const refundData: any = { integratorId, integratorOrderId, refundInitiator: 'INTEGRATOR' };
+    if (amount !== undefined) refundData.amount = amount;
+    const encrypted = await new PaymentPage(this.request, null as any).encryptOrderData(accessToken, refundData);
+    const response = await this.request.post(`${API_CONFIG.ECOMMERCE.BASE_URL}${API_CONFIG.ECOMMERCE.ENDPOINTS.REFUND}`, {
+      headers: { 'Content-Type': 'application/json' },
+      data: { identifier: integratorId, encryptedData: encrypted.encryptedData, aes: true, encryptedKeys: encrypted.encryptedKeys },
+    });
+    const body = await response.json().catch(() => ({}));
+    let result: any;
+    if (response.ok() && body.encryptedData) {
+      const dec = await this.request.post('https://gateway.dev.keepz.me/payment-service/api/v1/test/decryptAES', {
+        headers: { 'Authorization': `Bearer ${accessToken}`, 'Content-Type': 'application/json' },
+        data: { encryptedData: body.encryptedData, encryptedAESProperties: body.encryptedKeys, privateKey: INTEGRATORS.DEFAULT.PRIVATE_KEY },
+      });
+      const val = (await dec.json()).value;
+      result = typeof val === 'string' ? JSON.parse(val) : val;
+    }
+    return { ok: response.ok(), status: response.status(), body, result };
+  }
+
   private async refundByTransactionId(refundVia: 'ADMIN' | 'MERCHANT', transactionId: number, phone: string, amount: number, isFull: boolean) {
     if (refundVia === 'ADMIN') {
       // ⚠️ refund არის PUT (POST → 500)
@@ -595,32 +645,38 @@ export class RefundReportsHelper {
    * ამიტომ ბალანსი წინასწარ უნდა დაგროვდეს → ყველა source IN_BALANCE.
    */
   async checkAddMoneyRefunds(config: RefundReportCheckConfig & { refundVia: 'ADMIN' | 'MERCHANT'; refunds: RefundStep[] }) {
-    await this.updateMerchantFlow('STANDARD');
-    await this.expectMerchantFlow(config.merchantId, 'STANDARD');
-
     const range = RefundReportsHelper.period('DAY');
-    const before = await this.snapshot(config.merchantId, range);
+    const before = await this.part('მომზადება — STANDARD flow · report-ი ტესტამდე', async () => {
+      await this.updateMerchantFlow('STANDARD');
+      await this.expectMerchantFlow(config.merchantId, 'STANDARD');
+      return this.snapshot(config.merchantId, range);
+    });
 
     // 1. ყველა top-up
     const topUps: number[] = [];
-    for (const step of config.refunds) topUps.push(await this.addMoneyTopUp(config.phone, step.amount, step.currency));
+    for (const [i, step] of config.refunds.entries()) {
+      topUps.push(await this.part(`add money ${i + 1}/${config.refunds.length} · ${step.amount} ${step.currency}`,
+        () => this.addMoneyTopUp(config.phone, step.amount, step.currency)));
+    }
 
     // 2. ყველა refund
     const refunds: OurRefund[] = [];
-    for (let i = 0; i < config.refunds.length; i++) {
-      const step = config.refunds[i];
+    for (const [i, step] of config.refunds.entries()) {
       const isFull = step.refundAmount === undefined;
-      await this.refundByTransactionId(config.refundVia, topUps[i], config.phone, isFull ? step.amount : step.refundAmount!, isFull);
-      await this.waitForTopUpRefunded(config.phone, topUps[i]);
-      console.log(`✅ ${isFull ? 'Full' : 'Partial'} refund via ${config.refundVia} — add money ${step.amount} ${step.currency} (tx ${topUps[i]})`);
+      await this.part(RefundReportsHelper.partLabel(i, config.refunds.length, step, `add money refund (${config.refundVia}) · `), async () => {
+        await this.refundByTransactionId(config.refundVia, topUps[i], config.phone, isFull ? step.amount : step.refundAmount!, isFull);
+        await this.waitForTopUpRefunded(config.phone, topUps[i]);
+        console.log(`✅ ${isFull ? 'Full' : 'Partial'} refund via ${config.refundVia} — add money ${step.amount} ${step.currency} (tx ${topUps[i]})`);
+      });
       refunds.push({ transactionId: topUps[i], currency: step.currency, expectedRefundAmount: isFull ? step.amount : step.refundAmount! });
     }
 
-    await this.compareReport(config.merchantId, range, before, refunds, refunds.map(() => 'IN_BALANCE' as RefundSource));
+    await this.part('Report-ის შედარება (add money · In Balance)', () =>
+      this.compareReport(config.merchantId, range, before, refunds, refunds.map(() => 'IN_BALANCE' as RefundSource)));
   }
 
   /** add money → ბარათით გადახდა (TBC) → ჩვენი TOP_UP ტრანზაქცია (COLLECTED) — აბრუნებს transactionId-ს */
-  private async addMoneyTopUp(phone: string, amount: number, currency: 'GEL' | 'USD' | 'EUR'): Promise<number> {
+  async addMoneyTopUp(phone: string, amount: number, currency: 'GEL' | 'USD' | 'EUR'): Promise<number> {
     const gmail = new GmailHelper(process.env.GMAIL_USER!, process.env.GMAIL_APP_PASSWORD!);
     await gmail.deleteOldOTPEmails();
     const token = await new AuthDevicePage(this.request).authenticate(phone);
@@ -634,7 +690,6 @@ export class RefundReportsHelper {
     const body = await response.json().catch(() => ({}));
     assertCondition(OP_ADD_MONEY, response.ok() && typeof body.value === 'string', `payment link არ დაბრუნდა (HTTP ${response.status()})`,
       'HTTP 200 და value = payment link', body);
-    console.log(`✅ Add money — ${amount} ${currency}`);
 
     await this.payLinkWithCard(body.value, gmail);
 
@@ -647,7 +702,6 @@ export class RefundReportsHelper {
     }
     assertCondition(OP_ADD_MONEY, tx?.status === 'COLLECTED', `add money ${amount} ${currency}: TOP_UP ტრანზაქცია COLLECTED-ზე ვერ გადავიდა (status: ${tx?.status ?? 'ვერ მოიძებნა'})`,
       'TOP_UP · COLLECTED', tx);
-    console.log(`✅ Top-up COLLECTED (tx ${tx.id})`);
     return tx.id;
   }
 
@@ -662,7 +716,6 @@ export class RefundReportsHelper {
     // ფიქსირებული თანხის ლინკი — გვერდზე ზუსტად მოსალოდნელი თანხა უნდა ეწეროს („თანხა 0.2 ₾" / „Amount 0.2 ₾")
     if (expectedAmount !== undefined) {
       const shown = /(?:თანხა|Amount)\s*([\d.]+)\s*₾/.exec(await page.locator('body').innerText())?.[1];
-      console.log(`✅ Payment page amount: ${shown} (უნდა ${expectedAmount})`);
       if (Number(shown) !== expectedAmount) {
         await context.close().catch(() => {});
         assertCondition(OP_REFUND, false, `გადახდის გვერდზე თანხა ${shown}, უნდა იყოს ${expectedAmount}`, `თანხა ${expectedAmount}`, { url, shown });
@@ -677,7 +730,6 @@ export class RefundReportsHelper {
     await page.locator('#payment-submit').click();
     await page.waitForLoadState('networkidle');
     const otp = await gmail.getLatestOTP(30, undefined, 'TBC');
-    console.log(`✅ OTP: ${otp}`);
     await fillOTPAndVerifyTBC(page, otp);
     await page.waitForLoadState('networkidle', { timeout: 15000 }).catch(() => {});
     try {
@@ -704,49 +756,75 @@ export class RefundReportsHelper {
     currency: 'GEL' | 'USD' | 'EUR';
     refunds: Array<{ refundAmount?: number }>;         // თითო = ერთი გადახდა ლინკით: refundAmount არ არის → full | არის → partial
   }) {
-    await this.updateMerchantFlow('STANDARD');
-    await this.expectMerchantFlow(config.merchantId, 'STANDARD');
-    await this.cashOutAllBalance(config.phone, config.merchantId, config.iban);
-
     const range = RefundReportsHelper.period('DAY');
-    const before = await this.snapshot(config.merchantId, range);
+    const before = await this.part('მომზადება — STANDARD flow · ბალანსი 0 · report-ი ტესტამდე', async () => {
+      await this.updateMerchantFlow('STANDARD');
+      await this.expectMerchantFlow(config.merchantId, 'STANDARD');
+      await this.cashOutAllBalance(config.phone, config.merchantId, config.iban);
+      return this.snapshot(config.merchantId, range);
+    });
 
     const refunds: OurRefund[] = [];
-    for (const step of config.refunds) {
-      const txId = await this.payPaymentLink(config);
+    for (const [i, step] of config.refunds.entries()) {
       const isFull = step.refundAmount === undefined;
-      await this.refundByTransactionId(config.refundVia, txId, config.phone, isFull ? config.amount : step.refundAmount!, isFull);
-      await this.waitForTopUpRefunded(config.phone, txId);
-      console.log(`✅ ${isFull ? 'Full' : 'Partial'} refund via ${config.refundVia} — payment link ${isFull ? config.amount : step.refundAmount} ${config.currency} (tx ${txId})`);
-      refunds.push({ transactionId: txId, currency: config.currency, expectedRefundAmount: isFull ? config.amount : step.refundAmount! });
+      const label = RefundReportsHelper.partLabel(i, config.refunds.length, { ...step, amount: config.amount, currency: config.currency }, 'payment link + refund · ');
+      refunds.push(await this.part(label, async () => {
+        const txId = await this.payPaymentLink(config);
+        await this.refundByTransactionId(config.refundVia, txId, config.phone, isFull ? config.amount : step.refundAmount!, isFull);
+        await this.waitForTopUpRefunded(config.phone, txId);
+        console.log(`✅ ${isFull ? 'Full' : 'Partial'} refund via ${config.refundVia} — payment link ${isFull ? config.amount : step.refundAmount} ${config.currency} (tx ${txId})`);
+        return { transactionId: txId, currency: config.currency, expectedRefundAmount: isFull ? config.amount : step.refundAmount! };
+      }));
     }
 
-    await this.compareReport(config.merchantId, range, before, refunds, refunds.map(() => 'OVER_BALANCE' as RefundSource));
+    await this.part('Report-ის შედარება (payment link · Over Balance)', () =>
+      this.compareReport(config.merchantId, range, before, refunds, refunds.map(() => 'OVER_BALANCE' as RefundSource)));
   }
 
-  /** merchant-ის ლინკით ბარათით გადახდა → ჩვენი ახალი ტრანზაქცია (initialAmount + currency) · SUCCESS — აბრუნებს transactionId-ს */
-  private async payPaymentLink(config: { phone: string; paymentLink: string; amount: number; currency: string }): Promise<number> {
+  /**
+   * merchant-ის ლინკით ბარათით გადახდა → ჩვენი ახალი ტრანზაქცია (initialAmount + currency) — აბრუნებს transactionId-ს.
+   *   საბოლოო status: STANDARD flow → SUCCESS · BALANCE flow → COLLECTED (ფული merchant-ის ბალანსზე რჩება)
+   */
+  async payPaymentLink(config: { phone: string; paymentLink: string; amount: number; currency: string }, doneStatus: 'SUCCESS' | 'COLLECTED' = 'SUCCESS'): Promise<number> {
     const gmail = new GmailHelper(process.env.GMAIL_USER!, process.env.GMAIL_APP_PASSWORD!);
     await gmail.deleteOldOTPEmails();
     const token = await new AuthDevicePage(this.request).authenticate(config.phone);
     const idsBefore = new Set((await this.getMerchantTransactions(token)).map((t) => t.id));
-    console.log(`✅ Payment link — ${config.amount} ${config.currency}`);
     await this.payLinkWithCard(config.paymentLink, gmail, config.amount);
 
-    // SUCCESS-ის მოლოდინი (ხელმოწერა update-status-ით აჩქარებს)
+    // doneStatus-ის მოლოდინი (ხელმოწერა update-status-ით აჩქარებს)
     const checker = new TransactionChecker(this.request);
     let tx: any;
-    for (let i = 0; i < 30 && tx?.status !== 'SUCCESS'; i++) {
+    for (let i = 0; i < 30 && tx?.status !== doneStatus; i++) {
       await new Promise((resolve) => setTimeout(resolve, 4000));
       tx = (await this.getMerchantTransactions(token)).find((t) =>
         !idsBefore.has(t.id) && t.initialAmount === config.amount && t.currencyCode === config.currency);
-      if (tx && tx.status !== 'SUCCESS') { try { await checker.signById(tx.id); } catch { /* ignore */ } }
+      if (tx && tx.status !== doneStatus) { try { await checker.signById(tx.id); } catch { /* ignore */ } }
     }
-    assertCondition(OP_REFUND, tx?.status === 'SUCCESS',
-      `payment link ${config.amount} ${config.currency}: ტრანზაქცია SUCCESS-ზე ვერ გადავიდა (status: ${tx?.status ?? 'ვერ მოიძებნა'})`,
-      `ახალი ტრანზაქცია ${config.amount} ${config.currency} · SUCCESS`, tx);
-    console.log(`✅ Payment SUCCESS (tx ${tx.id})`);
+    assertCondition(OP_REFUND, tx?.status === doneStatus,
+      `payment link ${config.amount} ${config.currency}: ტრანზაქცია ${doneStatus}-ზე ვერ გადავიდა (status: ${tx?.status ?? 'ვერ მოიძებნა'})`,
+      `ახალი ტრანზაქცია ${config.amount} ${config.currency} · ${doneStatus}`, tx);
+    await this.ensureDistributed(tx.id);
     return tx.id;
+  }
+
+  /**
+   * გადახდის შემდეგ, refund-მდე — ტრანზაქციას ადმინიდან ვიღებთ: distributionStatus SUCCESS-ია → არაფერს ვაკეთებთ,
+   * SUCCESS არ არის → update-status (სანამ SUCCESS არ გახდება). report-ში refund მხოლოდ დისტრიბუციის შემდეგ ჩნდება;
+   * refund-ის შემდეგ update-status აღარ შველის და გაჭედილი დისტრიბუცია ბექის retry-ს ელოდება (~5–10 წთ).
+   * BALANCE flow-ზე დისტრიბუცია არ არის (distributionStatus COLLECTED / ცარიელი) → არაფერს ვაკეთებთ.
+   */
+  private async ensureDistributed(transactionId: number) {
+    const checker = new TransactionChecker(this.request);
+    const notDistributed = (s: string) => !!s && !['SUCCESS', 'COLLECTED', 'NOT_FOUND'].includes(s);
+    let tx = await checker.getStatusById(transactionId, 0);
+    for (let i = 0; i < 12 && notDistributed(tx.distributionStatus); i++) {
+      await checker.signById(transactionId);
+      tx = await checker.getStatusById(transactionId, 5);
+    }
+    if (notDistributed(tx.distributionStatus)) {
+      console.log(`⚠️ tx ${transactionId}: დისტრიბუცია ჯერ ${tx.distributionStatus} — report-ში refund დაგვიანებით გამოჩნდება`);
+    }
   }
 
   /** refund-ის დასრულების მოლოდინი (merchant-ის ტრანზაქცია REFUNDED / PARTIALLY_REFUNDED) — add money / payment link */
@@ -777,7 +855,7 @@ export class RefundReportsHelper {
   }
 
   /** ორდერი + გადახდა (TBC ბარათი ან TBC Open Banking) → SUCCESS-ის მოლოდინი */
-  private async payAndWaitSuccess(config: { amount: number; currency: 'GEL' | 'USD' | 'EUR'; receiverId: string; receiverType?: string; integratorId: string; payWith?: 'CARD' | 'OB_TBC' }) {
+  async payAndWaitSuccess(config: { amount: number; currency: 'GEL' | 'USD' | 'EUR'; receiverId: string; receiverType?: string; integratorId: string; payWith?: 'CARD' | 'OB_TBC' }) {
     const paymentPage = new PaymentPage(this.request, null as any);
     const gmail = new GmailHelper(process.env.GMAIL_USER!, process.env.GMAIL_APP_PASSWORD!);
     await gmail.deleteOldOTPEmails();
@@ -793,7 +871,6 @@ export class RefundReportsHelper {
       currency: config.currency,
       ...(isOpenBanking ? { openBankingLinkProvider: 'TBC' } : {}),
     });
-    console.log(`✅ Order Created — ${config.amount} ${config.currency}${isOpenBanking ? ' (TBC Open Banking)' : ''}`);
 
     if (isOpenBanking) {
       const browser = await chromium.launch({ headless: false, channel: 'chrome' });
@@ -819,7 +896,6 @@ export class RefundReportsHelper {
       await page.locator('#payment-submit').click();
       await page.waitForLoadState('networkidle');
       const otp = await gmail.getLatestOTP(30, undefined, 'TBC');
-      console.log(`✅ OTP: ${otp}`);
       await fillOTPAndVerifyTBC(page, otp);
       // success გვერდი ზოგჯერ ფონზე request-ებს აგზავნის და networkidle არ დგება — არ ვაგდებთ,
       // გადახდის შედეგს ქვემოთ getOrderStatus (SUCCESS) ამოწმებს
@@ -848,7 +924,7 @@ export class RefundReportsHelper {
     }
     assertCondition(OP_REFUND, status === 'SUCCESS',
       `ორდერი SUCCESS-ზე ვერ გადავიდა (status: ${status})`, 'status = SUCCESS', { integratorOrderId, status, transactionId });
-    console.log(`✅ Payment SUCCESS (tx ${transactionId})`);
+    await this.ensureDistributed(transactionId);
     return { accessToken, integratorOrderId, transactionId, acquiringAmount };
   }
 
@@ -869,7 +945,6 @@ export class RefundReportsHelper {
     await page.waitForLoadState('networkidle');
 
     const otp = await gmail.getLatestOTP(60);
-    console.log(`✅ OTP: ${otp}`);
 
     await page.waitForSelector('input[name="OtpCode"]', { timeout: 10000 });
     await page.click('input[name="OtpCode"]');
@@ -892,7 +967,6 @@ export class RefundReportsHelper {
     await page.waitForTimeout(500);
     await page.locator('button#acceptPaymentButton').click();
     await page.waitForLoadState('networkidle', { timeout: 15000 }).catch(() => {});
-    console.log('✅ TBC Open Banking payment confirmed');
   }
 
   // ============================================================
@@ -905,7 +979,6 @@ export class RefundReportsHelper {
       headers: { 'Authorization': `Bearer ${await this.token()}` },
     });
     const merchant = (await response.json().catch(() => ({}))).value;
-    console.log(`✅ Merchant: ${merchant?.name} · distributionFlow=${merchant?.distributionFlow}`);
     assertField('GET /merchant (precondition)', merchant || {}, 'distributionFlow', flow);
   }
 
@@ -928,7 +1001,6 @@ export class RefundReportsHelper {
   async cashOutAllBalance(phone: string, merchantId: string, iban: string) {
     const token = await new AuthDevicePage(this.request).authenticate(phone);
     const before = await this.getWalletBalances(token);
-    console.log(`✅ Balance before cash-out: ${JSON.stringify(before)}`);
 
     for (const [currencyCode, amount] of Object.entries(before)) {
       if (amount <= 0) continue;
@@ -939,7 +1011,6 @@ export class RefundReportsHelper {
       const body = await response.json().catch(() => ({}));
       assertCondition(OP_CASH_OUT, response.ok(), `cash-out ვერ შესრულდა: ${amount} ${currencyCode} (HTTP ${response.status()})`,
         'HTTP 200', body);
-      console.log(`✅ Cash-out: ${amount} ${currencyCode} → ${iban}`);
     }
 
     // ბალანსი 0 უნდა გახდეს (cash-out შეიძლება async-ად აისახოს)
@@ -948,7 +1019,6 @@ export class RefundReportsHelper {
       await new Promise((resolve) => setTimeout(resolve, 3000));
       after = await this.getWalletBalances(token);
     }
-    console.log(`✅ Balance after cash-out: ${JSON.stringify(after)}`);
     assertCondition(OP_CASH_OUT, Object.values(after).every((a) => a === 0),
       `cash-out-ის შემდეგ ბალანსი 0 არ არის: ${JSON.stringify(after)}`, 'ყველა ვალუტაზე ბალანსი 0', after);
   }
@@ -969,6 +1039,5 @@ export class RefundReportsHelper {
       throw new Error(`Merchant update failed: ${response.status()} - ${await response.text()}`);
     }
     await new Promise((resolve) => setTimeout(resolve, 3000)); // ცვლილება დაჯდეს
-    console.log(`✅ Merchant updated: distributionFlow=${distributionFlow}`);
   }
 }

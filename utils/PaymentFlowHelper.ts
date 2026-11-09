@@ -24,10 +24,9 @@ async function clickIfPresent(page: Page, name: string, label: string) {
     await btn.waitFor({ state: 'visible', timeout: 8000 });
     await page.waitForTimeout(1500); // overlay settle
     await btn.click();
-    console.log(`✅ Clicked ${label}`);
     await page.waitForTimeout(1500); // შემდეგ გვერდს დაველოდოთ
   } catch {
-    console.log(`ℹ️ ${label} not present — გამოვტოვე`);
+    // არ არის — გამოვტოვებთ
   }
 }
 
@@ -44,10 +43,9 @@ export async function dismissSuccessModals(page: Page) {
     const closeButton = page.locator('svg.absolute.top-5.right-5, button.absolute.top-5.right-5').first();
     await closeButton.waitFor({ state: 'visible', timeout: 5000 });
     await closeButton.click();
-    console.log('✅ Closed QR terminal modal');
     await page.waitForTimeout(1000);
-  } catch (error) {
-    console.log('ℹ️ QR terminal modal not found');
+  } catch {
+    // modal არ არის
   }
 
   // 2️⃣ Skip — rating გვერდზე (თუ rating ჩართულია)

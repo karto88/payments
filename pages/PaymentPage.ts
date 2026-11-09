@@ -261,6 +261,40 @@ export class PaymentPage {
   }
 
   /**
+   * Get order list (encrypt body → GET order/list → decrypt response)
+   * იგივე encrypt→GET→decrypt პატერნი რაც getOrderStatus, ოღონდ order/list endpoint-ზე.
+   * encrypt body: { from, to, branchId? } — სხვა ველი არ შეიძლება (AES-ზე უცნობი ველი → JSON_PARSE_ERROR).
+   * from / to: "yyyy-MM-dd HH:mm:ss" (თბილისის დრო). branchId არ არის → ყველა ფილიალი.
+   */
+  async getOrderList(accessToken: string, integratorId: string, filter: { from: string; to: string; branchId?: string }) {
+    // 1. Encrypt request body
+    const encrypted = await this.encryptOrderData(accessToken, filter);
+
+    // 2. GET order/list — encrypted params
+    const response = await this.request.get(
+      `${this.baseUrl}/ecommerce-service/api/integrator/order/list`,
+      {
+        params: {
+          identifier: integratorId,
+          encryptedData: encrypted.encryptedData,
+          encryptedKeys: encrypted.encryptedKeys,
+          aes: true,
+        },
+      }
+    );
+
+    if (!response.ok()) {
+      const errorBody = await response.text();
+      throw new Error(`Get order list failed: ${response.status()} - ${errorBody}`);
+    }
+
+    // 3. Decrypt response (იგივე decryptAES body)
+    const listResult = await response.json();
+
+    return await this.decryptData(accessToken, listResult.encryptedData, listResult.encryptedKeys);
+  }
+
+  /**
    * Complete full payment flow
    */
   async createPaymentOrder(
@@ -280,6 +314,7 @@ export class PaymentPage {
       saveCard?: boolean;
       payWithPreAuth?: boolean;
       currency?: string; // ვალუტა (default GEL) — USD/EUR order-ისთვის
+      branchId?: string; // ინტეგრატორის ფილიალის ID — order list-ის branchId ფილტრისთვის (GEPA)
       orderProperties?: any;
       splitDetails?: Array<{
         receiverType: string;
@@ -323,6 +358,10 @@ export class PaymentPage {
       orderData.currency = orderConfig.currency;
       orderData.acquiringCurrency = orderConfig.currency;
       orderData.distributionCurrency = orderConfig.currency;
+    }
+
+    if (orderConfig.branchId) {
+      orderData.branchId = orderConfig.branchId;
     }
 
     // Add splitDetails if provided
