@@ -36,7 +36,7 @@
 </head>
 <body>
   <h1>🎭 Playwright Test Report</h1>
-  <div class="meta">11/9/2026, 6:43:48 PM</div>
+  <div class="meta">11/9/2026, 6:44:18 PM</div>
   <div class="summary">
     <button type="button" class="card active" data-filter="all">Total: 1</button>
     <button type="button" class="card pass" data-filter="pass">✅ Passed: 1</button>
@@ -47,10 +47,12 @@
           <summary class="test">
             <span class="chev">▶</span>
             <span class="st" style="color:#3fb950">✅ passed</span>
-            <span class="name">UI: ბიზნესის შექმნა → wallet-ის მიბმა → რეგისტრაცია თავისით იქმნება (Not submitted) → Submit to RS → Pending RS approval → RS ადასტურებს → Approved, Wallets ტაბზე ჩანს wallet</span>
-            <span class="dur">20.7s</span>
-          </summary><pre class="log">✅ Business QA Tromp Nolan Group (912364472) created from UI — wallet linked, registration Approved
-✅ UI: QA Tromp Nolan Group (912364472) — Approved, wallet QA Abshire, Wolf and Kautzer linked to RS registration</pre></details></div>
+            <span class="name">UI: wallet-ზე 0.5 ₾ → RS აგზავნის ინკასოს 0.3 ₾ → ფანჯარაში Fully restricted, wallet-ზე გაყინულია 0.3 → wallet ცდილობს 0.3 ₾-ის გადარიცხვას (თავისუფალია 0.2) → უარი → ადმინი აბრუნებს ინკასოს (Return collection) → Returned, ფული თავისუფლდება</span>
+            <span class="dur">27.3s</span>
+          </summary><pre class="log">✅ Business QA Torphy Kessler and Sons (914066805) created from UI — wallet linked, registration Approved
+✅ Collection 0.3 ₾ sent by RS (QA-C-UI-1794235476695)
+✅ Transfer 0.3 ₾ rejected (5038) — 0.3 ₾ held by collection
+✅ Collection returned from UI — wallet 0.5 ₾ free again</pre></details></div>
   <script>
     (function () {
       const cards = document.querySelectorAll('.card');
