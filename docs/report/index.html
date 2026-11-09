@@ -36,10 +36,10 @@
 </head>
 <body>
   <h1>🎭 Playwright Test Report</h1>
-  <div class="meta">11/9/2026, 6:44:18 PM</div>
+  <div class="meta">11/9/2026, 6:44:55 PM</div>
   <div class="summary">
-    <button type="button" class="card active" data-filter="all">Total: 1</button>
-    <button type="button" class="card pass" data-filter="pass">✅ Passed: 1</button>
+    <button type="button" class="card active" data-filter="all">Total: 2</button>
+    <button type="button" class="card pass" data-filter="pass">✅ Passed: 2</button>
     <button type="button" class="card fail" data-filter="fail">❌ Failed: 0</button>
     <button type="button" class="card skip" data-filter="skip">⏭️ Skipped: 0</button>
   </div>
@@ -47,12 +47,19 @@
           <summary class="test">
             <span class="chev">▶</span>
             <span class="st" style="color:#3fb950">✅ passed</span>
-            <span class="name">UI: wallet-ზე 0.5 ₾ → RS აგზავნის ინკასოს 0.3 ₾ → ფანჯარაში Fully restricted, wallet-ზე გაყინულია 0.3 → wallet ცდილობს 0.3 ₾-ის გადარიცხვას (თავისუფალია 0.2) → უარი → ადმინი აბრუნებს ინკასოს (Return collection) → Returned, ფული თავისუფლდება</span>
-            <span class="dur">27.3s</span>
-          </summary><pre class="log">✅ Business QA Torphy Kessler and Sons (914066805) created from UI — wallet linked, registration Approved
-✅ Collection 0.3 ₾ sent by RS (QA-C-UI-1794235476695)
-✅ Transfer 0.3 ₾ rejected (5038) — 0.3 ₾ held by collection
-✅ Collection returned from UI — wallet 0.5 ₾ free again</pre></details></div>
+            <span class="name">UI: ცარიელ wallet-ზე RS აგზავნის ინკასოს 0.3 ₾ → ფანჯარაში Pending, "Waiting for funds: 0.30 GEL short" → wallet-ს ერიცხება 0.5 ₾ → ინკასო ივსება: Fully restricted, გაყინულია 0.3</span>
+            <span class="dur">22.9s</span>
+          </summary><pre class="log">✅ Business QA Kessler Fadel Group (981926205) created from UI — wallet linked, registration Approved
+✅ Collection 0.3 ₾ sent by RS (QA-C-UI-1794235514855)
+✅ Collection filled from new money — held 0.3 ₾</pre></details><details class="test-item" data-status="pass">
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="name">UI: ინკასო 0.3 ₾ (Fully restricted) → ადმინი: Request amount from RS → RS პასუხობს 0.3 ₾ → Executions-ში Manual / ₾ 0.30, Treasury transfers ცარიელია (ხელით რეჟიმი — სისტემა არ რიცხავს)</span>
+            <span class="dur">25.6s</span>
+          </summary><pre class="log">✅ Business QA Feeney - Bogan (970424655) created from UI — wallet linked, registration Approved
+✅ Collection 0.3 ₾ sent by RS (QA-C-UI-1794235536393)
+✅ Request amount from UI — RS answered 0.3 ₾, manual payment needed</pre></details></div>
   <script>
     (function () {
       const cards = document.querySelectorAll('.card');
