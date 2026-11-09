@@ -36,7 +36,7 @@
 </head>
 <body>
   <h1>🎭 Playwright Test Report</h1>
-  <div class="meta">11/9/2026, 7:46:09 PM</div>
+  <div class="meta">11/9/2026, 7:47:48 PM</div>
   <div class="summary">
     <button type="button" class="card active" data-filter="all">Total: 1</button>
     <button type="button" class="card pass" data-filter="pass">✅ Passed: 0</button>
@@ -48,46 +48,93 @@
             <span class="chev">▶</span>
             <span class="st" style="color:#f85149">❌ failed</span>
             <span class="name">ინკასო 0.1 ₾ → merchant-ზე იყინება → ადმინი: Request amount → RS პასუხობს 0.1 ₾ (ავტომატური გადარიცხვა არ ხდება, MANUAL_PAYMENT_NEEDED) → ადმინი აფიქსირებს ხელით გადახდას → ინკასო EXECUTED</span>
-            <span class="dur">39.8s</span>
-          </summary><pre class="log">✅ Collection 0.1 ₾ on merchant 599000555 — held (QA-C-M-1794239169440)
+            <span class="dur">128.0s</span>
+          </summary><pre class="log">✅ Collection 0.1 ₾ on merchant 599000555 — held (QA-C-M-1794239268705)
 ✅ RS answered 0.1 ₾ — manual payment needed (no auto transfer)</pre><pre class="err">ApiAssertionError: 
 ❌ API TEST FAILED
 ───────────────────────────────────────────
 🔧 ოპერაცია:    GET /api/v1/rs/restrictions/{id} (ინკასო)
-⚠️  პრობლემა:    status PROCESSING, restricted 0.1, executed 0
+⚠️  პრობლემა:    status FAILED, executed 0; execution TRANSFER_FAILED; transfer FAILED, attempts 4, lastError: payment-service PUT /settlements/S-c7f09838-e50f-42e1-9c1c-d618cdea7dce-130a0bbc-071f-47c2-8c97-2a7d90b0ebdc-4 answered 500: {"code":"INTERNAL_ERROR","message":"The integrator could not apply the request"}
 📥 მიმდინარე შედეგი:
 {
-  "id": "de6bf8ef-7f35-4fd4-b3f4-2106d0d07738",
-  "partner": "keepz",
-  "type": "COLLECTION",
-  "rsNumber": "QA-C-M-1794239169440",
-  "personId": "34252525522",
-  "personIdAlt": null,
-  "personName": "Simulated taxpayer",
-  "currency": "GEL",
-  "requestedAmount": 0.1,
-  "restrictedAmount": 0.1,
-  "executedAmount": 0,
-  "remainingAmount": 0.1,
-  "priority": 1,
-  "collectionStatus": 1,
-  "status": "PROCESSING",
-  "statusTooltip": "The Collection is being confirmed with RS or transferred to the treasury account.",
-  "statusReason": null,
-  "uncoverable": false,
-  "enforcementEnabled": true,
-  "imported": false,
-  "revAccount": "101001000",
-  "revCode": "220101222",
-  "receivedAt": "2026-11-09T15:46:09.796211Z",
-  "receivedMessageId": "00000000000261109194609082",
-  "effectiveBusinessDay": "2026-11-09",
-  "replacedById": null,
-  "replacesNumbers": null,
-  "withdrawnAt": null,
-  "returnedAt": null
+  "restriction": {
+    "id": "06b38e96-e72c-4771-b3d1-7e5fcb331a25",
+    "partner": "keepz",
+    "type": "COLLECTION",
+    "rsNumber": "QA-C-M-1794239268705",
+    "personId": "34252525522",
+    "personIdAlt": null,
+    "personName": "Simulated taxpayer",
+    "currency": "GEL",
+    "requestedAmount": 0.1,
+    "restrictedAmount": 0.1,
+    "executedAmount": 0,
+    "remainingAmount": 0.1,
+    "priority": 1,
+    "collectionStatus": 1,
+    "status": "FAILED",
+    "statusTooltip": "Collection processing failed. The amount remains restricted and operational review is required.",
+    "statusReason": null,
+    "uncoverable": false,
+    "enforcementEnabled": true,
+    "imported": false,
+    "revAccount": "101001000",
+    "revCode": "220101222",
+    "receivedAt": "2026-11-09T15:47:49.057946Z",
+    "receivedMessageId": "00000000000261109194749086",
+    "effectiveBusinessDay": "2026-11-09",
+    "replacedById": null,
+    "replacesNumbers": null,
+    "withdrawnAt": null,
+    "returnedAt": null
+  },
+  "executions": [
+    {
+      "id": "c7f09838-e50f-42e1-9c1c-d618cdea7dce",
+      "businessDay": "2026-11-09",
+      "source": "MANUAL",
+      "status": "TRANSFER_FAILED",
+      "answerAmount": 0.1,
+      "answerMessageId": "00000000000261109194753087",
+      "answerChannel": "STATUS_REPORT",
+      "accomplishAmount": 0.1,
+      "checkSentAt": "2026-11-09T15:47:52.148564Z",
+      "answerReceivedAt": "2026-11-09T15:47:53.268500Z",
+      "accomplishSentAt": "2026-11-09T15:47:54.887930Z",
+      "accomplishAckedAt": "2026-11-09T15:47:55.476167Z",
+      "deadlineAccomplishAt": null,
+      "deadlineTransferAt": null,
+      "note": "QA manual treasury payment",
+      "manualPayment": true,
+      "manualPaymentReference": "QA-BANK-1794239274757",
+      "manualPaidAt": "2026-11-09T15:47:54.757Z",
+      "manualRecordedBy": "USER:995591078180-12322",
+      "manualRecordedAt": "2026-11-09T15:47:54.887930Z"
+    }
+  ],
+  "transfers": [
+    {
+      "id": "e375c9b8-4069-438b-809b-b3f1906d63e6",
+      "executionId": "c7f09838-e50f-42e1-9c1c-d618cdea7dce",
+      "integrator": "payment-service",
+      "transferId": "S-c7f09838-e50f-42e1-9c1c-d618cdea7dce-130a0bbc-071f-47c2-8c97-2a7d90b0ebdc-4",
+      "amount": 0.1,
+      "currency": "GEL",
+      "revAccount": "101001000",
+      "revCode": "220101222",
+      "status": "FAILED",
+      "integratorTxRef": null,
+      "attempts": 4,
+      "lastError": "payment-service PUT /settlements/S-c7f09838-e50f-42e1-9c1c-d618cdea7dce-130a0bbc-071f-47c2-8c97-2a7d90b0ebdc-4 answered 500: {\"code\":\"INTERNAL_ERROR\",\"message\":\"The integrator could not apply the request\"}",
+      "completedAt": null,
+      "allocationId": "130a0bbc-071f-47c2-8c97-2a7d90b0ebdc",
+      "holderRef": "MERCHANT:6f99d426-6042-4b27-addb-33e6fc188c3e",
+      "holderName": "stromae refund report",
+      "paidOutside": true
+    }
+  ]
 }
-✅ მოსალოდნელი შედეგი: EXECUTED, executed 0.1, restricted 0
+✅ მოსალოდნელი შედეგი: 120 წმ-ში: EXECUTED, executed 0.1, restricted 0; execution COMPLETED; transfer paidOutside SUCCESS
 ───────────────────────────────────────────
 </pre></details></div>
   <script>
