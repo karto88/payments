@@ -36,7 +36,7 @@
 </head>
 <body>
   <h1>🎭 Playwright Test Report</h1>
-  <div class="meta">11/9/2026, 7:52:44 PM</div>
+  <div class="meta">11/9/2026, 7:56:14 PM</div>
   <div class="summary">
     <button type="button" class="card active" data-filter="all">Total: 1</button>
     <button type="button" class="card pass" data-filter="pass">✅ Passed: 0</button>
@@ -47,94 +47,20 @@
           <summary class="test">
             <span class="chev">▶</span>
             <span class="st" style="color:#f85149">❌ failed</span>
-            <span class="name">ინკასო 0.1 ₾ → merchant-ზე იყინება → ადმინი: Request amount → RS პასუხობს 0.1 ₾ (ავტომატური გადარიცხვა არ ხდება, MANUAL_PAYMENT_NEEDED) → ადმინი აფიქსირებს ხელით გადახდას → ინკასო EXECUTED</span>
-            <span class="dur">126.5s</span>
-          </summary><pre class="log">✅ Collection 0.1 ₾ on merchant 599000555 — held (QA-C-M-1794239564584)
-✅ RS answered 0.1 ₾ — manual payment needed (no auto transfer)</pre><pre class="err">ApiAssertionError: 
+            <span class="name">COL-15: wallet-ზე 0.5 ₾ → ინკასო 0.1 ₾ → იყინება → ადმინი: Request amount → RS პასუხობს 0.1 ₾ (ავტომატური გადარიცხვა არ ხდება, MANUAL_PAYMENT_NEEDED) → ადმინი აფიქსირებს ხელით გადახდას → ინკასო EXECUTED, wallet 0.4 ₾, გაყინული 0</span>
+            <span class="dur">1.3s</span>
+          </summary><pre class="err">ApiAssertionError: 
 ❌ API TEST FAILED
 ───────────────────────────────────────────
-🔧 ოპერაცია:    GET /api/v1/rs/restrictions/{id} (ინკასო)
-⚠️  პრობლემა:    status FAILED, executed 0; execution TRANSFER_FAILED; transfer FAILED, attempts 4, lastError: payment-service PUT /settlements/S-8add4bcc-405a-4017-b371-84380c385082-336d6dbd-b89f-4bbe-bf33-275686521775-4 answered 500: {"code":"INTERNAL_ERROR","message":"The integrator could not apply the request"}
+🔧 ოპერაცია:    POST /api/v1/rs/registrations
+⚠️  პრობლემა:    HTTP 409 (code 7011: An open registration already exists for this identification number: 3a06db14-474c-48fe-adc2-8325ccdcff12)
 📥 მიმდინარე შედეგი:
 {
-  "restriction": {
-    "id": "4a224d37-48da-4777-ab13-f36bfe3953d4",
-    "partner": "keepz",
-    "type": "COLLECTION",
-    "rsNumber": "QA-C-M-1794239564584",
-    "personId": "34252525522",
-    "personIdAlt": null,
-    "personName": "Simulated taxpayer",
-    "currency": "GEL",
-    "requestedAmount": 0.1,
-    "restrictedAmount": 0.1,
-    "executedAmount": 0,
-    "remainingAmount": 0.1,
-    "priority": 1,
-    "collectionStatus": 1,
-    "status": "FAILED",
-    "statusTooltip": "Collection processing failed. The amount remains restricted and operational review is required.",
-    "statusReason": null,
-    "uncoverable": false,
-    "enforcementEnabled": true,
-    "imported": false,
-    "revAccount": "101001000",
-    "revCode": "220101222",
-    "receivedAt": "2026-11-09T15:52:44.960707Z",
-    "receivedMessageId": "00000000000261109195244095",
-    "effectiveBusinessDay": "2026-11-09",
-    "replacedById": null,
-    "replacesNumbers": null,
-    "withdrawnAt": null,
-    "returnedAt": null
-  },
-  "executions": [
-    {
-      "id": "8add4bcc-405a-4017-b371-84380c385082",
-      "businessDay": "2026-11-09",
-      "source": "MANUAL",
-      "status": "TRANSFER_FAILED",
-      "answerAmount": 0.1,
-      "answerMessageId": "00000000000261109195248096",
-      "answerChannel": "STATUS_REPORT",
-      "accomplishAmount": 0.1,
-      "checkSentAt": "2026-11-09T15:52:47.974429Z",
-      "answerReceivedAt": "2026-11-09T15:52:49.014474Z",
-      "accomplishSentAt": "2026-11-09T15:52:50.652455Z",
-      "accomplishAckedAt": "2026-11-09T15:52:51.180135Z",
-      "deadlineAccomplishAt": null,
-      "deadlineTransferAt": null,
-      "note": "QA manual treasury payment",
-      "manualPayment": true,
-      "manualPaymentReference": "QA-BANK-1794239570521",
-      "manualPaidAt": "2026-11-09T15:52:50.521Z",
-      "manualRecordedBy": "USER:995591078180-12322",
-      "manualRecordedAt": "2026-11-09T15:52:50.652455Z"
-    }
-  ],
-  "transfers": [
-    {
-      "id": "80edea20-989c-421d-a364-c56b6969e44e",
-      "executionId": "8add4bcc-405a-4017-b371-84380c385082",
-      "integrator": "payment-service",
-      "transferId": "S-8add4bcc-405a-4017-b371-84380c385082-336d6dbd-b89f-4bbe-bf33-275686521775-4",
-      "amount": 0.1,
-      "currency": "GEL",
-      "revAccount": "101001000",
-      "revCode": "220101222",
-      "status": "FAILED",
-      "integratorTxRef": null,
-      "attempts": 4,
-      "lastError": "payment-service PUT /settlements/S-8add4bcc-405a-4017-b371-84380c385082-336d6dbd-b89f-4bbe-bf33-275686521775-4 answered 500: {\"code\":\"INTERNAL_ERROR\",\"message\":\"The integrator could not apply the request\"}",
-      "completedAt": null,
-      "allocationId": "336d6dbd-b89f-4bbe-bf33-275686521775",
-      "holderRef": "MERCHANT:6f99d426-6042-4b27-addb-33e6fc188c3e",
-      "holderName": "stromae refund report",
-      "paidOutside": true
-    }
-  ]
+  "message": "An open registration already exists for this identification number: 3a06db14-474c-48fe-adc2-8325ccdcff12",
+  "statusCode": 7011,
+  "exceptionGroup": 2
 }
-✅ მოსალოდნელი შედეგი: 120 წმ-ში: EXECUTED, executed 0.1, restricted 0; execution COMPLETED; transfer paidOutside SUCCESS
+✅ მოსალოდნელი შედეგი: HTTP 2xx
 ───────────────────────────────────────────
 </pre></details></div>
   <script>
