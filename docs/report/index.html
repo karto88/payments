@@ -36,33 +36,23 @@
 </head>
 <body>
   <h1>🎭 Playwright Test Report</h1>
-  <div class="meta">11/9/2026, 7:56:14 PM</div>
+  <div class="meta">11/9/2026, 7:56:33 PM</div>
   <div class="summary">
     <button type="button" class="card active" data-filter="all">Total: 1</button>
-    <button type="button" class="card pass" data-filter="pass">✅ Passed: 0</button>
-    <button type="button" class="card fail" data-filter="fail">❌ Failed: 1</button>
+    <button type="button" class="card pass" data-filter="pass">✅ Passed: 1</button>
+    <button type="button" class="card fail" data-filter="fail">❌ Failed: 0</button>
     <button type="button" class="card skip" data-filter="skip">⏭️ Skipped: 0</button>
   </div>
-  <div class="file-group"><div class="file">tests/RS/Positive/rs-collection.spec.ts</div><details class="test-item" data-status="fail" open>
+  <div class="file-group"><div class="file">tests/RS/Positive/rs-collection.spec.ts</div><details class="test-item" data-status="pass">
           <summary class="test">
             <span class="chev">▶</span>
-            <span class="st" style="color:#f85149">❌ failed</span>
+            <span class="st" style="color:#3fb950">✅ passed</span>
             <span class="name">COL-15: wallet-ზე 0.5 ₾ → ინკასო 0.1 ₾ → იყინება → ადმინი: Request amount → RS პასუხობს 0.1 ₾ (ავტომატური გადარიცხვა არ ხდება, MANUAL_PAYMENT_NEEDED) → ადმინი აფიქსირებს ხელით გადახდას → ინკასო EXECUTED, wallet 0.4 ₾, გაყინული 0</span>
-            <span class="dur">1.3s</span>
-          </summary><pre class="err">ApiAssertionError: 
-❌ API TEST FAILED
-───────────────────────────────────────────
-🔧 ოპერაცია:    POST /api/v1/rs/registrations
-⚠️  პრობლემა:    HTTP 409 (code 7011: An open registration already exists for this identification number: 3a06db14-474c-48fe-adc2-8325ccdcff12)
-📥 მიმდინარე შედეგი:
-{
-  "message": "An open registration already exists for this identification number: 3a06db14-474c-48fe-adc2-8325ccdcff12",
-  "statusCode": 7011,
-  "exceptionGroup": 2
-}
-✅ მოსალოდნელი შედეგი: HTTP 2xx
-───────────────────────────────────────────
-</pre></details></div>
+            <span class="dur">14.8s</span>
+          </summary><pre class="log">✅ Hub business 903127267 — wallet 0.5 ₾, registration Approved, wallet enrolled
+✅ Collection 0.1 ₾ on hub wallet — held (QA-C-1794239800791)
+✅ RS answered 0.1 ₾ — manual payment needed (no auto transfer)
+✅ Manual payment recorded (QA-BANK-1794239805978) — collection EXECUTED, wallet 0.5 → 0.4</pre></details></div>
   <script>
     (function () {
       const cards = document.querySelectorAll('.card');
