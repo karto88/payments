@@ -36,55 +36,23 @@
 </head>
 <body>
   <h1>🎭 Playwright Test Report</h1>
-  <div class="meta">11/10/2026, 2:52:59 PM</div>
+  <div class="meta">11/10/2026, 2:55:07 PM</div>
   <div class="summary">
-    <button type="button" class="card active" data-filter="all">Total: 4</button>
-    <button type="button" class="card pass" data-filter="pass">✅ Passed: 3</button>
-    <button type="button" class="card fail" data-filter="fail">❌ Failed: 1</button>
+    <button type="button" class="card active" data-filter="all">Total: 1</button>
+    <button type="button" class="card pass" data-filter="pass">✅ Passed: 1</button>
+    <button type="button" class="card fail" data-filter="fail">❌ Failed: 0</button>
     <button type="button" class="card skip" data-filter="skip">⏭️ Skipped: 0</button>
   </div>
   <div class="file-group"><div class="file">tests/RS/Front/Positive/rs-front-registration-tabs.spec.ts</div><details class="test-item" data-status="pass">
           <summary class="test">
             <span class="chev">▶</span>
             <span class="st" style="color:#3fb950">✅ passed</span>
-            <span class="name">UI: Approved რეგისტრაცია → სათაური (Partner, Approved by, Submitted / Approved დრო, Registration ID) და Data ტაბი = API; RS-ში გაგზავნილ ველებს "Sent to RS" ნიშანი</span>
-            <span class="dur">33.0s</span>
-          </summary><pre class="log">✅ Wallet QA UI Wallet 672036 created from UI (33026ef8-ae1d-47ab-87e9-5c7e5dc71566)
-✅ Registration tables OK — Data, Wallets, business page, list
-✅ Business QA Bogan Prosacco Inc (922087208) created from UI — wallet linked, registration Approved
-✅ Header + Data = API</pre></details><details class="test-item" data-status="pass">
-          <summary class="test">
-            <span class="chev">▶</span>
-            <span class="st" style="color:#3fb950">✅ passed</span>
-            <span class="name">UI: Field changes — Not submitted-ზე Edit data (სახელი, Known date) → 2 მწკრივი (ძველი / ახალი, ვინ, როდის) = API; Approved-ზე RS-ში გაგზავნილი ველები გამორთულია</span>
-            <span class="dur">10.7s</span>
-          </summary><pre class="log">✅ Field changes — Not submitted edits listed, Approved RS fields locked</pre></details><details class="test-item" data-status="pass">
-          <summary class="test">
-            <span class="chev">▶</span>
-            <span class="st" style="color:#3fb950">✅ passed</span>
-            <span class="name">UI: RS messages ტაბი → NEW_CLIENT "New client" / Acked (Message ID, Attempts, Created, Acknowledged) = API</span>
-            <span class="dur">31.7s</span>
-          </summary><pre class="log">✅ Wallet QA UI Wallet 706220 created from UI (026c9dcc-4c9d-416c-bb95-aa36142c48e9)
-✅ Registration tables OK — Data, Wallets, business page, list
-✅ Business QA Nolan, Ledner and Hermiston (927839722) created from UI — wallet linked, registration Approved
-✅ RS messages — 1 row(s) = API</pre></details><details class="test-item" data-status="fail" open>
-          <summary class="test">
-            <span class="chev">▶</span>
-            <span class="st" style="color:#f85149">❌ failed</span>
             <span class="name">UI: History ტაბი → ყველა ნაბიჯი (Client created → Enrollment created → Queued new client → Submit → Approved), ახალი ზემოთ, ავტორებით</span>
-            <span class="dur">31.1s</span>
-          </summary><pre class="log">✅ Wallet QA UI Wallet 973301 created from UI (fdd74ea2-0f89-44fa-8c04-3cbc5cfeef2b)
+            <span class="dur">32.1s</span>
+          </summary><pre class="log">✅ Wallet QA UI Wallet 147045 created from UI (40942271-8ae6-4499-b5b9-f15d5af9e1eb)
 ✅ Registration tables OK — Data, Wallets, business page, list
-✅ Business QA Kautzer, Rempel and Zieme (983804022) created from UI — wallet linked, registration Approved</pre><pre class="err">ApiAssertionError: 
-❌ API TEST FAILED
-───────────────────────────────────────────
-🔧 ოპერაცია:    UI RS registration — History
-⚠️  პრობლემა:    არ ჩანს: Client created, Enrollment created, Queued new client, Submit, Approved honest tax payer
-📥 მიმდინარე შედეგი:
-"Davit Kartozia | • | 591078180 | QA Kautzer, Rempel and Zieme | Approved | Edit data | Cancel registration | Partner | keepz | Client number | - | Approved by | Honest taxpayer | First submitted | 10 Nov 2026, 14:54 | Last submitted | 10 Nov 2026, 14:54 | Approved | 10 Nov 2026, 14:54 | Resubmit allowed | No | Registration ID | 5dba8fe6-1494-4a2a-89f4-52f6d5633274 | Data | Wallets | 1 | Field changes | RS messages | Liens &amp; collections | History | © | Keepz | 2026 | Contact us"
-✅ მოსალოდნელი შედეგი: Client created → Enrollment created → Queued new client → Submit → Approved honest tax payer
-───────────────────────────────────────────
-</pre></details></div>
+✅ Business QA Wolf Wolf and Sons (958021068) created from UI — wallet linked, registration Approved
+✅ History — all steps, newest first, actors</pre></details></div>
   <script>
     (function () {
       const cards = document.querySelectorAll('.card');
