@@ -36,52 +36,33 @@
 </head>
 <body>
   <h1>🎭 Playwright Test Report</h1>
-  <div class="meta">11/10/2026, 5:41:40 PM</div>
+  <div class="meta">11/10/2026, 5:46:27 PM</div>
   <div class="summary">
-    <button type="button" class="card active" data-filter="all">Total: 4</button>
-    <button type="button" class="card pass" data-filter="pass">✅ Passed: 4</button>
-    <button type="button" class="card fail" data-filter="fail">❌ Failed: 0</button>
+    <button type="button" class="card active" data-filter="all">Total: 1</button>
+    <button type="button" class="card pass" data-filter="pass">✅ Passed: 0</button>
+    <button type="button" class="card fail" data-filter="fail">❌ Failed: 1</button>
     <button type="button" class="card skip" data-filter="skip">⏭️ Skipped: 0</button>
   </div>
-  <div class="file-group"><div class="file">tests/RS/Back/Positive/rs-mixed-wallets.spec.ts</div><details class="test-item" data-status="pass">
+  <div class="file-group"><div class="file">tests/RS/Back/Positive/rs-reallocate.spec.ts</div><details class="test-item" data-status="fail" open>
           <summary class="test">
             <span class="chev">▶</span>
-            <span class="st" style="color:#3fb950">✅ passed</span>
-            <span class="name">ყადაღა = merchant-ის მთელი ბალანსი (როგორც ყადაღა 10 / merchant 10 / hub 5) → მთლიანად merchant-ზე, hub-ზე 0 → hub გადარიცხავს 0.2-ს ✅, merchant ვერ გაიტანს 0.2-ს (2501)</span>
-            <span class="dur">12.0s</span>
-          </summary><pre class="log">✅ Mixed: merchant 599000555 (1.82 ₾) + hub 6cfe3386-5091-4598-a64c-9be523bef4fa (0.5 ₾) on registration 98a5eacc-b94c-46e1-b971-4bf9cfc6b63c
-✅ Transfer 0.2 ₾ OK — held 0 ₾ untouched
-✅ Merchant cash-out 0.2 ₾ rejected (2501)
-✅ LIEN 1.82 = merchant balance → merchant fully held (can't cash out 0.2), hub free (transferred 0.2)</pre></details><details class="test-item" data-status="pass">
-          <summary class="test">
-            <span class="chev">▶</span>
-            <span class="st" style="color:#3fb950">✅ passed</span>
-            <span class="name">ინკასო = merchant-ის მთელი ბალანსი (როგორც ინკასო 10 / merchant 10 / hub 5) → მთლიანად merchant-ზე, hub-ზე 0 → hub გადარიცხავს 0.2-ს ✅, merchant ვერ გაიტანს 0.2-ს (2501)</span>
-            <span class="dur">7.8s</span>
-          </summary><pre class="log">✅ Mixed: merchant 599000555 (1.82 ₾) + hub bc24be24-403b-41d2-aaf5-31ecaaa6a0e5 (0.5 ₾) on registration 98a5eacc-b94c-46e1-b971-4bf9cfc6b63c
-✅ Transfer 0.2 ₾ OK — held 0 ₾ untouched
-✅ Merchant cash-out 0.2 ₾ rejected (2501)
-✅ COLLECTION 1.82 = merchant balance → merchant fully held (can't cash out 0.2), hub free (transferred 0.2)</pre></details></div><div class="file-group"><div class="file">tests/RS/Front/Positive/rs-front-mixed-wallets.spec.ts</div><details class="test-item" data-status="pass">
-          <summary class="test">
-            <span class="chev">▶</span>
-            <span class="st" style="color:#3fb950">✅ passed</span>
-            <span class="name">UI: ყადაღა = merchant-ის მთელი ბალანსი (როგორც 10 / 10 / 5) → Holds per wallet: მხოლოდ merchant; ბიზნესის გვერდზე hub თავისუფალია → hub გადარიცხავს 0.2-ს ✅, merchant ვერ გაიტანს 0.2-ს</span>
-            <span class="dur">18.4s</span>
-          </summary><pre class="log">✅ Mixed: merchant 599000555 (1.82 ₾) + hub 39c93d4f-da3d-4048-8b4c-70ca3d30410d (0.5 ₾) on registration 98a5eacc-b94c-46e1-b971-4bf9cfc6b63c
-✅ UI QA-L-MIX-1794318124467: Fully restricted, restricted 1.82 — Holds per wallet = API
-✅ Transfer 0.2 ₾ OK — held 0 ₾ untouched
-✅ Merchant cash-out 0.2 ₾ rejected (2501)
-✅ LIEN 1.82 = merchant balance → merchant fully held (can't cash out 0.2), hub free (transferred 0.2)</pre></details><details class="test-item" data-status="pass">
-          <summary class="test">
-            <span class="chev">▶</span>
-            <span class="st" style="color:#3fb950">✅ passed</span>
-            <span class="name">UI: ინკასო = merchant-ის მთელი ბალანსი (როგორც 10 / 10 / 5) → Holds per wallet: მხოლოდ merchant; hub თავისუფალია → hub გადარიცხავს 0.2-ს ✅, merchant ვერ გაიტანს 0.2-ს</span>
-            <span class="dur">17.3s</span>
-          </summary><pre class="log">✅ Mixed: merchant 599000555 (1.82 ₾) + hub 7032d508-e8e0-4b89-ad43-11094135fdb5 (0.5 ₾) on registration 98a5eacc-b94c-46e1-b971-4bf9cfc6b63c
-✅ UI QA-C-MIX-1794318141366: Fully restricted, restricted 1.82 — Holds per wallet = API
-✅ Transfer 0.2 ₾ OK — held 0 ₾ untouched
-✅ Merchant cash-out 0.2 ₾ rejected (2501)
-✅ COLLECTION 1.82 = merchant balance → merchant fully held (can't cash out 0.2), hub free (transferred 0.2)</pre></details></div>
+            <span class="st" style="color:#f85149">❌ failed</span>
+            <span class="name">ყადაღა = merchant + hub (ორივე მთლიანად გაყინულია, hub ვერ გადარიცხავს) → merchant-ს add money 0.6 → Reallocate → მთელი ყადაღა merchant-ზე, hub თავისუფალია და გადარიცხავს 0.1; merchant ვერ გაიტანს</span>
+            <span class="dur">137.4s</span>
+          </summary><pre class="log">✅ Mixed: merchant 599000555 (1.82 ₾) + hub ca64afdc-ba51-46a7-b3fb-dd5678aab3fb (0.5 ₾) on registration 98a5eacc-b94c-46e1-b971-4bf9cfc6b63c
+✅ Transfer 0.1 ₾ rejected (5038) — available 0 ₾
+✅ Add money 0.6 ₾ — tx 113753</pre><pre class="err">ApiAssertionError: 
+❌ API TEST FAILED
+───────────────────────────────────────────
+🔧 ოპერაცია:    GET walletportal /wallet/balances (merchant)
+⚠️  პრობლემა:    ბალანსი 2.41
+📥 მიმდინარე შედეგი:
+{
+  "balance": 2.41
+}
+✅ მოსალოდნელი შედეგი: ბალანსი 2.42 — add money +0.6
+───────────────────────────────────────────
+</pre></details></div>
   <script>
     (function () {
       const cards = document.querySelectorAll('.card');
