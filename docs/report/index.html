@@ -36,23 +36,67 @@
 </head>
 <body>
   <h1>🎭 Playwright Test Report</h1>
-  <div class="meta">11/10/2026, 12:03:52 PM</div>
+  <div class="meta">11/10/2026, 12:05:06 PM</div>
   <div class="summary">
-    <button type="button" class="card active" data-filter="all">Total: 1</button>
+    <button type="button" class="card active" data-filter="all">Total: 3</button>
     <button type="button" class="card pass" data-filter="pass">✅ Passed: 1</button>
-    <button type="button" class="card fail" data-filter="fail">❌ Failed: 0</button>
+    <button type="button" class="card fail" data-filter="fail">❌ Failed: 2</button>
     <button type="button" class="card skip" data-filter="skip">⏭️ Skipped: 0</button>
   </div>
-  <div class="file-group"><div class="file">tests/RS/Front/Positive/rs-front.spec.ts</div><details class="test-item" data-status="pass">
+  <div class="file-group"><div class="file">tests/RS/Front/Positive/rs-front.spec.ts</div><details class="test-item" data-status="fail" open>
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#f85149">❌ failed</span>
+            <span class="name">UI flow (wallet → ბიზნესი → მიბმა → რეგისტრაცია → Approved) → wallet-ზე 0.5 ₾ → RS აგზავნის ყადაღას 0.3 ₾ → Fully restricted: ფანჯარა, Holds per wallet (Held 0.30), რეგისტრაციის და ბიზნესის ცხრილები, ბალანსი 0.50 / 0.30 / 0.20</span>
+            <span class="dur">30.1s</span>
+          </summary><pre class="log">✅ Wallet QA UI Wallet 010459 created from UI (e1918d2d-050a-467f-ae5f-e6d12b7f684c), balance 0.5 ₾
+✅ Registration tables OK — Data, Wallets, business page, list
+✅ Business QA Runolfsdottir - Nolan (922854409) created from UI — wallet linked, registration Approved</pre><pre class="err">ApiAssertionError: 
+❌ API TEST FAILED
+───────────────────────────────────────────
+🔧 ოპერაცია:    UI (dashboard.dev.keepz.me) Lien — ცხრილი / ფანჯარა
+⚠️  პრობლემა:    მწკრივი: QA-L-UI-1794297935056 | Lien | - 922854409 | ₾ 0.30 | ₾ 0.00 | ₾ 0.30 | ₾ 0.00 | Pending | 10 Nov 2026, 12:05
+📥 მიმდინარე შედეგი:
+[
+  "QA-L-UI-1794297935056",
+  "Lien",
+  "- 922854409",
+  "₾ 0.30",
+  "₾ 0.00",
+  "₾ 0.30",
+  "₾ 0.00",
+  "Pending",
+  "10 Nov 2026, 12:05"
+]
+✅ მოსალოდნელი შედეგი: QA-L-UI-1794297935056 | Lien | ₾ 0.30 | ₾ 0.30 | ₾ 0.30 | Fully restricted (ref | type | requested | restricted | remaining | status)
+───────────────────────────────────────────
+</pre></details><details class="test-item" data-status="pass">
           <summary class="test">
             <span class="chev">▶</span>
             <span class="st" style="color:#3fb950">✅ passed</span>
-            <span class="name">UI: ბიზნესის შექმნა → wallet-ის მიბმა → რეგისტრაცია თავისით იქმნება (Not submitted) → Submit to RS → Pending RS approval → RS ადასტურებს → Approved, Wallets ტაბზე ჩანს wallet</span>
-            <span class="dur">31.5s</span>
-          </summary><pre class="log">✅ Wallet QA UI Wallet 297290 created from UI (abc040d6-d726-4af1-9001-99ea56e398ea)
+            <span class="name">UI flow → wallet-ზე 0.3 ₾ → RS აგზავნის ყადაღას 0.5 ₾ → Partially restricted, "Waiting for funds: 0.20 GEL short", Fills up Yes, ბალანსი 0.30 / 0.30 / 0.00</span>
+            <span class="dur">38.9s</span>
+          </summary><pre class="log">✅ Wallet QA UI Wallet 523916 created from UI (143a3525-bf02-4608-97e2-adcac1507371), balance 0.3 ₾
 ✅ Registration tables OK — Data, Wallets, business page, list
-✅ Business QA Mosciski Nienow Group (948885203) created from UI — wallet linked, registration Approved
-✅ UI: QA Mosciski Nienow Group (948885203) — Approved, wallet QA UI Wallet 297290 linked to RS registration</pre></details></div>
+✅ Business QA Quigley - Durgan (992962376) created from UI — wallet linked, registration Approved
+✅ Lien 0.5 ₾ on wallet 0.3 ₾ — Partially restricted, held 0.3: modal, holds, row, business page OK</pre></details><details class="test-item" data-status="fail" open>
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#f85149">❌ failed</span>
+            <span class="name">UI flow → ცარიელი wallet (0 ₾) → RS აგზავნის ყადაღას 0.3 ₾ → Pending, "Waiting for funds: 0.30 GEL short", Held 0, ბალანსი 0.00 / 0.00 / 0.00</span>
+            <span class="dur">36.0s</span>
+          </summary><pre class="log">✅ Wallet QA UI Wallet 355274 created from UI (e74d6f22-3249-4433-9b3f-45847daade42)
+✅ Registration tables OK — Data, Wallets, business page, list
+✅ Business QA Waelchi Lebsack Group (967689663) created from UI — wallet linked, registration Approved</pre><pre class="err">ApiAssertionError: 
+❌ API TEST FAILED
+───────────────────────────────────────────
+🔧 ოპერაცია:    UI (dashboard.dev.keepz.me) Dist. Businesses
+⚠️  პრობლემა:    ბიზნესის გვერდზე ყადაღა / ბალანსი არ ემთხვევა
+📥 მიმდინარე შედეგი:
+"Davit Kartozia | • | 591078180 | QA Waelchi Lebsack Group | Approved | Edit business | Link clients | RS data | Residency status | Resident | Owner identification number | 967689663 | Alternative personal number | - | Client number | - | Operation date | 11 Oct 2026 | Known date | 31 Oct 2026 | Updated | 10 Nov 2026, 12:06 | RS registration | Open registration | Approved | Owner full name | QA Waelchi Lebsack Group | Client number | - | First submitted | 10 Nov 2026, 12:06 | Approved | 10 Nov 2026, 12:06 | Wallet clients | Client\tStatus\tBalances | Created\tActions | QA UI Wallet 355274 | Active | - | 10 Nov 2026 | 12:06:28 | Unlink | Liens &amp; collections | RS reference\tType\tRequested\tRestricted | Remaining | Executed | Status\tReceived | QA-L-UI-1794298008883 | Lien\t₾ 0.30\t₾ 0.00\t₾ 0.30\t₾ 0.00 | Pending | 10 Nov 2026, 12:06 | © | Keepz | 2026 | Contact us"
+✅ მოსალოდნელი შედეგი: Liens &amp; collections: QA-L-UI-1794298008883 Pending; Wallet clients GEL ₾ 0.00 / ₾ 0.00 / ₾ 0.00 (ბალანსი / გაყინული / თავისუფალი)
+───────────────────────────────────────────
+</pre></details></div>
   <script>
     (function () {
       const cards = document.querySelectorAll('.card');
