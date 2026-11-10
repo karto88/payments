@@ -36,26 +36,103 @@
 </head>
 <body>
   <h1>🎭 Playwright Test Report</h1>
-  <div class="meta">11/10/2026, 5:50:26 PM</div>
+  <div class="meta">11/10/2026, 6:11:03 PM</div>
   <div class="summary">
-    <button type="button" class="card active" data-filter="all">Total: 1</button>
-    <button type="button" class="card pass" data-filter="pass">✅ Passed: 1</button>
-    <button type="button" class="card fail" data-filter="fail">❌ Failed: 0</button>
-    <button type="button" class="card skip" data-filter="skip">⏭️ Skipped: 0</button>
+    <button type="button" class="card active" data-filter="all">Total: 14</button>
+    <button type="button" class="card pass" data-filter="pass">✅ Passed: 2</button>
+    <button type="button" class="card fail" data-filter="fail">❌ Failed: 1</button>
+    <button type="button" class="card skip" data-filter="skip">⏭️ Skipped: 11</button>
   </div>
-  <div class="file-group"><div class="file">tests/RS/Back/Positive/rs-reallocate.spec.ts</div><details class="test-item" data-status="pass">
+  <div class="file-group"><div class="file">tests/RS/Back/Positive/rs-mixed-wallets.spec.ts</div><details class="test-item" data-status="pass">
           <summary class="test">
             <span class="chev">▶</span>
             <span class="st" style="color:#3fb950">✅ passed</span>
-            <span class="name">ინკასო = merchant + hub (ორივე მთლიანად გაყინულია) → merchant-ს add money 0.6 → Reallocate → მთელი ინკასო merchant-ზე, hub თავისუფალია და გადარიცხავს 0.1; merchant ვერ გაიტანს</span>
-            <span class="dur">64.3s</span>
-          </summary><pre class="log">✅ Mixed: merchant 599000555 (3 ₾) + hub eae7d883-79ea-4c2d-854b-384d2cb04a18 (0.5 ₾) on registration 98a5eacc-b94c-46e1-b971-4bf9cfc6b63c
-✅ Transfer 0.1 ₾ rejected (5038) — available 0 ₾
-✅ Add money 0.6 ₾ — tx 113755
-✅ Merchant balance 3 → 3.59 (+0.59)
-✅ Transfer 0.1 ₾ OK — held 0 ₾ untouched
-✅ Merchant cash-out 0.19 ₾ rejected (2501)
-✅ Reallocate: merchant +0.6 → whole 3.5 on merchant, hub released and transferred 0.1</pre></details></div>
+            <span class="name">გზა 1: ბიზნესი + hub wallet → ახალი merchant ბიზნესის Identification Number-ით → Register to RS merchant-ის wallet-ით → იგივე რეგისტრაცია, 2 wallet (payment-service + distributor-hub)</span>
+            <span class="dur">5.4s</span>
+          </summary><pre class="log">✅ Merchant QA RS Merchant 6693 — 995300000002, ident 984114013, BALANCE flow (45815baf-c998-4cc9-9d8a-e6c85c91aa60)
+✅ Way 1: merchant QA RS Merchant 6693 → business 984114013 registration d385f53d-422e-4e08-b9e5-197689cba803 — 2 wallets</pre></details><details class="test-item" data-status="pass">
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="name">გზა 2: ახალი merchant → Register to RS → ბიზნესი merchant-ის Identification Number-ით + hub wallet → hub wallet იგივე რეგისტრაციას ებმის, 2 wallet</span>
+            <span class="dur">6.8s</span>
+          </summary><pre class="log">✅ Merchant QA RS Merchant 5977 — 995300000003, ident 945990070, BALANCE flow (d367f255-0f04-40a1-8d09-f18d177ed91d)
+✅ Way 2: business with merchant ident 945990070 → hub wallet joined registration eb0f2e48-65e3-4225-a47b-eb96e8ca46f8 — 2 wallets</pre></details><details class="test-item" data-status="fail" open>
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#f85149">❌ failed</span>
+            <span class="name">ყადაღა 0.4: merchant 0.45, hub 0.2 → მხოლოდ merchant 0.4 → hub გადარიცხავს 0.1-ს ✅, merchant ვერ გაიტანს 0.1-ს (თავისუფალი 0.05) → RS ხსნის → ორივე თავისუფალია</span>
+            <span class="dur">33.2s</span>
+          </summary><pre class="log">✅ Merchant QA RS Merchant 3331 — 995300000004, ident 929921360, BALANCE flow (9f8823d4-85d5-4b5c-ad6d-40cd25adb4a3)</pre><pre class="err">TimeoutError: locator.fill: Timeout 15000ms exceeded.
+Call log:
+[2m  - waiting for locator('#cardNumber')[22m
+</pre></details><details class="test-item" data-status="skip">
+          <summary class="test">
+            <span class="chev"></span>
+            <span class="st" style="color:#7d8590">⏭️ skipped</span>
+            <span class="name">ყადაღა 0.4: merchant 0.25, hub 0.2 → merchant 0.25 (მთლიანად) + hub 0.15 → hub ვერ გადარიცხავს 0.1-ს (თავისუფალი 0.05), merchant ვერ გაიტანს 0.05-ს</span>
+            <span class="dur">0ms</span>
+          </summary></details><details class="test-item" data-status="skip">
+          <summary class="test">
+            <span class="chev"></span>
+            <span class="st" style="color:#7d8590">⏭️ skipped</span>
+            <span class="name">ყადაღა 0.3: merchant 0.2, hub 0.2 (თანაბარი) → ერთზე მთლიანად 0.2, მეორეზე 0.1 (ვინ — integrator-ის პრიორიტეტი)</span>
+            <span class="dur">0ms</span>
+          </summary></details><details class="test-item" data-status="skip">
+          <summary class="test">
+            <span class="chev"></span>
+            <span class="st" style="color:#7d8590">⏭️ skipped</span>
+            <span class="name">ყადაღა 0.4: merchant 0.15, hub 0.45 → მხოლოდ hub 0.4 → merchant გაიტანს 0.05-ს თავის ანგარიშზე ✅, hub ვერ გადარიცხავს 0.1-ს (თავისუფალი 0.05)</span>
+            <span class="dur">0ms</span>
+          </summary></details><details class="test-item" data-status="skip">
+          <summary class="test">
+            <span class="chev"></span>
+            <span class="st" style="color:#7d8590">⏭️ skipped</span>
+            <span class="name">ყადაღა 0.4: merchant 0.1, hub 0.2 (სულ 0.3) → Partially restricted, ორივე მთლიანად, ვერც ერთი ვერაფერს → hub-ს +0.2 → hold ივსება (hub 0.3) → Fully restricted</span>
+            <span class="dur">0ms</span>
+          </summary></details><details class="test-item" data-status="skip">
+          <summary class="test">
+            <span class="chev"></span>
+            <span class="st" style="color:#7d8590">⏭️ skipped</span>
+            <span class="name">ინკასო 0.4: merchant 0.45, hub 0.2 → მხოლოდ merchant 0.4 → hub გადარიცხავს 0.1-ს ✅, merchant ვერ გაიტანს 0.1-ს → RS ხსნის → ორივე თავისუფალია</span>
+            <span class="dur">0ms</span>
+          </summary></details><details class="test-item" data-status="skip">
+          <summary class="test">
+            <span class="chev"></span>
+            <span class="st" style="color:#7d8590">⏭️ skipped</span>
+            <span class="name">ინკასო 0.4: merchant 0.2, hub 0.2 → merchant 0.2 (მთლიანად) + hub 0.2 → hub ვერ გადარიცხავს, merchant ვერ გაიტანს</span>
+            <span class="dur">0ms</span>
+          </summary></details><details class="test-item" data-status="skip">
+          <summary class="test">
+            <span class="chev"></span>
+            <span class="st" style="color:#7d8590">⏭️ skipped</span>
+            <span class="name">ინკასო 0.3: merchant 0.15, hub 0.15 (თანაბარი) → ერთზე მთლიანად 0.15, მეორეზე 0.15</span>
+            <span class="dur">0ms</span>
+          </summary></details><details class="test-item" data-status="skip">
+          <summary class="test">
+            <span class="chev"></span>
+            <span class="st" style="color:#7d8590">⏭️ skipped</span>
+            <span class="name">ინკასო 0.4: merchant 0.1, hub 0.45 → მხოლოდ hub 0.4 → merchant გაიტანს 0.05-ს ✅, hub ვერ გადარიცხავს 0.1-ს</span>
+            <span class="dur">0ms</span>
+          </summary></details><details class="test-item" data-status="skip">
+          <summary class="test">
+            <span class="chev"></span>
+            <span class="st" style="color:#7d8590">⏭️ skipped</span>
+            <span class="name">ინკასო 0.4: merchant 0.05, hub 0.2 (სულ 0.25) → Partially restricted → hub-ს +0.2 → hold ივსება (hub 0.35) → Fully restricted</span>
+            <span class="dur">0ms</span>
+          </summary></details><details class="test-item" data-status="skip">
+          <summary class="test">
+            <span class="chev"></span>
+            <span class="st" style="color:#7d8590">⏭️ skipped</span>
+            <span class="name">ინკასო 0.35: merchant 0.05, hub 0.3 → hub 0.3 + merchant 0.05 → ადმინი იხდის 0.3 → ჩამოიჭრება გაყინულიდან (merchant / hub), ჯამი 0.3, ბალანსები შემცირდა</span>
+            <span class="dur">0ms</span>
+          </summary></details><details class="test-item" data-status="skip">
+          <summary class="test">
+            <span class="chev"></span>
+            <span class="st" style="color:#7d8590">⏭️ skipped</span>
+            <span class="name">ბოლოს: merchant იტანს მთელ ბალანსს → 0 (ფული ერთჯერად merchant-ზე არ რჩება)</span>
+            <span class="dur">0ms</span>
+          </summary></details></div>
   <script>
     (function () {
       const cards = document.querySelectorAll('.card');
