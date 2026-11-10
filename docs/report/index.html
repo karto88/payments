@@ -36,96 +36,14 @@
 </head>
 <body>
   <h1>🎭 Playwright Test Report</h1>
-  <div class="meta">11/10/2026, 10:18:51 AM</div>
+  <div class="meta">11/10/2026, 11:55:10 AM</div>
   <div class="summary">
-    <button type="button" class="card active" data-filter="all">Total: 9</button>
-    <button type="button" class="card pass" data-filter="pass">✅ Passed: 9</button>
+    <button type="button" class="card active" data-filter="all">Total: 0</button>
+    <button type="button" class="card pass" data-filter="pass">✅ Passed: 0</button>
     <button type="button" class="card fail" data-filter="fail">❌ Failed: 0</button>
     <button type="button" class="card skip" data-filter="skip">⏭️ Skipped: 0</button>
   </div>
-  <div class="file-group"><div class="file">tests/RS/Negative/rs-collection-negative.spec.ts</div><details class="test-item" data-status="pass">
-          <summary class="test">
-            <span class="chev">▶</span>
-            <span class="st" style="color:#3fb950">✅ passed</span>
-            <span class="name">ინკასო PROCESSING-ზეა (RS-ის პასუხს ელოდება) → ადმინი აჭერს Return → უარი 409 / 7011, ინკასო არ ბრუნდება, ფული გაყინულია</span>
-            <span class="dur">19.7s</span>
-          </summary><pre class="log">✅ Hub business 940534638 — wallet 0.5 ₾, registration Approved, wallet enrolled
-✅ Collection 0.1 ₾ on hub wallet (0.5 ₾) — FULLY_RESTRICTED, held 0.1 (QA-C-1794291546864)
-✅ POST /api/v1/rs/restrictions/{id}/return → 409 / 7011</pre></details><details class="test-item" data-status="pass">
-          <summary class="test">
-            <span class="chev">▶</span>
-            <span class="st" style="color:#3fb950">✅ passed</span>
-            <span class="name">ხელით გადახდა RS-ის პასუხამდე (Request amount ჯერ არ გაგზავნილა) → უარი 409 / 7031, არაფერი ჩამოიჭრა</span>
-            <span class="dur">9.5s</span>
-          </summary><pre class="log">✅ Hub business 945998677 — wallet 0.5 ₾, registration Approved, wallet enrolled
-✅ Collection 0.1 ₾ on hub wallet (0.5 ₾) — FULLY_RESTRICTED, held 0.1 (QA-C-1794291557838)
-✅ Manual payment rejected — HTTP 409 / 7031 (RS-ის პასუხი (Request amount) ჯერ არ არის)</pre></details><details class="test-item" data-status="pass">
-          <summary class="test">
-            <span class="chev">▶</span>
-            <span class="st" style="color:#3fb950">✅ passed</span>
-            <span class="name">RS-მა უპასუხა 0.1 ₾ → ადმინი აფიქსირებს გადახდას ხვალინდელი paidAt-ით (მომავალში) → უარი 400 / 7033, არაფერი ჩამოიჭრა</span>
-            <span class="dur">12.7s</span>
-          </summary><pre class="log">✅ Hub business 911986632 — wallet 0.5 ₾, registration Approved, wallet enrolled
-✅ Collection 0.1 ₾ on hub wallet (0.5 ₾) — FULLY_RESTRICTED, held 0.1 (QA-C-1794291567792)
-✅ RS answered 0.1 ₾ — manual payment needed (no auto transfer)
-✅ Manual payment rejected — HTTP 400 / 7033 (paidAt ხვალ (მომავალში) — თარიღის კოდი 7033)</pre></details><details class="test-item" data-status="pass">
-          <summary class="test">
-            <span class="chev">▶</span>
-            <span class="st" style="color:#3fb950">✅ passed</span>
-            <span class="name">ადმინი აფიქსირებს 0.1 ₾-ს → ინკასო EXECUTED → იგივე გადახდას მეორედ აფიქსირებს → უარი 409 / 7031, ფული მეორედ არ ჩამოიჭრა</span>
-            <span class="dur">15.0s</span>
-          </summary><pre class="log">✅ Hub business 961031289 — wallet 0.5 ₾, registration Approved, wallet enrolled
-✅ Collection 0.1 ₾ on hub wallet (0.5 ₾) — FULLY_RESTRICTED, held 0.1 (QA-C-1794291579944)
-✅ RS answered 0.1 ₾ — manual payment needed (no auto transfer)
-✅ Manual payment 0.1 ₾ recorded (QA-BANK-1794291585491) — EXECUTED
-✅ Manual payment rejected — HTTP 409 / 7031 (გადახდა უკვე დაფიქსირებულია (recorded already))</pre></details></div><div class="file-group"><div class="file">tests/RS/Positive/rs-collection.spec.ts</div><details class="test-item" data-status="pass">
-          <summary class="test">
-            <span class="chev">▶</span>
-            <span class="st" style="color:#3fb950">✅ passed</span>
-            <span class="name">COL-12: RS ასწორებს ინკასოს (0.3 → 0.5, note #ძველი) → ძველი იცვლება, გაყინულია მხოლოდ 0.5 (ორმაგად არა)</span>
-            <span class="dur">12.2s</span>
-          </summary><pre class="log">✅ Hub business 969821245 — wallet 1 ₾, registration Approved, wallet enrolled
-✅ Collection 0.3 ₾ on hub wallet (1 ₾) — FULLY_RESTRICTED, held 0.3 (QA-C-1794291594903)
-✅ Correction 0.3 → 0.5 — held 0.5, old replaced</pre></details><details class="test-item" data-status="pass">
-          <summary class="test">
-            <span class="chev">▶</span>
-            <span class="st" style="color:#3fb950">✅ passed</span>
-            <span class="name">COL-15: wallet-ზე 0.5 ₾ → ინკასო 0.1 ₾ → იყინება → ადმინი: Request amount → RS პასუხობს 0.1 ₾ (ავტომატური გადარიცხვა არ ხდება, MANUAL_PAYMENT_NEEDED) → ადმინი აფიქსირებს ხელით გადახდას → ინკასო EXECUTED, wallet 0.4 ₾, გაყინული 0</span>
-            <span class="dur">15.6s</span>
-          </summary><pre class="log">✅ Hub business 910659955 — wallet 0.5 ₾, registration Approved, wallet enrolled
-✅ Collection 0.1 ₾ on hub wallet (0.5 ₾) — FULLY_RESTRICTED, held 0.1 (QA-C-1794291608483)
-✅ RS answered 0.1 ₾ — manual payment needed (no auto transfer)
-✅ Manual payment 0.1 ₾ recorded (QA-BANK-1794291613588) — EXECUTED
-✅ Collection EXECUTED — wallet 0.5 → 0.4, held 0</pre></details><details class="test-item" data-status="pass">
-          <summary class="test">
-            <span class="chev">▶</span>
-            <span class="st" style="color:#3fb950">✅ passed</span>
-            <span class="name">COL-18: ნაწილობრივი გადახდა — wallet-ზე 0.12 ₾, ინკასო 0.15 ₾ (Partially restricted) → RS პასუხობს 0.15 → ადმინი აფიქსირებს 0.13-ს (გაყინულზე მეტი) → უარი 7032 → აფიქსირებს 0.07-ს → Partially executed, ვალი 0.08, wallet-ზე 0.05 ისევ გაყინულია</span>
-            <span class="dur">14.4s</span>
-          </summary><pre class="log">✅ Hub business 948953436 — wallet 0.12 ₾, registration Approved, wallet enrolled
-✅ Collection 0.15 ₾ on hub wallet (0.12 ₾) — PARTIALLY_RESTRICTED, held 0.12 (QA-C-1794291622830)
-✅ RS answered 0.15 ₾ — manual payment needed (no auto transfer)
-✅ Manual payment rejected — HTTP 400 / 7032 (0.13 ₾ &gt; გაყინული 0.12 ₾)
-✅ Manual payment 0.07 ₾ recorded (QA-BANK-1794291628025) — PARTIALLY_EXECUTED
-✅ Partial manual payment 0.07 ₾ — PARTIALLY_EXECUTED, owed 0.08, wallet still held 0.05</pre></details><details class="test-item" data-status="pass">
-          <summary class="test">
-            <span class="chev">▶</span>
-            <span class="st" style="color:#3fb950">✅ passed</span>
-            <span class="name">RS ხსნის ინკასოს (ObtainCollection) ხელით გადახდის ჩამოჭრისას → მოხსნა მიიღება, ჩამოჭრა სრულდება (wallet 0.4), ინკასო Withdrawn, ფული აღარ არის გაყინული</span>
-            <span class="dur">14.5s</span>
-          </summary><pre class="log">✅ Hub business 950971647 — wallet 0.5 ₾, registration Approved, wallet enrolled
-✅ Collection 0.1 ₾ on hub wallet (0.5 ₾) — FULLY_RESTRICTED, held 0.1 (QA-C-1794291637325)
-✅ RS answered 0.1 ₾ — manual payment needed (no auto transfer)
-✅ Withdrawn during settlement — payment finished, collection WITHDRAWN</pre></details><details class="test-item" data-status="pass">
-          <summary class="test">
-            <span class="chev">▶</span>
-            <span class="st" style="color:#3fb950">✅ passed</span>
-            <span class="name">COL-06: RS პასუხობს 0 → execution NO_AMOUNT, ინკასო ისევ გაყინულია, გადახდის დაფიქსირება → 7031, არაფერი ჩამოიჭრა</span>
-            <span class="dur">12.1s</span>
-          </summary><pre class="log">✅ Hub business 935553262 — wallet 0.5 ₾, registration Approved, wallet enrolled
-✅ Collection 0.1 ₾ on hub wallet (0.5 ₾) — FULLY_RESTRICTED, held 0.1 (QA-C-1794291651834)
-✅ POST /api/v1/rs/restrictions/{id}/manual-payment → 409 / 7031
-✅ RS answered 0 — NO_AMOUNT, collection stays held</pre></details></div>
+  
   <script>
     (function () {
       const cards = document.querySelectorAll('.card');
