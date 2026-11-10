@@ -36,7 +36,7 @@
 </head>
 <body>
   <h1>🎭 Playwright Test Report</h1>
-  <div class="meta">11/10/2026, 9:19:38 PM</div>
+  <div class="meta">11/10/2026, 9:21:42 PM</div>
   <div class="summary">
     <button type="button" class="card active" data-filter="all">Total: 1</button>
     <button type="button" class="card pass" data-filter="pass">✅ Passed: 0</button>
@@ -48,26 +48,13 @@
             <span class="chev">▶</span>
             <span class="st" style="color:#f85149">❌ failed</span>
             <span class="name">ინკასოს ხელით გადახდა: wallet 0.5, ინკასო 0.5 → UI: Request amount from RS → Executions: Amount received / Manual / RS answer → ადმინი აფიქსირებს 0.3-ს bankReference-ით (API — UI-ში ღილაკი არ არის) → UI: Executed 0.3, Completed, Treasury transfers: wallet · 0.30 · Success · bankReference; ბალანსი −0.3</span>
-            <span class="dur">66.2s</span>
-          </summary><pre class="log">✅ Wallet QA UI Wallet 408419 created from UI (798f16f8-eee0-4fa4-917a-25d5f2cb57ab), balance 0.5 ₾
+            <span class="dur">56.0s</span>
+          </summary><pre class="log">✅ Wallet QA UI Wallet 177842 created from UI (f66fcacf-544d-4238-b841-45a2dff41ff1), balance 0.5 ₾
 ✅ Registration tables OK — Data, Wallets, business page, list
-✅ Business QA Wolf Hessel LLC (950972147) created from UI — wallet linked, registration Approved
-✅ 1 wallets on business: QA UI Wallet 408419 (0.5)</pre><pre class="err">ApiAssertionError: 
-❌ API TEST FAILED
-───────────────────────────────────────────
-🔧 ოპერაცია:    UI (dashboard.dev.keepz.me) Collection ფანჯარა
-⚠️  პრობლემა:    Fully restricted · requested 0.5 · restricted NaN · remaining NaN · executed NaN
-📥 მიმდინარე შედეგი:
-{
-  "status": "Fully restricted",
-  "requested": 0.5,
-  "restricted": null,
-  "remaining": null,
-  "executed": null,
-  "reason": "-"
-}
-✅ მოსალოდნელი შედეგი: Fully restricted · requested 0.5 · restricted 0.5 · remaining 0.5 · executed undefined
-───────────────────────────────────────────
+✅ Business QA Upton, Reichert and Quigley (902342492) created from UI — wallet linked, registration Approved
+✅ 1 wallets on business: QA UI Wallet 177842 (0.5)</pre><pre class="err">TimeoutError: locator.click: Timeout 15000ms exceeded.
+Call log:
+[2m  - waiting for locator('.MuiModal-root').last().getByRole('tab', { name: 'Treasury transfers' })[22m
 </pre></details></div>
   <script>
     (function () {
