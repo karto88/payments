@@ -36,130 +36,14 @@
 </head>
 <body>
   <h1>🎭 Playwright Test Report</h1>
-  <div class="meta">11/10/2026, 6:27:11 PM</div>
+  <div class="meta">11/10/2026, 6:52:30 PM</div>
   <div class="summary">
-    <button type="button" class="card active" data-filter="all">Total: 14</button>
-    <button type="button" class="card pass" data-filter="pass">✅ Passed: 14</button>
+    <button type="button" class="card active" data-filter="all">Total: 0</button>
+    <button type="button" class="card pass" data-filter="pass">✅ Passed: 0</button>
     <button type="button" class="card fail" data-filter="fail">❌ Failed: 0</button>
     <button type="button" class="card skip" data-filter="skip">⏭️ Skipped: 0</button>
   </div>
-  <div class="file-group"><div class="file">tests/RS/Back/Positive/rs-mixed-wallets.spec.ts</div><details class="test-item" data-status="pass">
-          <summary class="test">
-            <span class="chev">▶</span>
-            <span class="st" style="color:#3fb950">✅ passed</span>
-            <span class="name">გზა 1: ბიზნესი + hub wallet → ახალი merchant ბიზნესის Identification Number-ით → Register to RS merchant-ის wallet-ით → იგივე რეგისტრაცია, 2 wallet (payment-service + distributor-hub)</span>
-            <span class="dur">5.9s</span>
-          </summary><pre class="log">✅ Merchant QA RS Merchant 5527 — 995300000011, ident 917952049, BALANCE flow, Temporary Verified (cf1ea142-e284-4e84-a155-563816015a9a)
-✅ Way 1: merchant QA RS Merchant 5527 → business 917952049 registration 294c35fc-4780-435d-a87a-53a67eff82b1 — 2 wallets</pre></details><details class="test-item" data-status="pass">
-          <summary class="test">
-            <span class="chev">▶</span>
-            <span class="st" style="color:#3fb950">✅ passed</span>
-            <span class="name">გზა 2: ახალი merchant → Register to RS → ბიზნესი merchant-ის Identification Number-ით + hub wallet → hub wallet იგივე რეგისტრაციას ებმის, 2 wallet</span>
-            <span class="dur">4.8s</span>
-          </summary><pre class="log">✅ Merchant QA RS Merchant 4630 — 995300000012, ident 961282279, BALANCE flow, Temporary Verified (a6b9cfbf-e45f-41d6-b649-3652862dffa7)
-✅ Way 2: business with merchant ident 961282279 → hub wallet joined registration a69ea66e-8ad9-4ac0-a598-6a01ba6f6091 — 2 wallets</pre></details><details class="test-item" data-status="pass">
-          <summary class="test">
-            <span class="chev">▶</span>
-            <span class="st" style="color:#3fb950">✅ passed</span>
-            <span class="name">ყადაღა 0.4: merchant 0.45, hub 0.2 → მხოლოდ merchant 0.4 → hub გადარიცხავს 0.1-ს ✅, merchant ვერ გაიტანს 0.1-ს (თავისუფალი 0.05) → RS ხსნის → ორივე თავისუფალია</span>
-            <span class="dur">72.7s</span>
-          </summary><pre class="log">✅ Merchant QA RS Merchant 4734 — 995300000013, ident 990958978, BALANCE flow, Temporary Verified (c6e97d58-0a5c-4c79-bfd1-006b81e5902b)
-✅ Merchant add money 0.5 → balance 0 → 0.49
-✅ Case: merchant 300000013 0.45 ₾ + hub 0.2 ₾ (registration 1fa0906e-8b22-4a49-a46f-9d82b76789ef)
-✅ Transfer 0.1 ₾ OK — held 0 ₾ untouched
-✅ Merchant cash-out 0.1 ₾ rejected (2501)
-✅ LIEN 0.4: merchant 0.45 → held 0.4, hub 0.2 → held 0; released after withdraw</pre></details><details class="test-item" data-status="pass">
-          <summary class="test">
-            <span class="chev">▶</span>
-            <span class="st" style="color:#3fb950">✅ passed</span>
-            <span class="name">ყადაღა 0.4: merchant 0.25, hub 0.2 → merchant 0.25 (მთლიანად) + hub 0.15 → hub ვერ გადარიცხავს 0.1-ს (თავისუფალი 0.05), merchant ვერ გაიტანს 0.05-ს</span>
-            <span class="dur">8.9s</span>
-          </summary><pre class="log">✅ Case: merchant 300000013 0.25 ₾ + hub 0.2 ₾ (registration 1fa0906e-8b22-4a49-a46f-9d82b76789ef)
-✅ Transfer 0.1 ₾ rejected (5038) — available 0.05 ₾
-✅ Merchant cash-out 0.05 ₾ rejected (2501)
-✅ LIEN 0.4: merchant 0.25 → held 0.25, hub 0.2 → held 0.15; released after withdraw</pre></details><details class="test-item" data-status="pass">
-          <summary class="test">
-            <span class="chev">▶</span>
-            <span class="st" style="color:#3fb950">✅ passed</span>
-            <span class="name">ყადაღა 0.3: merchant 0.2, hub 0.2 (თანაბარი) → ერთზე მთლიანად 0.2, მეორეზე 0.1 (ვინ — integrator-ის პრიორიტეტი)</span>
-            <span class="dur">7.4s</span>
-          </summary><pre class="log">✅ Case: merchant 300000013 0.2 ₾ + hub 0.2 ₾ (registration 1fa0906e-8b22-4a49-a46f-9d82b76789ef)
-✅ Equal 0.2 / 0.2, LIEN 0.3 → merchant first (merchant 0.2, hub 0.1)</pre></details><details class="test-item" data-status="pass">
-          <summary class="test">
-            <span class="chev">▶</span>
-            <span class="st" style="color:#3fb950">✅ passed</span>
-            <span class="name">ყადაღა 0.4: merchant 0.15, hub 0.45 → მხოლოდ hub 0.4 → merchant გაიტანს 0.05-ს თავის ანგარიშზე ✅, hub ვერ გადარიცხავს 0.1-ს (თავისუფალი 0.05)</span>
-            <span class="dur">9.8s</span>
-          </summary><pre class="log">✅ Case: merchant 300000013 0.15 ₾ + hub 0.45 ₾ (registration 1fa0906e-8b22-4a49-a46f-9d82b76789ef)
-✅ Transfer 0.1 ₾ rejected (5038) — available 0.05 ₾
-✅ Merchant cash-out 0.05 ₾ OK — balance 0.1
-✅ LIEN 0.4: merchant 0.15 → held 0, hub 0.45 → held 0.4; released after withdraw</pre></details><details class="test-item" data-status="pass">
-          <summary class="test">
-            <span class="chev">▶</span>
-            <span class="st" style="color:#3fb950">✅ passed</span>
-            <span class="name">ყადაღა 0.4: merchant 0.1, hub 0.2 (სულ 0.3) → Partially restricted, ორივე მთლიანად, ვერც ერთი ვერაფერს → hub-ს +0.2 → hold ივსება (hub 0.3) → Fully restricted</span>
-            <span class="dur">8.2s</span>
-          </summary><pre class="log">✅ Case: merchant 300000013 0.1 ₾ + hub 0.2 ₾ (registration 1fa0906e-8b22-4a49-a46f-9d82b76789ef)
-✅ Transfer 0.01 ₾ rejected (5038) — available 0 ₾
-✅ Merchant cash-out 0.01 ₾ rejected (2501)
-✅ LIEN 0.4 short → hub +0.2 → hub held 0.2 → 0.3</pre></details><details class="test-item" data-status="pass">
-          <summary class="test">
-            <span class="chev">▶</span>
-            <span class="st" style="color:#3fb950">✅ passed</span>
-            <span class="name">ინკასო 0.4: merchant 0.45, hub 0.2 → მხოლოდ merchant 0.4 → hub გადარიცხავს 0.1-ს ✅, merchant ვერ გაიტანს 0.1-ს → RS ხსნის → ორივე თავისუფალია</span>
-            <span class="dur">63.4s</span>
-          </summary><pre class="log">✅ Merchant add money 0.4 → balance 0.1 → 0.49
-✅ Case: merchant 300000013 0.45 ₾ + hub 0.2 ₾ (registration 1fa0906e-8b22-4a49-a46f-9d82b76789ef)
-✅ Transfer 0.1 ₾ OK — held 0 ₾ untouched
-✅ Merchant cash-out 0.1 ₾ rejected (2501)
-✅ COLLECTION 0.4: merchant 0.45 → held 0.4, hub 0.2 → held 0; released after withdraw</pre></details><details class="test-item" data-status="pass">
-          <summary class="test">
-            <span class="chev">▶</span>
-            <span class="st" style="color:#3fb950">✅ passed</span>
-            <span class="name">ინკასო 0.4: merchant 0.2, hub 0.2 → merchant 0.2 (მთლიანად) + hub 0.2 → hub ვერ გადარიცხავს, merchant ვერ გაიტანს</span>
-            <span class="dur">8.9s</span>
-          </summary><pre class="log">✅ Case: merchant 300000013 0.2 ₾ + hub 0.2 ₾ (registration 1fa0906e-8b22-4a49-a46f-9d82b76789ef)
-✅ Transfer 0.05 ₾ rejected (5038) — available 0 ₾
-✅ Merchant cash-out 0.05 ₾ rejected (2501)
-✅ COLLECTION 0.4: merchant 0.2 → held 0.2, hub 0.2 → held 0.2; released after withdraw</pre></details><details class="test-item" data-status="pass">
-          <summary class="test">
-            <span class="chev">▶</span>
-            <span class="st" style="color:#3fb950">✅ passed</span>
-            <span class="name">ინკასო 0.3: merchant 0.15, hub 0.15 (თანაბარი) → ერთზე მთლიანად 0.15, მეორეზე 0.15</span>
-            <span class="dur">7.3s</span>
-          </summary><pre class="log">✅ Case: merchant 300000013 0.15 ₾ + hub 0.15 ₾ (registration 1fa0906e-8b22-4a49-a46f-9d82b76789ef)
-✅ Equal 0.15 / 0.15, COLLECTION 0.3 → merchant first (merchant 0.15, hub 0.15)</pre></details><details class="test-item" data-status="pass">
-          <summary class="test">
-            <span class="chev">▶</span>
-            <span class="st" style="color:#3fb950">✅ passed</span>
-            <span class="name">ინკასო 0.4: merchant 0.1, hub 0.45 → მხოლოდ hub 0.4 → merchant გაიტანს 0.05-ს ✅, hub ვერ გადარიცხავს 0.1-ს</span>
-            <span class="dur">9.7s</span>
-          </summary><pre class="log">✅ Case: merchant 300000013 0.1 ₾ + hub 0.45 ₾ (registration 1fa0906e-8b22-4a49-a46f-9d82b76789ef)
-✅ Transfer 0.1 ₾ rejected (5038) — available 0.05 ₾
-✅ Merchant cash-out 0.05 ₾ OK — balance 0.05
-✅ COLLECTION 0.4: merchant 0.1 → held 0, hub 0.45 → held 0.4; released after withdraw</pre></details><details class="test-item" data-status="pass">
-          <summary class="test">
-            <span class="chev">▶</span>
-            <span class="st" style="color:#3fb950">✅ passed</span>
-            <span class="name">ინკასო 0.4: merchant 0.05, hub 0.2 (სულ 0.25) → Partially restricted → hub-ს +0.2 → hold ივსება (hub 0.35) → Fully restricted</span>
-            <span class="dur">7.7s</span>
-          </summary><pre class="log">✅ Case: merchant 300000013 0.05 ₾ + hub 0.2 ₾ (registration 1fa0906e-8b22-4a49-a46f-9d82b76789ef)
-✅ Transfer 0.01 ₾ rejected (5038) — available 0 ₾
-✅ Merchant cash-out 0.01 ₾ rejected (2501)
-✅ COLLECTION 0.4 short → hub +0.2 → hub held 0.2 → 0.35</pre></details><details class="test-item" data-status="pass">
-          <summary class="test">
-            <span class="chev">▶</span>
-            <span class="st" style="color:#3fb950">✅ passed</span>
-            <span class="name">ინკასო 0.35: merchant 0.05, hub 0.3 → hub 0.3 + merchant 0.05 → ადმინი იხდის 0.3 → ჩამოიჭრება გაყინულიდან (merchant / hub), ჯამი 0.3, ბალანსები შემცირდა</span>
-            <span class="dur">11.4s</span>
-          </summary><pre class="log">✅ Case: merchant 300000013 0.05 ₾ + hub 0.3 ₾ (registration 1fa0906e-8b22-4a49-a46f-9d82b76789ef)
-✅ Collection 0.35 paid 0.3: merchant −0 (now 0.05), hub −0.3</pre></details><details class="test-item" data-status="pass">
-          <summary class="test">
-            <span class="chev">▶</span>
-            <span class="st" style="color:#3fb950">✅ passed</span>
-            <span class="name">ბოლოს: merchant იტანს მთელ ბალანსს → 0 (ფული ერთჯერად merchant-ზე არ რჩება)</span>
-            <span class="dur">1.1s</span>
-          </summary><pre class="log">✅ Merchant 300000013 drained: 0.05 → 0</pre></details></div>
+  
   <script>
     (function () {
       const cards = document.querySelectorAll('.card');
