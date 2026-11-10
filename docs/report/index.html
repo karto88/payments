@@ -36,14 +36,23 @@
 </head>
 <body>
   <h1>🎭 Playwright Test Report</h1>
-  <div class="meta">11/10/2026, 11:55:10 AM</div>
+  <div class="meta">11/10/2026, 12:03:52 PM</div>
   <div class="summary">
-    <button type="button" class="card active" data-filter="all">Total: 0</button>
-    <button type="button" class="card pass" data-filter="pass">✅ Passed: 0</button>
+    <button type="button" class="card active" data-filter="all">Total: 1</button>
+    <button type="button" class="card pass" data-filter="pass">✅ Passed: 1</button>
     <button type="button" class="card fail" data-filter="fail">❌ Failed: 0</button>
     <button type="button" class="card skip" data-filter="skip">⏭️ Skipped: 0</button>
   </div>
-  
+  <div class="file-group"><div class="file">tests/RS/Front/Positive/rs-front.spec.ts</div><details class="test-item" data-status="pass">
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="name">UI: ბიზნესის შექმნა → wallet-ის მიბმა → რეგისტრაცია თავისით იქმნება (Not submitted) → Submit to RS → Pending RS approval → RS ადასტურებს → Approved, Wallets ტაბზე ჩანს wallet</span>
+            <span class="dur">31.5s</span>
+          </summary><pre class="log">✅ Wallet QA UI Wallet 297290 created from UI (abc040d6-d726-4af1-9001-99ea56e398ea)
+✅ Registration tables OK — Data, Wallets, business page, list
+✅ Business QA Mosciski Nienow Group (948885203) created from UI — wallet linked, registration Approved
+✅ UI: QA Mosciski Nienow Group (948885203) — Approved, wallet QA UI Wallet 297290 linked to RS registration</pre></details></div>
   <script>
     (function () {
       const cards = document.querySelectorAll('.card');
