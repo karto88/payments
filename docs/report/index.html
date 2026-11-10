@@ -36,42 +36,40 @@
 </head>
 <body>
   <h1>🎭 Playwright Test Report</h1>
-  <div class="meta">11/10/2026, 12:07:16 PM</div>
+  <div class="meta">11/10/2026, 12:10:07 PM</div>
   <div class="summary">
     <button type="button" class="card active" data-filter="all">Total: 3</button>
-    <button type="button" class="card pass" data-filter="pass">✅ Passed: 2</button>
-    <button type="button" class="card fail" data-filter="fail">❌ Failed: 1</button>
+    <button type="button" class="card pass" data-filter="pass">✅ Passed: 3</button>
+    <button type="button" class="card fail" data-filter="fail">❌ Failed: 0</button>
     <button type="button" class="card skip" data-filter="skip">⏭️ Skipped: 0</button>
   </div>
-  <div class="file-group"><div class="file">tests/RS/Front/Positive/rs-front.spec.ts</div><details class="test-item" data-status="fail" open>
+  <div class="file-group"><div class="file">tests/RS/Front/Positive/rs-front.spec.ts</div><details class="test-item" data-status="pass">
           <summary class="test">
             <span class="chev">▶</span>
-            <span class="st" style="color:#f85149">❌ failed</span>
+            <span class="st" style="color:#3fb950">✅ passed</span>
             <span class="name">UI flow (wallet → ბიზნესი → მიბმა → რეგისტრაცია → Approved) → wallet-ზე 0.5 ₾ → RS აგზავნის ყადაღას 0.3 ₾ → Fully restricted: ფანჯარა, Holds per wallet (Held 0.30), რეგისტრაციის და ბიზნესის ცხრილები, ბალანსი 0.50 / 0.30 / 0.20</span>
-            <span class="dur">49.0s</span>
-          </summary><pre class="log">✅ Wallet QA UI Wallet 736697 created from UI (389751b6-71ae-4768-8822-d7a21b53219e), balance 0.5 ₾
+            <span class="dur">56.5s</span>
+          </summary><pre class="log">✅ Wallet QA UI Wallet 374470 created from UI (06a63004-0fdd-4be0-b426-5910aff5e1f9), balance 0.5 ₾
 ✅ Registration tables OK — Data, Wallets, business page, list
-✅ Business QA Abshire Wuckert Group (959977406) created from UI — wallet linked, registration Approved</pre><pre class="err">TimeoutError: locator.waitFor: Timeout 20000ms exceeded.
-Call log:
-[2m  - waiting for locator('tbody tr').filter({ hasText: 'QA-L-UI-1794298064266' }).last() to be visible[22m
-</pre></details><details class="test-item" data-status="pass">
+✅ Business QA Bogan, Jacobi and Stamm (920659176) created from UI — wallet linked, registration Approved
+✅ Lien 0.3 ₾ on wallet 0.5 ₾ — Fully restricted, held 0.3: modal, holds, row, business page OK</pre></details><details class="test-item" data-status="pass">
           <summary class="test">
             <span class="chev">▶</span>
             <span class="st" style="color:#3fb950">✅ passed</span>
             <span class="name">UI flow → wallet-ზე 0.3 ₾ → RS აგზავნის ყადაღას 0.5 ₾ → Partially restricted, "Waiting for funds: 0.20 GEL short", Fills up Yes, ბალანსი 0.30 / 0.30 / 0.00</span>
-            <span class="dur">41.9s</span>
-          </summary><pre class="log">✅ Wallet QA UI Wallet 832001 created from UI (d2468628-f933-402c-bcbe-5d4184c68f8c), balance 0.3 ₾
+            <span class="dur">36.3s</span>
+          </summary><pre class="log">✅ Wallet QA UI Wallet 518396 created from UI (a3ae6ea6-8a66-464e-8f62-57a05073c0a0), balance 0.3 ₾
 ✅ Registration tables OK — Data, Wallets, business page, list
-✅ Business QA Zieme, Upton and Grady (934632044) created from UI — wallet linked, registration Approved
+✅ Business QA Hilpert, Waelchi and Stamm (901964773) created from UI — wallet linked, registration Approved
 ✅ Lien 0.5 ₾ on wallet 0.3 ₾ — Partially restricted, held 0.3: modal, holds, row, business page OK</pre></details><details class="test-item" data-status="pass">
           <summary class="test">
             <span class="chev">▶</span>
             <span class="st" style="color:#3fb950">✅ passed</span>
             <span class="name">UI flow → ცარიელი wallet (0 ₾) → RS აგზავნის ყადაღას 0.3 ₾ → Pending, "Waiting for funds: 0.30 GEL short", Held 0, ბალანსი 0.00 / 0.00 / 0.00</span>
-            <span class="dur">33.4s</span>
-          </summary><pre class="log">✅ Wallet QA UI Wallet 679695 created from UI (e02319e8-c4e1-459b-b1e4-db426e47b5fa)
+            <span class="dur">35.9s</span>
+          </summary><pre class="log">✅ Wallet QA UI Wallet 803468 created from UI (5c884932-f30a-4fa2-8e27-12090952c8a0)
 ✅ Registration tables OK — Data, Wallets, business page, list
-✅ Business QA Gislason Abshire and Sons (974876009) created from UI — wallet linked, registration Approved
+✅ Business QA Bednar, Weissnat and Fadel (925499656) created from UI — wallet linked, registration Approved
 ✅ Lien 0.3 ₾ on wallet 0 ₾ — Pending, held 0: modal, holds, row, business page OK</pre></details></div>
   <script>
     (function () {
