@@ -36,21 +36,74 @@
 </head>
 <body>
   <h1>🎭 Playwright Test Report</h1>
-  <div class="meta">11/10/2026, 5:07:59 PM</div>
+  <div class="meta">11/10/2026, 5:14:40 PM</div>
   <div class="summary">
-    <button type="button" class="card active" data-filter="all">Total: 1</button>
-    <button type="button" class="card pass" data-filter="pass">✅ Passed: 0</button>
-    <button type="button" class="card fail" data-filter="fail">❌ Failed: 1</button>
+    <button type="button" class="card active" data-filter="all">Total: 7</button>
+    <button type="button" class="card pass" data-filter="pass">✅ Passed: 7</button>
+    <button type="button" class="card fail" data-filter="fail">❌ Failed: 0</button>
     <button type="button" class="card skip" data-filter="skip">⏭️ Skipped: 0</button>
   </div>
-  <div class="file-group"><div class="file">tests/RS/Back/Positive/rs-reallocate.spec.ts</div><details class="test-item" data-status="fail" open>
+  <div class="file-group"><div class="file">tests/RS/Front/Positive/rs-front-mixed-wallets.spec.ts</div><details class="test-item" data-status="pass">
           <summary class="test">
             <span class="chev">▶</span>
-            <span class="st" style="color:#f85149">❌ failed</span>
-            <span class="name">ყადაღა = merchant + hub (ორივე მთლიანად გაყინულია, hub ვერ გადარიცხავს) → merchant-ს add money 0.6 → Reallocate → მთელი ყადაღა merchant-ზე, hub თავისუფალია და გადარიცხავს 0.1; merchant ვერ გაიტანს</span>
-            <span class="dur">63.7s</span>
-          </summary><pre class="log">✅ Mixed: merchant 599000555 (2.12 ₾) + hub 84fd179d-600d-430e-bf8a-aa4fd776f990 (0.5 ₾) on registration 98a5eacc-b94c-46e1-b971-4bf9cfc6b63c
-✅ Transfer 0.1 ₾ rejected (5038) — available 0 ₾</pre><pre class="err">Error: OTP not found</pre></details></div>
+            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="name">UI: გზა 1 — ბიზნესი + hub wallet → merchant ბიზნესის Identification Number-ით → Register to RS → Wallets ტაბზე 2: merchant (payment-service) + hub (distributor-hub), Active</span>
+            <span class="dur">7.7s</span>
+          </summary><pre class="log">✅ Merchant QA RS Merchant 5908 created — ident 998603068 (eddf2a11-91a7-47f8-a6cf-e4645a256522)
+✅ UI Wallets: QA Schroeder, Upton and Quigley 3049 (distributor-hub) + QA RS Merchant 5908 (payment-service)
+✅ Way 1: merchant eddf2a11-91a7-47f8-a6cf-e4645a256522 → business 998603068 registration 08868602-cb8c-4771-baae-f9922a1b48cd — 2 wallets</pre></details><details class="test-item" data-status="pass">
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="name">UI: გზა 2 — merchant RS-ში → ბიზნესი merchant-ის Identification Number-ით + hub wallet → Wallets ტაბზე 2: merchant + hub, Active</span>
+            <span class="dur">7.2s</span>
+          </summary><pre class="log">✅ Merchant QA RS Merchant 6513 created — ident 921973775 (d73979ae-65c3-4925-a449-6cf6bb486a17)
+✅ UI Wallets: QA RS Merchant 6513 (payment-service) + QA Fadel, Hessel and Zieme 3879 (distributor-hub)
+✅ Way 2: business with merchant ident 921973775 → hub wallet joined registration 5cfb5eb3-4901-4cef-b666-a2ca0088cb52 — 2 wallets</pre></details><details class="test-item" data-status="pass">
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="name">UI: ყადაღა = merchant-ის ბალანსი + 0.3 → Fully restricted; Holds per wallet: merchant მთლიანად, hub 0.3; ბიზნესის გვერდზე hub 0.50 / 0.30 / 0.20</span>
+            <span class="dur">19.2s</span>
+          </summary><pre class="log">✅ Mixed: merchant 599000555 (2.12 ₾) + hub 9d773834-385e-4f8a-af51-cfc9c7cd08a9 (0.5 ₾) on registration 98a5eacc-b94c-46e1-b971-4bf9cfc6b63c
+✅ UI QA-L-MIX-1794316498156: Fully restricted, restricted 2.42 — Holds per wallet = API
+✅ Transfer 0.21 ₾ rejected (5038) — available 0.2 ₾
+✅ Merchant cash-out 0.1 ₾ rejected (2501)
+✅ LIEN 2.42 on merchant 2.12 + hub 0.3 → both held, both released after withdraw</pre></details><details class="test-item" data-status="pass">
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="name">UI: ყადაღა 0.5 &lt; merchant-ის ბალანსი → Holds per wallet: მხოლოდ merchant 0.5; hub-ზე არაფერი გაყინულა</span>
+            <span class="dur">14.0s</span>
+          </summary><pre class="log">✅ Mixed: merchant 599000555 (2.12 ₾) + hub df0e6eef-a162-43a1-ad82-46a762bce7a0 (0.5 ₾) on registration 98a5eacc-b94c-46e1-b971-4bf9cfc6b63c
+✅ UI QA-L-MIX-1794316516690: Fully restricted, restricted 0.5 — Holds per wallet = API
+✅ LIEN 0.5 → only merchant (2.12) holds, hub (0.5) free</pre></details><details class="test-item" data-status="pass">
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="name">UI: ინკასო = merchant-ის ბალანსი + 0.3 → Fully restricted; Holds per wallet: merchant მთლიანად, hub 0.3; ბიზნესის გვერდზე hub 0.50 / 0.30 / 0.20</span>
+            <span class="dur">17.7s</span>
+          </summary><pre class="log">✅ Mixed: merchant 599000555 (2.12 ₾) + hub b18e3314-8083-4afe-a5ef-416685266257 (0.5 ₾) on registration 98a5eacc-b94c-46e1-b971-4bf9cfc6b63c
+✅ UI QA-C-MIX-1794316530945: Fully restricted, restricted 2.42 — Holds per wallet = API
+✅ Transfer 0.21 ₾ rejected (5038) — available 0.2 ₾
+✅ Merchant cash-out 0.1 ₾ rejected (2501)
+✅ COLLECTION 2.42 on merchant 2.12 + hub 0.3 → both held, both released after withdraw</pre></details><details class="test-item" data-status="pass">
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="name">UI: ინკასო 0.5 &lt; merchant-ის ბალანსი → Holds per wallet: მხოლოდ merchant 0.5; hub-ზე არაფერი გაყინულა</span>
+            <span class="dur">14.8s</span>
+          </summary><pre class="log">✅ Mixed: merchant 599000555 (2.12 ₾) + hub 4bb8265b-ab0b-4ffc-b77d-b0008197bd73 (0.5 ₾) on registration 98a5eacc-b94c-46e1-b971-4bf9cfc6b63c
+✅ UI QA-C-MIX-1794316548696: Fully restricted, restricted 0.5 — Holds per wallet = API
+✅ COLLECTION 0.5 → only merchant (2.12) holds, hub (0.5) free</pre></details><details class="test-item" data-status="pass">
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="name">UI: ინკასო merchant + hub-ზე → ადმინი იხდის 0.3 → Overview Executed 0.3; Executions: Manual / Completed; Treasury transfers: ვისგან რამდენი ჩამოიჭრა = API</span>
+            <span class="dur">23.5s</span>
+          </summary><pre class="log">✅ Mixed: merchant 599000555 (2.12 ₾) + hub f3ef20ff-52cc-427b-971b-487cb5f845fd (0.5 ₾) on registration 98a5eacc-b94c-46e1-b971-4bf9cfc6b63c
+✅ UI QA-C-MIX-1794316564040: Partially executed, executed 0.3 — Executions + Treasury transfers = API
+✅ Collection 2.42 paid 0.3: merchant −0.3, hub −0</pre></details></div>
   <script>
     (function () {
       const cards = document.querySelectorAll('.card');
