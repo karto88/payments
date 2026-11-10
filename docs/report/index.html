@@ -36,10 +36,10 @@
 </head>
 <body>
   <h1>🎭 Playwright Test Report</h1>
-  <div class="meta">11/10/2026, 5:06:50 PM</div>
+  <div class="meta">11/10/2026, 5:07:18 PM</div>
   <div class="summary">
-    <button type="button" class="card active" data-filter="all">Total: 2</button>
-    <button type="button" class="card pass" data-filter="pass">✅ Passed: 2</button>
+    <button type="button" class="card active" data-filter="all">Total: 3</button>
+    <button type="button" class="card pass" data-filter="pass">✅ Passed: 3</button>
     <button type="button" class="card fail" data-filter="fail">❌ Failed: 0</button>
     <button type="button" class="card skip" data-filter="skip">⏭️ Skipped: 0</button>
   </div>
@@ -47,19 +47,26 @@
           <summary class="test">
             <span class="chev">▶</span>
             <span class="st" style="color:#3fb950">✅ passed</span>
-            <span class="name">ყადაღა merchant + hub-ზე: ყადაღა = merchant-ის ბალანსი + 0.3 → merchant მთლიანად, hub 0.3 → hub ვერ გადარიცხავს, merchant ვერ გაიტანს → RS ხსნის → ორივე თავისუფალია</span>
-            <span class="dur">13.7s</span>
-          </summary><pre class="log">✅ Mixed: merchant 599000555 (2.42 ₾) + hub 49546ae3-8d08-403e-9062-00e7678637ba (0.5 ₾) on registration 98a5eacc-b94c-46e1-b971-4bf9cfc6b63c
+            <span class="name">ინკასო merchant + hub-ზე: ინკასო = merchant-ის ბალანსი + 0.3 → merchant მთლიანად, hub 0.3 → hub ვერ გადარიცხავს, merchant ვერ გაიტანს → RS ხსნის → ორივე თავისუფალია</span>
+            <span class="dur">10.0s</span>
+          </summary><pre class="log">✅ Mixed: merchant 599000555 (2.42 ₾) + hub 629b4b9e-2583-4aa2-84a4-9a93b6ec28fd (0.5 ₾) on registration 98a5eacc-b94c-46e1-b971-4bf9cfc6b63c
 ✅ Transfer 0.21 ₾ rejected (5038) — available 0.2 ₾
 ✅ Merchant cash-out 0.1 ₾ rejected (2501)
-✅ LIEN 2.72 on merchant 2.42 + hub 0.3 → both held, both released after withdraw</pre></details><details class="test-item" data-status="pass">
+✅ COLLECTION 2.72 on merchant 2.42 + hub 0.3 → both held, both released after withdraw</pre></details><details class="test-item" data-status="pass">
           <summary class="test">
             <span class="chev">▶</span>
             <span class="st" style="color:#3fb950">✅ passed</span>
-            <span class="name">ყადაღა 0.5 &lt; merchant-ის ბალანსი → იყინება მხოლოდ merchant-ზე (უფრო დიდი), hub-ზე 0</span>
-            <span class="dur">5.8s</span>
-          </summary><pre class="log">✅ Mixed: merchant 599000555 (2.42 ₾) + hub 97b291c2-e74d-4d1c-a750-00cc14515c44 (0.5 ₾) on registration 98a5eacc-b94c-46e1-b971-4bf9cfc6b63c
-✅ LIEN 0.5 → only merchant (2.42) holds, hub (0.5) free</pre></details></div>
+            <span class="name">ინკასო 0.5 &lt; merchant-ის ბალანსი → იყინება მხოლოდ merchant-ზე, hub-ზე 0</span>
+            <span class="dur">5.9s</span>
+          </summary><pre class="log">✅ Mixed: merchant 599000555 (2.42 ₾) + hub 59398e4c-09ef-4a48-9b53-436a88c99b25 (0.5 ₾) on registration 98a5eacc-b94c-46e1-b971-4bf9cfc6b63c
+✅ COLLECTION 0.5 → only merchant (2.42) holds, hub (0.5) free</pre></details><details class="test-item" data-status="pass">
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="name">ინკასო merchant + hub-ზე → Request amount → ადმინი იხდის 0.3 → ჩამოიჭრება გაყინულიდან (merchant / hub), ჯამი 0.3, ბალანსები შემცირდა</span>
+            <span class="dur">13.9s</span>
+          </summary><pre class="log">✅ Mixed: merchant 599000555 (2.42 ₾) + hub e3bbc3b2-80f3-4345-8918-b281ed0b4cdf (0.5 ₾) on registration 98a5eacc-b94c-46e1-b971-4bf9cfc6b63c
+✅ Collection 2.72 paid 0.3: merchant −0.3, hub −0</pre></details></div>
   <script>
     (function () {
       const cards = document.querySelectorAll('.card');
