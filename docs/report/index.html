@@ -36,7 +36,7 @@
 </head>
 <body>
   <h1>🎭 Playwright Test Report</h1>
-  <div class="meta">11/10/2026, 2:55:07 PM</div>
+  <div class="meta">11/10/2026, 2:55:47 PM</div>
   <div class="summary">
     <button type="button" class="card active" data-filter="all">Total: 1</button>
     <button type="button" class="card pass" data-filter="pass">✅ Passed: 1</button>
@@ -47,12 +47,13 @@
           <summary class="test">
             <span class="chev">▶</span>
             <span class="st" style="color:#3fb950">✅ passed</span>
-            <span class="name">UI: History ტაბი → ყველა ნაბიჯი (Client created → Enrollment created → Queued new client → Submit → Approved), ახალი ზემოთ, ავტორებით</span>
-            <span class="dur">32.1s</span>
-          </summary><pre class="log">✅ Wallet QA UI Wallet 147045 created from UI (40942271-8ae6-4499-b5b9-f15d5af9e1eb)
+            <span class="name">UI: ბიზნესზე 3 wallet (1 UI-დან + 2 Link clients-ით) → Wallets ტაბზე 3 მწკრივი (სახელი, Integrator, Holder reference, Accounts open, Active, Enrolled) = API</span>
+            <span class="dur">38.7s</span>
+          </summary><pre class="log">✅ Wallet QA UI Wallet 841845 created from UI (35d464c3-a8ad-47db-980a-f736cb076dd7), balance 0.2 ₾
 ✅ Registration tables OK — Data, Wallets, business page, list
-✅ Business QA Wolf Wolf and Sons (958021068) created from UI — wallet linked, registration Approved
-✅ History — all steps, newest first, actors</pre></details></div>
+✅ Business QA Reichert, Gutkowski and Berge (974236871) created from UI — wallet linked, registration Approved
+✅ 3 wallets on business: QA UI Wallet 841845 (0.2), QA UI Wallet 357818 (0.5), QA UI Wallet 149715 (0.3)
+✅ Wallets tab — 3 rows = API enrollments</pre></details></div>
   <script>
     (function () {
       const cards = document.querySelectorAll('.card');
