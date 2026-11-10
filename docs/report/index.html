@@ -36,7 +36,7 @@
 </head>
 <body>
   <h1>🎭 Playwright Test Report</h1>
-  <div class="meta">11/10/2026, 5:49:10 PM</div>
+  <div class="meta">11/10/2026, 5:50:26 PM</div>
   <div class="summary">
     <button type="button" class="card active" data-filter="all">Total: 1</button>
     <button type="button" class="card pass" data-filter="pass">✅ Passed: 1</button>
@@ -47,15 +47,15 @@
           <summary class="test">
             <span class="chev">▶</span>
             <span class="st" style="color:#3fb950">✅ passed</span>
-            <span class="name">ყადაღა = merchant + hub (ორივე მთლიანად გაყინულია, hub ვერ გადარიცხავს) → merchant-ს add money 0.6 → Reallocate → მთელი ყადაღა merchant-ზე, hub თავისუფალია და გადარიცხავს 0.1; merchant ვერ გაიტანს</span>
-            <span class="dur">64.8s</span>
-          </summary><pre class="log">✅ Mixed: merchant 599000555 (2.41 ₾) + hub ea5d78d5-f6c4-42ac-a131-5f29f374014c (0.5 ₾) on registration 98a5eacc-b94c-46e1-b971-4bf9cfc6b63c
+            <span class="name">ინკასო = merchant + hub (ორივე მთლიანად გაყინულია) → merchant-ს add money 0.6 → Reallocate → მთელი ინკასო merchant-ზე, hub თავისუფალია და გადარიცხავს 0.1; merchant ვერ გაიტანს</span>
+            <span class="dur">64.3s</span>
+          </summary><pre class="log">✅ Mixed: merchant 599000555 (3 ₾) + hub eae7d883-79ea-4c2d-854b-384d2cb04a18 (0.5 ₾) on registration 98a5eacc-b94c-46e1-b971-4bf9cfc6b63c
 ✅ Transfer 0.1 ₾ rejected (5038) — available 0 ₾
-✅ Add money 0.6 ₾ — tx 113754
-✅ Merchant balance 2.41 → 3 (+0.59)
+✅ Add money 0.6 ₾ — tx 113755
+✅ Merchant balance 3 → 3.59 (+0.59)
 ✅ Transfer 0.1 ₾ OK — held 0 ₾ untouched
 ✅ Merchant cash-out 0.19 ₾ rejected (2501)
-✅ Reallocate: merchant +0.6 → whole 2.91 on merchant, hub released and transferred 0.1</pre></details></div>
+✅ Reallocate: merchant +0.6 → whole 3.5 on merchant, hub released and transferred 0.1</pre></details></div>
   <script>
     (function () {
       const cards = document.querySelectorAll('.card');
