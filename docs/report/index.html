@@ -36,35 +36,32 @@
 </head>
 <body>
   <h1>🎭 Playwright Test Report</h1>
-  <div class="meta">11/10/2026, 2:59:02 PM</div>
+  <div class="meta">11/10/2026, 3:13:40 PM</div>
   <div class="summary">
     <button type="button" class="card active" data-filter="all">Total: 2</button>
-    <button type="button" class="card pass" data-filter="pass">✅ Passed: 2</button>
+    <button type="button" class="card pass" data-filter="pass">✅ Passed: 1</button>
     <button type="button" class="card fail" data-filter="fail">❌ Failed: 0</button>
-    <button type="button" class="card skip" data-filter="skip">⏭️ Skipped: 0</button>
+    <button type="button" class="card skip" data-filter="skip">⏭️ Skipped: 1</button>
   </div>
-  <div class="file-group"><div class="file">tests/RS/Front/Positive/rs-front-registration-tabs.spec.ts</div><details class="test-item" data-status="pass">
+  <div class="file-group"><div class="file">tests/RS/Front/Positive/rs-front-collection.spec.ts</div><details class="test-item" data-status="pass">
           <summary class="test">
             <span class="chev">▶</span>
             <span class="st" style="color:#3fb950">✅ passed</span>
-            <span class="name">UI: 3 wallet → ინკასო 0.6 → სრული გადახდა 0.6 → Executed; Holds per wallet, Executions, Treasury transfers (თითო wallet-ის ჩამოჭრა) = API; ბიზნესის გვერდზე ბალანსები შემცირდა</span>
-            <span class="dur">48.4s</span>
-          </summary><pre class="log">✅ Wallet QA UI Wallet 785385 created from UI (d986e96c-7a6a-467d-ae86-885ebe726754), balance 0.2 ₾
+            <span class="name">⏳ დღე 1 (დღეს): 3 wallet (0.1 / 0.2 / 0.2) → ინკასო 0.8 → იყინება 0.5, აკლია 0.3 → Request amount → ადმინი იხდის 0.4 → დარჩა 0.4; ინკასო ღია რჩება დღე 2-სთვის</span>
+            <span class="dur">48.6s</span>
+          </summary><pre class="log">✅ Wallet QA UI Wallet 051216 created from UI (d699f5a6-1e11-4d3f-b039-35f3ec72ea2c), balance 0.1 ₾
 ✅ Registration tables OK — Data, Wallets, business page, list
-✅ Business QA Feeney, Nienow and Kuhn (996541271) created from UI — wallet linked, registration Approved
-✅ 3 wallets on business: QA UI Wallet 785385 (0.2), QA UI Wallet 756729 (0.5), QA UI Wallet 857171 (0.3)
-⚠️ QA UI Wallet 756729: ბალანსი 0 → UI-ში "-" ნაცვლად "₾ 0.00 / ₾ 0.00 / ₾ 0.00"
-✅ Collection 0.6 paid 0.6 across wallets — QA UI Wallet 785385: −0, QA UI Wallet 756729: −0.5, QA UI Wallet 857171: −0.1</pre></details><details class="test-item" data-status="pass">
+✅ Business QA Kessler, Durgan and Marvin (926981458) created from UI — wallet linked, registration Approved
+✅ 3 wallets on business: QA UI Wallet 051216 (0.1), QA UI Wallet 468878 (0.2), QA UI Wallet 661852 (0.2)
+⚠️ QA UI Wallet 468878: ბალანსი 0 → UI-ში "-" ნაცვლად "₾ 0.00 / ₾ 0.00 / ₾ 0.00"
+⚠️ QA UI Wallet 661852: ბალანსი 0 → UI-ში "-" ნაცვლად "₾ 0.00 / ₾ 0.00 / ₾ 0.00"
+✅ Day 1: collection QA-C-UI-2D-1794309255426 0.8 — paid 0.4, left 0.4 → run Day 2 tomorrow (/Users/keepz/Desktop/test/payments/test-data/rs-collection-day2.json)</pre></details><details class="test-item" data-status="skip">
           <summary class="test">
-            <span class="chev">▶</span>
-            <span class="st" style="color:#3fb950">✅ passed</span>
-            <span class="name">UI: 3 wallet → ინკასო 0.6 → ნაწილობრივი გადახდა 0.4 → Partially executed; ჩამოჭრილი 0.4, დარჩენილი 0.2 გაყინულია; ცხრილები და ბალანსები = API</span>
-            <span class="dur">50.4s</span>
-          </summary><pre class="log">✅ Wallet QA UI Wallet 102226 created from UI (2e129afe-c879-4e8b-9dec-85672f102694), balance 0.2 ₾
-✅ Registration tables OK — Data, Wallets, business page, list
-✅ Business QA Marvin, Champlin and Gutkowski (943825127) created from UI — wallet linked, registration Approved
-✅ 3 wallets on business: QA UI Wallet 102226 (0.2), QA UI Wallet 455820 (0.5), QA UI Wallet 600708 (0.3)
-✅ Collection 0.6 paid 0.4 across wallets — QA UI Wallet 102226: −0, QA UI Wallet 455820: −0.4, QA UI Wallet 600708: −0</pre></details></div>
+            <span class="chev"></span>
+            <span class="st" style="color:#7d8590">⏭️ skipped</span>
+            <span class="name">⏳ დღე 2 (ხვალ): დღე 1-ის ინკასო → ბალანსის შევსება 0.3 → დარჩენილი 0.4 იყინება → Request amount → ადმინი იხდის 0.4 → Executed 0.8; Executions 2 მწკრივი, ბალანსები = API</span>
+            <span class="dur">57ms</span>
+          </summary></details></div>
   <script>
     (function () {
       const cards = document.querySelectorAll('.card');
