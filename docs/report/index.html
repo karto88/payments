@@ -36,7 +36,7 @@
 </head>
 <body>
   <h1>🎭 Playwright Test Report</h1>
-  <div class="meta">11/10/2026, 9:18:27 PM</div>
+  <div class="meta">11/10/2026, 9:19:38 PM</div>
   <div class="summary">
     <button type="button" class="card active" data-filter="all">Total: 1</button>
     <button type="button" class="card pass" data-filter="pass">✅ Passed: 0</button>
@@ -48,15 +48,25 @@
             <span class="chev">▶</span>
             <span class="st" style="color:#f85149">❌ failed</span>
             <span class="name">ინკასოს ხელით გადახდა: wallet 0.5, ინკასო 0.5 → UI: Request amount from RS → Executions: Amount received / Manual / RS answer → ადმინი აფიქსირებს 0.3-ს bankReference-ით (API — UI-ში ღილაკი არ არის) → UI: Executed 0.3, Completed, Treasury transfers: wallet · 0.30 · Success · bankReference; ბალანსი −0.3</span>
-            <span class="dur">24.7s</span>
-          </summary><pre class="log">✅ Wallet QA UI Wallet 590751 created from UI (2b643cc3-d078-427b-962e-032cd01aef37), balance 0.5 ₾</pre><pre class="err">ApiAssertionError: 
+            <span class="dur">66.2s</span>
+          </summary><pre class="log">✅ Wallet QA UI Wallet 408419 created from UI (798f16f8-eee0-4fa4-917a-25d5f2cb57ab), balance 0.5 ₾
+✅ Registration tables OK — Data, Wallets, business page, list
+✅ Business QA Wolf Hessel LLC (950972147) created from UI — wallet linked, registration Approved
+✅ 1 wallets on business: QA UI Wallet 408419 (0.5)</pre><pre class="err">ApiAssertionError: 
 ❌ API TEST FAILED
 ───────────────────────────────────────────
-🔧 ოპერაცია:    UI (dashboard.dev.keepz.me) Dist. Businesses
-⚠️  პრობლემა:    ბიზნესის გვერდზე Approved / wallet არ ჩანს
+🔧 ოპერაცია:    UI (dashboard.dev.keepz.me) Collection ფანჯარა
+⚠️  პრობლემა:    Fully restricted · requested 0.5 · restricted NaN · remaining NaN · executed NaN
 📥 მიმდინარე შედეგი:
-"Davit Kartozia | • | 591078180 | QA Jaskolski Durgan LLC | Approved | Edit business | Link clients | RS data | Residency status | Resident | Owner identification number | 900247179 | Alternative personal number | - | Client number | - | Operation date | 11 Oct 2026 | Known date | 31 Oct 2026 | Updated | 10 Nov 2026, 21:18 | RS registration | Refresh | Open registration | Approved | Owner full name | QA Jaskolski Durgan LLC | Client number | - | First submitted | 10 Nov 2026, 21:18 | Approved | 10 Nov 2026, 21:18 | Wallet clients | Client\tStatus\tBalances | Created\tActions | QA UI Wallet 590751 | Active | GEL₾ 0.50 / ₾ 0.00 / ₾ 0.50 | 10 Nov 2026 | 21:18:38 | Unlink | Liens &amp; collections | RS reference\tType\tRequested\tRestricted | Remaining | Executed | Status\tReceived | No liens or collections for this business | © | Keepz | 2026 | Contact us"
-✅ მოსალოდნელი შედეგი: RS registration: Approved; Wallet clients: QA UI Wallet 590751 Active
+{
+  "status": "Fully restricted",
+  "requested": 0.5,
+  "restricted": null,
+  "remaining": null,
+  "executed": null,
+  "reason": "-"
+}
+✅ მოსალოდნელი შედეგი: Fully restricted · requested 0.5 · restricted 0.5 · remaining 0.5 · executed undefined
 ───────────────────────────────────────────
 </pre></details></div>
   <script>
