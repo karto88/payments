@@ -36,86 +36,26 @@
 </head>
 <body>
   <h1>🎭 Playwright Test Report</h1>
-  <div class="meta">11/10/2026, 2:04:18 PM</div>
+  <div class="meta">11/10/2026, 2:05:30 PM</div>
   <div class="summary">
-    <button type="button" class="card active" data-filter="all">Total: 5</button>
-    <button type="button" class="card pass" data-filter="pass">✅ Passed: 3</button>
-    <button type="button" class="card fail" data-filter="fail">❌ Failed: 2</button>
+    <button type="button" class="card active" data-filter="all">Total: 2</button>
+    <button type="button" class="card pass" data-filter="pass">✅ Passed: 2</button>
+    <button type="button" class="card fail" data-filter="fail">❌ Failed: 0</button>
     <button type="button" class="card skip" data-filter="skip">⏭️ Skipped: 0</button>
   </div>
-  <div class="file-group"><div class="file">tests/RS/Front/Negative/rs-front-wallet-negative.spec.ts</div><details class="test-item" data-status="pass">
+  <div class="file-group"><div class="file">tests/RS/Front/Positive/rs-front-wallet.spec.ts</div><details class="test-item" data-status="pass">
           <summary class="test">
             <span class="chev">▶</span>
             <span class="st" style="color:#3fb950">✅ passed</span>
-            <span class="name">UI: New Integrator: Scheme Wallet, სხვა ველები ცარიელი → Create → შეცდომები: Name, Distribution method, Distribution Strategy, Min / Max transaction amount, Commission rate type, Commission; wallet არ იქმნება</span>
-            <span class="dur">7.4s</span>
-          </summary><pre class="log">✅ UI: empty wallet form rejected — 28 invalid fields</pre></details></div><div class="file-group"><div class="file">tests/RS/Front/Positive/rs-front-wallet.spec.ts</div><details class="test-item" data-status="fail" open>
-          <summary class="test">
-            <span class="chev">▶</span>
-            <span class="st" style="color:#f85149">❌ failed</span>
             <span class="name">UI: Dist. Integrators → New Integrator: Wallet (ბიზნესის გარეშე), IBAN, STANDARD, GEL, For testing → toast → სიაში: Test, Wallet, Activated, IBAN, STANDARD, GEL, ₾ 0 → API-ში ყველა ველი → "Clients without business"-ში ჩანს</span>
-            <span class="dur">14.5s</span>
-          </summary><pre class="err">ApiAssertionError: 
-❌ API TEST FAILED
-───────────────────────────────────────────
-🔧 ოპერაცია:    UI Dist. Integrators — სია
-⚠️  პრობლემა:    "Test" ნიშანი არ არის
-📥 მიმდინარე შედეგი:
-[
-  "TestQA UI Wallet 241429",
-  "Wallet",
-  "Activated",
-  "26e8885e-5944-4088-a014-549445382b40",
-  "IBAN",
-  "STANDARD",
-  "GEL",
-  "₾ 0 · $ 0 · € 0 · ¥ 0 · ₽ 0",
-  "10 November 2026 14:04:36",
-  ""
-]
-✅ მოსალოდნელი შედეგი: მწკრივზე "Test" ნიშანი (For testing)
-───────────────────────────────────────────
-</pre></details><details class="test-item" data-status="pass">
+            <span class="dur">15.9s</span>
+          </summary><pre class="log">✅ UI: wallet QA UI Wallet 233088 created — list, API, Clients without business OK</pre></details><details class="test-item" data-status="pass">
           <summary class="test">
             <span class="chev">▶</span>
             <span class="st" style="color:#3fb950">✅ passed</span>
-            <span class="name">UI: New Integrator: Wallet + Business არჩეულია → სიაში Scheme "Wallet · &lt;ბიზნესი&gt;" → ბიზნესის გვერდზე Wallet clients-ში ჩანს → API businessId → "Clients without business"-ში არ ჩანს</span>
-            <span class="dur">18.8s</span>
-          </summary><pre class="log">✅ UI: wallet QA UI Wallet 626944 created on business QA Hessel, Nienow and Hane</pre></details><details class="test-item" data-status="pass">
-          <summary class="test">
-            <span class="chev">▶</span>
-            <span class="st" style="color:#3fb950">✅ passed</span>
-            <span class="name">UI: Wallet კლიენტი ბიზნესის გარეშე → "Clients without business" ტაბში ჩანს (სახელი, Client ID, Active), რიცხვი +1</span>
-            <span class="dur">7.1s</span>
-          </summary><pre class="log">✅ UI: wallet QA Kemmer Jacobi Inc 3900 listed in Clients without business (85 → 86)</pre></details><details class="test-item" data-status="fail" open>
-          <summary class="test">
-            <span class="chev">▶</span>
-            <span class="st" style="color:#f85149">❌ failed</span>
             <span class="name">UI: ძებნა სახელით: სატესტო wallet "Show Test Integrators"-ის გარეშე არ ჩანს → ჩართვით ჩანს (1 მწკრივი, "Test" ნიშნით)</span>
-            <span class="dur">9.7s</span>
-          </summary><pre class="err">ApiAssertionError: 
-❌ API TEST FAILED
-───────────────────────────────────────────
-🔧 ოპერაცია:    UI Dist. Integrators — სია
-⚠️  პრობლემა:    მწკრივები: TestQA UI Wallet 135627
-📥 მიმდინარე შედეგი:
-[
-  [
-    "TestQA UI Wallet 135627",
-    "Wallet",
-    "Activated",
-    "438427eb-7d9e-4599-8e5f-ce9688033a2e",
-    "IBAN",
-    "STANDARD",
-    "",
-    "₾ 0 · $ 0 · € 0 · ¥ 0 · ₽ 0",
-    "10 November 2026 14:05:07",
-    ""
-  ]
-]
-✅ მოსალოდნელი შედეგი: "Show Test Integrators" ჩართულია → 1 მწკრივი QA UI Wallet 135627, "Test" ნიშნით
-───────────────────────────────────────────
-</pre></details></div>
+            <span class="dur">8.9s</span>
+          </summary><pre class="log">✅ UI: test filter — hidden without, shown with "Show Test Integrators"</pre></details></div>
   <script>
     (function () {
       const cards = document.querySelectorAll('.card');
