@@ -36,14 +36,29 @@
 </head>
 <body>
   <h1>🎭 Playwright Test Report</h1>
-  <div class="meta">11/10/2026, 6:52:30 PM</div>
+  <div class="meta">11/10/2026, 9:17:28 PM</div>
   <div class="summary">
-    <button type="button" class="card active" data-filter="all">Total: 0</button>
+    <button type="button" class="card active" data-filter="all">Total: 1</button>
     <button type="button" class="card pass" data-filter="pass">✅ Passed: 0</button>
-    <button type="button" class="card fail" data-filter="fail">❌ Failed: 0</button>
+    <button type="button" class="card fail" data-filter="fail">❌ Failed: 1</button>
     <button type="button" class="card skip" data-filter="skip">⏭️ Skipped: 0</button>
   </div>
-  
+  <div class="file-group"><div class="file">tests/RS/Front/Positive/rs-front-collection.spec.ts</div><details class="test-item" data-status="fail" open>
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#f85149">❌ failed</span>
+            <span class="name">ინკასოს ხელით გადახდა: wallet 0.5, ინკასო 0.5 → UI: Request amount from RS → Executions: Amount received / Manual / RS answer → ადმინი აფიქსირებს 0.3-ს bankReference-ით (API — UI-ში ღილაკი არ არის) → UI: Executed 0.3, Completed, Treasury transfers: wallet · 0.30 · Success · bankReference; ბალანსი −0.3</span>
+            <span class="dur">36.4s</span>
+          </summary><pre class="log">✅ Wallet QA UI Wallet 997047 created from UI (9972f7c8-6989-430d-a14c-5f214d862090), balance 0.5 ₾</pre><pre class="err">ApiAssertionError: 
+❌ API TEST FAILED
+───────────────────────────────────────────
+🔧 ოპერაცია:    UI (dashboard.dev.keepz.me) Dist. Businesses
+⚠️  პრობლემა:    wallet ან რეგისტრაცია (Not submitted) ბიზნესის გვერდზე არ ჩანს
+📥 მიმდინარე შედეგი:
+"Davit Kartozia | • | 591078180 | QA Kessler Nolan LLC | Not submitted | Edit business | Link clients | RS data | Residency status | Resident | Owner identification number | 905504240 | Alternative personal number | - | Client number | - | Operation date | 11 Oct 2026 | Known date | 31 Oct 2026 | Updated | 10 Nov 2026, 21:17 | RS registration | Refresh | Open registration | Submit to RS | Not submitted | Owner full name | QA Kessler Nolan LLC | Client number | - | First submitted | - | Approved | - | Wallet clients | Client\tStatus\tBalances | Created\tActions | QA UI Wallet 997047 | Active | GEL₾ 0.50 / ₾ 0.00 / ₾ 0.50 | 10 Nov 2026 | 21:17:39 | Unlink | Liens &amp; collections | RS reference\tType\tRequested\tRestricted | Remaining | Executed | Status\tReceived | No liens or collections for this business | © | Keepz | 2026 | Contact us"
+✅ მოსალოდნელი შედეგი: Wallet clients: QA UI Wallet 997047; RS registration: Not submitted (თავისით შეიქმნა)
+───────────────────────────────────────────
+</pre></details></div>
   <script>
     (function () {
       const cards = document.querySelectorAll('.card');
