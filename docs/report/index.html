@@ -36,20 +36,28 @@
 </head>
 <body>
   <h1>🎭 Playwright Test Report</h1>
-  <div class="meta">11/10/2026, 3:18:49 PM</div>
+  <div class="meta">11/10/2026, 5:06:36 PM</div>
   <div class="summary">
-    <button type="button" class="card active" data-filter="all">Total: 1</button>
-    <button type="button" class="card pass" data-filter="pass">✅ Passed: 0</button>
+    <button type="button" class="card active" data-filter="all">Total: 2</button>
+    <button type="button" class="card pass" data-filter="pass">✅ Passed: 2</button>
     <button type="button" class="card fail" data-filter="fail">❌ Failed: 0</button>
-    <button type="button" class="card skip" data-filter="skip">⏭️ Skipped: 1</button>
+    <button type="button" class="card skip" data-filter="skip">⏭️ Skipped: 0</button>
   </div>
-  <div class="file-group"><div class="file">tests/RS/Front/Positive/rs-front-collection.spec.ts</div><details class="test-item" data-status="skip">
+  <div class="file-group"><div class="file">tests/RS/Back/Positive/rs-mixed-wallets.spec.ts</div><details class="test-item" data-status="pass">
           <summary class="test">
-            <span class="chev"></span>
-            <span class="st" style="color:#7d8590">⏭️ skipped</span>
-            <span class="name">⏳ ინკასო 2 დღეში (ერთი ტესტი, გაუშვი დღეს და ხვალ): დღეს — 3 wallet (0.1 / 0.2 / 0.2) → ინკასო 0.8 → იყინება 0.5 → ადმინი იხდის 0.4 → დარჩა 0.4, ინკასო ღიაა; ხვალ — შევსება 0.3 → დარჩენილი 0.4 იყინება → Request amount → ადმინი იხდის 0.4 → Executed 0.8 (Executions 2 მწკრივი)</span>
-            <span class="dur">217ms</span>
-          </summary></details></div>
+            <span class="chev">▶</span>
+            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="name">გზა 1: ბიზნესი + hub wallet → ახალი merchant ბიზნესის Identification Number-ით → Register to RS merchant-ის wallet-ით → იგივე რეგისტრაცია, 2 wallet (payment-service + distributor-hub)</span>
+            <span class="dur">2.9s</span>
+          </summary><pre class="log">✅ Merchant QA RS Merchant 0514 created — ident 979564543 (c298b113-52a2-4d0d-a1f5-27f167e04ea6)
+✅ Way 1: merchant c298b113-52a2-4d0d-a1f5-27f167e04ea6 → business 979564543 registration 01b85a3f-a706-429b-b161-438c43f43793 — 2 wallets</pre></details><details class="test-item" data-status="pass">
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="name">გზა 2: ახალი merchant → Register to RS → ბიზნესი merchant-ის Identification Number-ით + hub wallet → hub wallet იგივე რეგისტრაციას ებმის, 2 wallet</span>
+            <span class="dur">2.4s</span>
+          </summary><pre class="log">✅ Merchant QA RS Merchant 4079 created — ident 973991807 (96fe7664-8e85-4f0e-9b09-e9408c535d14)
+✅ Way 2: business with merchant ident 973991807 → hub wallet joined registration 0ddde67d-43c5-4b27-a27e-6119832db1de — 2 wallets</pre></details></div>
   <script>
     (function () {
       const cards = document.querySelectorAll('.card');
