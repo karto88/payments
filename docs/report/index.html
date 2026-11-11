@@ -36,45 +36,20 @@
 </head>
 <body>
   <h1>🎭 Playwright Test Report</h1>
-  <div class="meta">11/11/2026, 11:11:59 AM</div>
+  <div class="meta">11/11/2026, 11:14:05 AM</div>
   <div class="summary">
-    <button type="button" class="card active" data-filter="all">Total: 2</button>
+    <button type="button" class="card active" data-filter="all">Total: 1</button>
     <button type="button" class="card pass" data-filter="pass">✅ Passed: 1</button>
-    <button type="button" class="card fail" data-filter="fail">❌ Failed: 1</button>
+    <button type="button" class="card fail" data-filter="fail">❌ Failed: 0</button>
     <button type="button" class="card skip" data-filter="skip">⏭️ Skipped: 0</button>
   </div>
-  <div class="file-group"><div class="file">tests/RS/Back/Negative/rs-registration-negative.spec.ts</div><details class="test-item" data-status="fail" open>
-          <summary class="test">
-            <span class="chev">▶</span>
-            <span class="st" style="color:#f85149">❌ failed</span>
-            <span class="name">RS Registration Negative — Edit business დაკავებული ident-ით → 1481, რეგისტრაცია უცვლელი 🐞</span>
-            <span class="dur">38.2s</span>
-          </summary><pre class="err">ApiAssertionError: 
-❌ API TEST FAILED
-───────────────────────────────────────────
-🔧 ოპერაცია:    PUT /api/distributor-hub-business/{id}
-⚠️  პრობლემა:    მოვიდა HTTP 409 / code 1500
-📥 მიმდინარე შედეგი:
-{
-  "message": "The identification number cannot change after the business was submitted to RS. Cancel its RS registration first, then correct the number.",
-  "statusCode": 1500,
-  "exceptionGroup": 2,
-  "errors": [
-    {
-      "name": "identificationNumber",
-      "message": "cannot be changed"
-    }
-  ]
-}
-✅ მოსალოდნელი შედეგი: HTTP 409 / code 1481
-───────────────────────────────────────────
-</pre></details></div><div class="file-group"><div class="file">tests/RS/Back/Positive/rs-registration.spec.ts</div><details class="test-item" data-status="pass">
+  <div class="file-group"><div class="file">tests/RS/Back/Negative/rs-registration-negative.spec.ts</div><details class="test-item" data-status="pass">
           <summary class="test">
             <span class="chev">▶</span>
             <span class="st" style="color:#3fb950">✅ passed</span>
-            <span class="name">RS Registration — ბიზნესზე მიბმული მეორე WALLET ავტომატურად enrolled (KD-2608)</span>
-            <span class="dur">37.9s</span>
-          </summary><pre class="log">✅ Auto-enrolled CLIENT:dc592089-31d0-4609-9312-8af53823d5ce → 45608e14-d857-4d2a-95da-f5742c599808</pre></details></div>
+            <span class="name">RS Registration Negative — Edit business (Approved) დაკავებული ident-ით → 409 / 1500, რეგისტრაცია უცვლელი (KD-2612)</span>
+            <span class="dur">33.0s</span>
+          </summary><pre class="log">✅ Rejected — PUT /api/distributor-hub-business/{id} → HTTP 409 / code 1500</pre></details></div>
   <script>
     (function () {
       const cards = document.querySelectorAll('.card');
