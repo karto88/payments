@@ -36,108 +36,35 @@
 </head>
 <body>
   <h1>🎭 Playwright Test Report</h1>
-  <div class="meta">11/11/2026, 10:57:30 AM</div>
+  <div class="meta">11/11/2026, 11:00:05 AM</div>
   <div class="summary">
-    <button type="button" class="card active" data-filter="all">Total: 6</button>
-    <button type="button" class="card pass" data-filter="pass">✅ Passed: 4</button>
-    <button type="button" class="card fail" data-filter="fail">❌ Failed: 2</button>
+    <button type="button" class="card active" data-filter="all">Total: 3</button>
+    <button type="button" class="card pass" data-filter="pass">✅ Passed: 3</button>
+    <button type="button" class="card fail" data-filter="fail">❌ Failed: 0</button>
     <button type="button" class="card skip" data-filter="skip">⏭️ Skipped: 0</button>
   </div>
-  <div class="file-group"><div class="file">tests/RS/Front/Positive/rs-front-register-to-rs.spec.ts</div><details class="test-item" data-status="fail" open>
+  <div class="file-group"><div class="file">tests/RS/Front/Negative/rs-front-guards-negative.spec.ts</div><details class="test-item" data-status="pass">
           <summary class="test">
             <span class="chev">▶</span>
-            <span class="st" style="color:#f85149">❌ failed</span>
+            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="name">UI: wallet 0.3 → ყადაღა 0.2 → ბიზნესის გვერდზე Unlink გამორთულია → API unlink → 1492 (Money is held) → RS ხსნის → Unlink ირთვება</span>
+            <span class="dur">36.9s</span>
+          </summary><pre class="log">✅ Wallet QA UI Wallet 480804 created from UI (bb437010-8e38-4d48-862c-594e1a19591b), balance 0.3 ₾
+✅ Registration tables OK — Data, Wallets, business page, list
+✅ Business QA Hessel - Prosacco (928087117) created from UI — wallet linked, registration Approved
+✅ Unlink disabled while held (API 1492) → enabled after withdraw</pre></details></div><div class="file-group"><div class="file">tests/RS/Front/Positive/rs-front-register-to-rs.spec.ts</div><details class="test-item" data-status="pass">
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#3fb950">✅ passed</span>
             <span class="name">UI: Register to RS → Wallet type-ში მხოლოდ "No wallet" და "Payment merchant" → მინიშნება "Distributor hub wallets are registered through their business" → ბმული გადადის Dist. Businesses-ზე</span>
-            <span class="dur">4.9s</span>
-          </summary><pre class="err">ApiAssertionError: 
-❌ API TEST FAILED
-───────────────────────────────────────────
-🔧 ოპერაცია:    UI RS registrations — Register to RS
-⚠️  პრობლემა:    მინიშნება არ ჩანს
-📥 მიმდინარე შედეგი:
-"No wallet | Payment merchant"
-✅ მოსალოდნელი შედეგი: "Distributor hub wallets are registered through their business…"
-───────────────────────────────────────────
-</pre></details><details class="test-item" data-status="pass">
+            <span class="dur">4.5s</span>
+          </summary><pre class="log">✅ Wallet type: No wallet · Payment merchant; hint link → https://dashboard.dev.keepz.me/distribution-hub-businesses</pre></details><details class="test-item" data-status="pass">
           <summary class="test">
             <span class="chev">▶</span>
             <span class="st" style="color:#3fb950">✅ passed</span>
-            <span class="name">UI: Register to RS → Payment merchant → ძებნა ident-ით → "სახელი · ident" → არჩევა (Owner / ident ივსება) → Save and review → "Registration created", Submit to RS ფანჯარა ჩვენი მონაცემებით → API: Not submitted, merchant-ის wallet Active</span>
-            <span class="dur">13.1s</span>
-          </summary><pre class="log">✅ Merchant QA RS Merchant 1775 — 995300000024, ident 969902648, BALANCE flow, Temporary Verified (12c0fd4b-9435-4f5b-bb61-9595e229ebc0)
-✅ Register to RS (Payment merchant QA RS Merchant 1775) → registration 3c58c496-efe0-4c36-a784-9378656a2e0b NOT_SUBMITTED, merchant wallet ACTIVE</pre></details><details class="test-item" data-status="pass">
-          <summary class="test">
-            <span class="chev">▶</span>
-            <span class="st" style="color:#3fb950">✅ passed</span>
-            <span class="name">UI: ბიზნესს (hub wallet) უკვე აქვს რეგისტრაცია → merchant იგივე ident-ით → Register to RS → იგივე რეგისტრაცია იხსნება (ახალი არ იქმნება), 2 wallet: hub + merchant</span>
-            <span class="dur">13.2s</span>
-          </summary><pre class="log">✅ Merchant QA RS Merchant 7406 — 995300000025, ident 996799789, BALANCE flow, Temporary Verified (c08d655b-0227-4fb9-beb9-244c9fc8ef9f)
-✅ Merchant QA RS Merchant 7406 joined business registration 33e187ec-34fa-4dfc-8c60-edb649a5bf94 — 2 wallets</pre></details><details class="test-item" data-status="pass">
-          <summary class="test">
-            <span class="chev">▶</span>
-            <span class="st" style="color:#3fb950">✅ passed</span>
-            <span class="name">UI: Register to RS → No wallet + ახალი ident → "Registration created", რეგისტრაცია wallet-ის გარეშე (0 wallet)</span>
-            <span class="dur">7.7s</span>
-          </summary><pre class="log">✅ No wallet → registration d441cec2-531c-468d-9930-b6e26ce76ee3 without wallets</pre></details><details class="test-item" data-status="pass">
-          <summary class="test">
-            <span class="chev">▶</span>
-            <span class="st" style="color:#3fb950">✅ passed</span>
-            <span class="name">UI: ახალი merchant → RS ტაბი: "Not registered with RS." → Register to RS → Payment merchant და merchant უკვე არჩეულია (გამორთული) → Save and review → RS ტაბი: Not submitted, Owner, Open registration → რეგისტრაციის გვერდი</span>
-            <span class="dur">15.3s</span>
-          </summary><pre class="log">✅ Merchant QA RS Merchant 1370 — 995300000026, ident 927144800, BALANCE flow, Temporary Verified (f310ddf9-40f8-47c8-b319-ca4d16d0b073)
-✅ Merchant RS tab: Not registered → Register to RS → a8ac29af-e3ca-4244-a635-c5e093db6219 Not submitted → Open registration</pre></details><details class="test-item" data-status="fail" open>
-          <summary class="test">
-            <span class="chev">▶</span>
-            <span class="st" style="color:#f85149">❌ failed</span>
             <span class="name">UI: ბიზნესი + wallet → RS პანელი: Refresh · Open registration · Submit to RS · Not submitted (Register to RS აღარ არის) → Submit to RS ბიზნესის გვერდიდან → "Submitted to RS", Pending RS approval → RS ადასტურებს → Refresh → Approved, თარიღებით</span>
-            <span class="dur">12.1s</span>
-          </summary><pre class="err">ApiAssertionError: 
-❌ API TEST FAILED
-───────────────────────────────────────────
-🔧 ოპერაცია:    UI Dist. Businesses — RS registration პანელი
-⚠️  პრობლემა:    პანელი: RS registration | Refresh | Open registration | Pending RS approval | Owner full name | QA Rempel, Waelchi and Durgan | Client number | - | First submitted | 11 Nov 2026, 10:58 | Approved | - | 
-📥 მიმდინარე შედეგი:
-{
-  "id": "c2421688-a306-4c0f-9d94-f84b634d6afa",
-  "partner": "keepz",
-  "clientUuid": "da8e9815-918e-40cf-9ec1-9f8b18bce49e",
-  "clientNo": null,
-  "status": "APPROVED",
-  "statusTooltip": "RS permission has been received. The client may use accounts, subject to any active Collection or Lien restrictions.",
-  "approvalSource": "HONEST_TAX_PAYER",
-  "data": {
-    "residency": "RESIDENT",
-    "identNumber": "920112728",
-    "personalNumberAlt": null,
-    "ownerFullName": "QA Rempel, Waelchi and Durgan",
-    "operDate": "2026-10-12",
-    "knownDate": "2026-11-01",
-    "legalAddressCountry": null,
-    "legalAddressCity": null,
-    "legalAddressLine": null,
-    "actualAddressCountry": null,
-    "actualAddressCity": null,
-    "actualAddressLine": null,
-    "stateRegAuthority": null,
-    "stateRegDocNumber": null,
-    "stateRegDocDate": null
-  },
-  "firstSubmittedAt": "2026-11-11T06:58:33.196135Z",
-  "lastSubmittedAt": "2026-11-11T06:58:32.099803Z",
-  "approvedAt": "2026-11-11T06:58:35.233322Z",
-  "resubmitEnabled": false,
-  "lastRsErrorCode": null,
-  "lastRsErrorText": null,
-  "dataDiffersFields": null,
-  "submittedByMistake": false,
-  "cancelNote": null,
-  "cancelledAt": null,
-  "pendingNote": null,
-  "imported": false
-}
-✅ მოსალოდნელი შედეგი: Refresh → Approved, First submitted და Approved თარიღით
-───────────────────────────────────────────
-</pre></details></div>
+            <span class="dur">12.7s</span>
+          </summary><pre class="log">✅ Business RS panel: Submit to RS → Pending → Refresh → Approved (c778ed1d-6835-45a9-a570-bc4a5d7ddb48)</pre></details></div>
   <script>
     (function () {
       const cards = document.querySelectorAll('.card');
