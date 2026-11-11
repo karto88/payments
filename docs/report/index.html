@@ -36,44 +36,40 @@
 </head>
 <body>
   <h1>🎭 Playwright Test Report</h1>
-  <div class="meta">11/11/2026, 10:33:24 AM</div>
+  <div class="meta">11/11/2026, 10:34:16 AM</div>
   <div class="summary">
-    <button type="button" class="card active" data-filter="all">Total: 2</button>
+    <button type="button" class="card active" data-filter="all">Total: 1</button>
     <button type="button" class="card pass" data-filter="pass">✅ Passed: 0</button>
     <button type="button" class="card fail" data-filter="fail">❌ Failed: 1</button>
-    <button type="button" class="card skip" data-filter="skip">⏭️ Skipped: 1</button>
+    <button type="button" class="card skip" data-filter="skip">⏭️ Skipped: 0</button>
   </div>
   <div class="file-group"><div class="file">tests/RS/Front/Positive/rs-front-reallocate.spec.ts</div><details class="test-item" data-status="fail" open>
           <summary class="test">
             <span class="chev">▶</span>
             <span class="st" style="color:#f85149">❌ failed</span>
-            <span class="name">UI: 2 hub wallet A 0.3 / B 0.2 → ყადაღა 0.4 → A 0.3 + B 0.1 → B-ს +0.5 (hold-ები არ იცვლება) → UI: Reallocate holds → მთელი 0.4 B-ზე, A თავისუფლდება და გადარიცხავს 0.1-ს ✅; Holds per wallet და ბიზნესის გვერდი = API</span>
-            <span class="dur">42.5s</span>
-          </summary><pre class="log">✅ Wallet QA UI Wallet 944562 created from UI (14243500-7151-4d7d-b98a-a75e1d92b68e), balance 0.3 ₾
+            <span class="name">UI: 2 hub wallet A 0.3 / B 0.2 → ინკასო 0.4 → A 0.3 + B 0.1 → B-ს +0.5 → UI: Reallocate holds → მთელი 0.4 B-ზე, A თავისუფლდება და გადარიცხავს 0.1-ს ✅</span>
+            <span class="dur">33.4s</span>
+          </summary><pre class="log">✅ Wallet QA UI Wallet 225101 created from UI (322f5cef-3e63-4b75-9743-4d2c100878c7), balance 0.3 ₾
 ✅ Registration tables OK — Data, Wallets, business page, list
-✅ Business QA Mraz Ledner LLC (925842625) created from UI — wallet linked, registration Approved
-✅ 2 wallets on business: QA UI Wallet 944562 (0.3), QA UI Wallet 645156 (0.2)
-ℹ️ QA UI Wallet 645156 +0.5 → holds unchanged until Reallocate (QA UI Wallet 944562 0.3, QA UI Wallet 645156 0.1)</pre><pre class="err">ApiAssertionError: 
+✅ Business QA Ledner Berge Inc (944276384) created from UI — wallet linked, registration Approved
+✅ 2 wallets on business: QA UI Wallet 225101 (0.3), QA UI Wallet 528476 (0.2)
+ℹ️ QA UI Wallet 528476 +0.5 → holds unchanged until Reallocate (QA UI Wallet 225101 0.3, QA UI Wallet 528476 0.1)</pre><pre class="err">ApiAssertionError: 
 ❌ API TEST FAILED
 ───────────────────────────────────────────
 🔧 ოპერაცია:    UI Liens &amp; collections — ფანჯარა
-⚠️  პრობლემა:    ღილაკები: Overview · Holds per wallet · History · Audit
+⚠️  პრობლემა:    ღილაკები: Overview · Holds per wallet · Executions · History · Audit · Request amount from RS
 📥 მიმდინარე შედეგი:
 [
   "Overview",
   "Holds per wallet",
+  "Executions",
   "History",
-  "Audit"
+  "Audit",
+  "Request amount from RS"
 ]
 ✅ მოსალოდნელი შედეგი: ღილაკი "Reallocate holds"
 ───────────────────────────────────────────
-</pre></details><details class="test-item" data-status="skip">
-          <summary class="test">
-            <span class="chev"></span>
-            <span class="st" style="color:#7d8590">⏭️ skipped</span>
-            <span class="name">UI: 2 hub wallet A 0.3 / B 0.2 → ინკასო 0.4 → A 0.3 + B 0.1 → B-ს +0.5 → UI: Reallocate holds → მთელი 0.4 B-ზე, A თავისუფლდება და გადარიცხავს 0.1-ს ✅</span>
-            <span class="dur">0ms</span>
-          </summary></details></div>
+</pre></details></div>
   <script>
     (function () {
       const cards = document.querySelectorAll('.card');
