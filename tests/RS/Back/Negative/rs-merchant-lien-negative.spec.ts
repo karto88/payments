@@ -1,5 +1,5 @@
 import { test } from '@playwright/test';
-import { RsMerchantLienHelper } from '../../../utils/order-helpers';
+import { RsMerchantLienHelper } from '../../../../utils/order-helpers';
 import * as dotenv from 'dotenv';
 
 dotenv.config();

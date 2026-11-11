@@ -1,5 +1,5 @@
 import { test } from '@playwright/test';
-import { RsRegistrationHelper } from '../../../utils/order-helpers';
+import { RsRegistrationHelper } from '../../../../utils/order-helpers';
 import * as dotenv from 'dotenv';
 
 dotenv.config();

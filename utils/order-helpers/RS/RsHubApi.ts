@@ -99,6 +99,21 @@ export class RsHubApi {
   getRestriction(id: string) { return this.call('GET', `/api/v1/rs/restrictions/${id}`); }
   /** hold-ების თავიდან განაწილება (მაგ. ახალი wallet-ის მიბმის შემდეგ) */
   reallocate(id: string) { return this.call('POST', `/api/v1/rs/restrictions/${id}/reallocate`); }
+  restrictionHistory(id: string) { return this.call('GET', `/api/v1/rs/restrictions/${id}/history`); }
+  /** ინკასოს დაბრუნება RS-ში (holds იხსნება, RS-ს მიდის ReturnCollection) */
+  returnCollection(id: string, reason: string) { return this.call('POST', `/api/v1/rs/restrictions/${id}/return`, { data: { reason } }); }
+  /** მესამე პირის ინკასო: ადმინი იწყებს გაყინვას */
+  startEnforcement(id: string) { return this.call('POST', `/api/v1/rs/restrictions/${id}/start-enforcement`); }
+  /** რა გავუგზავნეთ RS-ს (operation — მაგ. RETURN_COLLECTION, COLLECTION_ACCOMPLISH) */
+  messagesOut(params: Params) { return this.call('GET', '/api/v1/rs/messages/out', { params }); }
+  /** შეტყობინების დეტალი: payload (მაგ. collectionNumber), signedXml */
+  messageOut(id: string) { return this.call('GET', `/api/v1/rs/messages/out/${id}`); }
+  /** ინკასო: RS-ს ეკითხება გადასახდელ თანხას (CheckCollectionAmount) */
+  requestAmount(id: string) { return this.call('POST', `/api/v1/rs/restrictions/${id}/request-amount`); }
+  /** ინკასო, ხელით რეჟიმი: ადმინი აფიქსირებს ხაზინაზე ხელით გადახდას (OpenAPI: RsManualPaymentRequest) */
+  manualPayment(id: string, data: { executionId?: string; amount: number; paidAt: string; bankReference: string; note?: string }) {
+    return this.call('POST', `/api/v1/rs/restrictions/${id}/manual-payment`, { data });
+  }
 }
 
 export const RS_SIM = 'https://rs-service.dev.keepz.me/api/rs/v1/simulator/keepz';
@@ -148,6 +163,29 @@ export class RsSimulatorApi {
   }
   /** RS ხსნის ყადაღას */
   obtainLien(lienNumber: string) { return this.order('/orders/obtain-lien', { lienNumber }); }
+  /** RS აგზავნის ინკასოს ident-ზე (kind 1 — ახალი; revAccount — ხაზინის ანგარიში) */
+  collection(personId: string, amount: number | string, collectionNumber: string, priority = 1, revAccount = '101001000', personIdAlt?: string) {
+    return this.order('/orders/collection', { personId, amount, collectionNumber, priority, revAccount, ...(personIdAlt ? { personIdAlt } : {}) });
+  }
+  /** RS ასწორებს ინკასოს (kind 2): ახალი ნომერი, note = #ძველი ნომერი */
+  correction(personId: string, amount: number, collectionNumber: string, prevNumber: string) {
+    return this.order('/orders/collection', { personId, amount, collectionNumber, collectionStatus: 2, note: `#${prevNumber}`, priority: 1, revAccount: '101001000' });
+  }
+  /** RS აგზავნის მესამე პირის ინკასოს (kind 3) — ვალი thirdPersonId-ისაა, ფული personId-ის ანგარიშიდან */
+  thirdPersonCollection(personId: string, amount: number, collectionNumber: string, thirdPersonId: string) {
+    return this.order('/orders/collection', { personId, amount, collectionNumber, collectionStatus: 3, thirdPersonId, thirdPersonName: 'QA Third', priority: 1, revAccount: '101001000' });
+  }
+  /** RS-ის პასუხის სცენარი (Request amount-მდე): ინკასოზე RS უპასუხებს `amount`-ს (0 — არაფერი) */
+  async scenario(body: { match: string; collectionNumber?: string; amount?: number; errorCode?: string; description?: string; delayMs?: number }): Promise<any> {
+    const res = await this.request.post(`${RS_SIM}/scenarios`, { headers: { 'X-RS-Simulator-Token': process.env.RS_SIM_TOKEN || '' }, data: body });
+    assertCondition('POST $SIM/scenarios', res.ok(), `HTTP ${res.status()}`, 'HTTP 200', await res.text());
+    return res.json();
+  }
+  async clearScenarios() {
+    await this.request.delete(`${RS_SIM}/scenarios`, { headers: { 'X-RS-Simulator-Token': process.env.RS_SIM_TOKEN || '' } });
+  }
+  /** RS ხსნის ინკასოს */
+  obtainCollection(collectionNumber: string) { return this.order('/orders/obtain-collection', { collectionNumber }); }
   /** RS იგივე შეტყობინებას ხელახლა აგზავნის (rsMessageId — წინა პასუხიდან) */
   resend(rsMessageId: string) { return this.order(`/orders/resend/${rsMessageId}`, {}); }
 }

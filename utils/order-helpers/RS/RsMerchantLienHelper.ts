@@ -482,7 +482,7 @@ export class RsMerchantLienHelper {
   // ─── შიდა ───
 
   /** add money ბარათით (refund-reports-ის flow: payment link → TBC ბარათი → OTP) → TOP_UP ტრანზაქციის id */
-  private async addMoney(amount: number): Promise<number> {
+  async addMoney(amount: number): Promise<number> {
     const tx = await new RefundReportsHelper(this.request).addMoneyTopUp(RS_MERCHANT.phone, amount, 'GEL');
     console.log(`✅ Add money ${amount} ₾ — tx ${tx}`);
     return tx;
@@ -600,7 +600,7 @@ export class RsMerchantLienHelper {
     return this.deviceToken;
   }
 
-  private async balance(): Promise<number> {
+  async balance(): Promise<number> {
     const res = await this.request.get(`${WALLETPORTAL}/balances`, { headers: { Authorization: `Bearer ${await this.token()}` } });
     const body = await res.json().catch(() => ({}));
     assertCondition(OP_BALANCE, res.ok(), `HTTP ${res.status()}`, 'HTTP 200', body);
@@ -613,7 +613,7 @@ export class RsMerchantLienHelper {
     assertCondition(OP_BALANCE, ok !== undefined, `ბალანსი ${last}`, `ბალანსი ${round(amount)} — ${why}`, { balance: last });
   }
 
-  private async cashOut(amount: number): Promise<ApiResult> {
+  async cashOut(amount: number): Promise<ApiResult> {
     const res = await this.request.post(`${WALLETPORTAL}/cash-out?merchantId=${RS_MERCHANT.merchantId}`, {
       headers: { Authorization: `Bearer ${await this.token()}`, 'Content-Type': 'application/json' },
       data: { amount: amount.toFixed(2), currencyCode: 'GEL', iban: RS_MERCHANT.iban },

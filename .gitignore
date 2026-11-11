@@ -16,3 +16,6 @@ node_modules/
 # Claude Code local automation state
 .claude/scheduled_tasks.json
 .claude/scheduled_tasks.lock
+
+# RS ინკასო 2 დღეში — დღე 1-ის ლოკალური მონაცემები დღე 2-სთვის
+/test-data/

@@ -1,5 +1,5 @@
 import { APIRequestContext } from '@playwright/test';
-import { RsHubApi, Scheme, randomCompanyName } from './RsHubApi';
+import { RsHubApi, Scheme, randomCompanyName, digits } from './RsHubApi';
 import { RsBusinessHelper } from './RsBusinessHelper';
 import { assertCondition, assertField, assertKeysPresent } from '../../assertions';
 
@@ -63,7 +63,7 @@ export class RsClientHelper {
   /** სატესტო body (api.js → panel-client-create), isMock — dev-ზე სატესტო კლიენტი */
   static buildBody(scheme: Scheme, businessId?: string, overrides: any = {}): any {
     return clean({
-      clientName: randomCompanyName(),
+      clientName: `${randomCompanyName()} ${digits(4)}`, // უნიკალური — სახელი უკვე არსებობს → 1186
       scheme,
       ...(businessId ? { businessId } : {}),
       distributeMethod: 'IBAN',

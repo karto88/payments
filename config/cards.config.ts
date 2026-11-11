@@ -1,28 +1,27 @@
-// ბარათების მონაცემები
+// ბარათების მონაცემები — მხოლოდ .env-იდან (⚠️ ნომერი / ვადა / CVV კოდში და git-ში არ უნდა იყოს)
+import 'dotenv/config';
+
+type Bank = 'TBC' | 'BOG' | 'LB' | 'CREDO';
+
+/** CARD_<NAME>_NUMBER / _EXPIRY / _CVV — .env-ში; აკლია → გასაგები შეცდომა, როცა ტესტი ბარათს მიმართავს */
+function card(name: string, bank: Bank) {
+  const read = (field: 'NUMBER' | 'EXPIRY' | 'CVV') => {
+    const key = `CARD_${name}_${field}`;
+    const value = process.env[key];
+    if (!value) throw new Error(`${key} არ არის .env-ში — ბარათის მონაცემები დაამატე (.env.example)`);
+    return value;
+  };
+  return {
+    get number() { return read('NUMBER'); },
+    get expiry() { return read('EXPIRY'); },
+    get cvv() { return read('CVV'); },
+    bank,
+  };
+}
 
 export const CARDS = {
-  TBC: {
-    number: '4315714003864442',
-    expiry: '1127',
-    cvv: '581',
-    bank: 'TBC' as const
-  },
-  BOG: {
-    number: '5488880293249293',
-    expiry: '1129',
-    cvv: '038',
-    bank: 'BOG' as const
-  },
-  LIBERTY: {
-    number: '5428337021210371',
-    expiry: '1029',
-    cvv: '654',
-    bank: 'LB' as const
-  },
-  CREDO: {
-    number: '5356610110160723',
-    expiry: '1129',
-    cvv: '081',
-    bank: 'CREDO' as const
-  }
+  TBC: card('TBC', 'TBC'),
+  BOG: card('BOG', 'BOG'),
+  LIBERTY: card('LIBERTY', 'LB'),
+  CREDO: card('CREDO', 'CREDO'),
 };

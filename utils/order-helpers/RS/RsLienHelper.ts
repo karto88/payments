@@ -6,8 +6,6 @@ import { RsClientHelper, gel } from './RsClientHelper';
 import { RsRegistrationHelper } from './RsRegistrationHelper';
 import { assertCondition, assertField } from '../../assertions';
 
-const OP_SIM_LIEN = 'POST $SIM/orders/lien (RS → ყადაღა)';
-const OP_SIM_OBTAIN = 'POST $SIM/orders/obtain-lien (RS → მოხსნა)';
 const OP_SIM_RESEND = 'POST $SIM/orders/resend/{rsMessageId} (RS → იგივე შეტყობინება)';
 const OP_RESTRICTION = 'GET /api/v1/rs/restrictions?rsNumber=';
 const OP_REALLOCATE = 'POST /api/v1/rs/restrictions/{id}/reallocate';
@@ -22,16 +20,20 @@ const MAX_AMOUNT = 1;
 /** ყადაღის შემდეგ hold wallet-ზე რამდენიმე წამში ჩნდება (rs-service → hub) */
 const HOLD_TIMEOUT = 30_000;
 const APPROVE_TIMEOUT = 60_000;
+/** wallet-ის მიბმა RS რეგისტრაციაზე (enrollment) — ~2 წთ */
+const ENROLL_TIMEOUT = 3 * 60_000;
 /** docs: დაკლებული (shortfall) თანხა თავიდან მოწმდება ყოველ 15 წუთში */
 const RECHECK_TIMEOUT = 17 * 60_000;
 
 /** გადარიცხვის მიმღები (wallet → IBAN), მომხმარებლის მიწოდებული სატესტო მონაცემები */
-const TRANSFER_TO = {
+export const TRANSFER_TO = {
   currency: 'GEL',
   description: '48001015578',
   toIban: 'GE95TB7197445064300003',
   beneficiaryName: 'დავით კარტოზია',
 };
+
+export type RestrictionKind = 'LIEN' | 'COLLECTION';
 
 type Status = 'PENDING' | 'PARTIALLY_RESTRICTED' | 'FULLY_RESTRICTED' | 'WITHDRAWN';
 
@@ -56,7 +58,7 @@ export interface WalletTransferCase extends LienSetup {
   expect: 'OK' | 'REJECTED';
 }
 
-interface Wallet {
+export interface Wallet {
   clientId: string;
   clientSecret: string;
   commission?: Commission;
@@ -91,11 +93,26 @@ const statusFor = (held: number, lien: number): Status => (held === 0 ? 'PENDING
  * Docs: RS Integration Test Guide → data.js (HLD-*), api.js (sim-orders-*, panel-restr-*); docs/RS-LIEN-CHECKLIST.md
  */
 export class RsLienHelper {
-  private api: RsHubApi;
-  private sim: RsSimulatorApi;
-  private dist: DistributorApi;
+  protected api: RsHubApi;
+  protected sim: RsSimulatorApi;
+  protected dist: DistributorApi;
 
-  constructor(private request: APIRequestContext) {
+  /** LIEN — ყადაღა (ფული იყინება, არსად გადადის) · COLLECTION — ინკასო (იყინება იგივე წესით; შემდეგ Request amount / გადახდა) */
+  readonly kind: RestrictionKind;
+  protected prefix: string;
+  protected opSend: string;
+  protected opObtain: string;
+  /** RS-ის კოდები, რომლებიც ყადაღასა და ინკასოზე განსხვავდება */
+  private code: { duplicate: string; notFound: string };
+
+  constructor(private request: APIRequestContext, kind: RestrictionKind = 'LIEN') {
+    this.kind = kind;
+    const lien = kind === 'LIEN';
+    this.prefix = lien ? 'QA-L' : 'QA-C';
+    this.opSend = lien ? 'POST $SIM/orders/lien (RS → ყადაღა)' : 'POST $SIM/orders/collection (RS → ინკასო)';
+    this.opObtain = lien ? 'POST $SIM/orders/obtain-lien (RS → მოხსნა)' : 'POST $SIM/orders/obtain-collection (RS → მოხსნა)';
+    // docs: ყადაღა — 21 (ნომერი არსებობს), 22 (ვერ მოიძებნა) · ინკასო — 11, 12
+    this.code = lien ? { duplicate: '21', notFound: '22' } : { duplicate: '11', notFound: '12' };
     this.api = new RsHubApi(request);
     this.sim = new RsSimulatorApi(request);
     this.dist = new DistributorApi(request);
@@ -178,7 +195,7 @@ export class RsLienHelper {
     const [l1, l2] = c.liens;
     const ctx = await this.setup({ balance: c.balance, lien: l1 });
     const second = `${ctx.lienNumber}B`;
-    this.expectAccepted(OP_SIM_LIEN, await this.sim.lien(ctx.ident, l2, second));
+    this.expectAccepted(this.opSend, await this.send(ctx.ident, l2, second));
 
     await this.expectBalance(ctx.clientId, c.balance, round(l1 + l2), 'held = ორივე ყადაღის ჯამი');
     await this.expectRestriction(second, 'FULLY_RESTRICTED', l2, l2);
@@ -187,14 +204,14 @@ export class RsLienHelper {
     await this.expectBalance(ctx.clientId, c.balance, l2, 'პირველი მოიხსნა — გაყინული რჩება მხოლოდ მეორე');
     await this.expectRestriction(second, 'FULLY_RESTRICTED', l2, l2);
 
-    this.expectAccepted(`${OP_SIM_OBTAIN} — მეორედ`, await this.sim.obtainLien(ctx.lienNumber));
+    this.expectAccepted(`${this.opObtain} — მეორედ`, await this.obtain(ctx.lienNumber));
     await this.expectBalance(ctx.clientId, c.balance, l2, 'მეორედ მოხსნა არაფერს ცვლის');
     console.log(`✅ Two liens ${l1} + ${l2} → withdraw first → held ${l2}`);
   }
 
   /** RS ხსნის ყადაღას, რომელიც ჩვენთან არ არსებობს → code 22 "Lien number not found" */
   async withdrawUnknown() {
-    this.expectItemCode(OP_SIM_OBTAIN, await this.sim.obtainLien(`QA-L-NOPE-${Date.now()}`), '22');
+    this.expectItemCode(this.opObtain, await this.obtain(`${this.prefix}-NOPE-${Date.now()}`), this.code.notFound);
     console.log('✅ Unknown lien withdraw → code 22');
   }
 
@@ -231,7 +248,7 @@ export class RsLienHelper {
   async duplicateLien(c: LienSetup & { newAmount?: number }) {
     this.guard(c.balance, c.lien, c.newAmount ?? 0);
     const ctx = await this.setup(c);
-    this.expectItemCode(OP_SIM_LIEN, await this.sim.lien(ctx.ident, c.newAmount ?? c.lien, ctx.lienNumber), '21');
+    this.expectItemCode(this.opSend, await this.send(ctx.ident, c.newAmount ?? c.lien, ctx.lienNumber), this.code.duplicate);
     await this.expectSingleRestriction(ctx, c);
     const held = round(Math.min(c.balance, c.lien));
     await this.expectRestriction(ctx.lienNumber, statusFor(held, c.lien), held, c.lien);
@@ -249,7 +266,7 @@ export class RsLienHelper {
     await this.expectBalance(ctx.clientId, c.balance, 0, 'ძველი ყადაღა მოიხსნა — held 0');
 
     const fresh = `${ctx.lienNumber}N`;
-    this.expectAccepted(OP_SIM_LIEN, await this.sim.lien(ctx.ident, c.correct, fresh));
+    this.expectAccepted(this.opSend, await this.send(ctx.ident, c.correct, fresh));
     const held = round(Math.min(c.balance, c.correct));
     await this.expectBalance(ctx.clientId, c.balance, held, `გაყინულია მხოლოდ ახალი ყადაღა (${held})`);
     await this.expectRestriction(fresh, statusFor(held, c.correct), held, c.correct);
@@ -261,9 +278,9 @@ export class RsLienHelper {
   async resendSameMessage(c: LienSetup) {
     this.guard(c.balance, c.lien);
     const biz = await this.business(c.balance);
-    const lienNumber = `QA-L-${Date.now()}`;
-    const first = await this.sim.lien(biz.ident, c.lien, lienNumber);
-    this.expectAccepted(OP_SIM_LIEN, first);
+    const lienNumber = `${this.prefix}-${Date.now()}`;
+    const first = await this.send(biz.ident, c.lien, lienNumber);
+    this.expectAccepted(this.opSend, first);
     const ctx = { ...biz, ...biz.wallet, lienNumber };
     await this.expectBalance(ctx.clientId, c.balance, round(Math.min(c.balance, c.lien)), 'ყადაღის შემდეგ');
 
@@ -276,8 +293,8 @@ export class RsLienHelper {
   /** არავალიდური თანხა (0 / უარყოფითი / 1 თეთრზე ნაკლები / ტექსტი) → code 6, არაფერი შეინახა, ბალანსი არ გაიყინა */
   async invalidAmount(amount: string) {
     const biz = await this.business(MAX_AMOUNT);
-    const lienNumber = `QA-L-${Date.now()}`;
-    this.expectItemCode(OP_SIM_LIEN, await this.sim.lien(biz.ident, amount, lienNumber), '6');
+    const lienNumber = `${this.prefix}-${Date.now()}`;
+    this.expectItemCode(this.opSend, await this.send(biz.ident, amount, lienNumber), '6');
     const list = RsHubApi.expectOk(OP_RESTRICTION, await this.api.getRestrictions({ rsNumber: lienNumber })).content;
     assertCondition(OP_RESTRICTION, list.length === 0, `შეინახა ${list.length} restriction`, 'არაფერი შეინახა', list);
     await this.expectBalance(biz.wallet.clientId, MAX_AMOUNT, 0, 'არაფერი გაიყინა');
@@ -305,8 +322,8 @@ export class RsLienHelper {
       if (kind === 'noWallet') await this.register(business);
     }
 
-    const lienNumber = `QA-L-${Date.now()}`;
-    this.expectItemCode(OP_SIM_LIEN, await this.sim.lien(ident, MAX_AMOUNT, lienNumber), kind === 'noWallet' ? '13' : '1');
+    const lienNumber = `${this.prefix}-${Date.now()}`;
+    this.expectItemCode(this.opSend, await this.send(ident, MAX_AMOUNT, lienNumber), kind === 'noWallet' ? '13' : '1');
     const list = RsHubApi.expectOk(OP_RESTRICTION, await this.api.getRestrictions({ rsNumber: lienNumber })).content;
     assertCondition(OP_RESTRICTION, list.length === 0, `შეინახა ${list.length} restriction`, 'არაფერი შეინახა', list);
     console.log(`✅ Lien not applied — ${kind}`);
@@ -319,14 +336,14 @@ export class RsLienHelper {
   async lienApprovesRegistration(state: 'submitted' | 'notSubmitted', c: LienSetup) {
     this.guard(c.balance, c.lien);
     const biz = await this.business(c.balance, { submit: state === 'submitted', approve: false });
-    const lienNumber = `QA-L-${Date.now()}`;
-    this.expectAccepted(OP_SIM_LIEN, await this.sim.lien(biz.ident, c.lien, lienNumber));
+    const lienNumber = `${this.prefix}-${Date.now()}`;
+    this.expectAccepted(this.opSend, await this.send(biz.ident, c.lien, lienNumber));
 
     const v = await this.poll(OP_REG, HOLD_TIMEOUT, 'status APPROVED (ყადაღა = RS-ის დადასტურება)', async () => {
       const r = RsHubApi.expectOk(OP_REG, await this.api.getRegistration(biz.regId));
       return r.registration.status === 'APPROVED' ? r : undefined;
     });
-    assertField(OP_REG, v!.registration, 'approvalSource', 'LIEN');
+    assertField(OP_REG, v!.registration, 'approvalSource', this.kind);
     const held = round(Math.min(c.balance, c.lien));
     await this.expectBalance(biz.wallet.clientId, c.balance, held, 'ყადაღა დაედო');
     await this.expectRestriction(lienNumber, statusFor(held, c.lien), held, c.lien);
@@ -343,8 +360,8 @@ export class RsLienHelper {
     this.guard(c.a, c.b, c.lien);
     const biz = await this.business(c.a);
     const b = await this.addWallet(biz, c.b);
-    const lienNumber = `QA-L-${Date.now()}`;
-    this.expectAccepted(OP_SIM_LIEN, await this.sim.lien(biz.ident, c.lien, lienNumber));
+    const lienNumber = `${this.prefix}-${Date.now()}`;
+    this.expectAccepted(this.opSend, await this.send(biz.ident, c.lien, lienNumber));
 
     await this.expectBalance(biz.wallet.clientId, c.a, c.expectHeld[0], 'wallet A');
     await this.expectBalance(b.clientId, c.b, c.expectHeld[1], 'wallet B');
@@ -396,8 +413,8 @@ export class RsLienHelper {
     const usd = { ...gel(), USD: gel().GEL };
     const currencies = kind === 'usdOnly' ? { enabledCurrencies: ['USD'], currencyConfigs: { USD: gel().GEL } } : { enabledCurrencies: ['GEL', 'USD'], currencyConfigs: usd };
     const biz = await this.customBusiness(currencies, [['GEL', c.gel], ['USD', c.usd]]);
-    const lienNumber = `QA-L-${Date.now()}`;
-    this.expectAccepted(OP_SIM_LIEN, await this.sim.lien(biz.ident, c.lien, lienNumber));
+    const lienNumber = `${this.prefix}-${Date.now()}`;
+    this.expectAccepted(this.opSend, await this.send(biz.ident, c.lien, lienNumber));
 
     const held = round(Math.min(c.gel, c.lien));
     await this.expectBalance(biz.wallet.clientId, c.gel, held, `GEL — გაყინულია ${held}`);
@@ -411,8 +428,8 @@ export class RsLienHelper {
   async unlimitedWallet(c: { lien: number }) {
     this.guard(c.lien);
     const biz = await this.customBusiness({ unlimitedGel: true }, []);
-    const lienNumber = `QA-L-${Date.now()}`;
-    this.expectAccepted(OP_SIM_LIEN, await this.sim.lien(biz.ident, c.lien, lienNumber));
+    const lienNumber = `${this.prefix}-${Date.now()}`;
+    this.expectAccepted(this.opSend, await this.send(biz.ident, c.lien, lienNumber));
     await this.expectRestriction(lienNumber, 'PENDING', 0, c.lien);
     const r = RsHubApi.expectOk(OP_RESTRICTION, await this.api.getRestrictions({ rsNumber: lienNumber })).content[0];
     assertCondition(OP_RESTRICTION + lienNumber, /can't hold/i.test(r.statusReason || ''), `statusReason: ${r.statusReason}`,
@@ -437,13 +454,14 @@ export class RsLienHelper {
     console.log('✅ Deactivated wallet — hold kept');
   }
 
-  /** ბიზნესის მონაცემების ცვლილება (სახელი) ყადაღის დროს → ყადაღა და გაყინული ფული ადგილზე რჩება */
+  /** ბიზნესის მონაცემების ცვლილება (ალტ. პირადი ნომერი — RS-ს არ ეგზავნება) ყადაღის დროს → ყადაღა და გაყინული ფული ადგილზე რჩება */
   async businessEditKeepsLien(c: LienSetup) {
     this.guard(c.balance, c.lien);
     const ctx = await this.setup(c);
     const business = RsHubApi.expectOk('GET /api/distributor-hub-business/{id}', await this.api.getBusiness(ctx.businessId));
     RsHubApi.expectOk('PUT /api/distributor-hub-business/{id}',
-      await this.api.updateBusiness(ctx.businessId, { ...RsBusinessHelper.updateBody(business), ownerFullName: `${business.ownerFullName} Edited` }));
+      await this.api.updateBusiness(ctx.businessId, { ...RsBusinessHelper.updateBody(business), personalNumberAlt: `9${String(Date.now()).slice(-10)}` }));
+    // RS-ში გაგზავნილი ველის (სახელი) შეცვლა submit-ის შემდეგ აკრძალულია (409 / 1501) → ვცვლით ველს, რომელიც RS-ს არ ეგზავნება
 
     await sleep(5000);
     const held = round(Math.min(c.balance, c.lien));
@@ -465,7 +483,7 @@ export class RsLienHelper {
   async forgedSignature(c: LienSetup) {
     this.guard(c.balance, c.lien);
     const biz = await this.business(c.balance);
-    const lienNumber = `QA-L-${Date.now()}`;
+    const lienNumber = `${this.prefix}-${Date.now()}`;
     const res = await this.sim.rawOrder([{ type: 'Lien', fields: { PersonId: biz.ident, LienNumber: lienNumber, Amount: String(c.lien) } }], true);
     assertCondition('POST $SIM/orders (forgeSignature)', res.accepted === false, `accepted: ${res.accepted}`, 'accepted: false (მთელი შეტყობინება უარყოფილია)', res);
     this.expectItemCode('POST $SIM/orders (forgeSignature)', res, '4');
@@ -479,8 +497,8 @@ export class RsLienHelper {
 
   /** არასწორი ident (8 / 10 ციფრი, ასოები, ცარიელი) → code 1 "Taxpayer not found", არაფერი ინახება */
   async invalidIdent(personId: string) {
-    const lienNumber = `QA-L-${Date.now()}`;
-    this.expectItemCode(OP_SIM_LIEN, await this.sim.lien(personId, MAX_AMOUNT, lienNumber), '1');
+    const lienNumber = `${this.prefix}-${Date.now()}`;
+    this.expectItemCode(this.opSend, await this.send(personId, MAX_AMOUNT, lienNumber), '1');
     const list = RsHubApi.expectOk(OP_RESTRICTION, await this.api.getRestrictions({ rsNumber: lienNumber })).content;
     assertCondition(OP_RESTRICTION, list.length === 0, `შეინახა ${list.length} restriction`, 'არაფერი შეინახა', list);
     console.log(`✅ Lien on "${personId}" → code 1`);
@@ -508,16 +526,10 @@ export class RsLienHelper {
     const business = RsHubApi.expectOk('POST /api/distributor-hub-business',
       await this.api.createBusiness({ ...RsBusinessHelper.buildBody({ residency: 'FOREIGN' }), personalNumberAlt: alt }));
     const wallet = await this.newWallet(business.id, c.balance);
-    const data = RsRegistrationHelper.buildData('FOREIGN', { identNumber: business.identificationNumber, personalNumberAlt: alt, ownerFullName: business.ownerFullName });
-    const reg = RsHubApi.expectOk('POST /api/v1/rs/registrations',
-      await this.api.createRegistration({ ...RsRegistrationHelper.body(data, wallet.clientId), submit: true }));
-    await this.poll(OP_REG, APPROVE_TIMEOUT, 'status APPROVED (Foreign — CLIENT_NR)', async () => {
-      const v = RsHubApi.expectOk(OP_REG, await this.api.getRegistration(reg.id));
-      return v.registration.status === 'APPROVED' ? v : undefined;
-    });
+    await this.register(business, wallet.clientId);
 
-    const lienNumber = `QA-L-${Date.now()}`;
-    this.expectAccepted(OP_SIM_LIEN, await this.sim.lien('', c.lien, lienNumber, alt));
+    const lienNumber = `${this.prefix}-${Date.now()}`;
+    this.expectAccepted(this.opSend, await this.send('', c.lien, lienNumber, alt));
     const held = round(Math.min(c.balance, c.lien));
     await this.expectBalance(wallet.clientId, c.balance, held, `Foreign — გაყინულია ${held}`);
     await this.expectRestriction(lienNumber, statusFor(held, c.lien), held, c.lien);
@@ -562,12 +574,12 @@ export class RsLienHelper {
     this.guard(c.balance, c.lien);
     const biz = await this.business(c.balance);
     const token = await this.dist.token(biz.wallet.clientId, biz.wallet.clientSecret);
-    const lienNumber = `QA-L-${Date.now()}`;
+    const lienNumber = `${this.prefix}-${Date.now()}`;
     const [tr, lien] = await Promise.all([
       this.dist.transfer(token, { amount: c.balance, uniqueId: randomUUID(), ...TRANSFER_TO }),
-      this.sim.lien(biz.ident, c.lien, lienNumber),
+      this.send(biz.ident, c.lien, lienNumber),
     ]);
-    this.expectAccepted(OP_SIM_LIEN, lien);
+    this.expectAccepted(this.opSend, lien);
     await sleep(6000);
 
     const b = await this.gel(biz.wallet.clientId);
@@ -608,7 +620,7 @@ export class RsLienHelper {
   }
 
   /** WALLET (STANDARD) ბიზნესზე + ბალანსი (+ საკომისიო) → clientId + clientSecret */
-  private async newWallet(businessId: string, balance: number, commission?: Commission): Promise<Wallet> {
+  protected async newWallet(businessId: string, balance: number, commission?: Commission): Promise<Wallet> {
     const overrides = commission ? { currencyConfigs: gel({}, { commission: commission.value, commissionRateType: commission.type }) } : {};
     const created = RsHubApi.expectOk('POST /api/distributor-hub-client',
       await this.api.createClient(RsClientHelper.buildBody('WALLET', businessId, overrides)));
@@ -618,24 +630,18 @@ export class RsLienHelper {
     return { clientId: created.clientId, clientSecret: created.clientSecret, commission };
   }
 
-  /** მეორე wallet: იმავე ident-ით Register to RS ახალი wallet-ით → იმავე რეგისტრაციას ემატება (enrollment ACTIVE) */
+  /** მეორე wallet: ბიზნესზე ახალი WALLET → რეგისტრაციას თავისით ემატება (enrollment ACTIVE, ~2 წთ) */
   private async addWallet(biz: Biz, balance: number): Promise<Wallet> {
     const wallet = await this.newWallet(biz.businessId, balance);
-    const reg = RsHubApi.expectOk('POST /api/v1/rs/registrations (იგივე ident + ახალი wallet)',
-      await this.api.createRegistration(RsRegistrationHelper.body(biz.registration.data, wallet.clientId)));
-    assertField('POST /api/v1/rs/registrations (იგივე ident + ახალი wallet)', reg, 'id', biz.regId);
-    const v = RsHubApi.expectOk(OP_REG, await this.api.getRegistration(biz.regId));
-    const e = v.enrollments.find((x: any) => x.holderRef === `CLIENT:${wallet.clientId}`);
-    assertCondition(OP_REG, e?.status === 'ACTIVE', e ? `enrollment ${e.status}` : 'enrollment არ არის',
-      `CLIENT:${wallet.clientId} — ACTIVE`, v.enrollments);
+    await this.expectEnrolled(biz.regId, wallet.clientId);
     return wallet;
   }
 
   /** ბიზნესი + 1 wallet + ბალანსი → RS აგზავნის ყადაღას → hold (held = min(ბალანსი, ყადაღა)) + restriction-ის სტატუსი */
   private async setup(c: LienSetup): Promise<Ctx> {
     const biz = await this.business(c.balance, { commission: c.commission });
-    const lienNumber = `QA-L-${Date.now()}`;
-    this.expectAccepted(OP_SIM_LIEN, await this.sim.lien(biz.ident, c.lien, lienNumber));
+    const lienNumber = `${this.prefix}-${Date.now()}`;
+    this.expectAccepted(this.opSend, await this.send(biz.ident, c.lien, lienNumber));
     const held = round(Math.min(c.balance, c.lien));
     await this.expectBalance(biz.wallet.clientId, c.balance, held, `ყადაღის შემდეგ held = ${held}`);
     await this.expectRestriction(lienNumber, statusFor(held, c.lien), held, c.lien);
@@ -644,22 +650,41 @@ export class RsLienHelper {
     return { ...biz, ...biz.wallet, lienNumber };
   }
 
-  /** Register to RS (walletId → enrollment) → submit → RS ადასტურებს → APPROVED */
-  private async register(business: any, walletId?: string, opts: { submit?: boolean; approve?: boolean } = {}) {
+  /**
+   * RS რეგისტრაცია (ახალი ლოგიკა, 09.11): wallet-ის მითითება აღარ შეიძლება (1499) —
+   *   wallet ბიზნესზეა (walletId) → რეგისტრაცია თავისით იქმნება (NOT_SUBMITTED) → ვპოულობთ → (submit) → RS ადასტურებს → APPROVED + wallet ACTIVE
+   *   wallet-ის გარეშე → რეგისტრაციას ვქმნით (enrollment null)
+   */
+  protected async register(business: any, walletId?: string, opts: { submit?: boolean; approve?: boolean } = {}) {
     const { submit = true, approve = true } = opts;
-    const data = RsRegistrationHelper.buildData('RESIDENT', {
-      identNumber: business.identificationNumber, ownerFullName: business.ownerFullName,
-      operDate: business.operDate, knownDate: business.knownDate,
-    });
-    const reg = RsHubApi.expectOk('POST /api/v1/rs/registrations',
-      await this.api.createRegistration({ ...RsRegistrationHelper.body(data, walletId), submit }));
+    let reg: any;
+    if (walletId) {
+      reg = await this.poll(OP_REG, ENROLL_TIMEOUT, 'wallet-ის მიბმის შემდეგ RS რეგისტრაცია თავისით იქმნება', async () =>
+        (await this.api.lookupRegistration({ identNumber: business.identificationNumber })).value?.registration || undefined);
+      if (submit) RsHubApi.expectOk('POST /api/v1/rs/registrations/{id}/submit', await this.api.submitRegistration(reg.id));
+    } else {
+      const data = RsRegistrationHelper.buildData(business.residency || 'RESIDENT', {
+        identNumber: business.identificationNumber, ownerFullName: business.ownerFullName,
+        operDate: business.operDate, knownDate: business.knownDate,
+      });
+      reg = RsHubApi.expectOk('POST /api/v1/rs/registrations', await this.api.createRegistration({ ...RsRegistrationHelper.body(data), submit }));
+    }
     if (!approve) return reg;
     await this.sim.approveTaxpayer(business.identificationNumber);
     await this.poll(OP_REG, APPROVE_TIMEOUT, 'status APPROVED', async () => {
       const v = RsHubApi.expectOk(OP_REG, await this.api.getRegistration(reg.id));
       return v.registration.status === 'APPROVED' ? v : undefined;
     });
+    if (walletId) await this.expectEnrolled(reg.id, walletId);
     return reg;
+  }
+
+  /** wallet რეგისტრაციაზე ACTIVE (თავისით ებმის, ~2 წთ) */
+  protected async expectEnrolled(regId: string, clientId: string) {
+    await this.poll(OP_REG, ENROLL_TIMEOUT, `CLIENT:${clientId} ACTIVE (wallet თავისით ებმის რეგისტრაციას)`, async () => {
+      const v = RsHubApi.expectOk(OP_REG, await this.api.getRegistration(regId));
+      return v.enrollments.find((x: any) => x.holderRef === `CLIENT:${clientId}` && x.status === 'ACTIVE');
+    });
   }
 
   // ─── ნაბიჯები ───
@@ -668,7 +693,7 @@ export class RsLienHelper {
    * wallet-ის გადარიცხვა IBAN-ზე: REJECTED → 400 / 5038, ბალანსი უცვლელი · OK → 2xx, ბალანსი −(amount + საკომისიო), held უცვლელი
    *   საკომისიო: FIXED — value; PERCENTAGE — amount × value% (თეთრამდე დამრგვალებული, 0.009 → 0.01)
    */
-  private async transfer(w: Wallet, amount: number, expect: 'OK' | 'REJECTED', currency = 'GEL') {
+  protected async transfer(w: Wallet, amount: number, expect: 'OK' | 'REJECTED', currency = 'GEL') {
     const fee = !w.commission ? 0 : w.commission.type === 'FIXED' ? w.commission.value : round((amount * w.commission.value) / 100);
     const before = await this.gel(w.clientId, currency);
     const token = await this.dist.token(w.clientId, w.clientSecret);
@@ -688,26 +713,38 @@ export class RsLienHelper {
 
   /** RS ხსნის ყადაღას → accepted, restriction WITHDRAWN, restricted 0 */
   private async withdraw(lienNumber: string) {
-    this.expectAccepted(OP_SIM_OBTAIN, await this.sim.obtainLien(lienNumber));
+    this.expectAccepted(this.opObtain, await this.obtain(lienNumber));
     await this.expectRestriction(lienNumber, 'WITHDRAWN', 0);
+  }
+
+  /** RS აგზავნის ყადაღას / ინკასოს (ident ან alt — Foreign) */
+  protected send(personId: string, amount: number | string, number: string, personIdAlt?: string) {
+    return this.kind === 'LIEN'
+      ? this.sim.lien(personId, amount, number, personIdAlt)
+      : this.sim.collection(personId, amount as number, number, 1, '101001000', personIdAlt);
+  }
+
+  /** RS ხსნის ყადაღას (ObtainLien) / ინკასოს (ObtainCollection) */
+  protected obtain(number: string) {
+    return this.kind === 'LIEN' ? this.sim.obtainLien(number) : this.sim.obtainCollection(number);
   }
 
   // ─── შემოწმებები ───
 
-  private guard(...amounts: number[]) {
+  protected guard(...amounts: number[]) {
     assertCondition('ტესტის კონფიგი', amounts.every((a) => a <= MAX_AMOUNT),
       `თანხა > ${MAX_AMOUNT} ₾: ${amounts.join(', ')}`, `STANDARD კლიენტი — ყველა თანხა ≤ ${MAX_AMOUNT} ₾ (რეალური გადარიცხვები)`, amounts);
   }
 
   /** wallet-ის ბალანსი ვალუტაში (default GEL): amount / held */
-  private async gel(clientId: string, currency = 'GEL'): Promise<{ amount: number; held: number }> {
+  protected async gel(clientId: string, currency = 'GEL'): Promise<{ amount: number; held: number }> {
     const client = RsHubApi.expectOk(OP_CLIENT, await this.api.getClient(clientId));
     const b = (client.balances || []).find((x: any) => x.currency === currency) || { amount: 0, held: 0 };
     return { amount: round(b.amount), held: round(b.held) };
   }
 
   /** ბალანსი / held — poll (hold ასინქრონულად ჩნდება) */
-  private async expectBalance(clientId: string, amount: number, held: number, why: string, timeout = HOLD_TIMEOUT, currency = 'GEL') {
+  protected async expectBalance(clientId: string, amount: number, held: number, why: string, timeout = HOLD_TIMEOUT, currency = 'GEL') {
     let last: any;
     const ok = await this.poll(OP_CLIENT, timeout, '', async () => {
       last = await this.gel(clientId, currency);
@@ -722,7 +759,7 @@ export class RsLienHelper {
    *   requestedAmount = ყადაღა, remainingAmount = requested (ყადაღა არაფერს რიცხავს), executedAmount = 0,
    *   PARTIALLY_RESTRICTED → statusReason "Waiting for funds: <აკლია> GEL short"
    */
-  private async expectRestriction(lienNumber: string, status: Status, restricted: number, requested?: number) {
+  protected async expectRestriction(lienNumber: string, status: Status, restricted: number, requested?: number) {
     const op = OP_RESTRICTION + lienNumber;
     let last: any;
     const ok = await this.poll(OP_RESTRICTION, HOLD_TIMEOUT, '', async () => {
@@ -751,7 +788,7 @@ export class RsLienHelper {
     await this.expectBalance(ctx.clientId, c.balance, round(Math.min(c.balance, c.lien)), 'held არ გაორმაგდა');
   }
 
-  private expectAccepted(op: string, res: any) {
+  protected expectAccepted(op: string, res: any) {
     const item = res?.items?.[0];
     assertCondition(op, res?.accepted === true && item?.code === null,
       `code ${item?.code}: ${item?.description}`, 'accepted: true, items[0].code = null (მიღებულია)', res?.items);
@@ -768,7 +805,7 @@ export class RsLienHelper {
   }
 
   /** fn → მნიშვნელობა (მზადაა) ან undefined; timeout → error (strict) ან undefined */
-  private async poll<T>(op: string, timeout: number, expected: string, fn: () => Promise<T | undefined>, strict = true): Promise<T | undefined> {
+  protected async poll<T>(op: string, timeout: number, expected: string, fn: () => Promise<T | undefined>, strict = true): Promise<T | undefined> {
     const until = Date.now() + timeout;
     while (Date.now() < until) {
       const v = await fn();

@@ -267,7 +267,8 @@ export class RsRegistrationHelper {
     const other = RsHubApi.expectOk('POST /api/distributor-hub-business',
       await this.api.createBusiness(RsBusinessHelper.buildBody({ residency: 'RESIDENT' })));
     const res = await this.updateBusiness(business.id, { identificationNumber: other.identificationNumber }, false);
-    await this.expectRejected(OP_BIZ_UPDATE, res, { http: 409, code: 1481 });
+    // KD-2612 გასწორდა (11.11): Approved-ის შემდეგ ident-ის შეცვლა საერთოდ იკრძალება → 409 / 1500 (Not submitted-ზე — 1481); რეგისტრაცია უცვლელია
+    await this.expectRejected(OP_BIZ_UPDATE, res, { http: 409, code: 1500 });
     await this.expectUnchanged(reg.id, 'identNumber', reg.data.identNumber);
   }
 
@@ -312,12 +313,16 @@ export class RsRegistrationHelper {
   private async approvedBusiness() {
     const business = RsHubApi.expectOk('POST /api/distributor-hub-business',
       await this.api.createBusiness(RsBusinessHelper.buildBody({ residency: 'RESIDENT' })));
+    // 09.11-დან wallet-ს რეგისტრაციაზე ვერ ვირჩევთ (1499): wallet ბიზნესზე → რეგისტრაცია თავისით (NOT_SUBMITTED) → submit → APPROVED
     const walletId = await this.newWallet(business.id);
-    const data = RsRegistrationHelper.buildData('RESIDENT', {
-      identNumber: business.identificationNumber, ownerFullName: business.ownerFullName,
-      operDate: business.operDate, knownDate: business.knownDate,
-    });
-    const reg = await this.create(data, walletId);
+    const until = Date.now() + HUB_JOB_TIMEOUT;
+    let found: any;
+    while (!found && Date.now() < until) {
+      found = (await this.api.lookupRegistration({ identNumber: business.identificationNumber })).value?.registration;
+      if (!found) await new Promise((r) => setTimeout(r, 4000));
+    }
+    assertCondition('GET /api/v1/rs/registrations/lookup', !!found, 'რეგისტრაცია არ შეიქმნა', 'wallet-ის მიბმისას რეგისტრაცია თავისით იქმნება', business.identificationNumber);
+    const reg = RsHubApi.expectOk(OP_GET, await this.api.getRegistration(found.id)).registration;
     RsHubApi.expectOk(OP_SUBMIT, await this.api.submitRegistration(reg.id));
     await this.waitApproved(reg.id);
     return { business, reg, walletId };

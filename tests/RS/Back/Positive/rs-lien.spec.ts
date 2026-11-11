@@ -1,5 +1,5 @@
 import { test } from '@playwright/test';
-import { RsLienHelper } from '../../../utils/order-helpers';
+import { RsLienHelper } from '../../../../utils/order-helpers';
 import * as dotenv from 'dotenv';
 
 dotenv.config();
@@ -137,7 +137,7 @@ test.describe('ყადაღის ტესტი — ✅ პოზიტი�
     await new RsLienHelper(request).deactivatedWalletKeepsHold({ balance: 1, lien: 0.5 });
   });
 
-  test('ყადაღის დროს ადმინი ცვლის ბიზნესის სახელს (Edit business) → ყადაღა და გაყინული ფული ადგილზე რჩება', async ({ request }) => {
+  test('ყადაღის დროს ადმინი ცვლის ბიზნესის ალტ. პირად ნომერს (RS-ს არ ეგზავნება) → ყადაღა და გაყინული ფული ადგილზე რჩება', async ({ request }) => {
     await new RsLienHelper(request).businessEditKeepsLien({ balance: 1, lien: 0.5 });
   });
 

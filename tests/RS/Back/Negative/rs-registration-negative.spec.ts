@@ -1,5 +1,5 @@
 import { test } from '@playwright/test';
-import { RsRegistrationHelper } from '../../../utils/order-helpers';
+import { RsRegistrationHelper } from '../../../../utils/order-helpers';
 import * as dotenv from 'dotenv';
 
 dotenv.config();
@@ -37,7 +37,7 @@ test('RS Registration Negative — Edit business: residency → FOREIGN (Approve
   await new RsRegistrationHelper(request).rejected('businessResidencyAfterSubmit', { http: 409, code: 1483 });
 });
 
-test('RS Registration Negative — Edit business დაკავებული ident-ით → 1481, რეგისტრაცია უცვლელი 🐞', async ({ request }) => {
+test('RS Registration Negative — Edit business (Approved) დაკავებული ident-ით → 409 / 1500, რეგისტრაცია უცვლელი (KD-2612)', async ({ request }) => {
   await new RsRegistrationHelper(request).businessTakenIdentKeepsRegistration();
 });
 

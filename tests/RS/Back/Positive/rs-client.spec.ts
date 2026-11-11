@@ -1,6 +1,6 @@
 import { test } from '@playwright/test';
-import { RsClientHelper } from '../../../utils/order-helpers';
-import { gel, currencyConfig } from '../../../utils/order-helpers/RS/RsClientHelper';
+import { RsClientHelper } from '../../../../utils/order-helpers';
+import { gel, currencyConfig } from '../../../../utils/order-helpers/RS/RsClientHelper';
 import * as dotenv from 'dotenv';
 
 dotenv.config();
