@@ -36,201 +36,76 @@
 </head>
 <body>
   <h1>🎭 Playwright Test Report</h1>
-  <div class="meta">11/11/2026, 3:00:38 PM</div>
+  <div class="meta">11/11/2026, 3:17:14 PM</div>
   <div class="summary">
-    <button type="button" class="card active" data-filter="all">Total: 13</button>
-    <button type="button" class="card pass" data-filter="pass">✅ Passed: 12</button>
-    <button type="button" class="card fail" data-filter="fail">❌ Failed: 1</button>
+    <button type="button" class="card active" data-filter="all">Total: 4</button>
+    <button type="button" class="card pass" data-filter="pass">✅ Passed: 4</button>
+    <button type="button" class="card fail" data-filter="fail">❌ Failed: 0</button>
     <button type="button" class="card skip" data-filter="skip">⏭️ Skipped: 0</button>
   </div>
-  <div class="file-group"><div class="file">tests/RS/Front/Positive/rs-front-mixed-wallets.spec.ts</div><details class="test-item" data-status="pass">
+  <div class="file-group"><div class="file">tests/RS/Front/Positive/rs-front-reallocate.spec.ts</div><details class="test-item" data-status="pass">
           <summary class="test">
             <span class="chev">▶</span>
             <span class="st" style="color:#3fb950">✅ passed</span>
-            <span class="name">UI: გზა 1: ბიზნესი + hub wallet → ახალი merchant ბიზნესის Identification Number-ით → Register to RS merchant-ის wallet-ით → იგივე რეგისტრაცია, 2 wallet (payment-service + distributor-hub)</span>
-            <span class="dur">10.3s</span>
-          </summary><pre class="log">✅ Merchant QA RS Merchant 5228 — 995300000027, ident 976971617, BALANCE flow, Temporary Verified (96632b0d-8f08-44ff-885a-7299c2d8c8ca)
-✅ UI Wallets: QA Wuckert Okuneva LLC 3198 (distributor-hub) + QA RS Merchant 5228 (payment-service)
-✅ Way 1: merchant QA RS Merchant 5228 → business 976971617 registration 61216f67-e8de-49d4-acb0-413ff96566f2 — 2 wallets</pre></details><details class="test-item" data-status="pass">
-          <summary class="test">
-            <span class="chev">▶</span>
-            <span class="st" style="color:#3fb950">✅ passed</span>
-            <span class="name">UI: გზა 2: ახალი merchant → Register to RS → ბიზნესი merchant-ის Identification Number-ით + hub wallet → hub wallet იგივე რეგისტრაციას ებმის, 2 wallet</span>
-            <span class="dur">9.5s</span>
-          </summary><pre class="log">✅ Merchant QA RS Merchant 7248 — 995300000028, ident 950268617, BALANCE flow, Temporary Verified (c107aa59-f5c3-4b5b-9d80-033dd8f7525a)
-✅ UI Wallets: QA RS Merchant 7248 (payment-service) + QA Lockman, Hane and Ledner 1362 (distributor-hub)
-✅ Way 2: business with merchant ident 950268617 → hub wallet joined registration 161cc2b9-fb01-4268-b495-ce2a3658fa69 — 2 wallets</pre></details><details class="test-item" data-status="pass">
-          <summary class="test">
-            <span class="chev">▶</span>
-            <span class="st" style="color:#3fb950">✅ passed</span>
-            <span class="name">UI: ყადაღა 0.4: merchant 0.45, hub 0.2 → მხოლოდ merchant 0.4 → hub გადარიცხავს 0.1-ს ✅, merchant ვერ გაიტანს 0.1-ს (თავისუფალი 0.05) → RS ხსნის → ორივე თავისუფალია</span>
-            <span class="dur">90.9s</span>
-          </summary><pre class="log">✅ Merchant QA RS Merchant 2724 — 995300000029, ident 914819514, BALANCE flow, Temporary Verified (dc331b49-99e1-4552-8221-8e95d4ba6ad2)
-✅ Merchant add money 0.5 → balance 0 → 0.49
-✅ Business 914819514: merchant 995300000029 0.45 ₾ + hub 0.2 ₾ (registration 8e0e9e7e-e806-4a45-a2e2-16214981c341)
-✅ UI QA-L-MIX-1794394931377: Fully restricted, restricted 0.4 — Holds per wallet = API
-✅ Transfer 0.1 ₾ OK — held 0 ₾ untouched
-✅ Merchant cash-out 0.1 ₾ rejected (2501)
-✅ Transfer 0.01 ₾ OK — held 0 ₾ untouched
-✅ Merchant cash-out 0.01 ₾ OK — balance 0.44
-✅ LIEN 0.4: merchant held 0.4, hub held 0; after withdraw both move money
-✅ Merchant 300000029 drained: 0.44 → 0</pre></details><details class="test-item" data-status="pass">
-          <summary class="test">
-            <span class="chev">▶</span>
-            <span class="st" style="color:#3fb950">✅ passed</span>
-            <span class="name">UI: ყადაღა 0.4: merchant 0.25, hub 0.2 → merchant 0.25 (მთლიანად) + hub 0.15 → hub ვერ გადარიცხავს 0.1-ს (თავისუფალი 0.05), merchant ვერ გაიტანს 0.05-ს</span>
-            <span class="dur">78.8s</span>
-          </summary><pre class="log">✅ Merchant QA RS Merchant 5405 — 995300000030, ident 907296685, BALANCE flow, Temporary Verified (4ae0b6b6-cb76-4e6e-bb2b-4aecd98591e2)
-✅ Merchant add money 0.3 → balance 0 → 0.29
-✅ Business 907296685: merchant 995300000030 0.25 ₾ + hub 0.2 ₾ (registration 401b833c-d34d-414f-a084-d5f50296f69e)
-✅ UI QA-L-MIX-1794395010795: Fully restricted, restricted 0.4 — Holds per wallet = API
-✅ Transfer 0.1 ₾ rejected (5038) — available 0.05 ₾
-✅ Merchant cash-out 0.05 ₾ rejected (2501)
-✅ Transfer 0.01 ₾ OK — held 0 ₾ untouched
-✅ Merchant cash-out 0.01 ₾ OK — balance 0.24
-✅ LIEN 0.4: merchant held 0.25, hub held 0.15; after withdraw both move money
-✅ Merchant 300000030 drained: 0.24 → 0</pre></details><details class="test-item" data-status="pass">
-          <summary class="test">
-            <span class="chev">▶</span>
-            <span class="st" style="color:#3fb950">✅ passed</span>
-            <span class="name">UI: ყადაღა 0.3: merchant 0.2, hub 0.2 (თანაბარი) → ერთზე მთლიანად 0.2, მეორეზე 0.1 (ვინ — integrator-ის პრიორიტეტი)</span>
-            <span class="dur">79.2s</span>
-          </summary><pre class="log">✅ Merchant QA RS Merchant 6487 — 995300000031, ident 911565001, BALANCE flow, Temporary Verified (c3a79efe-3955-4f4e-9c67-c4b40558e919)
-✅ Merchant add money 0.25 → balance 0 → 0.24
-✅ Business 911565001: merchant 995300000031 0.2 ₾ + hub 0.2 ₾ (registration 67ffd076-6228-4fe1-abfc-077756616cf6)
-✅ UI QA-L-MIX-1794395090771: Fully restricted, restricted 0.3 — Holds per wallet = API
-✅ Transfer 0.01 ₾ OK — held 0.1 ₾ untouched
+            <span class="name">UI: merchant მერე დაემატა: hub 0.3, ყადაღა 0.5 (აკლია 0.2) → ახალი merchant 0.35 → UI: Reallocate holds → merchant 0.35 + hub 0.15 → hub გადარიცხავს 0.15-ს ✅, merchant ვერაფერს</span>
+            <span class="dur">96.0s</span>
+          </summary><pre class="log">✅ Transfer 0.01 ₾ rejected (5038) — available 0 ₾
+✅ Merchant QA RS Merchant 3080 — 995300000040, ident 976218591, BALANCE flow, Temporary Verified (8fb665eb-84bc-4621-ad72-e84e0fb4a8f8)
+✅ Merchant add money 0.4 → balance 0 → 0.39
+ℹ️ Merchant linked after LIEN — before Reallocate: merchant held 0, hub held 0.3
+✅ UI QA-L-LATE-1794395839460: Reallocate holds → HTTP 200
+✅ UI QA-L-LATE-1794395839460: Fully restricted, restricted 0.5 — Holds per wallet = API
+✅ Transfer 0.15 ₾ OK — held 0.15 ₾ untouched
 ✅ Merchant cash-out 0.01 ₾ rejected (2501)
-✅ Equal 0.2 / 0.2, LIEN 0.3 → merchant first (merchant 0.2, hub 0.1)
-✅ Merchant 300000031 drained: 0.2 → 0</pre></details><details class="test-item" data-status="pass">
+✅ Merchant added later → Reallocate → merchant held 0.35, hub held 0.15
+✅ Merchant 300000040 drained: 0.35 → 0</pre></details><details class="test-item" data-status="pass">
           <summary class="test">
             <span class="chev">▶</span>
             <span class="st" style="color:#3fb950">✅ passed</span>
-            <span class="name">UI: ყადაღა 0.4: merchant 0.15, hub 0.45 → მხოლოდ hub 0.4 → merchant გაიტანს 0.05-ს თავის ანგარიშზე ✅, hub ვერ გადარიცხავს 0.1-ს (თავისუფალი 0.05)</span>
-            <span class="dur">116.3s</span>
-          </summary><pre class="log">✅ Merchant QA RS Merchant 4600 — 995300000032, ident 966250602, BALANCE flow, Temporary Verified (2101cf8e-cd44-4dbb-8c90-164d106e0990)
-✅ Merchant add money 0.2 → balance 0 → 0.19
-✅ Business 966250602: merchant 995300000032 0.15 ₾ + hub 0.45 ₾ (registration d445a961-5a1a-47e5-bc7a-488e73ef0150)
-✅ UI QA-L-MIX-1794395203787: Fully restricted, restricted 0.4 — Holds per wallet = API
-✅ Transfer 0.1 ₾ rejected (5038) — available 0.05 ₾
-✅ Merchant cash-out 0.05 ₾ OK — balance 0.1
-✅ Transfer 0.01 ₾ OK — held 0 ₾ untouched
-✅ Merchant cash-out 0.01 ₾ OK — balance 0.09
-✅ LIEN 0.4: merchant held 0, hub held 0.4; after withdraw both move money
-✅ Merchant 300000032 drained: 0.09 → 0</pre></details><details class="test-item" data-status="pass">
+            <span class="name">UI: merchant მერე დაემატა: hub 0.3, ინკასო 0.5 → ახალი merchant 0.35 → UI: Reallocate holds → merchant 0.35 + hub 0.15 → hub გადარიცხავს 0.15-ს ✅, merchant ვერაფერს</span>
+            <span class="dur">99.6s</span>
+          </summary><pre class="log">✅ Transfer 0.01 ₾ rejected (5038) — available 0 ₾
+✅ Merchant QA RS Merchant 2283 — 995300000041, ident 912921313, BALANCE flow, Temporary Verified (20384e65-64c6-48e6-94a7-6fc289289e51)
+✅ Merchant add money 0.4 → balance 0 → 0.39
+ℹ️ Merchant linked after COLLECTION — before Reallocate: merchant held 0, hub held 0.3
+✅ UI QA-C-LATE-1794395935134: Reallocate holds → HTTP 200
+✅ UI QA-C-LATE-1794395935134: Fully restricted, restricted 0.5 — Holds per wallet = API
+✅ Transfer 0.15 ₾ OK — held 0.15 ₾ untouched
+✅ Merchant cash-out 0.01 ₾ rejected (2501)
+✅ Merchant added later → Reallocate → merchant held 0.35, hub held 0.15
+✅ Merchant 300000041 drained: 0.35 → 0</pre></details><details class="test-item" data-status="pass">
           <summary class="test">
             <span class="chev">▶</span>
             <span class="st" style="color:#3fb950">✅ passed</span>
-            <span class="name">UI: ყადაღა 0.4: merchant 0.1, hub 0.2 (სულ 0.3) → Partially restricted, ორივე მთლიანად, ვერც ერთი ვერაფერს → hub-ს +0.2 → hold ივსება (hub 0.3) → Fully restricted</span>
-            <span class="dur">88.0s</span>
-          </summary><pre class="log">✅ Merchant QA RS Merchant 6461 — 995300000033, ident 987480173, BALANCE flow, Temporary Verified (4d99b731-494c-406f-8948-a35cee93fc12)
-✅ Merchant add money 0.15 → balance 0 → 0.14
-✅ Business 987480173: merchant 995300000033 0.1 ₾ + hub 0.2 ₾ (registration b72b911f-73ac-4120-9f53-fb72cd1b62b1)
-✅ UI QA-L-MIX-1794395287547: Partially restricted, restricted 0.3 — Holds per wallet = API
+            <span class="name">UI: hub მერე დაემატა: merchant 0.3, ყადაღა 0.5 (merchant ვერ გაიტანს) → hub 0.35 → UI: Reallocate holds → hub 0.35 + merchant 0.15 → merchant გაიტანს 0.15-ს ✅, hub ვერაფერს</span>
+            <span class="dur">90.8s</span>
+          </summary><pre class="log">✅ Merchant QA RS Merchant 3699 — 995300000042, ident 910993159, BALANCE flow, Temporary Verified (74b01ccb-b89b-4f89-947d-2a7f5539d3fe)
+✅ Merchant add money 0.35 → balance 0 → 0.34
+✅ Business 910993159: merchant 995300000042 0.3 ₾ (hub — მოგვიანებით) (registration 49c8768e-0d14-4e16-9827-fd88b683b00a)
+✅ Merchant cash-out 0.01 ₾ rejected (2501)
+ℹ️ Hub linked after LIEN — before Reallocate: merchant held 0.3, hub held 0
+✅ UI QA-L-LATE-1794396092994: Reallocate holds → HTTP 200
+✅ UI QA-L-LATE-1794396092994: Fully restricted, restricted 0.5 — Holds per wallet = API
 ✅ Transfer 0.01 ₾ rejected (5038) — available 0 ₾
+✅ Merchant cash-out 0.15 ₾ OK — balance 0.15
+✅ Hub added later → Reallocate → merchant held 0.15, hub held 0.35
+✅ Merchant 300000042 drained: 0.15 → 0</pre></details><details class="test-item" data-status="pass">
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="name">UI: hub მერე დაემატა: merchant 0.3, ინკასო 0.5 → hub 0.35 → UI: Reallocate holds → hub 0.35 + merchant 0.15 → merchant გაიტანს 0.15-ს ✅, hub ვერაფერს</span>
+            <span class="dur">91.8s</span>
+          </summary><pre class="log">✅ Merchant QA RS Merchant 1702 — 995300000043, ident 937945102, BALANCE flow, Temporary Verified (d46fc5c6-4402-443d-8645-33f1359689b8)
+✅ Merchant add money 0.35 → balance 0 → 0.34
+✅ Business 937945102: merchant 995300000043 0.3 ₾ (hub — მოგვიანებით) (registration edb33bbd-b731-47f0-b29b-a5f1af360b1c)
 ✅ Merchant cash-out 0.01 ₾ rejected (2501)
-✅ UI QA-L-MIX-1794395287547: Fully restricted, restricted 0.4 — Holds per wallet = API
-✅ LIEN 0.4 short → hub +0.2 → hub held 0.2 → 0.3
-✅ Merchant 300000033 drained: 0.1 → 0</pre></details><details class="test-item" data-status="pass">
-          <summary class="test">
-            <span class="chev">▶</span>
-            <span class="st" style="color:#3fb950">✅ passed</span>
-            <span class="name">UI: ინკასო 0.4: merchant 0.45, hub 0.2 → მხოლოდ merchant 0.4 → hub გადარიცხავს 0.1-ს ✅, merchant ვერ გაიტანს 0.1-ს → RS ხსნის → ორივე თავისუფალია</span>
-            <span class="dur">85.2s</span>
-          </summary><pre class="log">✅ Merchant QA RS Merchant 7953 — 995300000034, ident 995733980, BALANCE flow, Temporary Verified (8ab4a3fd-1891-45ed-9fa1-0854cdadf789)
-✅ Merchant add money 0.5 → balance 0 → 0.49
-✅ Business 995733980: merchant 995300000034 0.45 ₾ + hub 0.2 ₾ (registration 2729c32b-0701-4e5a-9f17-ff36027cdf5d)
-✅ UI QA-C-MIX-1794395375921: Fully restricted, restricted 0.4 — Holds per wallet = API
-✅ Transfer 0.1 ₾ OK — held 0 ₾ untouched
-✅ Merchant cash-out 0.1 ₾ rejected (2501)
-✅ Transfer 0.01 ₾ OK — held 0 ₾ untouched
-✅ Merchant cash-out 0.01 ₾ OK — balance 0.44
-✅ COLLECTION 0.4: merchant held 0.4, hub held 0; after withdraw both move money
-✅ Merchant 300000034 drained: 0.44 → 0</pre></details><details class="test-item" data-status="pass">
-          <summary class="test">
-            <span class="chev">▶</span>
-            <span class="st" style="color:#3fb950">✅ passed</span>
-            <span class="name">UI: ინკასო 0.4: merchant 0.2, hub 0.2 → merchant 0.2 (მთლიანად) + hub 0.2 → hub ვერ გადარიცხავს, merchant ვერ გაიტანს</span>
-            <span class="dur">92.4s</span>
-          </summary><pre class="log">✅ Merchant QA RS Merchant 1744 — 995300000035, ident 910935535, BALANCE flow, Temporary Verified (8629c0dd-a9e6-46ee-9d55-55be44083b9f)
-✅ Merchant add money 0.25 → balance 0 → 0.24
-✅ Business 910935535: merchant 995300000035 0.2 ₾ + hub 0.2 ₾ (registration d9fb97bb-7503-4028-8253-fec4fb2da32e)
-✅ UI QA-C-MIX-1794395468844: Fully restricted, restricted 0.4 — Holds per wallet = API
-✅ Transfer 0.05 ₾ rejected (5038) — available 0 ₾
-✅ Merchant cash-out 0.05 ₾ rejected (2501)
-✅ Transfer 0.01 ₾ OK — held 0 ₾ untouched
-✅ Merchant cash-out 0.01 ₾ OK — balance 0.19
-✅ COLLECTION 0.4: merchant held 0.2, hub held 0.2; after withdraw both move money
-✅ Merchant 300000035 drained: 0.19 → 0</pre></details><details class="test-item" data-status="pass">
-          <summary class="test">
-            <span class="chev">▶</span>
-            <span class="st" style="color:#3fb950">✅ passed</span>
-            <span class="name">UI: ინკასო 0.3: merchant 0.15, hub 0.15 (თანაბარი) → ერთზე მთლიანად 0.15, მეორეზე 0.15</span>
-            <span class="dur">77.5s</span>
-          </summary><pre class="log">✅ Merchant QA RS Merchant 0171 — 995300000036, ident 901771735, BALANCE flow, Temporary Verified (02e6b569-15d7-4f7c-8e6a-5e4f653cd998)
-✅ Merchant add money 0.2 → balance 0 → 0.19
-✅ Business 901771735: merchant 995300000036 0.15 ₾ + hub 0.15 ₾ (registration 976f149d-2ec8-44e5-893b-92530f519b44)
-✅ UI QA-C-MIX-1794395552138: Fully restricted, restricted 0.3 — Holds per wallet = API
+ℹ️ Hub linked after COLLECTION — before Reallocate: merchant held 0.3, hub held 0
+✅ UI QA-C-LATE-1794396186402: Reallocate holds → HTTP 200
+✅ UI QA-C-LATE-1794396186402: Fully restricted, restricted 0.5 — Holds per wallet = API
 ✅ Transfer 0.01 ₾ rejected (5038) — available 0 ₾
-✅ Merchant cash-out 0.01 ₾ rejected (2501)
-✅ Equal 0.15 / 0.15, COLLECTION 0.3 → merchant first (merchant 0.15, hub 0.15)
-✅ Merchant 300000036 drained: 0.15 → 0</pre></details><details class="test-item" data-status="pass">
-          <summary class="test">
-            <span class="chev">▶</span>
-            <span class="st" style="color:#3fb950">✅ passed</span>
-            <span class="name">UI: ინკასო 0.4: merchant 0.1, hub 0.45 → მხოლოდ hub 0.4 → merchant გაიტანს 0.05-ს ✅, hub ვერ გადარიცხავს 0.1-ს</span>
-            <span class="dur">82.8s</span>
-          </summary><pre class="log">✅ Merchant QA RS Merchant 4653 — 995300000037, ident 978746133, BALANCE flow, Temporary Verified (282477ee-76a6-466d-9b83-31528aa98bfb)
-✅ Merchant add money 0.15 → balance 0 → 0.14
-✅ Business 978746133: merchant 995300000037 0.1 ₾ + hub 0.45 ₾ (registration bf3c52e2-98b1-4a8e-a640-6dac6e53e693)
-✅ UI QA-C-MIX-1794395630383: Fully restricted, restricted 0.4 — Holds per wallet = API
-✅ Transfer 0.1 ₾ rejected (5038) — available 0.05 ₾
-✅ Merchant cash-out 0.05 ₾ OK — balance 0.05
-✅ Transfer 0.01 ₾ OK — held 0 ₾ untouched
-✅ Merchant cash-out 0.01 ₾ OK — balance 0.04
-✅ COLLECTION 0.4: merchant held 0, hub held 0.4; after withdraw both move money
-✅ Merchant 300000037 drained: 0.04 → 0</pre></details><details class="test-item" data-status="pass">
-          <summary class="test">
-            <span class="chev">▶</span>
-            <span class="st" style="color:#3fb950">✅ passed</span>
-            <span class="name">UI: ინკასო 0.4: merchant 0.05, hub 0.2 (სულ 0.25) → Partially restricted → hub-ს +0.2 → hold ივსება (hub 0.35) → Fully restricted</span>
-            <span class="dur">83.5s</span>
-          </summary><pre class="log">✅ Merchant QA RS Merchant 8944 — 995300000038, ident 922804916, BALANCE flow, Temporary Verified (6ab1aba5-69bf-493b-9a62-b19e28a30157)
-✅ Merchant add money 0.1 → balance 0 → 0.09
-✅ Business 922804916: merchant 995300000038 0.05 ₾ + hub 0.2 ₾ (registration 559f70b5-f012-45b1-a823-1deb7e8df0da)
-✅ UI QA-C-MIX-1794395712391: Partially restricted, restricted 0.25 — Holds per wallet = API
-✅ Transfer 0.01 ₾ rejected (5038) — available 0 ₾
-✅ Merchant cash-out 0.01 ₾ rejected (2501)
-✅ UI QA-C-MIX-1794395712391: Fully restricted, restricted 0.4 — Holds per wallet = API
-✅ COLLECTION 0.4 short → hub +0.2 → hub held 0.2 → 0.35
-✅ Merchant 300000038 drained: 0.05 → 0</pre></details><details class="test-item" data-status="fail" open>
-          <summary class="test">
-            <span class="chev">▶</span>
-            <span class="st" style="color:#f85149">❌ failed</span>
-            <span class="name">UI: ინკასო 0.35: merchant 0.05, hub 0.3 → hub 0.3 + merchant 0.05 → ადმინი იხდის 0.3 → ჩამოიჭრება გაყინულიდან (merchant / hub), ჯამი 0.3, ბალანსები შემცირდა</span>
-            <span class="dur">97.3s</span>
-          </summary><pre class="log">✅ Merchant QA RS Merchant 5620 — 995300000039, ident 998510770, BALANCE flow, Temporary Verified (daf486fd-9a73-43d2-947a-f6a52f0584c6)
-✅ Merchant add money 0.1 → balance 0 → 0.09
-✅ Business 998510770: merchant 995300000039 0.05 ₾ + hub 0.3 ₾ (registration 0f955833-c716-4d7a-a9b6-070c5c857328)
-✅ UI QA-C-MIX-1794395806267: Request amount → Record manual payment 0.3
-✅ UI QA-C-MIX-1794395806267: Partially executed, executed 0.3 — Executions + TRANSFERS = API
-✅ Transfer 0.01 ₾ rejected (5038) — available 0 ₾
-✅ Merchant cash-out 0.01 ₾ rejected (2501)
-✅ Collection 0.35 paid 0.3: merchant −0 (now 0.05, held 0.05), hub −0.3 (held 0)
-✅ Merchant 300000039 drained: 0.05 → 0</pre><pre class="err">ApiAssertionError: 
-❌ API TEST FAILED
-───────────────────────────────────────────
-🔧 ოპერაცია:    DELETE /api/distributor-hub-business/{id}/clients/{clientId}
-⚠️  პრობლემა:    HTTP 400, code 5114: Money is held on this client for RS. It can leave the business once RS releases it.
-📥 მიმდინარე შედეგი:
-{
-  "message": "Money is held on this client for RS. It can leave the business once RS releases it.",
-  "statusCode": 5114,
-  "exceptionGroup": 2
-}
-✅ მოსალოდნელი შედეგი: wallet (held 0) ბიზნესიდან იხსნება — RS-მა ყველაფერი მოხსნა
-───────────────────────────────────────────
-</pre></details></div>
+✅ Merchant cash-out 0.15 ₾ OK — balance 0.15
+✅ Hub added later → Reallocate → merchant held 0.15, hub held 0.35
+✅ Merchant 300000043 drained: 0.15 → 0</pre></details></div>
   <script>
     (function () {
       const cards = document.querySelectorAll('.card');
