@@ -36,35 +36,187 @@
 </head>
 <body>
   <h1>🎭 Playwright Test Report</h1>
-  <div class="meta">11/11/2026, 11:00:05 AM</div>
+  <div class="meta">11/11/2026, 11:01:10 AM</div>
   <div class="summary">
-    <button type="button" class="card active" data-filter="all">Total: 3</button>
-    <button type="button" class="card pass" data-filter="pass">✅ Passed: 3</button>
+    <button type="button" class="card active" data-filter="all">Total: 24</button>
+    <button type="button" class="card pass" data-filter="pass">✅ Passed: 24</button>
     <button type="button" class="card fail" data-filter="fail">❌ Failed: 0</button>
     <button type="button" class="card skip" data-filter="skip">⏭️ Skipped: 0</button>
   </div>
-  <div class="file-group"><div class="file">tests/RS/Front/Negative/rs-front-guards-negative.spec.ts</div><details class="test-item" data-status="pass">
+  <div class="file-group"><div class="file">tests/RS/Front/Negative/rs-front-business-negative.spec.ts</div><details class="test-item" data-status="pass">
           <summary class="test">
             <span class="chev">▶</span>
             <span class="st" style="color:#3fb950">✅ passed</span>
-            <span class="name">UI: wallet 0.3 → ყადაღა 0.2 → ბიზნესის გვერდზე Unlink გამორთულია → API unlink → 1492 (Money is held) → RS ხსნის → Unlink ირთვება</span>
-            <span class="dur">36.9s</span>
-          </summary><pre class="log">✅ Wallet QA UI Wallet 480804 created from UI (bb437010-8e38-4d48-862c-594e1a19591b), balance 0.3 ₾
+            <span class="name">UI: Create business — Resident, ცარიელი ფორმა → Create → წითლად: Owner full name, Owner identification number, Operation date, Known date; ბიზნესი არ იქმნება</span>
+            <span class="dur">5.3s</span>
+          </summary><pre class="log">✅ UI: Resident empty form rejected — required: ownerFullName, identNumber, operDate, knownDate</pre></details><details class="test-item" data-status="pass">
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="name">UI: Create business — Foreign, ცარიელი ფორმა → Create → წითლად: Owner full name, Operation date და 6 მისამართის ველი; ბიზნესი არ იქმნება</span>
+            <span class="dur">5.8s</span>
+          </summary><pre class="log">✅ UI: Foreign empty form rejected — required: ownerFullName, operDate, legalAddressCountry, legalAddressCity, legalAddressLine, actualAddressCountry, actualAddressCity, actualAddressLine</pre></details></div><div class="file-group"><div class="file">tests/RS/Front/Negative/rs-front-wallet-negative.spec.ts</div><details class="test-item" data-status="pass">
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="name">UI: New Integrator: Scheme Wallet, სხვა ველები ცარიელი → Create → შეცდომები: Name, Distribution method, Distribution Strategy, Min / Max transaction amount, Commission rate type, Commission; wallet არ იქმნება</span>
+            <span class="dur">6.1s</span>
+          </summary><pre class="log">✅ UI: empty wallet form rejected — 28 invalid fields</pre></details></div><div class="file-group"><div class="file">tests/RS/Front/Positive/rs-front-business.spec.ts</div><details class="test-item" data-status="pass">
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="name">UI: Create business — Resident → toast "Business created" → ბიზნესის გვერდზე სწორი მონაცემები, Register to RS → API-ში ყველა ველი შენახულია → სიაში პირველია (0 კლიენტი)</span>
+            <span class="dur">8.7s</span>
+          </summary><pre class="log">✅ UI: Resident business QA Okuneva Torphy Inc (951196035) created — first in list</pre></details><details class="test-item" data-status="pass">
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="name">UI: Create business — Foreign (მისამართებით) → toast "Business created" → ბიზნესის გვერდზე Foreign → API-ში მისამართებიც შენახულია → სიაში პირველია</span>
+            <span class="dur">8.0s</span>
+          </summary><pre class="log">✅ UI: Foreign business QA Waelchi, Schaden and Fadel (QA-FRN-94669159) created — first in list</pre></details><details class="test-item" data-status="pass">
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="name">UI: ძებნა identification number-ით → სიაში მხოლოდ ეს ბიზნესი</span>
+            <span class="dur">5.3s</span>
+          </summary><pre class="log">✅ UI: search 931069721 → 1 business</pre></details><details class="test-item" data-status="pass">
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="name">UI: ფილტრი Owner-ით → სიაში მხოლოდ ამ სახელის ბიზნესები</span>
+            <span class="dur">6.0s</span>
+          </summary><pre class="log">✅ UI: filter Owner "QA Grady - Lebsack" → 1 row(s)</pre></details><details class="test-item" data-status="pass">
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="name">UI: ფილტრი Residency = Resident → სიაში მხოლოდ Resident ბიზნესები</span>
+            <span class="dur">5.8s</span>
+          </summary><pre class="log">✅ UI: filter Residency Resident → 10 row(s), all Resident</pre></details><details class="test-item" data-status="pass">
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="name">UI: ფილტრი Residency = Foreign → სიაში მხოლოდ Foreign ბიზნესები</span>
+            <span class="dur">6.5s</span>
+          </summary><pre class="log">✅ UI: filter Residency Foreign → 10 row(s), all Foreign</pre></details></div><div class="file-group"><div class="file">tests/RS/Front/Positive/rs-front-lien.spec.ts</div><details class="test-item" data-status="pass">
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="name">UI flow (wallet → ბიზნესი → მიბმა → რეგისტრაცია → Approved) → wallet-ზე 0.5 ₾ → RS აგზავნის ყადაღას 0.3 ₾ → Fully restricted: ფანჯარა, Holds per wallet (Held 0.30), რეგისტრაციის და ბიზნესის ცხრილები, ბალანსი 0.50 / 0.30 / 0.20</span>
+            <span class="dur">32.0s</span>
+          </summary><pre class="log">✅ Wallet QA UI Wallet 121261 created from UI (34869561-903f-40c0-8953-9f61037f280a), balance 0.5 ₾
 ✅ Registration tables OK — Data, Wallets, business page, list
-✅ Business QA Hessel - Prosacco (928087117) created from UI — wallet linked, registration Approved
-✅ Unlink disabled while held (API 1492) → enabled after withdraw</pre></details></div><div class="file-group"><div class="file">tests/RS/Front/Positive/rs-front-register-to-rs.spec.ts</div><details class="test-item" data-status="pass">
+✅ Business QA Jacobi Ledner LLC (960985522) created from UI — wallet linked, registration Approved
+✅ Lien 0.3 ₾ on wallet 0.5 ₾ — Fully restricted, held 0.3: modal, holds, row, business page OK</pre></details><details class="test-item" data-status="pass">
           <summary class="test">
             <span class="chev">▶</span>
             <span class="st" style="color:#3fb950">✅ passed</span>
-            <span class="name">UI: Register to RS → Wallet type-ში მხოლოდ "No wallet" და "Payment merchant" → მინიშნება "Distributor hub wallets are registered through their business" → ბმული გადადის Dist. Businesses-ზე</span>
-            <span class="dur">4.5s</span>
-          </summary><pre class="log">✅ Wallet type: No wallet · Payment merchant; hint link → https://dashboard.dev.keepz.me/distribution-hub-businesses</pre></details><details class="test-item" data-status="pass">
+            <span class="name">UI flow → wallet-ზე 0.3 ₾ → RS აგზავნის ყადაღას 0.5 ₾ → Partially restricted, "Waiting for funds: 0.20 GEL short", Fills up Yes, ბალანსი 0.30 / 0.30 / 0.00</span>
+            <span class="dur">34.1s</span>
+          </summary><pre class="log">✅ Wallet QA UI Wallet 600010 created from UI (4dbce84b-6c74-4ff9-8dc3-4a24b62a0c0f), balance 0.3 ₾
+✅ Registration tables OK — Data, Wallets, business page, list
+✅ Business QA Feeney - Tromp (960940121) created from UI — wallet linked, registration Approved
+✅ Lien 0.5 ₾ on wallet 0.3 ₾ — Partially restricted, held 0.3: modal, holds, row, business page OK</pre></details><details class="test-item" data-status="pass">
           <summary class="test">
             <span class="chev">▶</span>
             <span class="st" style="color:#3fb950">✅ passed</span>
-            <span class="name">UI: ბიზნესი + wallet → RS პანელი: Refresh · Open registration · Submit to RS · Not submitted (Register to RS აღარ არის) → Submit to RS ბიზნესის გვერდიდან → "Submitted to RS", Pending RS approval → RS ადასტურებს → Refresh → Approved, თარიღებით</span>
-            <span class="dur">12.7s</span>
-          </summary><pre class="log">✅ Business RS panel: Submit to RS → Pending → Refresh → Approved (c778ed1d-6835-45a9-a570-bc4a5d7ddb48)</pre></details></div>
+            <span class="name">UI flow → ცარიელი wallet (0 ₾) → RS აგზავნის ყადაღას 0.3 ₾ → Pending, "Waiting for funds: 0.30 GEL short", Held 0, ბალანსი 0.00 / 0.00 / 0.00</span>
+            <span class="dur">41.8s</span>
+          </summary><pre class="log">✅ Wallet QA UI Wallet 808981 created from UI (473bd73b-360a-4ce9-9e6e-14d5675b9615)
+✅ Registration tables OK — Data, Wallets, business page, list
+✅ Business QA Champlin, Hessel and Mosciski (966305903) created from UI — wallet linked, registration Approved
+✅ Lien 0.3 ₾ on wallet 0 ₾ — Pending, held 0: modal, holds, row, business page OK</pre></details><details class="test-item" data-status="pass">
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="name">UI: 3 wallet (0.2 / 0.5 / 0.3) → ყადაღა 0.6 → ჯერ ყველაზე დიდი: 0.5 + 0.1 → Holds per wallet = API, ბიზნესის გვერდზე თითო wallet-ის ბალანსი / გაყინული / თავისუფალი</span>
+            <span class="dur">44.3s</span>
+          </summary><pre class="log">✅ Wallet QA UI Wallet 217877 created from UI (0703016d-f3d4-416d-93b2-bd3c99f8f20a), balance 0.2 ₾
+✅ Registration tables OK — Data, Wallets, business page, list
+✅ Business QA Wolf - Cormier (952608812) created from UI — wallet linked, registration Approved
+✅ 3 wallets on business: QA UI Wallet 217877 (0.2), QA UI Wallet 954838 (0.5), QA UI Wallet 894665 (0.3)
+✅ Lien 0.6 across 3 wallets — 0.2→held 0, 0.5→held 0.5, 0.3→held 0.1</pre></details></div><div class="file-group"><div class="file">tests/RS/Front/Positive/rs-front-registration-tabs.spec.ts</div><details class="test-item" data-status="pass">
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="name">UI: Approved რეგისტრაცია → სათაური (Partner, Approved by, Submitted / Approved დრო, Registration ID) და Data ტაბი = API; RS-ში გაგზავნილ ველებს "Sent to RS" ნიშანი</span>
+            <span class="dur">29.3s</span>
+          </summary><pre class="log">✅ Wallet QA UI Wallet 443252 created from UI (d41ece13-a695-40ff-abc3-880bd015dc4e)
+✅ Registration tables OK — Data, Wallets, business page, list
+✅ Business QA Sporer, Reichert and Waelchi (921123893) created from UI — wallet linked, registration Approved
+✅ Header + Data = API</pre></details><details class="test-item" data-status="pass">
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="name">UI: ბიზნესზე 3 wallet (1 UI-დან + 2 Link clients-ით) → Wallets ტაბზე 3 მწკრივი (სახელი, Integrator, Holder reference, Accounts open, Active, Enrolled) = API</span>
+            <span class="dur">38.0s</span>
+          </summary><pre class="log">✅ Wallet QA UI Wallet 037447 created from UI (3e2fdad3-41d7-4019-967f-569df3c478e7), balance 0.2 ₾
+✅ Registration tables OK — Data, Wallets, business page, list
+✅ Business QA Nolan Torphy Group (997944259) created from UI — wallet linked, registration Approved
+✅ 3 wallets on business: QA UI Wallet 037447 (0.2), QA UI Wallet 598762 (0.5), QA UI Wallet 055555 (0.3)
+✅ Wallets tab — 3 rows = API enrollments</pre></details><details class="test-item" data-status="pass">
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="name">UI: Field changes — Not submitted-ზე Edit data (სახელი, Known date) → 2 მწკრივი (ძველი / ახალი, ვინ, როდის) = API; Approved-ზე RS-ში გაგზავნილი ველები გამორთულია</span>
+            <span class="dur">9.3s</span>
+          </summary><pre class="log">✅ Field changes — Not submitted edits listed, Approved RS fields locked</pre></details><details class="test-item" data-status="pass">
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="name">UI: RS messages ტაბი → NEW_CLIENT "New client" / Acked (Message ID, Attempts, Created, Acknowledged) = API</span>
+            <span class="dur">27.5s</span>
+          </summary><pre class="log">✅ Wallet QA UI Wallet 939141 created from UI (3394a66d-cacb-4ab1-a685-e209fde41a62)
+✅ Registration tables OK — Data, Wallets, business page, list
+✅ Business QA Cormier, Nienow and Cormier (913676117) created from UI — wallet linked, registration Approved
+✅ RS messages — 1 row(s) = API</pre></details><details class="test-item" data-status="pass">
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="name">UI: History ტაბი → ყველა ნაბიჯი (Client created → Enrollment created → Queued new client → Submit → Approved), ახალი ზემოთ, ავტორებით</span>
+            <span class="dur">29.0s</span>
+          </summary><pre class="log">✅ Wallet QA UI Wallet 840495 created from UI (40114410-c5d1-4068-b660-7b72b930a053)
+✅ Registration tables OK — Data, Wallets, business page, list
+✅ Business QA Dibbert, Tromp and Kuhn (986506336) created from UI — wallet linked, registration Approved
+✅ History — all steps, newest first, actors</pre></details></div><div class="file-group"><div class="file">tests/RS/Front/Positive/rs-front-registration.spec.ts</div><details class="test-item" data-status="pass">
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="name">UI: ბიზნესის შექმნა → wallet-ის მიბმა → რეგისტრაცია თავისით იქმნება (Not submitted) → Submit to RS → Pending RS approval → RS ადასტურებს → Approved, Wallets ტაბზე ჩანს wallet</span>
+            <span class="dur">28.4s</span>
+          </summary><pre class="log">✅ Wallet QA UI Wallet 811143 created from UI (62d1b1c5-af90-41d1-ae78-5ccdab09c06c)
+✅ Registration tables OK — Data, Wallets, business page, list
+✅ Business QA Kemmer - Marvin (967412837) created from UI — wallet linked, registration Approved
+✅ UI: QA Kemmer - Marvin (967412837) — Approved, wallet QA UI Wallet 811143 linked to RS registration</pre></details><details class="test-item" data-status="pass">
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="name">UI: "Clients without business" → კლიენტის მწკრივიდან Create business → ბანერი "will be linked", Operation date = კლიენტის შექმნის თარიღი → Create → wallet ბიზნესზე მიბმულია, რეგისტრაცია Not submitted, კლიენტი ტაბიდან ქრება (რიცხვი −1)</span>
+            <span class="dur">8.2s</span>
+          </summary><pre class="log">✅ UI: business QA Abshire - Kessler created from client QA Nienow, Sporer and Nolan 4485 — linked, left the free list</pre></details></div><div class="file-group"><div class="file">tests/RS/Front/Positive/rs-front-wallet.spec.ts</div><details class="test-item" data-status="pass">
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="name">UI: Dist. Integrators → New Integrator: Wallet (ბიზნესის გარეშე), IBAN, STANDARD, GEL, For testing → toast → სიაში: Test, Wallet, Activated, IBAN, STANDARD, GEL, ₾ 0 → API-ში ყველა ველი → "Clients without business"-ში ჩანს</span>
+            <span class="dur">15.6s</span>
+          </summary><pre class="log">✅ UI: wallet QA UI Wallet 597130 created — list, API, Clients without business OK</pre></details><details class="test-item" data-status="pass">
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="name">UI: New Integrator: Wallet + Business არჩეულია → სიაში Scheme "Wallet · &lt;ბიზნესი&gt;" → ბიზნესის გვერდზე Wallet clients-ში ჩანს → API businessId → "Clients without business"-ში არ ჩანს</span>
+            <span class="dur">20.4s</span>
+          </summary><pre class="log">✅ UI: wallet QA UI Wallet 211738 created on business QA Jacobi, Kuhn and Hessel</pre></details><details class="test-item" data-status="pass">
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="name">UI: Wallet კლიენტი ბიზნესის გარეშე → "Clients without business" ტაბში ჩანს (სახელი, Client ID, Active), რიცხვი +1</span>
+            <span class="dur">6.6s</span>
+          </summary><pre class="log">✅ UI: wallet QA Schroeder - Kemmer 0029 listed in Clients without business (119 → 120)</pre></details><details class="test-item" data-status="pass">
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="name">UI: ძებნა სახელით: სატესტო wallet "Show Test Integrators"-ის გარეშე არ ჩანს → ჩართვით ჩანს (1 მწკრივი, "Test" ნიშნით)</span>
+            <span class="dur">10.9s</span>
+          </summary><pre class="log">✅ UI: test filter — hidden without, shown with "Show Test Integrators"</pre></details></div>
   <script>
     (function () {
       const cards = document.querySelectorAll('.card');
