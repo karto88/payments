@@ -36,40 +36,38 @@
 </head>
 <body>
   <h1>🎭 Playwright Test Report</h1>
-  <div class="meta">11/11/2026, 10:34:16 AM</div>
+  <div class="meta">11/11/2026, 10:36:06 AM</div>
   <div class="summary">
-    <button type="button" class="card active" data-filter="all">Total: 1</button>
-    <button type="button" class="card pass" data-filter="pass">✅ Passed: 0</button>
-    <button type="button" class="card fail" data-filter="fail">❌ Failed: 1</button>
+    <button type="button" class="card active" data-filter="all">Total: 2</button>
+    <button type="button" class="card pass" data-filter="pass">✅ Passed: 2</button>
+    <button type="button" class="card fail" data-filter="fail">❌ Failed: 0</button>
     <button type="button" class="card skip" data-filter="skip">⏭️ Skipped: 0</button>
   </div>
-  <div class="file-group"><div class="file">tests/RS/Front/Positive/rs-front-reallocate.spec.ts</div><details class="test-item" data-status="fail" open>
+  <div class="file-group"><div class="file">tests/RS/Front/Positive/rs-front-reallocate.spec.ts</div><details class="test-item" data-status="pass">
           <summary class="test">
             <span class="chev">▶</span>
-            <span class="st" style="color:#f85149">❌ failed</span>
-            <span class="name">UI: 2 hub wallet A 0.3 / B 0.2 → ინკასო 0.4 → A 0.3 + B 0.1 → B-ს +0.5 → UI: Reallocate holds → მთელი 0.4 B-ზე, A თავისუფლდება და გადარიცხავს 0.1-ს ✅</span>
-            <span class="dur">33.4s</span>
-          </summary><pre class="log">✅ Wallet QA UI Wallet 225101 created from UI (322f5cef-3e63-4b75-9743-4d2c100878c7), balance 0.3 ₾
+            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="name">UI: wallet A 0.3 → ყადაღა 0.5 → Partially restricted (A 0.3, აკლია 0.2) → UI-დან ებმის wallet B 0.4 → B-ზე ჯერ არაფერი → UI: Reallocate holds → B 0.4 + A 0.1 → Fully restricted → A გადარიცხავს 0.1-ს ✅; Holds per wallet და ბიზნესის გვერდი = API</span>
+            <span class="dur">44.9s</span>
+          </summary><pre class="log">✅ Wallet QA UI Wallet 299779 created from UI (f69e0537-4eea-45f9-9f16-f280d8a233bf), balance 0.3 ₾
 ✅ Registration tables OK — Data, Wallets, business page, list
-✅ Business QA Ledner Berge Inc (944276384) created from UI — wallet linked, registration Approved
-✅ 2 wallets on business: QA UI Wallet 225101 (0.3), QA UI Wallet 528476 (0.2)
-ℹ️ QA UI Wallet 528476 +0.5 → holds unchanged until Reallocate (QA UI Wallet 225101 0.3, QA UI Wallet 528476 0.1)</pre><pre class="err">ApiAssertionError: 
-❌ API TEST FAILED
-───────────────────────────────────────────
-🔧 ოპერაცია:    UI Liens &amp; collections — ფანჯარა
-⚠️  პრობლემა:    ღილაკები: Overview · Holds per wallet · Executions · History · Audit · Request amount from RS
-📥 მიმდინარე შედეგი:
-[
-  "Overview",
-  "Holds per wallet",
-  "Executions",
-  "History",
-  "Audit",
-  "Request amount from RS"
-]
-✅ მოსალოდნელი შედეგი: ღილაკი "Reallocate holds"
-───────────────────────────────────────────
-</pre></details></div>
+✅ Business QA Quigley, Marvin and Weissnat (961699643) created from UI — wallet linked, registration Approved
+✅ 1 wallets on business: QA UI Wallet 299779 (0.3)
+✅ 2 wallets on business: QA UI Wallet 299779 (0.3), QA UI Wallet 642712 (0.4)
+ℹ️ QA UI Wallet 642712 (0.4) linked → before Reallocate held only on QA UI Wallet 299779 (0.3)
+✅ LIEN 0.5: Reallocate holds → QA UI Wallet 642712 0.4, QA UI Wallet 299779 0.1; QA UI Wallet 299779 transferred 0.1</pre></details><details class="test-item" data-status="pass">
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="name">UI: wallet A 0.3 → ინკასო 0.5 → Partially restricted → UI-დან ებმის wallet B 0.4 → UI: Reallocate holds → B 0.4 + A 0.1 → Fully restricted → A გადარიცხავს 0.1-ს ✅</span>
+            <span class="dur">43.9s</span>
+          </summary><pre class="log">✅ Wallet QA UI Wallet 815702 created from UI (7be7bca2-9a8a-42d3-92d2-c58262e776a1), balance 0.3 ₾
+✅ Registration tables OK — Data, Wallets, business page, list
+✅ Business QA Durgan, Abshire and Weissnat (916049934) created from UI — wallet linked, registration Approved
+✅ 1 wallets on business: QA UI Wallet 815702 (0.3)
+✅ 2 wallets on business: QA UI Wallet 815702 (0.3), QA UI Wallet 108610 (0.4)
+ℹ️ QA UI Wallet 108610 (0.4) linked → before Reallocate held only on QA UI Wallet 815702 (0.3)
+✅ COLLECTION 0.5: Reallocate holds → QA UI Wallet 108610 0.4, QA UI Wallet 815702 0.1; QA UI Wallet 815702 transferred 0.1</pre></details></div>
   <script>
     (function () {
       const cards = document.querySelectorAll('.card');
