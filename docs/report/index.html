@@ -36,193 +36,44 @@
 </head>
 <body>
   <h1>🎭 Playwright Test Report</h1>
-  <div class="meta">11/11/2026, 12:36:59 PM</div>
+  <div class="meta">11/11/2026, 12:48:42 PM</div>
   <div class="summary">
-    <button type="button" class="card active" data-filter="all">Total: 14</button>
-    <button type="button" class="card pass" data-filter="pass">✅ Passed: 11</button>
-    <button type="button" class="card fail" data-filter="fail">❌ Failed: 3</button>
+    <button type="button" class="card active" data-filter="all">Total: 3</button>
+    <button type="button" class="card pass" data-filter="pass">✅ Passed: 3</button>
+    <button type="button" class="card fail" data-filter="fail">❌ Failed: 0</button>
     <button type="button" class="card skip" data-filter="skip">⏭️ Skipped: 0</button>
   </div>
   <div class="file-group"><div class="file">tests/RS/Front/Negative/rs-front-manual-payment-negative.spec.ts</div><details class="test-item" data-status="pass">
           <summary class="test">
             <span class="chev">▶</span>
             <span class="st" style="color:#3fb950">✅ passed</span>
-            <span class="name">UI: Request amount-მდე — TODAY "Not asked today…", "Record manual payment" არ ჩანს → API-ით ჩაწერა → 409 / 7031, არაფერი ჩამოიჭრა</span>
-            <span class="dur">33.3s</span>
-          </summary><pre class="log">✅ Wallet QA UI Wallet 604418 created from UI (7d945361-ca6a-4043-a68a-e59f08167b77), balance 0.5 ₾
+            <span class="name">UI: Amount paid — აკრეფა "-0.1" → მინუსი არ იწერება, ველში "0.1" (უარყოფითს ვერ ჩაწერ)</span>
+            <span class="dur">43.8s</span>
+          </summary><pre class="log">✅ Wallet QA UI Wallet 623527 created from UI (1bf3dc70-ac0f-4298-8c6d-9b6132b47abb), balance 0.5 ₾
 ✅ Registration tables OK — Data, Wallets, business page, list
-✅ Business QA Schaden - Kessler (961894088) created from UI — wallet linked, registration Approved
-✅ Collection 0.3 ₾ sent by RS (QA-C-UI-1794386250946)
-✅ Before Request amount: "Not asked today", no Record button; API → 7031</pre></details><details class="test-item" data-status="pass">
+✅ Business QA Zieme Veum LLC (922711084) created from UI — wallet linked, registration Approved
+✅ Collection 0.3 ₾ sent by RS (QA-C-UI-1794386958625)
+✅ Amount mask: typed "-0.1" → "0.1"</pre></details><details class="test-item" data-status="pass">
           <summary class="test">
             <span class="chev">▶</span>
             <span class="st" style="color:#3fb950">✅ passed</span>
-            <span class="name">UI: ფორმა ცარიელი (Amount, Paid at, Bank reference) → Record → სამივესთან "Field is required", არაფერი იგზავნება</span>
-            <span class="dur">45.5s</span>
-          </summary><pre class="log">✅ Wallet QA UI Wallet 675987 created from UI (e8bcc98c-1614-4385-b912-c844f88bcc8b), balance 0.5 ₾
+            <span class="name">UI: Amount paid — აკრეფა "abc" → ასოები არ იწერება, ველი ცარიელი → Record → "Field is required", არაფერი იგზავნება</span>
+            <span class="dur">46.5s</span>
+          </summary><pre class="log">✅ Wallet QA UI Wallet 727959 created from UI (07bc8052-610b-4180-a235-57651b40b449), balance 0.5 ₾
 ✅ Registration tables OK — Data, Wallets, business page, list
-✅ Business QA Prosacco, Hermiston and Feeney (944979110) created from UI — wallet linked, registration Approved
-✅ Collection 0.3 ₾ sent by RS (QA-C-UI-1794386279856)
-✅ Form rejected (სავალდებულო ველები ცარიელია): Field is required | Field is required | Field is required — nothing sent</pre></details><details class="test-item" data-status="pass">
+✅ Business QA Mraz Lebsack Group (978974446) created from UI — wallet linked, registration Approved
+✅ Collection 0.3 ₾ sent by RS (QA-C-UI-1794387004256)
+✅ Form rejected (ასოები არ იწერება — თანხა ცარიელია): Field is required — nothing sent</pre></details><details class="test-item" data-status="pass">
           <summary class="test">
             <span class="chev">▶</span>
             <span class="st" style="color:#3fb950">✅ passed</span>
-            <span class="name">UI: Bank reference ცარიელი → "Field is required", არაფერი იგზავნება</span>
-            <span class="dur">40.4s</span>
-          </summary><pre class="log">✅ Wallet QA UI Wallet 257476 created from UI (6653cf73-6293-475d-a3ad-eadb145c85c7), balance 0.5 ₾
+            <span class="name">UI: Paid at — 3 საათით მომავალში → ბრაუზერი ბლოკავს "Value must be … or earlier.", არაფერი იგზავნება</span>
+            <span class="dur">42.4s</span>
+          </summary><pre class="log">✅ Wallet QA UI Wallet 336898 created from UI (2002e0f1-0586-4f33-b1f3-6557dd86475e), balance 0.5 ₾
 ✅ Registration tables OK — Data, Wallets, business page, list
-✅ Business QA Abshire Schaden Group (969614510) created from UI — wallet linked, registration Approved
-✅ Collection 0.3 ₾ sent by RS (QA-C-UI-1794386326096)
-✅ Form rejected (Bank reference სავალდებულოა): Field is required — nothing sent</pre></details><details class="test-item" data-status="pass">
-          <summary class="test">
-            <span class="chev">▶</span>
-            <span class="st" style="color:#3fb950">✅ passed</span>
-            <span class="name">UI: Amount paid 0.31 (RS asks 0.3, ზედა ზღვარი +0.01) → "Must be at most 0.3", არაფერი იგზავნება</span>
-            <span class="dur">35.9s</span>
-          </summary><pre class="log">✅ Wallet QA UI Wallet 152733 created from UI (49b2c805-04fb-4542-ad2d-7951b0304821), balance 0.5 ₾
-✅ Registration tables OK — Data, Wallets, business page, list
-✅ Business QA Torphy, Kessler and Feeney (942130345) created from UI — wallet linked, registration Approved
-✅ Collection 0.3 ₾ sent by RS (QA-C-UI-1794386366619)
-✅ Form rejected (RS-ის პასუხზე მეტი): Must be at most 0.3 — nothing sent</pre></details><details class="test-item" data-status="pass">
-          <summary class="test">
-            <span class="chev">▶</span>
-            <span class="st" style="color:#3fb950">✅ passed</span>
-            <span class="name">UI: Amount paid 0 (ქვედა ზღვარი) → "Must be more than 0", არაფერი იგზავნება</span>
-            <span class="dur">33.0s</span>
-          </summary><pre class="log">✅ Wallet QA UI Wallet 232955 created from UI (acaa853b-d723-4f8c-bb0b-438e2bbea0ac), balance 0.5 ₾
-✅ Registration tables OK — Data, Wallets, business page, list
-✅ Business QA Fadel - Pagac (947868234) created from UI — wallet linked, registration Approved
-✅ Collection 0.3 ₾ sent by RS (QA-C-UI-1794386400521)
-✅ Form rejected (თანხა 0): Must be more than 0 — nothing sent</pre></details><details class="test-item" data-status="fail" open>
-          <summary class="test">
-            <span class="chev">▶</span>
-            <span class="st" style="color:#f85149">❌ failed</span>
-            <span class="name">UI: Amount paid -0.1 → "Must be more than 0", არაფერი იგზავნება</span>
-            <span class="dur">50.2s</span>
-          </summary><pre class="log">✅ Wallet QA UI Wallet 269073 created from UI (775b1abc-070f-4371-a5b9-f1e48cd4e766), balance 0.5 ₾
-✅ Registration tables OK — Data, Wallets, business page, list
-✅ Business QA Pagac Kemmer and Sons (945040414) created from UI — wallet linked, registration Approved
-✅ Collection 0.3 ₾ sent by RS (QA-C-UI-1794386439357)</pre><pre class="err">ApiAssertionError: 
-❌ API TEST FAILED
-───────────────────────────────────────────
-🔧 ოპერაცია:    UI ინკასოს ფანჯარა — Record manual payment ფორმა
-⚠️  პრობლემა:    შეცდომები: - · ბექზე: 200 · ფორმა დაიხურა
-📥 მიმდინარე შედეგი:
-{
-  "errors": [],
-  "toast": "Payment recorded. Taking the money off the wallets.",
-  "http": 200,
-  "closed": true
-}
-✅ მოსალოდნელი შედეგი: ველთან "Must be more than 0" (უარყოფითი თანხა), ბექზე არაფერი იგზავნება
-───────────────────────────────────────────
-</pre></details><details class="test-item" data-status="fail" open>
-          <summary class="test">
-            <span class="chev">▶</span>
-            <span class="st" style="color:#f85149">❌ failed</span>
-            <span class="name">UI: Amount paid "abc" → შეცდომა, არაფერი იგზავნება (⚠️ ახლა წერს "Must be more than 0")</span>
-            <span class="dur">38.6s</span>
-          </summary><pre class="log">✅ Wallet QA UI Wallet 555113 created from UI (ef2b4f92-b2d7-4ab4-837a-1d0c3d621569), balance 0.5 ₾
-✅ Registration tables OK — Data, Wallets, business page, list
-✅ Business QA Sporer, Feeney and Kuhn (957812669) created from UI — wallet linked, registration Approved
-✅ Collection 0.3 ₾ sent by RS (QA-C-UI-1794386489241)</pre><pre class="err">ApiAssertionError: 
-❌ API TEST FAILED
-───────────────────────────────────────────
-🔧 ოპერაცია:    UI ინკასოს ფანჯარა — Record manual payment ფორმა
-⚠️  პრობლემა:    შეცდომები: - · ბექზე: 200 · ფორმა დაიხურა
-📥 მიმდინარე შედეგი:
-{
-  "errors": [],
-  "toast": "Payment recorded. Taking the money off the wallets.",
-  "http": 200,
-  "closed": true
-}
-✅ მოსალოდნელი შედეგი: ველთან "Must be more than 0" (ასოები თანხის ველში), ბექზე არაფერი იგზავნება
-───────────────────────────────────────────
-</pre></details><details class="test-item" data-status="fail" open>
-          <summary class="test">
-            <span class="chev">▶</span>
-            <span class="st" style="color:#f85149">❌ failed</span>
-            <span class="name">UI: Paid at — 3 საათით მომავალში → "Can't be in the future", არაფერი იგზავნება</span>
-            <span class="dur">40.5s</span>
-          </summary><pre class="log">✅ Wallet QA UI Wallet 589987 created from UI (32280318-fc6c-4eae-9622-38fdc5fbd1e5), balance 0.5 ₾
-✅ Registration tables OK — Data, Wallets, business page, list
-✅ Business QA Marvin - Grady (952192071) created from UI — wallet linked, registration Approved
-✅ Collection 0.3 ₾ sent by RS (QA-C-UI-1794386530141)</pre><pre class="err">ApiAssertionError: 
-❌ API TEST FAILED
-───────────────────────────────────────────
-🔧 ოპერაცია:    UI ინკასოს ფანჯარა — Record manual payment ფორმა
-⚠️  პრობლემა:    შეცდომები: - · ბექზე: არ გაიგზავნა · ფორმა ღიაა
-📥 მიმდინარე შედეგი:
-{
-  "errors": [],
-  "toast": "",
-  "http": null,
-  "closed": false
-}
-✅ მოსალოდნელი შედეგი: ველთან "Can't be in the future" (გადახდა მომავალში), ბექზე არაფერი იგზავნება
-───────────────────────────────────────────
-</pre></details><details class="test-item" data-status="pass">
-          <summary class="test">
-            <span class="chev">▶</span>
-            <span class="st" style="color:#3fb950">✅ passed</span>
-            <span class="name">UI: ჩაწერა 0.3 → "Record manual payment" ქრება → API-ით იგივე პასუხზე მეორედ → 409 / 7031, მეორედ არ ჩამოიჭრა</span>
-            <span class="dur">38.7s</span>
-          </summary><pre class="log">✅ Wallet QA UI Wallet 219738 created from UI (0a99efcd-2cf7-4259-9c09-15e626021542), balance 0.5 ₾
-✅ Registration tables OK — Data, Wallets, business page, list
-✅ Business QA Fadel, Yost and Dibbert (989372530) created from UI — wallet linked, registration Approved
-✅ Collection 0.3 ₾ sent by RS (QA-C-UI-1794386567190)
-✅ Recorded once → button hidden; API 2nd record → 7031</pre></details></div><div class="file-group"><div class="file">tests/RS/Front/Positive/rs-front-manual-payment.spec.ts</div><details class="test-item" data-status="pass">
-          <summary class="test">
-            <span class="chev">▶</span>
-            <span class="st" style="color:#3fb950">✅ passed</span>
-            <span class="name">UI: wallet 0.5 → ინკასო 0.3 (Fully restricted) → Request amount → TODAY "RS asks ₾ 0.30" → Record manual payment: ფორმაში 0.3 და ახლანდელი დრო → Bank reference → Record → "Payment recorded…" → Executed, Paid 0.3, TODAY Completed, Executions: MANUAL PAYMENT (ჩვენი Bank reference) + TRANSFERS Success, ღილაკი ქრება, wallet 0.2</span>
-            <span class="dur">49.0s</span>
-          </summary><pre class="log">✅ Wallet QA UI Wallet 959495 created from UI (636e5754-98d7-45ee-ab11-bd7ae1425cca), balance 0.5 ₾
-✅ Registration tables OK — Data, Wallets, business page, list
-✅ Business QA Veum - Berge (959437839) created from UI — wallet linked, registration Approved
-✅ Collection 0.3 ₾ sent by RS (QA-C-UI-1794386605151)
-✅ Record manual payment from UI: 0.3 (RS asked 0.3, held 0.3) → Executed, owed 0, Bank reference QA-UI-PAY-789246</pre></details><details class="test-item" data-status="pass">
-          <summary class="test">
-            <span class="chev">▶</span>
-            <span class="st" style="color:#3fb950">✅ passed</span>
-            <span class="name">UI: wallet 0.3 → ინკასო 0.5 (გაყინულია 0.3) → RS asks ₾ 0.50 → ფორმაში 0.5 → Record → "Must be at most 0.3" → 0.3 → Partially executed, Paid 0.3, Still owed 0.2, wallet 0</span>
-            <span class="dur">43.3s</span>
-          </summary><pre class="log">✅ Wallet QA UI Wallet 689550 created from UI (f96301ec-8fd9-408c-8525-2ed2d75c8b9c), balance 0.3 ₾
-✅ Registration tables OK — Data, Wallets, business page, list
-✅ Business QA Wolf Quigley LLC (904612920) created from UI — wallet linked, registration Approved
-✅ Collection 0.5 ₾ sent by RS (QA-C-UI-1794386656719)
-✅ Record manual payment from UI: 0.3 (RS asked 0.5, held 0.3) → Partially executed, owed 0.2, Bank reference QA-UI-PAY-501731</pre></details><details class="test-item" data-status="pass">
-          <summary class="test">
-            <span class="chev">▶</span>
-            <span class="st" style="color:#3fb950">✅ passed</span>
-            <span class="name">UI: ნაწილობრივი გადახდა — wallet 0.5 → ინკასო 0.4 → RS asks ₾ 0.40 → ადმინი იწერს 0.25 → Partially executed, Paid 0.25, Still owed 0.15, დარჩენილი 0.15 ისევ გაყინულია</span>
-            <span class="dur">46.6s</span>
-          </summary><pre class="log">✅ Wallet QA UI Wallet 442360 created from UI (306bce06-8465-44d5-a0d4-532b076bbd18), balance 0.5 ₾
-✅ Registration tables OK — Data, Wallets, business page, list
-✅ Business QA Champlin Lockman and Sons (911450837) created from UI — wallet linked, registration Approved
-✅ Collection 0.4 ₾ sent by RS (QA-C-UI-1794386699200)
-✅ Record manual payment from UI: 0.25 (RS asked 0.4, held 0.4) → Partially executed, owed 0.15, Bank reference QA-UI-PAY-392471</pre></details><details class="test-item" data-status="pass">
-          <summary class="test">
-            <span class="chev">▶</span>
-            <span class="st" style="color:#3fb950">✅ passed</span>
-            <span class="name">UI: RS პასუხობს ნაკლებს (გადამხდელმა ნაწილი სხვაგან გადაიხადა) — ინკასო 0.4 → RS asks ₾ 0.20 → ფორმაში 0.2; 0.21 → "Must be at most 0.2" → 0.2 → Partially executed, Still owed 0.2</span>
-            <span class="dur">46.7s</span>
-          </summary><pre class="log">✅ Wallet QA UI Wallet 589009 created from UI (64e7a31f-6f7d-4542-b074-6564c1908215), balance 0.5 ₾
-✅ Registration tables OK — Data, Wallets, business page, list
-✅ Business QA Bogan - Dibbert (933067510) created from UI — wallet linked, registration Approved
-✅ Collection 0.4 ₾ sent by RS (QA-C-UI-1794386751150)
-✅ Record manual payment from UI: 0.2 (RS asked 0.2, held 0.4) → Partially executed, owed 0.2, Bank reference QA-UI-LESS-994039</pre></details><details class="test-item" data-status="pass">
-          <summary class="test">
-            <span class="chev">▶</span>
-            <span class="st" style="color:#3fb950">✅ passed</span>
-            <span class="name">UI: RS პასუხობს 0 — ინკასო 0.3 → TODAY "No amount | RS asks nothing today. The money stays held." → "Record manual payment" არ ჩანს → Executions: No amount, RS answer ₾ 0.00 → ფული ისევ გაყინულია</span>
-            <span class="dur">42.9s</span>
-          </summary><pre class="log">✅ Wallet QA UI Wallet 206824 created from UI (6d86161f-0bad-4195-88c2-d3f4eea817c4), balance 0.5 ₾
-✅ Registration tables OK — Data, Wallets, business page, list
-✅ Business QA Sporer, Pagac and Ledner (915900346) created from UI — wallet linked, registration Approved
-✅ Collection 0.3 ₾ sent by RS (QA-C-UI-1794386793602)
-✅ RS answered 0 → "No amount", no Record button, 0.3 stays held</pre></details></div>
+✅ Business QA Nolan, Bogan and Schaden (949881211) created from UI — wallet linked, registration Approved
+✅ Collection 0.3 ₾ sent by RS (QA-C-UI-1794387047890)
+✅ Form rejected (გადახდა მომავალში): Value must be 11.11.2026, 12:50 or earlier. — nothing sent</pre></details></div>
   <script>
     (function () {
       const cards = document.querySelectorAll('.card');
