@@ -36,7 +36,7 @@
 </head>
 <body>
   <h1>🎭 Playwright Test Report</h1>
-  <div class="meta">11/11/2026, 2:44:29 PM</div>
+  <div class="meta">11/11/2026, 2:59:50 PM</div>
   <div class="summary">
     <button type="button" class="card active" data-filter="all">Total: 1</button>
     <button type="button" class="card pass" data-filter="pass">✅ Passed: 1</button>
@@ -47,14 +47,14 @@
           <summary class="test">
             <span class="chev">▶</span>
             <span class="st" style="color:#3fb950">✅ passed</span>
-            <span class="name">wallet 0.6 → priority 1 და 2 → priority 1-ზე Request amount, RS პასუხობს "0" (No amount) → სისტემა თვითონ ეკითხება RS-ს priority 2-ზე (AUTO) → RS asks 0.3, ჩანს "Record manual payment" (5.7.3)</span>
-            <span class="dur">52.0s</span>
-          </summary><pre class="log">✅ Wallet QA UI Wallet 307855 created from UI (fd452f5b-a488-4774-8e7c-b8ea08e1e286), balance 0.6 ₾
+            <span class="name">wallet-ზე 0.5 ₾ → RS აგზავნის ინკასოს 0.3 ₾ → ფანჯარაში Fully restricted, wallet-ზე გაყინულია 0.3 → wallet ცდილობს 0.3 ₾-ის გადარიცხვას (თავისუფალია 0.2) → უარი → "Return collection" ღილაკი არ ჩანს → RS გამოითხოვს → Withdrawn, ფული თავისუფლდება</span>
+            <span class="dur">44.4s</span>
+          </summary><pre class="log">✅ Wallet QA UI Wallet 198705 created from UI (5962c86e-39e6-4822-b74e-9a05182911be), balance 0.5 ₾
 ✅ Registration tables OK — Data, Wallets, business page, list
-✅ Business QA Lebsack, Gislason and Hilpert (914675392) created from UI — wallet linked, registration Approved
-✅ Collection 0.3 ₾ priority 1 sent by RS (QA-C-UI-1794393902284)
-✅ Collection 0.3 ₾ priority 2 sent by RS (QA-C-UI-1794393906510)
-✅ Priority 1 answered 0 → system asked RS for priority 2 automatically, RS asks 0.3 (QA-C-UI-1794393906510)</pre></details></div>
+✅ Business QA Abshire Mraz Inc (994957615) created from UI — wallet linked, registration Approved
+✅ Collection 0.3 ₾ priority 1 sent by RS (QA-C-UI-1794394823241)
+✅ Transfer 0.3 ₾ rejected (5038) — 0.3 ₾ held by collection
+✅ No "Return collection" button; RS withdrew the collection — wallet 0.5 ₾ free again</pre></details></div>
   <script>
     (function () {
       const cards = document.querySelectorAll('.card');
