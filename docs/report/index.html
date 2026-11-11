@@ -36,88 +36,19 @@
 </head>
 <body>
   <h1>🎭 Playwright Test Report</h1>
-  <div class="meta">11/11/2026, 10:50:44 AM</div>
+  <div class="meta">11/11/2026, 10:56:18 AM</div>
   <div class="summary">
-    <button type="button" class="card active" data-filter="all">Total: 13</button>
-    <button type="button" class="card pass" data-filter="pass">✅ Passed: 10</button>
-    <button type="button" class="card fail" data-filter="fail">❌ Failed: 3</button>
+    <button type="button" class="card active" data-filter="all">Total: 6</button>
+    <button type="button" class="card pass" data-filter="pass">✅ Passed: 4</button>
+    <button type="button" class="card fail" data-filter="fail">❌ Failed: 2</button>
     <button type="button" class="card skip" data-filter="skip">⏭️ Skipped: 0</button>
   </div>
-  <div class="file-group"><div class="file">tests/RS/Front/Negative/rs-front-guards-negative.spec.ts</div><details class="test-item" data-status="pass">
-          <summary class="test">
-            <span class="chev">▶</span>
-            <span class="st" style="color:#3fb950">✅ passed</span>
-            <span class="name">UI: ინკასო 0.3 (Fully restricted) → Request amount from RS → ღილაკი ქრება (დღეს მეორედ ვერ) → API: მეორე მოთხოვნა → 7018</span>
-            <span class="dur">38.3s</span>
-          </summary><pre class="log">✅ Wallet QA UI Wallet 195345 created from UI (8cb15a0f-b25a-49ca-9db2-e864c0038b7d), balance 0.5 ₾
-✅ Registration tables OK — Data, Wallets, business page, list
-✅ Business QA Wuckert Veum Group (998612079) created from UI — wallet linked, registration Approved
-✅ Collection 0.3 ₾ sent by RS (QA-C-UI-1794379873509)
-✅ Request amount: after 1st request button hidden; API 2nd request → 7018</pre></details><details class="test-item" data-status="pass">
-          <summary class="test">
-            <span class="chev">▶</span>
-            <span class="st" style="color:#3fb950">✅ passed</span>
-            <span class="name">UI: ცარიელი wallet → ინკასო 0.3 → Pending (გაყინული 0) → "Request amount from RS" არ ჩანს → API → 7011</span>
-            <span class="dur">33.2s</span>
-          </summary><pre class="log">✅ Wallet QA UI Wallet 401510 created from UI (1debf2fa-7b7b-4825-b87d-9d5aa14d1e39)
-✅ Registration tables OK — Data, Wallets, business page, list
-✅ Business QA Cormier Reichert LLC (926580594) created from UI — wallet linked, registration Approved
-✅ Collection 0.3 ₾ sent by RS (QA-C-UI-1794379913849)
-✅ Pending collection: no "Request amount from RS"; API → 7011</pre></details><details class="test-item" data-status="fail" open>
-          <summary class="test">
-            <span class="chev">▶</span>
-            <span class="st" style="color:#f85149">❌ failed</span>
-            <span class="name">UI: wallet 0.3 → ყადაღა 0.2 → ბიზნესის გვერდზე Unlink გამორთულია → API unlink → 5114 → RS ხსნის → Unlink ირთვება</span>
-            <span class="dur">36.1s</span>
-          </summary><pre class="log">✅ Wallet QA UI Wallet 536546 created from UI (ccb50699-2d42-4a7d-974e-4fc10bb28af1), balance 0.3 ₾
-✅ Registration tables OK — Data, Wallets, business page, list
-✅ Business QA Torphy - Sporer (905570863) created from UI — wallet linked, registration Approved</pre><pre class="err">ApiAssertionError: 
-❌ API TEST FAILED
-───────────────────────────────────────────
-🔧 ოპერაცია:    DELETE /api/distributor-hub-business/{id}/clients/{clientId}
-⚠️  პრობლემა:    HTTP 409, code 1492: Money is held on this client for RS liens or collections. It can leave the business once that is released. QA UI Wallet 536546
-📥 მიმდინარე შედეგი:
-{
-  "message": "Money is held on this client for RS liens or collections. It can leave the business once that is released. QA UI Wallet 536546",
-  "statusCode": 1492,
-  "exceptionGroup": 2
-}
-✅ მოსალოდნელი შედეგი: 4xx / 5114 — Money is held on this client for RS
-───────────────────────────────────────────
-</pre></details><details class="test-item" data-status="pass">
-          <summary class="test">
-            <span class="chev">▶</span>
-            <span class="st" style="color:#3fb950">✅ passed</span>
-            <span class="name">UI: wallet 0.3 → ყადაღა 0.2 (Fully restricted) → "Reallocate holds" არ ჩანს → მეორე ყადაღა 0.3 (Partially restricted, 0.1) → "Reallocate holds" ჩანს</span>
-            <span class="dur">39.2s</span>
-          </summary><pre class="log">✅ Wallet QA UI Wallet 774418 created from UI (03134399-6e11-40d2-a5cd-7a2944b67269), balance 0.3 ₾
-✅ Registration tables OK — Data, Wallets, business page, list
-✅ Business QA Rempel - Hermiston (976464749) created from UI — wallet linked, registration Approved
-✅ Reallocate holds: hidden on Fully restricted, visible on Partially restricted</pre></details></div><div class="file-group"><div class="file">tests/RS/Front/Negative/rs-front-register-to-rs-negative.spec.ts</div><details class="test-item" data-status="pass">
-          <summary class="test">
-            <span class="chev">▶</span>
-            <span class="st" style="color:#3fb950">✅ passed</span>
-            <span class="name">UI: Register to RS → Payment merchant, merchant არ არის არჩეული → Save and review → Merchant: "Field is required", რეგისტრაცია არ იქმნება</span>
-            <span class="dur">23.1s</span>
-          </summary><pre class="log">✅ Payment merchant without merchant → "Field is required"</pre></details><details class="test-item" data-status="pass">
-          <summary class="test">
-            <span class="chev">▶</span>
-            <span class="st" style="color:#3fb950">✅ passed</span>
-            <span class="name">UI: merchant უკვე მიბმულია სხვა გადამხდელის ღია რეგისტრაციაზე → Register to RS სხვა ident-ით → "This wallet is already linked to another taxpayer's RS registration.", რეგისტრაცია არ იქმნება</span>
-            <span class="dur">13.4s</span>
-          </summary><pre class="log">✅ Merchant QA RS Merchant 4985 — 995300000017, ident 998911063, BALANCE flow, Temporary Verified (9b6e1597-0c52-48d6-a21d-20895430920b)
-✅ Merchant linked to 998911063 → other ident 940515178 rejected</pre></details><details class="test-item" data-status="pass">
-          <summary class="test">
-            <span class="chev">▶</span>
-            <span class="st" style="color:#3fb950">✅ passed</span>
-            <span class="name">UI: Register to RS → No wallet + ident, რომელსაც ღია რეგისტრაცია აქვს → "An open registration already exists for this identification number", ახალი არ იქმნება</span>
-            <span class="dur">7.6s</span>
-          </summary><pre class="log">✅ No wallet, ident 928714161 with open registration → rejected</pre></details></div><div class="file-group"><div class="file">tests/RS/Front/Positive/rs-front-register-to-rs.spec.ts</div><details class="test-item" data-status="fail" open>
+  <div class="file-group"><div class="file">tests/RS/Front/Positive/rs-front-register-to-rs.spec.ts</div><details class="test-item" data-status="fail" open>
           <summary class="test">
             <span class="chev">▶</span>
             <span class="st" style="color:#f85149">❌ failed</span>
             <span class="name">UI: Register to RS → Wallet type-ში მხოლოდ "No wallet" და "Payment merchant" → მინიშნება "Distributor hub wallets are registered through their business" → ბმული გადადის Dist. Businesses-ზე</span>
-            <span class="dur">5.7s</span>
+            <span class="dur">4.8s</span>
           </summary><pre class="err">ApiAssertionError: 
 ❌ API TEST FAILED
 ───────────────────────────────────────────
@@ -132,53 +63,53 @@
             <span class="chev">▶</span>
             <span class="st" style="color:#3fb950">✅ passed</span>
             <span class="name">UI: Register to RS → Payment merchant → ძებნა ident-ით → "სახელი · ident" → არჩევა (Owner / ident ივსება) → Save and review → "Registration created", Submit to RS ფანჯარა ჩვენი მონაცემებით → API: Not submitted, merchant-ის wallet Active</span>
-            <span class="dur">13.1s</span>
-          </summary><pre class="log">✅ Merchant QA RS Merchant 5855 — 995300000018, ident 926295126, BALANCE flow, Temporary Verified (75ad213f-d36d-493b-9268-c4b090b875c5)
-✅ Register to RS (Payment merchant QA RS Merchant 5855) → registration f2cebf1d-7811-486d-b431-2d2a72d740f5 NOT_SUBMITTED, merchant wallet ACTIVE</pre></details><details class="test-item" data-status="pass">
+            <span class="dur">12.9s</span>
+          </summary><pre class="log">✅ Merchant QA RS Merchant 9668 — 995300000021, ident 983265077, BALANCE flow, Temporary Verified (43952a00-e32b-429a-8218-4a4818140392)
+✅ Register to RS (Payment merchant QA RS Merchant 9668) → registration a44fdbb2-7453-4ad7-9163-3bbcc153e5eb NOT_SUBMITTED, merchant wallet ACTIVE</pre></details><details class="test-item" data-status="pass">
           <summary class="test">
             <span class="chev">▶</span>
             <span class="st" style="color:#3fb950">✅ passed</span>
             <span class="name">UI: ბიზნესს (hub wallet) უკვე აქვს რეგისტრაცია → merchant იგივე ident-ით → Register to RS → იგივე რეგისტრაცია იხსნება (ახალი არ იქმნება), 2 wallet: hub + merchant</span>
-            <span class="dur">12.9s</span>
-          </summary><pre class="log">✅ Merchant QA RS Merchant 2694 — 995300000019, ident 933208991, BALANCE flow, Temporary Verified (bc56bd81-0334-4425-8329-7b14c02d4320)
-✅ Merchant QA RS Merchant 2694 joined business registration da7c321f-5ab9-4fe2-823d-e0893e1aa4af — 2 wallets</pre></details><details class="test-item" data-status="pass">
+            <span class="dur">12.8s</span>
+          </summary><pre class="log">✅ Merchant QA RS Merchant 6627 — 995300000022, ident 900687098, BALANCE flow, Temporary Verified (e30e5087-3cb7-4164-a52b-c0679a40557d)
+✅ Merchant QA RS Merchant 6627 joined business registration 08e37f65-3541-4d46-ae74-f5f1cce707c2 — 2 wallets</pre></details><details class="test-item" data-status="pass">
           <summary class="test">
             <span class="chev">▶</span>
             <span class="st" style="color:#3fb950">✅ passed</span>
             <span class="name">UI: Register to RS → No wallet + ახალი ident → "Registration created", რეგისტრაცია wallet-ის გარეშე (0 wallet)</span>
-            <span class="dur">8.0s</span>
-          </summary><pre class="log">✅ No wallet → registration bf5a34d7-d46a-45bb-bb72-ced44f830301 without wallets</pre></details><details class="test-item" data-status="pass">
+            <span class="dur">7.6s</span>
+          </summary><pre class="log">✅ No wallet → registration 79d2d87e-3f3e-42ce-ad19-8af8ed55d7f6 without wallets</pre></details><details class="test-item" data-status="pass">
           <summary class="test">
             <span class="chev">▶</span>
             <span class="st" style="color:#3fb950">✅ passed</span>
             <span class="name">UI: ახალი merchant → RS ტაბი: "Not registered with RS." → Register to RS → Payment merchant და merchant უკვე არჩეულია (გამორთული) → Save and review → RS ტაბი: Not submitted, Owner, Open registration → რეგისტრაციის გვერდი</span>
-            <span class="dur">14.4s</span>
-          </summary><pre class="log">✅ Merchant QA RS Merchant 2192 — 995300000020, ident 996587236, BALANCE flow, Temporary Verified (76cc6bb4-8b13-4c5e-9847-c29a620edb5a)
-✅ Merchant RS tab: Not registered → Register to RS → 0a353c49-15cf-47ea-bef9-7fe26fb64f22 Not submitted → Open registration</pre></details><details class="test-item" data-status="fail" open>
+            <span class="dur">15.9s</span>
+          </summary><pre class="log">✅ Merchant QA RS Merchant 3324 — 995300000023, ident 956255716, BALANCE flow, Temporary Verified (ed26cb3e-b93b-412d-b02f-6ba58e234d06)
+✅ Merchant RS tab: Not registered → Register to RS → 34d0839a-6bb9-4079-9f80-4d496d3a3d66 Not submitted → Open registration</pre></details><details class="test-item" data-status="fail" open>
           <summary class="test">
             <span class="chev">▶</span>
             <span class="st" style="color:#f85149">❌ failed</span>
             <span class="name">UI: ბიზნესი + wallet → RS პანელი: Refresh · Open registration · Submit to RS · Not submitted (Register to RS აღარ არის) → Submit to RS ბიზნესის გვერდიდან → "Submitted to RS", Pending RS approval → RS ადასტურებს → Refresh → Approved, თარიღებით</span>
-            <span class="dur">12.6s</span>
+            <span class="dur">13.5s</span>
           </summary><pre class="err">ApiAssertionError: 
 ❌ API TEST FAILED
 ───────────────────────────────────────────
 🔧 ოპერაცია:    UI Dist. Businesses — RS registration პანელი
-⚠️  პრობლემა:    პანელი: RS registration | Refresh | Open registration | Pending RS approval | Owner full name | QA Torphy - Mraz | Client number | - | First submitted | 11 Nov 2026, 10:54 | Approved | - | 
+⚠️  პრობლემა:    პანელი: RS registration | Refresh | Open registration | Pending RS approval | Owner full name | QA Gutkowski, Veum and Lockman | Client number | - | First submitted | 11 Nov 2026, 10:57 | Approved | - | 
 📥 მიმდინარე შედეგი:
 {
-  "id": "d72dd083-9e44-4761-8633-dda2492699e3",
+  "id": "052f15e5-241f-43ed-acc0-9fa0d3afbbc6",
   "partner": "keepz",
-  "clientUuid": "c789414c-f644-4be0-9312-501515e41abc",
+  "clientUuid": "7c2ff20d-1365-4ecc-8bbe-e2f7fde2790c",
   "clientNo": null,
   "status": "APPROVED",
   "statusTooltip": "RS permission has been received. The client may use accounts, subject to any active Collection or Lien restrictions.",
   "approvalSource": "HONEST_TAX_PAYER",
   "data": {
     "residency": "RESIDENT",
-    "identNumber": "945837911",
+    "identNumber": "999597621",
     "personalNumberAlt": null,
-    "ownerFullName": "QA Torphy - Mraz",
+    "ownerFullName": "QA Gutkowski, Veum and Lockman",
     "operDate": "2026-10-12",
     "knownDate": "2026-11-01",
     "legalAddressCountry": null,
@@ -191,9 +122,9 @@
     "stateRegDocNumber": null,
     "stateRegDocDate": null
   },
-  "firstSubmittedAt": "2026-11-11T06:54:58.269584Z",
-  "lastSubmittedAt": "2026-11-11T06:54:57.713607Z",
-  "approvedAt": "2026-11-11T06:55:00.312972Z",
+  "firstSubmittedAt": "2026-11-11T06:57:21.958643Z",
+  "lastSubmittedAt": "2026-11-11T06:57:21.346609Z",
+  "approvedAt": "2026-11-11T06:57:23.990131Z",
   "resubmitEnabled": false,
   "lastRsErrorCode": null,
   "lastRsErrorText": null,
