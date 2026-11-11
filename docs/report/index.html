@@ -36,57 +36,153 @@
 </head>
 <body>
   <h1>🎭 Playwright Test Report</h1>
-  <div class="meta">11/11/2026, 12:51:06 PM</div>
+  <div class="meta">11/11/2026, 2:38:38 PM</div>
   <div class="summary">
-    <button type="button" class="card active" data-filter="all">Total: 4</button>
-    <button type="button" class="card pass" data-filter="pass">✅ Passed: 4</button>
-    <button type="button" class="card fail" data-filter="fail">❌ Failed: 0</button>
+    <button type="button" class="card active" data-filter="all">Total: 5</button>
+    <button type="button" class="card pass" data-filter="pass">✅ Passed: 1</button>
+    <button type="button" class="card fail" data-filter="fail">❌ Failed: 4</button>
     <button type="button" class="card skip" data-filter="skip">⏭️ Skipped: 0</button>
   </div>
-  <div class="file-group"><div class="file">tests/RS/Front/Positive/rs-front-collection.spec.ts</div><details class="test-item" data-status="pass">
+  <div class="file-group"><div class="file">tests/RS/Front/Positive/rs-front-collection.spec.ts</div><details class="test-item" data-status="fail" open>
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#f85149">❌ failed</span>
+            <span class="name">wallet 0.6 → ინკასოები შემოდის priority 3 → 2 → 1 (თითო 0.3) → ფანჯარაში Priority 3 / 2 / 1; ფული priority-ით: P1 Fully 0.3, P2 Fully 0.3, P3 Pending 0 (KD-2682)</span>
+            <span class="dur">76.3s</span>
+          </summary><pre class="log">✅ Wallet QA UI Wallet 218676 created from UI (639f4588-ffb1-4acd-be53-e3eba77d2b2c), balance 0.6 ₾
+✅ Registration tables OK — Data, Wallets, business page, list
+✅ Business QA Kemmer - Prosacco (945887532) created from UI — wallet linked, registration Approved
+✅ Collection 0.3 ₾ priority 3 sent by RS (QA-C-UI-1794393551688)
+✅ Collection 0.3 ₾ priority 2 sent by RS (QA-C-UI-1794393555821)
+✅ Collection 0.3 ₾ priority 1 sent by RS (QA-C-UI-1794393559966)</pre><pre class="err">ApiAssertionError: 
+❌ API TEST FAILED
+───────────────────────────────────────────
+🔧 ოპერაცია:    GET /api/v1/rs/restrictions/{id}
+⚠️  პრობლემა:    P3 Fully restricted 0.3 · P2 Fully restricted 0.3 · P1 Pending 0
+📥 მიმდინარე შედეგი:
+[
+  {
+    "priority": 3,
+    "number": "QA-C-UI-1794393551688",
+    "status": "Fully restricted",
+    "restricted": 0.3,
+    "receivedAt": "2026-11-11T10:39:11.757031Z"
+  },
+  {
+    "priority": 2,
+    "number": "QA-C-UI-1794393555821",
+    "status": "Fully restricted",
+    "restricted": 0.3,
+    "receivedAt": "2026-11-11T10:39:15.894102Z"
+  },
+  {
+    "priority": 1,
+    "number": "QA-C-UI-1794393559966",
+    "status": "Pending",
+    "restricted": 0,
+    "receivedAt": "2026-11-11T10:39:20.043427Z"
+  }
+]
+✅ მოსალოდნელი შედეგი: ფული priority-ის რიგით (1 → 2 → 3, ერთნაირში ძველი): P1 0.3 · P2 0.3 · P3 0
+───────────────────────────────────────────
+</pre></details><details class="test-item" data-status="fail" open>
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#f85149">❌ failed</span>
+            <span class="name">ცარიელი wallet → priority 3, მერე priority 1 (ორივე Pending) → wallet-ს ერიცხება 0.3 → ფული priority 1-ს მიდის (Fully 0.3), priority 3 რჩება Pending (KD-2682)</span>
+            <span class="dur">79.6s</span>
+          </summary><pre class="log">✅ Wallet QA UI Wallet 061505 created from UI (3b505bfc-e581-426f-a534-59cead37d738)
+✅ Registration tables OK — Data, Wallets, business page, list
+✅ Business QA Runolfsdottir - Nienow (905698142) created from UI — wallet linked, registration Approved
+✅ Collection 0.3 ₾ priority 3 sent by RS (QA-C-UI-1794393628133)
+✅ Collection 0.3 ₾ priority 1 sent by RS (QA-C-UI-1794393632282)</pre><pre class="err">ApiAssertionError: 
+❌ API TEST FAILED
+───────────────────────────────────────────
+🔧 ოპერაცია:    GET /api/v1/rs/restrictions/{id}
+⚠️  პრობლემა:    P3 Fully restricted 0.3 · P1 Pending 0
+📥 მიმდინარე შედეგი:
+[
+  {
+    "priority": 3,
+    "number": "QA-C-UI-1794393628133",
+    "status": "Fully restricted",
+    "restricted": 0.3,
+    "receivedAt": "2026-11-11T10:40:28.208368Z"
+  },
+  {
+    "priority": 1,
+    "number": "QA-C-UI-1794393632282",
+    "status": "Pending",
+    "restricted": 0,
+    "receivedAt": "2026-11-11T10:40:32.362390Z"
+  }
+]
+✅ მოსალოდნელი შედეგი: ფული priority-ის რიგით (1 → 2 → 3, ერთნაირში ძველი): P1 0.3 · P3 0
+───────────────────────────────────────────
+</pre></details><details class="test-item" data-status="pass">
           <summary class="test">
             <span class="chev">▶</span>
             <span class="st" style="color:#3fb950">✅ passed</span>
-            <span class="name">ინკასოს ხელით გადახდა: wallet 0.5, ინკასო 0.5 → UI: Request amount from RS → Executions: Amount received / Manual / RS answer → ადმინი აფიქსირებს 0.3-ს bankReference-ით (UI: Record manual payment) → UI: Paid to treasury 0.3; Executions: Completed, MANUAL PAYMENT (Bank reference = ჩვენი, Paid at, Recorded by), TRANSFERS: wallet · 0.30 · Success; ბალანსი −0.3</span>
-            <span class="dur">56.4s</span>
-          </summary><pre class="log">✅ Wallet QA UI Wallet 788303 created from UI (8d8ce07b-6750-48cb-b709-c92e3167b545), balance 0.5 ₾
+            <span class="name">ერთნაირი priority: wallet 0.3 → 2 ინკასო priority 1 (თითო 0.3) → ფული ძველს: 1-ლი Fully 0.3, მე-2 Pending</span>
+            <span class="dur">38.9s</span>
+          </summary><pre class="log">✅ Wallet QA UI Wallet 433221 created from UI (ce274d8d-e22f-4502-b22e-b400d4c77dc7), balance 0.3 ₾
 ✅ Registration tables OK — Data, Wallets, business page, list
-✅ Business QA Weissnat Jaskolski LLC (907265608) created from UI — wallet linked, registration Approved
-✅ 1 wallets on business: QA UI Wallet 788303 (0.5)
-✅ Manual payment from UI flow: requested from UI, RS answer 0.5, paid 0.3 (QA-BANK-736951) → PARTIALLY_EXECUTED</pre></details><details class="test-item" data-status="pass">
+✅ Business QA Mraz - Hane (915627302) created from UI — wallet linked, registration Approved
+✅ Collection 0.3 ₾ priority 1 sent by RS (QA-C-UI-1794393702142)
+✅ Collection 0.3 ₾ priority 1 sent by RS (QA-C-UI-1794393706291)
+✅ Holds by priority: P1 0.3 · P1 0</pre></details><details class="test-item" data-status="fail" open>
           <summary class="test">
             <span class="chev">▶</span>
-            <span class="st" style="color:#3fb950">✅ passed</span>
-            <span class="name">3 wallet → ინკასო 0.6 → სრული გადახდა 0.6 → Executed; Holds per wallet, Executions + TRANSFERS (თითო wallet-ის ჩამოჭრა) = API; ბიზნესის გვერდზე ბალანსები შემცირდა</span>
-            <span class="dur">53.3s</span>
-          </summary><pre class="log">✅ Wallet QA UI Wallet 886233 created from UI (65bea855-8e3e-414b-9a6e-b63c8636cd74), balance 0.2 ₾
+            <span class="st" style="color:#f85149">❌ failed</span>
+            <span class="name">wallet 0.6 → priority 1 და 2 (ორივე Fully 0.3) → priority 2-ზე "Request amount from RS" არ ჩანს, API → უარი → priority 1: Request amount → Record manual payment → Executed → priority 2-ზე ღილაკი ჩნდება → გადახდა → Executed (KD-2683)</span>
+            <span class="dur">41.4s</span>
+          </summary><pre class="log">✅ Wallet QA UI Wallet 418785 created from UI (d1d136d2-2b9f-485e-8d2d-c3f88d0dbb6b), balance 0.6 ₾
 ✅ Registration tables OK — Data, Wallets, business page, list
-✅ Business QA Mraz - Champlin (995050050) created from UI — wallet linked, registration Approved
-✅ 3 wallets on business: QA UI Wallet 886233 (0.2), QA UI Wallet 645011 (0.5), QA UI Wallet 096753 (0.3)
-⚠️ QA UI Wallet 645011: ბალანსი 0 → UI-ში "-" ნაცვლად "₾ 0.00 / ₾ 0.00 / ₾ 0.00"
-✅ Collection 0.6 paid 0.6 across wallets — QA UI Wallet 886233: −0, QA UI Wallet 645011: −0.5, QA UI Wallet 096753: −0.1</pre></details><details class="test-item" data-status="pass">
+✅ Business QA Berge - Bogan (977721057) created from UI — wallet linked, registration Approved
+✅ Collection 0.3 ₾ priority 1 sent by RS (QA-C-UI-1794393741672)
+✅ Collection 0.3 ₾ priority 2 sent by RS (QA-C-UI-1794393745892)</pre><pre class="err">ApiAssertionError: 
+❌ API TEST FAILED
+───────────────────────────────────────────
+🔧 ოპერაცია:    UI Liens &amp; collections — ინკასოს ფანჯარა
+⚠️  პრობლემა:    priority 2: ღილაკები Overview · Holds per wallet · Executions · History · Audit · Request amount from RS
+📥 მიმდინარე შედეგი:
+[
+  "Overview",
+  "Holds per wallet",
+  "Executions",
+  "History",
+  "Audit",
+  "Request amount from RS"
+]
+✅ მოსალოდნელი შედეგი: priority 2-ზე "Request amount from RS" არ ჩანს — priority 1 ჯერ გადაუხდელია
+───────────────────────────────────────────
+</pre></details><details class="test-item" data-status="fail" open>
           <summary class="test">
             <span class="chev">▶</span>
-            <span class="st" style="color:#3fb950">✅ passed</span>
-            <span class="name">3 wallet → ინკასო 0.6 → ნაწილობრივი გადახდა 0.4 → Partially executed; ჩამოჭრილი 0.4, დარჩენილი 0.2 გაყინულია; ცხრილები და ბალანსები = API</span>
-            <span class="dur">51.0s</span>
-          </summary><pre class="log">✅ Wallet QA UI Wallet 494918 created from UI (9c2f4cd5-f21a-47e4-86be-2f25cc486129), balance 0.2 ₾
+            <span class="st" style="color:#f85149">❌ failed</span>
+            <span class="name">wallet 0.6 → priority 1 და 2 → RS priority 1-ზე პასუხობს "0" (No amount) → იმავე დღეს priority 2-ზე Request amount ჩანს და RS პასუხობს 0.3 (5.7.3)</span>
+            <span class="dur">44.6s</span>
+          </summary><pre class="log">✅ Wallet QA UI Wallet 736802 created from UI (55e615b9-c8f5-4767-b7f4-d061412d899a), balance 0.6 ₾
 ✅ Registration tables OK — Data, Wallets, business page, list
-✅ Business QA Jacobi Weissnat LLC (934840923) created from UI — wallet linked, registration Approved
-✅ 3 wallets on business: QA UI Wallet 494918 (0.2), QA UI Wallet 304745 (0.5), QA UI Wallet 328069 (0.3)
-✅ Collection 0.6 paid 0.4 across wallets — QA UI Wallet 494918: −0, QA UI Wallet 304745: −0.4, QA UI Wallet 328069: −0</pre></details><details class="test-item" data-status="pass">
-          <summary class="test">
-            <span class="chev">▶</span>
-            <span class="st" style="color:#3fb950">✅ passed</span>
-            <span class="name">ინკასო 2 დღეში (ერთი ტესტი, გაუშვი დღეს და ხვალ): დღეს — 3 wallet (0.1 / 0.2 / 0.2) → ინკასო 0.8 → იყინება 0.5 → ადმინი იხდის 0.4 → დარჩა 0.4, ინკასო ღიაა; ხვალ — შევსება 0.3 → დარჩენილი 0.4 იყინება → Request amount → ადმინი იხდის 0.4 → Executed 0.8 (Executions 2 მწკრივი)</span>
-            <span class="dur">55.7s</span>
-          </summary><pre class="log">✅ Wallet QA UI Wallet 896559 created from UI (00b9d7e7-2f35-4b76-88d6-d0b654241c95), balance 0.1 ₾
-✅ Registration tables OK — Data, Wallets, business page, list
-✅ Business QA Bartell - Prosacco (970897946) created from UI — wallet linked, registration Approved
-✅ 3 wallets on business: QA UI Wallet 896559 (0.1), QA UI Wallet 280599 (0.2), QA UI Wallet 302639 (0.2)
-⚠️ QA UI Wallet 280599: ბალანსი 0 → UI-ში "-" ნაცვლად "₾ 0.00 / ₾ 0.00 / ₾ 0.00"
-⚠️ QA UI Wallet 302639: ბალანსი 0 → UI-ში "-" ნაცვლად "₾ 0.00 / ₾ 0.00 / ₾ 0.00"
-✅ Day 1: collection QA-C-UI-2D-1794387266787 0.8 — paid 0.4, left 0.4 → run Day 2 tomorrow (/Users/keepz/Desktop/test/payments/test-data/rs-collection-day2.json)</pre></details></div>
+✅ Business QA Bednar - Dibbert (986426296) created from UI — wallet linked, registration Approved
+✅ Collection 0.3 ₾ priority 1 sent by RS (QA-C-UI-1794393783641)
+✅ Collection 0.3 ₾ priority 2 sent by RS (QA-C-UI-1794393787766)</pre><pre class="err">ApiAssertionError: 
+❌ API TEST FAILED
+───────────────────────────────────────────
+🔧 ოპერაცია:    UI Liens &amp; collections — ინკასოს ფანჯარა
+⚠️  პრობლემა:    ღილაკები: Overview · Holds per wallet · Executions · History · Audit · Record manual payment
+📥 მიმდინარე შედეგი:
+[
+  "Overview",
+  "Holds per wallet",
+  "Executions",
+  "History",
+  "Audit",
+  "Record manual payment"
+]
+✅ მოსალოდნელი შედეგი: priority 1-ზე RS-მა "0" უპასუხა → priority 2-ზე "Request amount from RS" ჩანს (5.7.3)
+───────────────────────────────────────────
+</pre></details></div>
   <script>
     (function () {
       const cards = document.querySelectorAll('.card');
