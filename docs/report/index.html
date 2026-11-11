@@ -36,76 +36,25 @@
 </head>
 <body>
   <h1>🎭 Playwright Test Report</h1>
-  <div class="meta">11/11/2026, 3:17:14 PM</div>
+  <div class="meta">11/11/2026, 3:39:59 PM</div>
   <div class="summary">
-    <button type="button" class="card active" data-filter="all">Total: 4</button>
-    <button type="button" class="card pass" data-filter="pass">✅ Passed: 4</button>
+    <button type="button" class="card active" data-filter="all">Total: 1</button>
+    <button type="button" class="card pass" data-filter="pass">✅ Passed: 1</button>
     <button type="button" class="card fail" data-filter="fail">❌ Failed: 0</button>
     <button type="button" class="card skip" data-filter="skip">⏭️ Skipped: 0</button>
   </div>
-  <div class="file-group"><div class="file">tests/RS/Front/Positive/rs-front-reallocate.spec.ts</div><details class="test-item" data-status="pass">
+  <div class="file-group"><div class="file">tests/RS/Front/Positive/rs-front-foreign.spec.ts</div><details class="test-item" data-status="pass">
           <summary class="test">
             <span class="chev">▶</span>
             <span class="st" style="color:#3fb950">✅ passed</span>
-            <span class="name">UI: merchant მერე დაემატა: hub 0.3, ყადაღა 0.5 (აკლია 0.2) → ახალი merchant 0.35 → UI: Reallocate holds → merchant 0.35 + hub 0.15 → hub გადარიცხავს 0.15-ს ✅, merchant ვერაფერს</span>
-            <span class="dur">96.0s</span>
-          </summary><pre class="log">✅ Transfer 0.01 ₾ rejected (5038) — available 0 ₾
-✅ Merchant QA RS Merchant 3080 — 995300000040, ident 976218591, BALANCE flow, Temporary Verified (8fb665eb-84bc-4621-ad72-e84e0fb4a8f8)
-✅ Merchant add money 0.4 → balance 0 → 0.39
-ℹ️ Merchant linked after LIEN — before Reallocate: merchant held 0, hub held 0.3
-✅ UI QA-L-LATE-1794395839460: Reallocate holds → HTTP 200
-✅ UI QA-L-LATE-1794395839460: Fully restricted, restricted 0.5 — Holds per wallet = API
-✅ Transfer 0.15 ₾ OK — held 0.15 ₾ untouched
-✅ Merchant cash-out 0.01 ₾ rejected (2501)
-✅ Merchant added later → Reallocate → merchant held 0.35, hub held 0.15
-✅ Merchant 300000040 drained: 0.35 → 0</pre></details><details class="test-item" data-status="pass">
-          <summary class="test">
-            <span class="chev">▶</span>
-            <span class="st" style="color:#3fb950">✅ passed</span>
-            <span class="name">UI: merchant მერე დაემატა: hub 0.3, ინკასო 0.5 → ახალი merchant 0.35 → UI: Reallocate holds → merchant 0.35 + hub 0.15 → hub გადარიცხავს 0.15-ს ✅, merchant ვერაფერს</span>
-            <span class="dur">99.6s</span>
-          </summary><pre class="log">✅ Transfer 0.01 ₾ rejected (5038) — available 0 ₾
-✅ Merchant QA RS Merchant 2283 — 995300000041, ident 912921313, BALANCE flow, Temporary Verified (20384e65-64c6-48e6-94a7-6fc289289e51)
-✅ Merchant add money 0.4 → balance 0 → 0.39
-ℹ️ Merchant linked after COLLECTION — before Reallocate: merchant held 0, hub held 0.3
-✅ UI QA-C-LATE-1794395935134: Reallocate holds → HTTP 200
-✅ UI QA-C-LATE-1794395935134: Fully restricted, restricted 0.5 — Holds per wallet = API
-✅ Transfer 0.15 ₾ OK — held 0.15 ₾ untouched
-✅ Merchant cash-out 0.01 ₾ rejected (2501)
-✅ Merchant added later → Reallocate → merchant held 0.35, hub held 0.15
-✅ Merchant 300000041 drained: 0.35 → 0</pre></details><details class="test-item" data-status="pass">
-          <summary class="test">
-            <span class="chev">▶</span>
-            <span class="st" style="color:#3fb950">✅ passed</span>
-            <span class="name">UI: hub მერე დაემატა: merchant 0.3, ყადაღა 0.5 (merchant ვერ გაიტანს) → hub 0.35 → UI: Reallocate holds → hub 0.35 + merchant 0.15 → merchant გაიტანს 0.15-ს ✅, hub ვერაფერს</span>
-            <span class="dur">90.8s</span>
-          </summary><pre class="log">✅ Merchant QA RS Merchant 3699 — 995300000042, ident 910993159, BALANCE flow, Temporary Verified (74b01ccb-b89b-4f89-947d-2a7f5539d3fe)
-✅ Merchant add money 0.35 → balance 0 → 0.34
-✅ Business 910993159: merchant 995300000042 0.3 ₾ (hub — მოგვიანებით) (registration 49c8768e-0d14-4e16-9827-fd88b683b00a)
-✅ Merchant cash-out 0.01 ₾ rejected (2501)
-ℹ️ Hub linked after LIEN — before Reallocate: merchant held 0.3, hub held 0
-✅ UI QA-L-LATE-1794396092994: Reallocate holds → HTTP 200
-✅ UI QA-L-LATE-1794396092994: Fully restricted, restricted 0.5 — Holds per wallet = API
-✅ Transfer 0.01 ₾ rejected (5038) — available 0 ₾
-✅ Merchant cash-out 0.15 ₾ OK — balance 0.15
-✅ Hub added later → Reallocate → merchant held 0.15, hub held 0.35
-✅ Merchant 300000042 drained: 0.15 → 0</pre></details><details class="test-item" data-status="pass">
-          <summary class="test">
-            <span class="chev">▶</span>
-            <span class="st" style="color:#3fb950">✅ passed</span>
-            <span class="name">UI: hub მერე დაემატა: merchant 0.3, ინკასო 0.5 → hub 0.35 → UI: Reallocate holds → hub 0.35 + merchant 0.15 → merchant გაიტანს 0.15-ს ✅, hub ვერაფერს</span>
-            <span class="dur">91.8s</span>
-          </summary><pre class="log">✅ Merchant QA RS Merchant 1702 — 995300000043, ident 937945102, BALANCE flow, Temporary Verified (d46fc5c6-4402-443d-8645-33f1359689b8)
-✅ Merchant add money 0.35 → balance 0 → 0.34
-✅ Business 937945102: merchant 995300000043 0.3 ₾ (hub — მოგვიანებით) (registration edb33bbd-b731-47f0-b29b-a5f1af360b1c)
-✅ Merchant cash-out 0.01 ₾ rejected (2501)
-ℹ️ Hub linked after COLLECTION — before Reallocate: merchant held 0.3, hub held 0
-✅ UI QA-C-LATE-1794396186402: Reallocate holds → HTTP 200
-✅ UI QA-C-LATE-1794396186402: Fully restricted, restricted 0.5 — Holds per wallet = API
-✅ Transfer 0.01 ₾ rejected (5038) — available 0 ₾
-✅ Merchant cash-out 0.15 ₾ OK — balance 0.15
-✅ Hub added later → Reallocate → merchant held 0.15, hub held 0.35
-✅ Merchant 300000043 drained: 0.15 → 0</pre></details></div>
+            <span class="name">UI: wallet 1 ₾ → Foreign ბიზნესი (მისამართებით) → wallet-ის მიბმა → რეგისტრაციაზე Alternative personal number → Submit to RS → Approved → RS: ყადაღა 0.3 + ინკასო 0.4 alt ნომრით → ორივე Fully restricted, გაყინულია 0.7 → გადარიცხვა 0.31 → უარი → ინკასო: Request amount → Record manual payment 0.4 → Executed → RS ხსნის ყადაღას → გადარიცხვა 0.1 გადის</span>
+            <span class="dur">42.0s</span>
+          </summary><pre class="log">✅ Foreign business QA Runolfsdottir, Jacobi and Lebsack (QA-FRN-32175366) created from UI, wallet linked
+✅ Foreign registration Approved (alt 97564430310), wallet enrolled
+✅ Lien 0.3 + collection 0.4 by personIdAlt 97564430310 — held 0.7
+✅ Transfer 0.31 rejected (5038) — free 0.3
+✅ Collection 0.4 paid from UI — Executed
+✅ Lien withdrawn by RS — transfer 0.1 passed</pre></details></div>
   <script>
     (function () {
       const cards = document.querySelectorAll('.card');
