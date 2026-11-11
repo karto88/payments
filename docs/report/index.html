@@ -36,25 +36,58 @@
 </head>
 <body>
   <h1>🎭 Playwright Test Report</h1>
-  <div class="meta">11/11/2026, 3:39:59 PM</div>
+  <div class="meta">11/11/2026, 3:52:02 PM</div>
   <div class="summary">
-    <button type="button" class="card active" data-filter="all">Total: 1</button>
-    <button type="button" class="card pass" data-filter="pass">✅ Passed: 1</button>
-    <button type="button" class="card fail" data-filter="fail">❌ Failed: 0</button>
+    <button type="button" class="card active" data-filter="all">Total: 3</button>
+    <button type="button" class="card pass" data-filter="pass">✅ Passed: 2</button>
+    <button type="button" class="card fail" data-filter="fail">❌ Failed: 1</button>
     <button type="button" class="card skip" data-filter="skip">⏭️ Skipped: 0</button>
   </div>
-  <div class="file-group"><div class="file">tests/RS/Front/Positive/rs-front-foreign.spec.ts</div><details class="test-item" data-status="pass">
+  <div class="file-group"><div class="file">tests/RS/Front/Positive/rs-front-liens-collections-page.spec.ts</div><details class="test-item" data-status="pass">
           <summary class="test">
             <span class="chev">▶</span>
             <span class="st" style="color:#3fb950">✅ passed</span>
-            <span class="name">UI: wallet 1 ₾ → Foreign ბიზნესი (მისამართებით) → wallet-ის მიბმა → რეგისტრაციაზე Alternative personal number → Submit to RS → Approved → RS: ყადაღა 0.3 + ინკასო 0.4 alt ნომრით → ორივე Fully restricted, გაყინულია 0.7 → გადარიცხვა 0.31 → უარი → ინკასო: Request amount → Record manual payment 0.4 → Executed → RS ხსნის ყადაღას → გადარიცხვა 0.1 გადის</span>
-            <span class="dur">42.0s</span>
-          </summary><pre class="log">✅ Foreign business QA Runolfsdottir, Jacobi and Lebsack (QA-FRN-32175366) created from UI, wallet linked
-✅ Foreign registration Approved (alt 97564430310), wallet enrolled
-✅ Lien 0.3 + collection 0.4 by personIdAlt 97564430310 — held 0.7
-✅ Transfer 0.31 rejected (5038) — free 0.3
-✅ Collection 0.4 paid from UI — Executed
-✅ Lien withdrawn by RS — transfer 0.1 passed</pre></details></div>
+            <span class="name">wallet 0.7 → ყადაღა 0.2 + ინკასო 0.4 → სიაში ძებნა RS reference-ით (ორივე სწორი მწკრივით, უცნობი → ცარიელი) → ფილტრები: Identification number, + Type Lien / Collection, + Status Fully restricted / Executed, Registration ID</span>
+            <span class="dur">60.8s</span>
+          </summary><pre class="log">✅ Wallet QA UI Wallet 546671 created from UI (978ced10-7ebd-42c3-8aee-602c732f7368), balance 0.7 ₾
+✅ Registration tables OK — Data, Wallets, business page, list
+✅ Business QA Gutkowski Upton LLC (944354492) created from UI — wallet linked, registration Approved
+✅ Collection 0.4 ₾ priority 1 sent by RS (QA-C-UI-1794397955390)
+✅ Search by RS reference: collection, lien, unknown → empty
+✅ Filters: Identification number · Identification number + Type Lien · Identification number + Type Collection · Identification number + Status Fully restricted · Identification number + Status Executed · Registration ID</pre></details><details class="test-item" data-status="fail" open>
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#f85149">❌ failed</span>
+            <span class="name">საერთო გვერდიდან ინკასოს გადახდა: ძებნა → ფანჯარა → Request amount → RS asks 0.4 → Record manual payment 0.4 → Executed (სიაშიც) → History: ყველა ნაბიჯი რიგით + ვინ (RS / User / Integrator / System), payload (თანხა, Bank reference) → Audit: მხოლოდ Restriction-ის ცვლილებები</span>
+            <span class="dur">43.9s</span>
+          </summary><pre class="log">✅ Wallet QA UI Wallet 622858 created from UI (06dc0a06-d499-4b9c-934c-657331bf1e9b), balance 0.7 ₾
+✅ Registration tables OK — Data, Wallets, business page, list
+✅ Business QA Hilpert, Ledner and Quigley (974090492) created from UI — wallet linked, registration Approved
+✅ Collection 0.4 ₾ priority 1 sent by RS (QA-C-UI-1794398010498)
+✅ Collection 0.4 paid from Liens &amp; collections page — Executed</pre><pre class="err">ApiAssertionError: 
+❌ API TEST FAILED
+───────────────────────────────────────────
+🔧 ოპერაცია:    UI RS → Liens &amp; collections (საერთო გვერდი) — ფანჯარა → History
+⚠️  პრობლემა:    payload: {"before":"PROCESSING","after":"EXECUTED","payload":null}
+📥 მიმდინარე შედეგი:
+{
+  "before": "PROCESSING",
+  "after": "EXECUTED",
+  "payload": null
+}
+✅ მოსალოდნელი შედეგი: Manual payment recorded → payload { amount 0.4, bankReference QA-LC-224033, answerId, paidAt }
+───────────────────────────────────────────
+</pre></details><details class="test-item" data-status="pass">
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="name">ყადაღა საერთო გვერდიდან: ფანჯარაში Executions / Request amount / Record manual payment არ არის → RS ხსნის → სიაში Withdrawn, Restricted 0 → History: Lien received … Lien withdrawn by RS → Hold released → Audit</span>
+            <span class="dur">41.2s</span>
+          </summary><pre class="log">✅ Wallet QA UI Wallet 084924 created from UI (175f1672-f9d8-4faf-8774-85c3a8cc1ebd), balance 0.7 ₾
+✅ Registration tables OK — Data, Wallets, business page, list
+✅ Business QA Bartell - Yost (965611411) created from UI — wallet linked, registration Approved
+✅ Collection 0.4 ₾ priority 1 sent by RS (QA-C-UI-1794398056873)
+✅ Lien withdrawn — list Withdrawn, History 6, Audit 4</pre></details></div>
   <script>
     (function () {
       const cards = document.querySelectorAll('.card');
