@@ -36,138 +36,23 @@
 </head>
 <body>
   <h1>🎭 Playwright Test Report</h1>
-  <div class="meta">11/11/2026, 4:10:26 PM</div>
+  <div class="meta">11/11/2026, 6:23:01 PM</div>
   <div class="summary">
-    <button type="button" class="card active" data-filter="all">Total: 5</button>
-    <button type="button" class="card pass" data-filter="pass">✅ Passed: 2</button>
-    <button type="button" class="card fail" data-filter="fail">❌ Failed: 3</button>
+    <button type="button" class="card active" data-filter="all">Total: 1</button>
+    <button type="button" class="card pass" data-filter="pass">✅ Passed: 1</button>
+    <button type="button" class="card fail" data-filter="fail">❌ Failed: 0</button>
     <button type="button" class="card skip" data-filter="skip">⏭️ Skipped: 0</button>
   </div>
-  <div class="file-group"><div class="file">tests/RS/Front/Positive/rs-front-collection.spec.ts</div><details class="test-item" data-status="fail" open>
-          <summary class="test">
-            <span class="chev">▶</span>
-            <span class="st" style="color:#f85149">❌ failed</span>
-            <span class="name">wallet 0.6 → ინკასოები შემოდის priority 3 → 2 → 1 (თითო 0.3) → ფანჯარაში Priority 3 / 2 / 1; ფული priority-ით: P1 Fully 0.3, P2 Fully 0.3, P3 Pending 0 (KD-2682)</span>
-            <span class="dur">72.8s</span>
-          </summary><pre class="log">✅ Wallet QA UI Wallet 535494 created from UI (cdb73211-bcc4-4ff7-973c-ce5222766fcc), balance 0.6 ₾
-✅ Registration tables OK — Data, Wallets, business page, list
-✅ Business QA Berge Fadel Inc (919798834) created from UI — wallet linked, registration Approved
-✅ Collection 0.3 ₾ priority 3 sent by RS (QA-C-UI-1794399056721)
-✅ Collection 0.3 ₾ priority 2 sent by RS (QA-C-UI-1794399060852)
-✅ Collection 0.3 ₾ priority 1 sent by RS (QA-C-UI-1794399065052)</pre><pre class="err">ApiAssertionError: 
-❌ API TEST FAILED
-───────────────────────────────────────────
-🔧 ოპერაცია:    GET /api/v1/rs/restrictions/{id}
-⚠️  პრობლემა:    P3 Fully restricted 0.3 · P2 Fully restricted 0.3 · P1 Pending 0
-📥 მიმდინარე შედეგი:
-[
-  {
-    "priority": 3,
-    "number": "QA-C-UI-1794399056721",
-    "status": "Fully restricted",
-    "restricted": 0.3,
-    "receivedAt": "2026-11-11T12:10:56.788567Z"
-  },
-  {
-    "priority": 2,
-    "number": "QA-C-UI-1794399060852",
-    "status": "Fully restricted",
-    "restricted": 0.3,
-    "receivedAt": "2026-11-11T12:11:00.918567Z"
-  },
-  {
-    "priority": 1,
-    "number": "QA-C-UI-1794399065052",
-    "status": "Pending",
-    "restricted": 0,
-    "receivedAt": "2026-11-11T12:11:05.122266Z"
-  }
-]
-✅ მოსალოდნელი შედეგი: ფული priority-ის რიგით (1 → 2 → 3, ერთნაირში ძველი): P1 0.3 · P2 0.3 · P3 0
-───────────────────────────────────────────
-</pre></details><details class="test-item" data-status="fail" open>
-          <summary class="test">
-            <span class="chev">▶</span>
-            <span class="st" style="color:#f85149">❌ failed</span>
-            <span class="name">ცარიელი wallet → priority 3, მერე priority 1 (ორივე Pending) → wallet-ს ერიცხება 0.3 → ფული priority 1-ს მიდის (Fully 0.3), priority 3 რჩება Pending (KD-2682)</span>
-            <span class="dur">75.1s</span>
-          </summary><pre class="log">✅ Wallet QA UI Wallet 672542 created from UI (b3e6e73e-4c24-4b0d-950c-ba1af0690fa2)
-✅ Registration tables OK — Data, Wallets, business page, list
-✅ Business QA Hane Hilpert Inc (999131159) created from UI — wallet linked, registration Approved
-✅ Collection 0.3 ₾ priority 3 sent by RS (QA-C-UI-1794399130696)
-✅ Collection 0.3 ₾ priority 1 sent by RS (QA-C-UI-1794399134829)</pre><pre class="err">ApiAssertionError: 
-❌ API TEST FAILED
-───────────────────────────────────────────
-🔧 ოპერაცია:    GET /api/v1/rs/restrictions/{id}
-⚠️  პრობლემა:    P3 Fully restricted 0.3 · P1 Pending 0
-📥 მიმდინარე შედეგი:
-[
-  {
-    "priority": 3,
-    "number": "QA-C-UI-1794399130696",
-    "status": "Fully restricted",
-    "restricted": 0.3,
-    "receivedAt": "2026-11-11T12:12:10.762028Z"
-  },
-  {
-    "priority": 1,
-    "number": "QA-C-UI-1794399134829",
-    "status": "Pending",
-    "restricted": 0,
-    "receivedAt": "2026-11-11T12:12:14.901248Z"
-  }
-]
-✅ მოსალოდნელი შედეგი: ფული priority-ის რიგით (1 → 2 → 3, ერთნაირში ძველი): P1 0.3 · P3 0
-───────────────────────────────────────────
-</pre></details><details class="test-item" data-status="pass">
+  <div class="file-group"><div class="file">tests/Positive/all-methods.spec.ts</div><details class="test-item" data-status="pass">
           <summary class="test">
             <span class="chev">▶</span>
             <span class="st" style="color:#3fb950">✅ passed</span>
-            <span class="name">ერთნაირი priority: wallet 0.3 → 2 ინკასო priority 1 (თითო 0.3) → ფული ძველს: 1-ლი Fully 0.3, მე-2 Pending</span>
-            <span class="dur">42.0s</span>
-          </summary><pre class="log">✅ Wallet QA UI Wallet 831120 created from UI (cfc576f2-fa11-4ab4-ba85-32090da39ab9), balance 0.3 ₾
-✅ Registration tables OK — Data, Wallets, business page, list
-✅ Business QA Kuhn - Torphy (964376288) created from UI — wallet linked, registration Approved
-✅ Collection 0.3 ₾ priority 1 sent by RS (QA-C-UI-1794399205644)
-✅ Collection 0.3 ₾ priority 1 sent by RS (QA-C-UI-1794399209789)
-✅ Holds by priority: P1 0.3 · P1 0</pre></details><details class="test-item" data-status="fail" open>
-          <summary class="test">
-            <span class="chev">▶</span>
-            <span class="st" style="color:#f85149">❌ failed</span>
-            <span class="name">wallet 0.6 → priority 1 და 2 (ორივე Fully 0.3) → priority 2-ზე "Request amount from RS" არ ჩანს, API → უარი → priority 1: Request amount → Record manual payment → Executed → priority 2-ზე ღილაკი ჩნდება → გადახდა → Executed (KD-2683)</span>
-            <span class="dur">48.3s</span>
-          </summary><pre class="log">✅ Wallet QA UI Wallet 429019 created from UI (297d782c-8105-4c62-9eff-e15cc5300da3), balance 0.6 ₾
-✅ Registration tables OK — Data, Wallets, business page, list
-✅ Business QA Wolf, Pagac and Ernser (929877323) created from UI — wallet linked, registration Approved
-✅ Collection 0.3 ₾ priority 1 sent by RS (QA-C-UI-1794399252180)
-✅ Collection 0.3 ₾ priority 2 sent by RS (QA-C-UI-1794399256325)</pre><pre class="err">ApiAssertionError: 
-❌ API TEST FAILED
-───────────────────────────────────────────
-🔧 ოპერაცია:    UI Liens &amp; collections — ინკასოს ფანჯარა
-⚠️  პრობლემა:    priority 2: ღილაკები Overview · Holds per wallet · Executions · History · Audit · Request amount from RS
-📥 მიმდინარე შედეგი:
-[
-  "Overview",
-  "Holds per wallet",
-  "Executions",
-  "History",
-  "Audit",
-  "Request amount from RS"
-]
-✅ მოსალოდნელი შედეგი: priority 2-ზე "Request amount from RS" არ ჩანს — priority 1 ჯერ გადაუხდელია
-───────────────────────────────────────────
-</pre></details><details class="test-item" data-status="pass">
-          <summary class="test">
-            <span class="chev">▶</span>
-            <span class="st" style="color:#3fb950">✅ passed</span>
-            <span class="name">wallet 0.6 → priority 1 და 2 → priority 1-ზე Request amount, RS პასუხობს "0" (No amount) → სისტემა თვითონ ეკითხება RS-ს priority 2-ზე (AUTO) → RS asks 0.3, ჩანს "Record manual payment" (5.7.3)</span>
-            <span class="dur">49.0s</span>
-          </summary><pre class="log">✅ Wallet QA UI Wallet 741098 created from UI (36e65d50-2be5-4e00-bda1-6ebb17ebfec1), balance 0.6 ₾
-✅ Registration tables OK — Data, Wallets, business page, list
-✅ Business QA Wuckert Torphy Group (914466871) created from UI — wallet linked, registration Approved
-✅ Collection 0.3 ₾ priority 1 sent by RS (QA-C-UI-1794399295450)
-✅ Collection 0.3 ₾ priority 2 sent by RS (QA-C-UI-1794399299663)
-✅ Priority 1 answered 0 → system asked RS for priority 2 automatically, RS asks 0.3 (QA-C-UI-1794399299663)</pre></details></div>
+            <span class="name">Card Payment TBC</span>
+            <span class="dur">75.9s</span>
+          </summary><pre class="log">✅ Order Created
+✅ Payment page opened
+✅ OTP: 406354
+ℹ️ Transaction status: WAITING_FOR_SIGNATURE</pre></details></div>
   <script>
     (function () {
       const cards = document.querySelectorAll('.card');
