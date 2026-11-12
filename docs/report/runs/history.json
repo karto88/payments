@@ -1,5 +1,18 @@
 [
   {
+    "id": "2026-11-12T15-22-10-448Z",
+    "startedAt": "2026-11-12T15:22:10.448Z",
+    "durationMs": 1566,
+    "label": "tests/RS/Back/Negative/rs-registration-negative.spec.ts · grep: KD-2725",
+    "total": 1,
+    "passed": 0,
+    "failed": 1,
+    "skipped": 0,
+    "failedTitles": [
+      "RS Registration Negative — No wallet რეგისტრაცია → ბიზნესი იგივე ident-ით, სხვა სახელით და თარიღებით → უარი ან რეგისტრაციის მონაცემები; hub wallet იმავე რეგისტრაციაში 🐞 KD-2725"
+    ]
+  },
+  {
     "id": "2026-11-12T14-10-11-400Z",
     "startedAt": "2026-11-12T14:10:11.400Z",
     "durationMs": 1975594,
