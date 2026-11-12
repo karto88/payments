@@ -36,32 +36,44 @@
 </head>
 <body>
   <h1>🎭 Playwright Test Report</h1>
-  <div class="meta">11/12/2026, 12:38:59 PM</div>
+  <div class="meta">11/12/2026, 1:19:38 PM</div>
   <div class="summary">
-    <button type="button" class="card active" data-filter="all">Total: 3</button>
-    <button type="button" class="card pass" data-filter="pass">✅ Passed: 0</button>
-    <button type="button" class="card fail" data-filter="fail">❌ Failed: 1</button>
-    <button type="button" class="card skip" data-filter="skip">⏭️ Skipped: 2</button>
+    <button type="button" class="card active" data-filter="all">Total: 2</button>
+    <button type="button" class="card pass" data-filter="pass">✅ Passed: 2</button>
+    <button type="button" class="card fail" data-filter="fail">❌ Failed: 0</button>
+    <button type="button" class="card skip" data-filter="skip">⏭️ Skipped: 0</button>
   </div>
-  <div class="file-group"><div class="file">tests/RS/Front/Positive/rs-front-mixed-wallets.spec.ts</div><details class="test-item" data-status="fail" open>
+  <div class="file-group"><div class="file">tests/RS/Front/Positive/rs-front-reallocate.spec.ts</div><details class="test-item" data-status="pass">
           <summary class="test">
             <span class="chev">▶</span>
-            <span class="st" style="color:#f85149">❌ failed</span>
-            <span class="name">UI: ინკასო 0.4: merchant 0.1, hub 0.45 → მხოლოდ hub 0.4 → merchant გაიტანს 0.05-ს ✅, hub ვერ გადარიცხავს 0.1-ს</span>
-            <span class="dur">71.6s</span>
-          </summary><pre class="log">✅ Merchant QA RS Merchant 5164 — 995300000066, ident 924521037, BALANCE flow, Temporary Verified (eee95c28-9b0a-4f62-9a0c-0a84526c85cb)</pre><pre class="err">Error: OTP not found</pre></details><details class="test-item" data-status="skip">
+            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="name">UI: merchant მერე დაემატა, ჯამი = ყადაღა: hub 0.3, ყადაღა 1.0 (აკლია 0.7) → ახალი merchant 0.7 → UI: Reallocate holds → merchant 0.7 + hub 0.3 → Fully restricted → hub ვერ გადარიცხავს 0.01-ს, merchant ვერ გაიტანს 0.01-ს (hub-ის 0.3 არ თავისუფლდება)</span>
+            <span class="dur">114.2s</span>
+          </summary><pre class="log">✅ Transfer 0.01 ₾ rejected (5038) — available 0 ₾
+✅ Merchant QA RS Merchant 3617 — 995300000067, ident 922758080, BALANCE flow, Temporary Verified (de1a7835-7174-4a13-9045-f337361bc102)
+✅ Merchant add money 0.75 → balance 0 → 0.74
+ℹ️ Merchant linked after LIEN — before Reallocate: merchant held 0, hub held 0.3
+✅ UI QA-L-LATE-1794475191898: Reallocate holds → HTTP 200
+✅ UI QA-L-LATE-1794475191898: Fully restricted, restricted 1 — Holds per wallet = API
+✅ Transfer 0.01 ₾ rejected (5038) — available 0 ₾
+✅ Merchant cash-out 0.01 ₾ rejected (2501)
+✅ Merchant added later → Reallocate → merchant held 0.7, hub held 0.3
+✅ Merchant 300000067 drained: 0.7 → 0</pre></details><details class="test-item" data-status="pass">
           <summary class="test">
-            <span class="chev"></span>
-            <span class="st" style="color:#7d8590">⏭️ skipped</span>
-            <span class="name">UI: ინკასო 0.4: merchant 0.05, hub 0.2 (სულ 0.25) → Partially restricted → hub-ს +0.2 → hold ივსება (hub 0.35) → Fully restricted</span>
-            <span class="dur">0ms</span>
-          </summary></details><details class="test-item" data-status="skip">
-          <summary class="test">
-            <span class="chev"></span>
-            <span class="st" style="color:#7d8590">⏭️ skipped</span>
-            <span class="name">UI: ინკასო 0.35: merchant 0.05, hub 0.3 → hub 0.3 + merchant 0.05 → ადმინი იხდის 0.3 → ჩამოიჭრება გაყინულიდან (merchant / hub), ჯამი 0.3, ბალანსები შემცირდა</span>
-            <span class="dur">0ms</span>
-          </summary></details></div>
+            <span class="chev">▶</span>
+            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="name">UI: merchant მერე დაემატა, ჯამი = ინკასო: hub 0.3, ინკასო 1.0 (აკლია 0.7) → ახალი merchant 0.7 → UI: Reallocate holds → merchant 0.7 + hub 0.3 → Fully restricted → hub ვერ გადარიცხავს 0.01-ს, merchant ვერ გაიტანს 0.01-ს (hub-ის 0.3 არ თავისუფლდება)</span>
+            <span class="dur">93.9s</span>
+          </summary><pre class="log">✅ Transfer 0.01 ₾ rejected (5038) — available 0 ₾
+✅ Merchant QA RS Merchant 4882 — 995300000068, ident 902294657, BALANCE flow, Temporary Verified (65fd1b4c-aa80-45d0-9bf5-b1687e5c6b1c)
+✅ Merchant add money 0.75 → balance 0 → 0.74
+ℹ️ Merchant linked after COLLECTION — before Reallocate: merchant held 0, hub held 0.3
+✅ UI QA-C-LATE-1794475298837: Reallocate holds → HTTP 200
+✅ UI QA-C-LATE-1794475298837: Fully restricted, restricted 1 — Holds per wallet = API
+✅ Transfer 0.01 ₾ rejected (5038) — available 0 ₾
+✅ Merchant cash-out 0.01 ₾ rejected (2501)
+✅ Merchant added later → Reallocate → merchant held 0.7, hub held 0.3
+✅ Merchant 300000068 drained: 0.7 → 0</pre></details></div>
   <script>
     (function () {
       const cards = document.querySelectorAll('.card');
