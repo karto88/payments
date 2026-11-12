@@ -36,44 +36,129 @@
 </head>
 <body>
   <h1>🎭 Playwright Test Report</h1>
-  <div class="meta">11/12/2026, 1:19:38 PM</div>
+  <div class="meta">11/12/2026, 4:00:14 PM</div>
   <div class="summary">
-    <button type="button" class="card active" data-filter="all">Total: 2</button>
-    <button type="button" class="card pass" data-filter="pass">✅ Passed: 2</button>
+    <button type="button" class="card active" data-filter="all">Total: 16</button>
+    <button type="button" class="card pass" data-filter="pass">✅ Passed: 16</button>
     <button type="button" class="card fail" data-filter="fail">❌ Failed: 0</button>
     <button type="button" class="card skip" data-filter="skip">⏭️ Skipped: 0</button>
   </div>
-  <div class="file-group"><div class="file">tests/RS/Front/Positive/rs-front-reallocate.spec.ts</div><details class="test-item" data-status="pass">
+  <div class="file-group"><div class="file">tests/RS/Front/Negative/rs-front-register-to-rs-negative.spec.ts</div><details class="test-item" data-status="pass">
           <summary class="test">
             <span class="chev">▶</span>
             <span class="st" style="color:#3fb950">✅ passed</span>
-            <span class="name">UI: merchant მერე დაემატა, ჯამი = ყადაღა: hub 0.3, ყადაღა 1.0 (აკლია 0.7) → ახალი merchant 0.7 → UI: Reallocate holds → merchant 0.7 + hub 0.3 → Fully restricted → hub ვერ გადარიცხავს 0.01-ს, merchant ვერ გაიტანს 0.01-ს (hub-ის 0.3 არ თავისუფლდება)</span>
-            <span class="dur">114.2s</span>
-          </summary><pre class="log">✅ Transfer 0.01 ₾ rejected (5038) — available 0 ₾
-✅ Merchant QA RS Merchant 3617 — 995300000067, ident 922758080, BALANCE flow, Temporary Verified (de1a7835-7174-4a13-9045-f337361bc102)
-✅ Merchant add money 0.75 → balance 0 → 0.74
-ℹ️ Merchant linked after LIEN — before Reallocate: merchant held 0, hub held 0.3
-✅ UI QA-L-LATE-1794475191898: Reallocate holds → HTTP 200
-✅ UI QA-L-LATE-1794475191898: Fully restricted, restricted 1 — Holds per wallet = API
-✅ Transfer 0.01 ₾ rejected (5038) — available 0 ₾
-✅ Merchant cash-out 0.01 ₾ rejected (2501)
-✅ Merchant added later → Reallocate → merchant held 0.7, hub held 0.3
-✅ Merchant 300000067 drained: 0.7 → 0</pre></details><details class="test-item" data-status="pass">
+            <span class="name">UI: Link this wallet → ფანჯარაში Cancel → მოთხოვნა არ იგზავნება, ღილაკი და "This wallet is not linked to the registration yet." ისევ ჩანს, რეგისტრაციაზე მხოლოდ hub wallet</span>
+            <span class="dur">23.4s</span>
+          </summary><pre class="log">✅ Merchant QA RS Merchant 2643 — 995300000077, ident 961912060, BALANCE flow, Temporary Verified (a273f8d4-2d4c-478c-b37a-7e6189a60e79)
+✅ Link this wallet → Cancel → nothing linked</pre></details><details class="test-item" data-status="pass">
           <summary class="test">
             <span class="chev">▶</span>
             <span class="st" style="color:#3fb950">✅ passed</span>
-            <span class="name">UI: merchant მერე დაემატა, ჯამი = ინკასო: hub 0.3, ინკასო 1.0 (აკლია 0.7) → ახალი merchant 0.7 → UI: Reallocate holds → merchant 0.7 + hub 0.3 → Fully restricted → hub ვერ გადარიცხავს 0.01-ს, merchant ვერ გაიტანს 0.01-ს (hub-ის 0.3 არ თავისუფლდება)</span>
-            <span class="dur">93.9s</span>
-          </summary><pre class="log">✅ Transfer 0.01 ₾ rejected (5038) — available 0 ₾
-✅ Merchant QA RS Merchant 4882 — 995300000068, ident 902294657, BALANCE flow, Temporary Verified (65fd1b4c-aa80-45d0-9bf5-b1687e5c6b1c)
-✅ Merchant add money 0.75 → balance 0 → 0.74
-ℹ️ Merchant linked after COLLECTION — before Reallocate: merchant held 0, hub held 0.3
-✅ UI QA-C-LATE-1794475298837: Reallocate holds → HTTP 200
-✅ UI QA-C-LATE-1794475298837: Fully restricted, restricted 1 — Holds per wallet = API
-✅ Transfer 0.01 ₾ rejected (5038) — available 0 ₾
-✅ Merchant cash-out 0.01 ₾ rejected (2501)
-✅ Merchant added later → Reallocate → merchant held 0.7, hub held 0.3
-✅ Merchant 300000068 drained: 0.7 → 0</pre></details></div>
+            <span class="name">UI: merchant-ის ident-ზე რეგისტრაცია არ არის → RS ტაბი: "Not registered with RS." + Register to RS, Link this wallet არ ჩანს</span>
+            <span class="dur">10.1s</span>
+          </summary><pre class="log">✅ Merchant QA RS Merchant 7328 — 995300000079, ident 955038923, BALANCE flow, Temporary Verified (bbbc6291-54f4-4be9-ad51-806d7bd49729)
+✅ No registration for 955038923 → only Register to RS</pre></details><details class="test-item" data-status="pass">
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="name">UI: რეგისტრაცია გაუქმდა → RS ტაბი: "Not registered with RS. The previous registration was cancelled." + Register to RS, Link this wallet არ ჩანს → API-თ მიბმა → 409 / 7011 "Registration is cancelled"</span>
+            <span class="dur">12.0s</span>
+          </summary><pre class="log">✅ Merchant QA RS Merchant 4722 — 995300000082, ident 904519351, BALANCE flow, Temporary Verified (ea520347-d104-414b-a2e2-204b1f4ec216)
+✅ Cancelled registration → no Link this wallet, API 409/7011</pre></details><details class="test-item" data-status="pass">
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="name">UI: merchant უკვე მიბმულია → Link this wallet აღარ ჩანს → API-თ ხელახლა მიბმა → 200, დუბლიკატი არ იქმნება (merchant რეგისტრაციაზე ერთხელ)</span>
+            <span class="dur">21.9s</span>
+          </summary><pre class="log">✅ Merchant QA RS Merchant 1705 — 995300000084, ident 952291405, BALANCE flow, Temporary Verified (f23453ca-2cb7-4534-9fc0-d1fea603f50c)
+✅ Linked twice → still one MERCHANT wallet</pre></details><details class="test-item" data-status="pass">
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="name">API: სხვა გადამხდელის merchant (სხვა ident) → მიბმა → 409 / 1505 "The merchant's identification number is not the registration's", რეგისტრაციაზე მხოლოდ hub; UI: მის ტაბზე Link this wallet არ ჩანს</span>
+            <span class="dur">14.6s</span>
+          </summary><pre class="log">✅ Merchant QA RS Merchant 5511 — 995300000087, ident 980268031, BALANCE flow, Temporary Verified (2205b91f-8461-4f49-9c8a-b02c089eb8d9)
+✅ Merchant of other ident 980268031 → 409/1505</pre></details><details class="test-item" data-status="pass">
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="name">API: hub wallet (CLIENT:…) merchant-ის გზით → 400 / 1499 "Distributor hub wallets are not picked", არაფერი ებმის</span>
+            <span class="dur">7.2s</span>
+          </summary><pre class="log">✅ CLIENT holderRef → 400/1499</pre></details><details class="test-item" data-status="pass">
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="name">API: არარსებული merchant (MERCHANT:0000…) → 404 / 1504 "This merchant can't be linked to an RS registration", არაფერი ებმის</span>
+            <span class="dur">1.7s</span>
+          </summary><pre class="log">✅ Unknown merchant → 404/1504</pre></details><details class="test-item" data-status="pass">
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="name">API: holderRef ცარიელი / საერთოდ არ არის → 400 / 1001 "must not be blank", არაფერი ებმის</span>
+            <span class="dur">1.6s</span>
+          </summary><pre class="log">✅ Blank holderRef → 400/1001</pre></details><details class="test-item" data-status="pass">
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="name">API: არარსებული რეგისტრაცია → 404 / 7004 "Registration not found"</span>
+            <span class="dur">4.2s</span>
+          </summary><pre class="log">✅ Merchant QA RS Merchant 8575 — 995300000088, ident 916600191, BALANCE flow, Temporary Verified (937e1c13-8727-45d8-ad50-c6f3cd485bdf)
+✅ Unknown registration → 404/7004</pre></details></div><div class="file-group"><div class="file">tests/RS/Front/Positive/rs-front-register-to-rs.spec.ts</div><details class="test-item" data-status="pass">
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="name">UI: Link this wallet, Not submitted: ბიზნესი + hub wallet → ახალი merchant იმავე ident-ით → RS ტაბი: Not submitted · Link this wallet · "This wallet is not linked to the registration yet." → Link this wallet → ფანჯარა "Link wallet to RS registration?" → დადასტურება → "Wallet linked to the RS registration" → ღილაკი ქრება → 2 wallet, სტატუსი იგივე</span>
+            <span class="dur">23.8s</span>
+          </summary><pre class="log">✅ Merchant QA RS Merchant 8883 — 995300000077, ident 949835225, BALANCE flow, Temporary Verified (b9422348-11d0-41d3-8727-0af67adf96c8)
+✅ Link this wallet (NOT_SUBMITTED): merchant QA RS Merchant 8883 → registration 28af8100-bf02-47c8-bd42-700feaea1fcd — 2 wallets</pre></details><details class="test-item" data-status="pass">
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="name">UI: Link this wallet, Pending RS approval: ბიზნესი + hub wallet → Submit → ახალი merchant იმავე ident-ით → RS ტაბი → Link this wallet → დადასტურება → 2 wallet, ისევ Pending RS approval</span>
+            <span class="dur">18.9s</span>
+          </summary><pre class="log">✅ Merchant QA RS Merchant 8565 — 995300000081, ident 986056456, BALANCE flow, Temporary Verified (657c983f-07cc-4d1e-9b1b-253a882b58fb)
+✅ Link this wallet (PENDING_RS_APPROVAL): merchant QA RS Merchant 8565 → registration 970ccefe-7d86-4d30-b97f-a35e144f9006 — 2 wallets</pre></details><details class="test-item" data-status="pass">
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="name">UI: Link this wallet, Approved: ბიზნესი + hub wallet → Submit → RS ადასტურებს → ახალი merchant იმავე ident-ით → RS ტაბი → Link this wallet → დადასტურება → 2 wallet, ისევ Approved</span>
+            <span class="dur">24.8s</span>
+          </summary><pre class="log">✅ Merchant QA RS Merchant 9594 — 995300000085, ident 952639534, BALANCE flow, Temporary Verified (3340509b-2c40-41f6-996a-b433e0d26ff2)
+✅ Link this wallet (APPROVED): merchant QA RS Merchant 9594 → registration f100e93e-c11c-4fe4-b552-2802afcb8c52 — 2 wallets</pre></details></div><div class="file-group"><div class="file">tests/RS/Front/Positive/rs-front-mixed-wallets.spec.ts</div><details class="test-item" data-status="pass">
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="name">UI: გზა 1: ბიზნესი + hub wallet → ახალი merchant ბიზნესის Identification Number-ით → merchant-ის RS ტაბი → Link this wallet → იგივე რეგისტრაცია, 2 wallet (payment-service + distributor-hub)</span>
+            <span class="dur">26.4s</span>
+          </summary><pre class="log">✅ Merchant QA RS Merchant 4759 — 995300000078, ident 955468725, BALANCE flow, Temporary Verified (7b7ea52a-6bc7-4ba9-b8e7-d3ef2f821ca2)
+✅ UI Link this wallet: merchant QA RS Merchant 4759 → registration e1b59f31-ba04-47d3-ad3f-2dd521ae7acf (Not submitted)
+✅ UI Wallets: QA Bednar, Feeney and Lockman 1937 (distributor-hub) + QA RS Merchant 4759 (payment-service)
+✅ Way 1: merchant QA RS Merchant 4759 → business 955468725 registration e1b59f31-ba04-47d3-ad3f-2dd521ae7acf — 2 wallets</pre></details><details class="test-item" data-status="pass">
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="name">UI: გზა 2: ახალი merchant → Register to RS → ბიზნესი merchant-ის Identification Number-ით + hub wallet → hub wallet იგივე რეგისტრაციას ებმის, 2 wallet</span>
+            <span class="dur">16.3s</span>
+          </summary><pre class="log">✅ Merchant QA RS Merchant 2801 — 995300000080, ident 954498595, BALANCE flow, Temporary Verified (1e1f285a-f8c6-475b-9ac0-d2eee3846639)
+✅ UI Wallets: QA RS Merchant 2801 (payment-service) + QA Mraz, Nienow and Stamm 1691 (distributor-hub)
+✅ Way 2: business with merchant ident 954498595 → hub wallet joined registration 339a6075-3fad-429e-b063-32d07e60b6d7 — 2 wallets</pre></details><details class="test-item" data-status="pass">
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="name">UI: გზა 1, RS-ში უკვე Approved: ბიზნესი + hub wallet → Submit → Approved → ახალი merchant იმავე Identification Number-ით → merchant-ის RS ტაბი → Link this wallet → იგივე რეგისტრაცია, ისევ Approved, Wallets 2 (payment-service + distributor-hub)</span>
+            <span class="dur">26.1s</span>
+          </summary><pre class="log">✅ Merchant QA RS Merchant 9939 — 995300000083, ident 910282944, BALANCE flow, Temporary Verified (c0c0503a-95a6-41e9-baab-10a21ce6f379)
+✅ UI Link this wallet: merchant QA RS Merchant 9939 → registration 119284f7-e647-45a6-9c16-1a9dd1b9cb95 (Approved)
+✅ UI Wallets: QA Hane, Bednar and Runolfsdottir 7500 (distributor-hub) + QA RS Merchant 9939 (payment-service)
+✅ Way 1 (approved): merchant QA RS Merchant 9939 joined APPROVED registration 119284f7-e647-45a6-9c16-1a9dd1b9cb95 — 2 wallets</pre></details><details class="test-item" data-status="pass">
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="name">UI: გზა 2, RS-ში უკვე Approved: ახალი merchant → Register to RS → Submit → Approved → ბიზნესი merchant-ის Identification Number-ით + hub wallet → hub იმავე რეგისტრაციას ებმის, ისევ Approved, Wallets 2</span>
+            <span class="dur">15.3s</span>
+          </summary><pre class="log">✅ Merchant QA RS Merchant 9642 — 995300000086, ident 968348409, BALANCE flow, Temporary Verified (58a38813-600a-497a-8fd0-a4023e4dccb3)
+✅ UI Wallets: QA RS Merchant 9642 (payment-service) + QA Bogan Waelchi Group 4247 (distributor-hub)
+✅ Way 2 (approved): hub wallet joined APPROVED registration ccde6cdc-7ed3-4195-9a9c-7fd1bc4e1638 of merchant QA RS Merchant 9642 — 2 wallets</pre></details></div>
   <script>
     (function () {
       const cards = document.querySelectorAll('.card');
