@@ -1,0 +1,73 @@
+[
+  {
+    "id": "2026-11-12T14-08-29-236Z",
+    "startedAt": "2026-11-12T14:08:29.236Z",
+    "durationMs": 1745779,
+    "label": "tests/RS/Back — დარჩენილი (SMS-ის გარეშე): collection, lien, registration",
+    "total": 64,
+    "passed": 57,
+    "failed": 7,
+    "skipped": 0,
+    "failedTitles": [
+      "COL-11: ადმინი აბრუნებს ინკასოს RS-ში (Return) → Returned, გაყინული 0.5 თავისუფლდება, RS-ს მიდის ReturnCollection",
+      "RS ხსნის ინკასოს (ObtainCollection) ხელით გადახდის ჩამოჭრისას → მოხსნა მიიღება, ჩამოჭრა სრულდება (wallet 0.4), ინკასო Withdrawn, ფული აღარ არის გაყინული",
+      "RS Registration — Resident, WALLET კლიენტით (enrollment ACTIVE)",
+      "RS Registration — Approved: სახელის შეცვლა → data differs → Submit changes to RS",
+      "RS Registration — Edit business Approved ბიზნესზე → რეგისტრაციაშიც იცვლება",
+      "RS Registration — უკვე მიბმული wallet, იგივე ident → არსებული რეგისტრაცია",
+      "RS Registration — Cancel ათავისუფლებს wallet-ს (სხვა ident-ით რეგისტრირდება)"
+    ]
+  },
+  {
+    "id": "2026-11-12T14-09-58-538Z",
+    "startedAt": "2026-11-12T14:09:58.538Z",
+    "durationMs": 0,
+    "label": "tests/RS/Back/Positive/rs-merchant-lien.spec.ts:17 tests/RS/Back/Positive/rs-merchant-lien.spec.ts:21 tests/RS/Back/Positive/rs-merchant-lien.spec.ts:27 tests/RS/Back/Positive/rs-merchant-lien.spec.ts:31 tests/RS/Back/Positive/rs-merchant-lien.spec.ts:37 tests/RS/Back/Positive/rs-merchant-lien.spec.ts:44 tests/RS/Back/Positive/rs-merchant-lien.spec.ts:49 tests/RS/Back/Positive/rs-merchant-lien.spec.ts:56 tests/RS/Back/Positive/rs-merchant-lien.spec.ts:63 tests/RS/Back/Positive/rs-merchant-lien.spec.ts:68 tests/RS/Back/Positive/rs-merchant-lien.spec.ts:75 tests/RS/Back/Positive/rs-merchant-lien.spec.ts:80 tests/RS/Back/Positive/rs-merchant-lien.spec.ts:87 tests/RS/Back/Positive/rs-merchant-lien.spec.ts:94 tests/RS/Back/Positive/rs-merchant-lien.spec.ts:99 tests/RS/Back/Positive/rs-merchant-lien.spec.ts:106 tests/RS/Back/Positive/rs-merchant-lien.spec.ts:111 tests/RS/Back/Positive/rs-mixed-wallets.spec.ts:18 tests/RS/Back/Positive/rs-mixed-wallets.spec.ts:22 tests/RS/Back/Positive/rs-mixed-wallets.spec.ts:28 tests/RS/Back/Positive/rs-mixed-wallets.spec.ts:32 tests/RS/Back/Positive/rs-mixed-wallets.spec.ts:36 tests/RS/Back/Positive/rs-mixed-wallets.spec.ts:40 tests/RS/Back/Positive/rs-mixed-wallets.spec.ts:44 tests/RS/Back/Positive/rs-mixed-wallets.spec.ts:50 tests/RS/Back/Positive/rs-mixed-wallets.spec.ts:54 tests/RS/Back/Positive/rs-mixed-wallets.spec.ts:58 tests/RS/Back/Positive/rs-mixed-wallets.spec.ts:62 tests/RS/Back/Positive/rs-mixed-wallets.spec.ts:66 tests/RS/Back/Positive/rs-mixed-wallets.spec.ts:70 tests/RS/Back/Positive/rs-reallocate.spec.ts:15 tests/RS/Back/Positive/rs-reallocate.spec.ts:19 tests/RS/Back/Positive/rs-reallocate.spec.ts:23 tests/RS/Back/Positive/rs-reallocate.spec.ts:27 tests/RS/Back/Positive/rs-reallocate.spec.ts:31 tests/RS/Back/Positive/rs-reallocate.spec.ts:35 tests/RS/Back/Positive/rs-reallocate.spec.ts:39 tests/RS/Back/Positive/rs-reallocate.spec.ts:43 tests/RS/Back/Positive/rs-reallocate.spec.ts:47",
+    "total": 0,
+    "passed": 0,
+    "failed": 0,
+    "skipped": 0,
+    "failedTitles": []
+  },
+  {
+    "id": "2026-11-12T14-08-19-841Z",
+    "startedAt": "2026-11-12T14:08:19.841Z",
+    "durationMs": 1,
+    "label": "tests/RS/Back/Positive/rs-collection.spec.ts:57 tests/RS/Back/Positive/rs-collection.spec.ts:61 tests/RS/Back/Positive/rs-collection.spec.ts:65 tests/RS/Back/Positive/rs-collection.spec.ts:69 tests/RS/Back/Positive/rs-collection.spec.ts:73 tests/RS/Back/Positive/rs-collection.spec.ts:77 tests/RS/Back/Positive/rs-collection.spec.ts:81 tests/RS/Back/Positive/rs-collection.spec.ts:89 tests/RS/Back/Positive/rs-collection.spec.ts:93 tests/RS/Back/Positive/rs-collection.spec.ts:97 tests/RS/Back/Positive/rs-collection.spec.ts:101 tests/RS/Back/Positive/rs-collection.spec.ts:105 tests/RS/Back/Positive/rs-collection.spec.ts:109 tests/RS/Back/Positive/rs-collection.spec.ts:113 tests/RS/Back/Positive/rs-collection.spec.ts:117 tests/RS/Back/Positive/rs-collection.spec.ts:121 tests/RS/Back/Positive/rs-collection.spec.ts:125 tests/RS/Back/Positive/rs-collection.spec.ts:129 tests/RS/Back/Positive/rs-collection.spec.ts:137 tests/RS/Back/Positive/rs-collection.spec.ts:141 tests/RS/Back/Positive/rs-collection.spec.ts:145 tests/RS/Back/Positive/rs-collection.spec.ts:149 tests/RS/Back/Positive/rs-collection.spec.ts:153 tests/RS/Back/Positive/rs-lien.spec.ts:18 tests/RS/Back/Positive/rs-lien.spec.ts:22 tests/RS/Back/Positive/rs-lien.spec.ts:26 tests/RS/Back/Positive/rs-lien.spec.ts:32 tests/RS/Back/Positive/rs-lien.spec.ts:36 tests/RS/Back/Positive/rs-lien.spec.ts:42 tests/RS/Back/Positive/rs-lien.spec.ts:47 tests/RS/Back/Positive/rs-lien.spec.ts:52 tests/RS/Back/Positive/rs-lien.spec.ts:57 tests/RS/Back/Positive/rs-lien.spec.ts:63 tests/RS/Back/Positive/rs-lien.spec.ts:67 tests/RS/Back/Positive/rs-lien.spec.ts:71 tests/RS/Back/Positive/rs-lien.spec.ts:75 tests/RS/Back/Positive/rs-lien.spec.ts:79 tests/RS/Back/Positive/rs-lien.spec.ts:85 tests/RS/Back/Positive/rs-lien.spec.ts:89 tests/RS/Back/Positive/rs-lien.spec.ts:95 tests/RS/Back/Positive/rs-lien.spec.ts:99 tests/RS/Back/Positive/rs-lien.spec.ts:103 tests/RS/Back/Positive/rs-lien.spec.ts:107 tests/RS/Back/Positive/rs-lien.spec.ts:112 tests/RS/Back/Positive/rs-lien.spec.ts:119 tests/RS/Back/Positive/rs-lien.spec.ts:123 tests/RS/Back/Positive/rs-lien.spec.ts:129 tests/RS/Back/Positive/rs-lien.spec.ts:136 tests/RS/Back/Positive/rs-lien.spec.ts:140 tests/RS/Back/Positive/rs-lien.spec.ts:146 tests/RS/Back/Positive/rs-lien.spec.ts:152 tests/RS/Back/Positive/rs-lien.spec.ts:158 tests/RS/Back/Positive/rs-lien.spec.ts:164 tests/RS/Back/Positive/rs-registration.spec.ts:17 tests/RS/Back/Positive/rs-registration.spec.ts:21 tests/RS/Back/Positive/rs-registration.spec.ts:25 tests/RS/Back/Positive/rs-registration.spec.ts:31 tests/RS/Back/Positive/rs-registration.spec.ts:37 tests/RS/Back/Positive/rs-registration.spec.ts:41 tests/RS/Back/Positive/rs-registration.spec.ts:47 tests/RS/Back/Positive/rs-registration.spec.ts:53 tests/RS/Back/Positive/rs-registration.spec.ts:57 tests/RS/Back/Positive/rs-registration.spec.ts:63 tests/RS/Back/Positive/rs-registration.spec.ts:68",
+    "total": 0,
+    "passed": 0,
+    "failed": 0,
+    "skipped": 0,
+    "failedTitles": []
+  },
+  {
+    "id": "2026-11-12T12-08-24-000Z",
+    "startedAt": "2026-11-12T12:08:24.000Z",
+    "durationMs": 2160000,
+    "label": "tests/RS/Back (გაჩერდა: SMS არ მოდიოდა)",
+    "total": 243,
+    "passed": 223,
+    "failed": 17,
+    "skipped": 2,
+    "failedTitles": [
+      "RS Business Negative — ownerFullName მხოლოდ zero-width space (\\u200B) → 1480",
+      "RS Client Negative — clientName მხოლოდ zero-width space (\\u200B) → 1001",
+      "ბიზნესი Approved, wallet არ ჰყავს → code 13 და RS-ს ავტომატურად ეგზავნება ReturnCollection",
+      "ინკასო PROCESSING-ზეა (RS-ის პასუხს ელოდება) → ადმინი აჭერს Return → უარი 409 / 7011, ინკასო არ ბრუნდება, ფული გაყინულია",
+      "Request amount RS-ში დაბრუნებულ (Returned) ინკასოზე → უარი 409 / 7011",
+      "ბიზნესი RS-ში რეგისტრირებულია, მაგრამ wallet არ ჰყავს → ყადაღა არ ედება (code 13 — ღია ანგარიში არ აქვს)",
+      "RS ეკითხება ბიზნესზე, რომელიც რეგისტრირებულია, მაგრამ wallet არ აქვს → ვპასუხობთ შეცდომით code 13 (ღია ანგარიში არ აქვს)",
+      "ყადაღა 1 ₾ (merchant-ის ბალანსი ~1 ₾ — თავისუფალი თითქმის 0) → merchant ცდილობს 0.5 ₾-ის გატანას → უარი (2501)",
+      "💳 ყადაღა merchant-ის ბალანსზე მეტია (აკლია) → add money 0.2 ₾ → ახალი ფული ყადაღას ავსებს → გატანა 0.1 ₾ → უარი (2501)",
+      "💳 add money 0.2 ₾ → merchant-ის მთელი ბალანსი გაყინულია → ადმინი აკეთებს 0.1 ₾-ის refund-ს → გაყინული ფული refund-ში არ მიდის (Keepz-ის ხარჯზე), ბალანსი უცვლელი",
+      "💳 ინტეგრატორის ორდერით გადახდა 0.2 ₾ → merchant-ის მთელი ბალანსი გაყინულია → ინტეგრატორი აკეთებს refund-ს 0.1 ₾ → გაყინული ფული refund-ში არ მიდის, ბალანსი უცვლელი",
+      "💳 ყადაღა merchant-ის ბალანსზე მეტია (აკლია) → merchant-ის payment link-ით გადახდა 0.2 ₾ → ახალი ფული ყადაღას ავსებს → გატანა 0.1 ₾ → უარი (2501)",
+      "💳 ყადაღა merchant-ის ბალანსზე მეტია (აკლია) → add money 0.2 ₾ → ახალი ფული ყადაღას ავსებს → refund 0.1 ₾ → უარი (2501)",
+      "RS Registration Negative — უკვე მიბმული wallet სხვა ident-ით → 409 / 7021",
+      "RS Registration Negative — Submit changes, არაფერი შეცვლილა → 409 / 7011",
+      "RS Registration Negative — operDate მომავალში (+30 დღე) → 400 / 7010 🐞",
+      "RS Business Negative — operDate მომავალში (+30 დღე) → 400 / 1480 🐞",
+      "ცარიელი wallet: ბალანსი 0 ₾, ინკასო 1 ₾ (Pending) → ადმინი ავსებს 0.4-ით → გაყინულია 0.4, აკლია 0.60 (Partially restricted)"
+    ]
+  }
+]

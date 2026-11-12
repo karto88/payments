@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Test Report</title>
+  <style>
+    .history { background:#161b22; border:1px solid #30363d; border-radius:8px; padding:12px 16px; margin-bottom:24px; }
+    .history > summary { cursor:pointer; font-weight:600; font-size:14px; }
+    .hwrap { overflow-x:auto; margin-top:10px; }
+    .history table { border-collapse:collapse; width:100%; font-size:13px; }
+    .history th, .history td { text-align:left; padding:6px 10px; border-top:1px solid #30363d; vertical-align:top; white-space:nowrap; }
+    .history th { color:#7d8590; font-weight:600; border-top:none; }
+    .history td.lbl { white-space:normal; max-width:260px; color:#adbac7; }
+    .history a { color:#58a6ff; text-decoration:none; } .history a:hover { text-decoration:underline; }
+    .history tr.cur td { background:#1c2330; }
+    .history .p { color:#3fb950; } .history .f { color:#f85149; } .history .s { color:#7d8590; }
+    .now { background:#1f6feb; color:#fff; border-radius:10px; padding:1px 7px; font-size:11px; }
+    .barc { min-width:140px; } .bar { display:flex; height:8px; border-radius:4px; overflow:hidden; background:#0d1117; margin-top:5px; }
+    .hf summary { cursor:pointer; color:#f85149; } .hf ul { margin:6px 0 0; padding-left:18px; white-space:normal; color:#ffa198; max-width:520px; }
+    .back { color:#58a6ff; font-size:13px; text-decoration:none; display:inline-block; margin-bottom:12px; }
+    body { font-family: system-ui, sans-serif; background:#0d1117; color:#e6edf3; margin:0; padding:32px; }
+    h1 { font-size:20px; margin:0 0 4px; }
+    .meta { color:#7d8590; font-size:13px; margin-bottom:20px; }
+    .summary { display:flex; gap:12px; margin-bottom:24px; }
+    .card { background:#161b22; border:1px solid #30363d; border-radius:8px; padding:12px 18px;
+            font-family:inherit; font-size:14px; font-weight:600; color:#e6edf3; cursor:pointer;
+            transition:border-color .15s, box-shadow .15s; }
+    .card:hover { border-color:#484f58; }
+    .card.active { border-color:#58a6ff; box-shadow:0 0 0 1px #58a6ff; }
+    .card.pass { color:#3fb950; } .card.fail { color:#f85149; } .card.skip { color:#7d8590; }
+    .file { color:#7d8590; font-size:13px; margin:18px 0 6px; font-weight:600; }
+    .test-item { margin-bottom:6px; }
+    .test { display:flex; align-items:center; gap:16px; background:#161b22; border:1px solid #30363d;
+            border-radius:6px; padding:12px 16px; cursor:pointer; list-style:none; user-select:none; }
+    .test::-webkit-details-marker { display:none; }
+    .test:hover { border-color:#484f58; }
+    .chev { color:#7d8590; font-size:11px; width:12px; transition:transform .15s; }
+    details[open] > .test .chev { transform:rotate(90deg); }
+    .st { min-width:110px; font-weight:600; font-size:13px; }
+    .name { flex:1; }
+    .dur { color:#7d8590; font-size:13px; }
+    .err { background:#161b22; border:1px solid #f85149; border-left:3px solid #f85149; border-radius:6px;
+           padding:12px 16px; margin:-2px 0 10px; color:#ffa198; font-size:12px; white-space:pre-wrap;
+           overflow-x:auto; font-family:monospace; }
+    .log { background:#0b0f14; border:1px solid #30363d; border-left:3px solid #3fb950; border-radius:6px;
+           padding:12px 16px; margin:-2px 0 10px; color:#adbac7; font-size:12px; white-space:pre-wrap;
+           overflow-x:auto; font-family:monospace; line-height:1.5; }
+  </style>
+</head>
+<body>
+  <a class="back" href="../index.html">← ისტორია / ბოლო გაშვება</a>
+  <h1>🎭 Playwright Test Report</h1>
+  <div class="meta">11/12/2026, 6:08:19 PM · tests/RS/Back/Positive/rs-collection.spec.ts:57 tests/RS/Back/Positive/rs-collection.spec.ts:61 tests/RS/Back/Positive/rs-collection.spec.ts:65 tests/RS/Back/Positive/rs-collection.spec.ts:69 tests/RS/Back/Positive/rs-collection.spec.ts:73 tests/RS/Back/Positive/rs-collection.spec.ts:77 tests/RS/Back/Positive/rs-collection.spec.ts:81 tests/RS/Back/Positive/rs-collection.spec.ts:89 tests/RS/Back/Positive/rs-collection.spec.ts:93 tests/RS/Back/Positive/rs-collection.spec.ts:97 tests/RS/Back/Positive/rs-collection.spec.ts:101 tests/RS/Back/Positive/rs-collection.spec.ts:105 tests/RS/Back/Positive/rs-collection.spec.ts:109 tests/RS/Back/Positive/rs-collection.spec.ts:113 tests/RS/Back/Positive/rs-collection.spec.ts:117 tests/RS/Back/Positive/rs-collection.spec.ts:121 tests/RS/Back/Positive/rs-collection.spec.ts:125 tests/RS/Back/Positive/rs-collection.spec.ts:129 tests/RS/Back/Positive/rs-collection.spec.ts:137 tests/RS/Back/Positive/rs-collection.spec.ts:141 tests/RS/Back/Positive/rs-collection.spec.ts:145 tests/RS/Back/Positive/rs-collection.spec.ts:149 tests/RS/Back/Positive/rs-collection.spec.ts:153 tests/RS/Back/Positive/rs-lien.spec.ts:18 tests/RS/Back/Positive/rs-lien.spec.ts:22 tests/RS/Back/Positive/rs-lien.spec.ts:26 tests/RS/Back/Positive/rs-lien.spec.ts:32 tests/RS/Back/Positive/rs-lien.spec.ts:36 tests/RS/Back/Positive/rs-lien.spec.ts:42 tests/RS/Back/Positive/rs-lien.spec.ts:47 tests/RS/Back/Positive/rs-lien.spec.ts:52 tests/RS/Back/Positive/rs-lien.spec.ts:57 tests/RS/Back/Positive/rs-lien.spec.ts:63 tests/RS/Back/Positive/rs-lien.spec.ts:67 tests/RS/Back/Positive/rs-lien.spec.ts:71 tests/RS/Back/Positive/rs-lien.spec.ts:75 tests/RS/Back/Positive/rs-lien.spec.ts:79 tests/RS/Back/Positive/rs-lien.spec.ts:85 tests/RS/Back/Positive/rs-lien.spec.ts:89 tests/RS/Back/Positive/rs-lien.spec.ts:95 tests/RS/Back/Positive/rs-lien.spec.ts:99 tests/RS/Back/Positive/rs-lien.spec.ts:103 tests/RS/Back/Positive/rs-lien.spec.ts:107 tests/RS/Back/Positive/rs-lien.spec.ts:112 tests/RS/Back/Positive/rs-lien.spec.ts:119 tests/RS/Back/Positive/rs-lien.spec.ts:123 tests/RS/Back/Positive/rs-lien.spec.ts:129 tests/RS/Back/Positive/rs-lien.spec.ts:136 tests/RS/Back/Positive/rs-lien.spec.ts:140 tests/RS/Back/Positive/rs-lien.spec.ts:146 tests/RS/Back/Positive/rs-lien.spec.ts:152 tests/RS/Back/Positive/rs-lien.spec.ts:158 tests/RS/Back/Positive/rs-lien.spec.ts:164 tests/RS/Back/Positive/rs-registration.spec.ts:17 tests/RS/Back/Positive/rs-registration.spec.ts:21 tests/RS/Back/Positive/rs-registration.spec.ts:25 tests/RS/Back/Positive/rs-registration.spec.ts:31 tests/RS/Back/Positive/rs-registration.spec.ts:37 tests/RS/Back/Positive/rs-registration.spec.ts:41 tests/RS/Back/Positive/rs-registration.spec.ts:47 tests/RS/Back/Positive/rs-registration.spec.ts:53 tests/RS/Back/Positive/rs-registration.spec.ts:57 tests/RS/Back/Positive/rs-registration.spec.ts:63 tests/RS/Back/Positive/rs-registration.spec.ts:68 · 0 წმ</div>
+  <div class="summary">
+    <button type="button" class="card active" data-filter="all">Total: 0</button>
+    <button type="button" class="card pass" data-filter="pass">✅ Passed: 0</button>
+    <button type="button" class="card fail" data-filter="fail">❌ Failed: 0</button>
+    <button type="button" class="card skip" data-filter="skip">⏭️ Skipped: 0</button>
+  </div>
+  
+  <script>
+    (function () {
+      const cards = document.querySelectorAll('.card');
+      const items = document.querySelectorAll('.test-item');
+      const groups = document.querySelectorAll('.file-group');
+      function applyFilter(f) {
+        items.forEach((it) => {
+          it.style.display = (f === 'all' || it.dataset.status === f) ? '' : 'none';
+        });
+        // ცარიელი file-group-ის header დამალვა
+        groups.forEach((g) => {
+          let anyVisible = false;
+          g.querySelectorAll('.test-item').forEach((it) => {
+            if (it.style.display !== 'none') anyVisible = true;
+          });
+          g.style.display = anyVisible ? '' : 'none';
+        });
+        cards.forEach((c) => c.classList.toggle('active', c.dataset.filter === f));
+      }
+      cards.forEach((c) => c.addEventListener('click', () => applyFilter(c.dataset.filter)));
+    })();
+  </script>
+</body>
+</html>
