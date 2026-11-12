@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Test Report</title>
+  <style>
+    .history { background:#161b22; border:1px solid #30363d; border-radius:8px; padding:12px 16px; margin-bottom:24px; }
+    .history > summary { cursor:pointer; font-weight:600; font-size:14px; }
+    .hwrap { overflow-x:auto; margin-top:10px; }
+    .history table { border-collapse:collapse; width:100%; font-size:13px; }
+    .history th, .history td { text-align:left; padding:6px 10px; border-top:1px solid #30363d; vertical-align:top; white-space:nowrap; }
+    .history th { color:#7d8590; font-weight:600; border-top:none; }
+    .history td.lbl { white-space:normal; max-width:260px; color:#adbac7; }
+    .history a { color:#58a6ff; text-decoration:none; } .history a:hover { text-decoration:underline; }
+    .history tr.cur td { background:#1c2330; }
+    .history .p { color:#3fb950; } .history .f { color:#f85149; } .history .s { color:#7d8590; }
+    .now { background:#1f6feb; color:#fff; border-radius:10px; padding:1px 7px; font-size:11px; }
+    .barc { min-width:140px; } .bar { display:flex; height:8px; border-radius:4px; overflow:hidden; background:#0d1117; margin-top:5px; }
+    .hf summary { cursor:pointer; color:#f85149; } .hf ul { margin:6px 0 0; padding-left:18px; white-space:normal; color:#ffa198; max-width:520px; }
+    .back { color:#58a6ff; font-size:13px; text-decoration:none; display:inline-block; margin-bottom:12px; }
+    body { font-family: system-ui, sans-serif; background:#0d1117; color:#e6edf3; margin:0; padding:32px; }
+    h1 { font-size:20px; margin:0 0 4px; }
+    .meta { color:#7d8590; font-size:13px; margin-bottom:20px; }
+    .summary { display:flex; gap:12px; margin-bottom:24px; }
+    .card { background:#161b22; border:1px solid #30363d; border-radius:8px; padding:12px 18px;
+            font-family:inherit; font-size:14px; font-weight:600; color:#e6edf3; cursor:pointer;
+            transition:border-color .15s, box-shadow .15s; }
+    .card:hover { border-color:#484f58; }
+    .card.active { border-color:#58a6ff; box-shadow:0 0 0 1px #58a6ff; }
+    .card.pass { color:#3fb950; } .card.fail { color:#f85149; } .card.skip { color:#7d8590; }
+    .file { color:#7d8590; font-size:13px; margin:18px 0 6px; font-weight:600; }
+    .test-item { margin-bottom:6px; }
+    .test { display:flex; align-items:center; gap:16px; background:#161b22; border:1px solid #30363d;
+            border-radius:6px; padding:12px 16px; cursor:pointer; list-style:none; user-select:none; }
+    .test::-webkit-details-marker { display:none; }
+    .test:hover { border-color:#484f58; }
+    .chev { color:#7d8590; font-size:11px; width:12px; transition:transform .15s; }
+    details[open] > .test .chev { transform:rotate(90deg); }
+    .st { min-width:110px; font-weight:600; font-size:13px; }
+    .name { flex:1; }
+    .dur { color:#7d8590; font-size:13px; }
+    .err { background:#161b22; border:1px solid #f85149; border-left:3px solid #f85149; border-radius:6px;
+           padding:12px 16px; margin:-2px 0 10px; color:#ffa198; font-size:12px; white-space:pre-wrap;
+           overflow-x:auto; font-family:monospace; }
+    .log { background:#0b0f14; border:1px solid #30363d; border-left:3px solid #3fb950; border-radius:6px;
+           padding:12px 16px; margin:-2px 0 10px; color:#adbac7; font-size:12px; white-space:pre-wrap;
+           overflow-x:auto; font-family:monospace; line-height:1.5; }
+  </style>
+</head>
+<body>
+  <a class="back" href="../index.html">← ისტორია / ბოლო გაშვება</a>
+  <h1>🎭 Playwright Test Report</h1>
+  <div class="meta">11/12/2026, 6:10:11 PM · tests/RS/Back — დარჩენილი 💳 SMS: merchant-lien, mixed-wallets, reallocate · 33 წთ</div>
+  <div class="summary">
+    <button type="button" class="card active" data-filter="all">Total: 39</button>
+    <button type="button" class="card pass" data-filter="pass">✅ Passed: 11</button>
+    <button type="button" class="card fail" data-filter="fail">❌ Failed: 10</button>
+    <button type="button" class="card skip" data-filter="skip">⏭️ Skipped: 18</button>
+  </div>
+  <div class="file-group"><div class="file">tests/RS/Back/Positive/rs-merchant-lien.spec.ts</div><details class="test-item" data-status="pass">
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="name">ზღვარი: merchant-ს თავისუფალი აქვს 0.05 ₾ (დანარჩენი გაყინულია) → merchant გაიტანს ზუსტად 0.05 ₾-ს → გადის, გაყინული ხელუხლებელია</span>
+            <span class="dur">6.1s</span>
+          </summary><pre class="log">✅ Lien 4.31 ₾ on merchant 599000555 — balance 4.36 / free 0.05
+✅ Merchant cash-out 0.05 ₾ OK — held 4.31 ₾ untouched</pre></details><details class="test-item" data-status="pass">
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="name">merchant-ს თავისუფალი აქვს 0.3 ₾ (დანარჩენი გაყინულია) → merchant გაიტანს 0.2 ₾-ს → გადის, გაყინული ხელუხლებელია</span>
+            <span class="dur">5.0s</span>
+          </summary><pre class="log">✅ Lien 4.01 ₾ on merchant 599000555 — balance 4.31 / free 0.3
+✅ Merchant cash-out 0.2 ₾ OK — held 4.01 ₾ untouched</pre></details><details class="test-item" data-status="pass">
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="name">ყადაღა merchant-ის ბალანსზე მეტია (Partially restricted — გაყინულია მთელი ბალანსი) → RS ხსნის → მთელი ბალანსი თავისუფლდება</span>
+            <span class="dur">7.2s</span>
+          </summary><pre class="log">✅ Partially restricted lien (4.61 &gt; 4.11) withdrawn — released</pre></details><details class="test-item" data-status="pass">
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="name">merchant-ზე 2 ყადაღა: 0.2 ₾ + 0.3 ₾ → გაყინულია 0.5 ₾ (ჯამზე მეტს ვერ გაიტანს) → RS ხსნის პირველს → მეორე 0.3 ₾ ისევ გაყინულია</span>
+            <span class="dur">7.5s</span>
+          </summary><pre class="log">✅ Two liens 0.2 + 0.3 on merchant → withdraw first → second held</pre></details><details class="test-item" data-status="fail" open>
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#f85149">❌ failed</span>
+            <span class="name">ყადაღა მთლიანად დაფარულია (= ბალანსი) → add money 0.2 ₾ (ახალი ფული თავისუფალია) → merchant გაიტანს 0.1 ₾-ს → გადის</span>
+            <span class="dur">59.9s</span>
+          </summary><pre class="err">Error: OTP not found</pre></details><details class="test-item" data-status="fail" open>
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#f85149">❌ failed</span>
+            <span class="name">add money 0.2 ₾ → ყადაღა ტოვებს თავისუფალს 0.5 ₾ → merchant აკეთებს ნაწილობრივ refund-ს 0.1 ₾ → გადის, გაყინული ხელუხლებელია</span>
+            <span class="dur">63.7s</span>
+          </summary><pre class="err">Error: OTP not found</pre></details><details class="test-item" data-status="fail" open>
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#f85149">❌ failed</span>
+            <span class="name">add money 0.2 ₾ → ყადაღა ტოვებს თავისუფალს 0.5 ₾ → merchant აკეთებს სრულ refund-ს 0.2 ₾ → გადის, გაყინული ხელუხლებელია</span>
+            <span class="dur">66.2s</span>
+          </summary><pre class="err">Error: OTP not found</pre></details><details class="test-item" data-status="pass">
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="name">RS ხსნის merchant-ის ყადაღას (მთელი ბალანსი გაყინული იყო) → ფული თავისუფლდება → merchant გაიტანს 0.01 ₾-ს → გადის</span>
+            <span class="dur">8.0s</span>
+          </summary><pre class="log">✅ Lien 4.11 ₾ on merchant 599000555 — balance 4.11 / free 0
+✅ Lien withdrawn → merchant cash-out 0.01 ₾ OK</pre></details><details class="test-item" data-status="pass">
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="name">add money 0.2 ₾ → ყადაღა მთელ ბალანსზე → RS ხსნის ყადაღას → merchant აკეთებს 0.1 ₾-ის refund-ს → გადის</span>
+            <span class="dur">78.0s</span>
+          </summary><pre class="log">✅ Add money 0.2 ₾ — tx 114553
+✅ Lien 4.29 ₾ on merchant 599000555 — balance 4.29 / free 0
+✅ Lien withdrawn → merchant refund 0.1 ₾ OK</pre></details><details class="test-item" data-status="fail" open>
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#f85149">❌ failed</span>
+            <span class="name">ყადაღა მთლიანად დაფარულია (= ბალანსი) → add money 0.2 ₾ (ახალი ფული თავისუფალია) → merchant აკეთებს 0.1 ₾-ის refund-ს → გადის</span>
+            <span class="dur">74.9s</span>
+          </summary><pre class="err">Error: OTP not found</pre></details><details class="test-item" data-status="fail" open>
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#f85149">❌ failed</span>
+            <span class="name">ზღვარი: add money 0.2 ₾ → merchant-ს თავისუფალი აქვს ზუსტად 0.1 ₾ → refund 0.1 ₾ → გადის (refund-ს საკომისიო არ აქვს), გაყინული ხელუხლებელია</span>
+            <span class="dur">53.3s</span>
+          </summary><pre class="err">Error: OTP not found</pre></details><details class="test-item" data-status="fail" open>
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#f85149">❌ failed</span>
+            <span class="name">მიმღების საკომისიო: add money 0.2 ₾ (ერიცხება 0.19) → თავისუფალია 0.2 ₾ → სრული refund 0.2 ₾ → გადის, merchant-ს ეჭრება მთელი 0.2 ₾ (საკომისიოც), გაყინული ხელუხლებელია</span>
+            <span class="dur">58.8s</span>
+          </summary><pre class="err">Error: OTP not found</pre></details><details class="test-item" data-status="pass">
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="name">ინტეგრატორის ორდერით გადახდა 0.2 ₾ → ყადაღა ტოვებს თავისუფალს 0.5 ₾ → ინტეგრატორი აკეთებს refund-ს 0.1 ₾ → გადის, გაყინული ხელუხლებელია</span>
+            <span class="dur">67.5s</span>
+          </summary><pre class="log">✅ Integrator order 0.2 ₾ paid to merchant — tx 114558
+✅ Lien 3.89 ₾ on merchant 599000555 — balance 4.39 / free 0.5
+✅ Integrator refund 0.1 ₾ OK (PARTIALLY_REFUNDED) — held untouched</pre></details><details class="test-item" data-status="fail" open>
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#f85149">❌ failed</span>
+            <span class="name">ყადაღა მთლიანად დაფარულია (= ბალანსი) → ინტეგრატორის ორდერით გადახდა 0.2 ₾ (ახალი ფული თავისუფალია) → merchant გაიტანს 0.1 ₾-ს → გადის</span>
+            <span class="dur">55.8s</span>
+          </summary><pre class="err">Error: OTP not found</pre></details><details class="test-item" data-status="fail" open>
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#f85149">❌ failed</span>
+            <span class="name">ყადაღა მთლიანად დაფარულია (= ბალანსი) → merchant-ის payment link-ით გადახდა 0.2 ₾ (ახალი ფული თავისუფალია) → merchant გაიტანს 0.1 ₾-ს → გადის</span>
+            <span class="dur">81.9s</span>
+          </summary><pre class="err">Error: OTP not found</pre></details><details class="test-item" data-status="pass">
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="name">ავტომატური გატანა DAILY: merchant-ს თავისუფალი აქვს 0.5 ₾, დანარჩენი გაყინულია (მაგ. ბალანსი 1.5, ყადაღა 1) → ჯობი გაიტანს მხოლოდ 0.5 ₾-ს, გაყინული ხელუხლებელია</span>
+            <span class="dur">492.8s</span>
+          </summary><pre class="log">✅ Lien 3.79 ₾ on merchant 599000555 — balance 4.29 / free 0.5
+✅ Auto cash-out (DAILY) with lien 3.79 ₾ — only free 0.5 ₾ went out</pre></details><details class="test-item" data-status="pass">
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="name">სავტომატური გატანა DAILY: მთელი ბალანსი გაყინულია → RS ხსნის ყადაღას → ჯობი გაიტანს მთელ ბალანსს (ბალანსი 0) 💸</span>
+            <span class="dur">597.0s</span>
+          </summary><pre class="log">✅ Lien 3.79 ₾ on merchant 599000555 — balance 3.79 / free 0
+✅ Auto cash-out (DAILY) after lien withdrawn — whole balance 3.79 ₾ went out</pre></details></div><div class="file-group"><div class="file">tests/RS/Back/Positive/rs-mixed-wallets.spec.ts</div><details class="test-item" data-status="pass">
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="name">გზა 1: ბიზნესი + hub wallet → ახალი merchant ბიზნესის Identification Number-ით → Register to RS merchant-ის wallet-ით → იგივე რეგისტრაცია, 2 wallet (payment-service + distributor-hub)</span>
+            <span class="dur">9.0s</span>
+          </summary><pre class="log">✅ Merchant QA RS Merchant 5631 — 995300000089, ident 981673191, BALANCE flow, Temporary Verified (72514f49-458c-4cfc-aba1-fa2f75c07079)
+✅ Way 1: merchant QA RS Merchant 5631 → business 981673191 registration 0706120e-4610-4312-bdd6-fc0c84d4b8ec — 2 wallets</pre></details><details class="test-item" data-status="pass">
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#3fb950">✅ passed</span>
+            <span class="name">გზა 2: ახალი merchant → Register to RS → ბიზნესი merchant-ის Identification Number-ით + hub wallet → hub wallet იგივე რეგისტრაციას ებმის, 2 wallet</span>
+            <span class="dur">4.7s</span>
+          </summary><pre class="log">✅ Merchant QA RS Merchant 7551 — 995300000090, ident 905203292, BALANCE flow, Temporary Verified (12c63394-edb2-4cc2-a959-eec168bfccde)
+✅ Way 2: business with merchant ident 905203292 → hub wallet joined registration 83313e38-ae7b-4aff-b99f-1eb0017a4216 — 2 wallets</pre></details><details class="test-item" data-status="fail" open>
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#f85149">❌ failed</span>
+            <span class="name">ყადაღა 0.4: merchant 0.45, hub 0.2 → მხოლოდ merchant 0.4 → hub გადარიცხავს 0.1-ს ✅, merchant ვერ გაიტანს 0.1-ს (თავისუფალი 0.05) → RS ხსნის → ორივე თავისუფალია</span>
+            <span class="dur">103.1s</span>
+          </summary><pre class="log">✅ Merchant QA RS Merchant 0787 — 995300000091, ident 988813382, BALANCE flow, Temporary Verified (658effb9-5ed6-48ef-b2d1-11db721029a0)</pre><pre class="err">Error: OTP not found</pre></details><details class="test-item" data-status="skip">
+          <summary class="test">
+            <span class="chev"></span>
+            <span class="st" style="color:#7d8590">⏭️ skipped</span>
+            <span class="name">ყადაღა 0.4: merchant 0.25, hub 0.2 → merchant 0.25 (მთლიანად) + hub 0.15 → hub ვერ გადარიცხავს 0.1-ს (თავისუფალი 0.05), merchant ვერ გაიტანს 0.05-ს</span>
+            <span class="dur">0ms</span>
+          </summary></details><details class="test-item" data-status="skip">
+          <summary class="test">
+            <span class="chev"></span>
+            <span class="st" style="color:#7d8590">⏭️ skipped</span>
+            <span class="name">ყადაღა 0.3: merchant 0.2, hub 0.2 (თანაბარი) → ერთზე მთლიანად 0.2, მეორეზე 0.1 (ვინ — integrator-ის პრიორიტეტი)</span>
+            <span class="dur">0ms</span>
+          </summary></details><details class="test-item" data-status="skip">
+          <summary class="test">
+            <span class="chev"></span>
+            <span class="st" style="color:#7d8590">⏭️ skipped</span>
+            <span class="name">ყადაღა 0.4: merchant 0.15, hub 0.45 → მხოლოდ hub 0.4 → merchant გაიტანს 0.05-ს თავის ანგარიშზე ✅, hub ვერ გადარიცხავს 0.1-ს (თავისუფალი 0.05)</span>
+            <span class="dur">0ms</span>
+          </summary></details><details class="test-item" data-status="skip">
+          <summary class="test">
+            <span class="chev"></span>
+            <span class="st" style="color:#7d8590">⏭️ skipped</span>
+            <span class="name">ყადაღა 0.4: merchant 0.1, hub 0.2 (სულ 0.3) → Partially restricted, ორივე მთლიანად, ვერც ერთი ვერაფერს → hub-ს +0.2 → hold ივსება (hub 0.3) → Fully restricted</span>
+            <span class="dur">0ms</span>
+          </summary></details><details class="test-item" data-status="skip">
+          <summary class="test">
+            <span class="chev"></span>
+            <span class="st" style="color:#7d8590">⏭️ skipped</span>
+            <span class="name">ინკასო 0.4: merchant 0.45, hub 0.2 → მხოლოდ merchant 0.4 → hub გადარიცხავს 0.1-ს ✅, merchant ვერ გაიტანს 0.1-ს → RS ხსნის → ორივე თავისუფალია</span>
+            <span class="dur">0ms</span>
+          </summary></details><details class="test-item" data-status="skip">
+          <summary class="test">
+            <span class="chev"></span>
+            <span class="st" style="color:#7d8590">⏭️ skipped</span>
+            <span class="name">ინკასო 0.4: merchant 0.2, hub 0.2 → merchant 0.2 (მთლიანად) + hub 0.2 → hub ვერ გადარიცხავს, merchant ვერ გაიტანს</span>
+            <span class="dur">0ms</span>
+          </summary></details><details class="test-item" data-status="skip">
+          <summary class="test">
+            <span class="chev"></span>
+            <span class="st" style="color:#7d8590">⏭️ skipped</span>
+            <span class="name">ინკასო 0.3: merchant 0.15, hub 0.15 (თანაბარი) → ერთზე მთლიანად 0.15, მეორეზე 0.15</span>
+            <span class="dur">0ms</span>
+          </summary></details><details class="test-item" data-status="skip">
+          <summary class="test">
+            <span class="chev"></span>
+            <span class="st" style="color:#7d8590">⏭️ skipped</span>
+            <span class="name">ინკასო 0.4: merchant 0.1, hub 0.45 → მხოლოდ hub 0.4 → merchant გაიტანს 0.05-ს ✅, hub ვერ გადარიცხავს 0.1-ს</span>
+            <span class="dur">0ms</span>
+          </summary></details><details class="test-item" data-status="skip">
+          <summary class="test">
+            <span class="chev"></span>
+            <span class="st" style="color:#7d8590">⏭️ skipped</span>
+            <span class="name">ინკასო 0.4: merchant 0.05, hub 0.2 (სულ 0.25) → Partially restricted → hub-ს +0.2 → hold ივსება (hub 0.35) → Fully restricted</span>
+            <span class="dur">0ms</span>
+          </summary></details><details class="test-item" data-status="skip">
+          <summary class="test">
+            <span class="chev"></span>
+            <span class="st" style="color:#7d8590">⏭️ skipped</span>
+            <span class="name">ინკასო 0.35: merchant 0.05, hub 0.3 → hub 0.3 + merchant 0.05 → ადმინი იხდის 0.3 → ჩამოიჭრება გაყინულიდან (merchant / hub), ჯამი 0.3, ბალანსები შემცირდა</span>
+            <span class="dur">0ms</span>
+          </summary></details></div><div class="file-group"><div class="file">tests/RS/Back/Positive/rs-reallocate.spec.ts</div><details class="test-item" data-status="fail" open>
+          <summary class="test">
+            <span class="chev">▶</span>
+            <span class="st" style="color:#f85149">❌ failed</span>
+            <span class="name">ყადაღა 0.45 = merchant 0.15 + hub 0.3 (ორივე მთლიანად, hub ვერ გადარიცხავს) → merchant-ს add money 0.6 → Reallocate → მთელი ყადაღა merchant-ზე, hub თავისუფლდება და გადარიცხავს 0.1-ს ✅</span>
+            <span class="dur">66.6s</span>
+          </summary><pre class="log">✅ Merchant QA RS Merchant 2611 — 995300000092, ident 936288677, BALANCE flow, Temporary Verified (03e3510f-1d1d-44f8-a216-ba72527d7b0a)</pre><pre class="err">Error: OTP not found</pre></details><details class="test-item" data-status="skip">
+          <summary class="test">
+            <span class="chev"></span>
+            <span class="st" style="color:#7d8590">⏭️ skipped</span>
+            <span class="name">ყადაღა 0.45 = merchant 0.3 + hub 0.15 (ორივე მთლიანად, merchant ვერ გაიტანს) → hub-ს +0.5 → Reallocate → მთელი ყადაღა hub-ზე, merchant თავისუფლდება და გაიტანს 0.1-ს ✅</span>
+            <span class="dur">0ms</span>
+          </summary></details><details class="test-item" data-status="skip">
+          <summary class="test">
+            <span class="chev"></span>
+            <span class="st" style="color:#7d8590">⏭️ skipped</span>
+            <span class="name">ინკასო 0.35 = merchant 0.2 + hub 0.15 (ორივე მთლიანად, merchant ვერ გაიტანს) → hub-ს +0.5 → Reallocate → მთელი ინკასო hub-ზე, merchant თავისუფლდება და გაიტანს 0.1-ს ✅</span>
+            <span class="dur">0ms</span>
+          </summary></details><details class="test-item" data-status="skip">
+          <summary class="test">
+            <span class="chev"></span>
+            <span class="st" style="color:#7d8590">⏭️ skipped</span>
+            <span class="name">ინკასო 0.4 = merchant 0.1 + hub 0.3 (ორივე მთლიანად, hub ვერ გადარიცხავს) → merchant-ს add money 0.6 → Reallocate → მთელი ინკასო merchant-ზე, hub თავისუფლდება და გადარიცხავს 0.1-ს ✅</span>
+            <span class="dur">0ms</span>
+          </summary></details><details class="test-item" data-status="skip">
+          <summary class="test">
+            <span class="chev"></span>
+            <span class="st" style="color:#7d8590">⏭️ skipped</span>
+            <span class="name">merchant მერე დაემატა: hub 0.3, ყადაღა 0.5 (hub მთლიანად, აკლია 0.2) → ბიზნესს ემატება ახალი merchant 0.35 → Reallocate → merchant 0.35 + hub 0.15 → hub გადარიცხავს 0.15-ს ✅, merchant ვერაფერს</span>
+            <span class="dur">0ms</span>
+          </summary></details><details class="test-item" data-status="skip">
+          <summary class="test">
+            <span class="chev"></span>
+            <span class="st" style="color:#7d8590">⏭️ skipped</span>
+            <span class="name">merchant მერე დაემატა: hub 0.3, ინკასო 0.5 → ახალი merchant 0.35 → Reallocate → merchant 0.35 + hub 0.15 → hub გადარიცხავს 0.15-ს ✅, merchant ვერაფერს</span>
+            <span class="dur">0ms</span>
+          </summary></details><details class="test-item" data-status="skip">
+          <summary class="test">
+            <span class="chev"></span>
+            <span class="st" style="color:#7d8590">⏭️ skipped</span>
+            <span class="name">ყადაღა + ინკასო, merchant მერე დაემატა: hub 0.3 → ყადაღა 0.2 (hub 0.2, Fully) → ინკასო 0.3 (hub 0.1, Partially) → ახალი merchant 0.35 → ინკასოზე Reallocate → ინკასო merchant-ზე 0.3, hub-ის 0.1 თავისუფლდება · ყადაღა ისევ hub 0.2 → hub გადარიცხავს 0.1-ს ✅, merchant გაიტანს 0.05-ს ✅</span>
+            <span class="dur">0ms</span>
+          </summary></details><details class="test-item" data-status="skip">
+          <summary class="test">
+            <span class="chev"></span>
+            <span class="st" style="color:#7d8590">⏭️ skipped</span>
+            <span class="name">hub მერე დაემატა: merchant 0.3, ყადაღა 0.5 (merchant მთლიანად, აკლია 0.2, ვერ გაიტანს) → ბიზნესს ემატება hub 0.35 → Reallocate → hub 0.35 + merchant 0.15 → merchant გაიტანს 0.15-ს ✅, hub ვერაფერს</span>
+            <span class="dur">0ms</span>
+          </summary></details><details class="test-item" data-status="skip">
+          <summary class="test">
+            <span class="chev"></span>
+            <span class="st" style="color:#7d8590">⏭️ skipped</span>
+            <span class="name">hub მერე დაემატა: merchant 0.3, ინკასო 0.5 → hub 0.35 → Reallocate → hub 0.35 + merchant 0.15 → merchant გაიტანს 0.15-ს ✅, hub ვერაფერს</span>
+            <span class="dur">0ms</span>
+          </summary></details></div>
+  <script>
+    (function () {
+      const cards = document.querySelectorAll('.card');
+      const items = document.querySelectorAll('.test-item');
+      const groups = document.querySelectorAll('.file-group');
+      function applyFilter(f) {
+        items.forEach((it) => {
+          it.style.display = (f === 'all' || it.dataset.status === f) ? '' : 'none';
+        });
+        // ცარიელი file-group-ის header დამალვა
+        groups.forEach((g) => {
+          let anyVisible = false;
+          g.querySelectorAll('.test-item').forEach((it) => {
+            if (it.style.display !== 'none') anyVisible = true;
+          });
+          g.style.display = anyVisible ? '' : 'none';
+        });
+        cards.forEach((c) => c.classList.toggle('active', c.dataset.filter === f));
+      }
+      cards.forEach((c) => c.addEventListener('click', () => applyFilter(c.dataset.filter)));
+    })();
+  </script>
+</body>
+</html>

@@ -1,5 +1,27 @@
 [
   {
+    "id": "2026-11-12T14-10-11-400Z",
+    "startedAt": "2026-11-12T14:10:11.400Z",
+    "durationMs": 1975594,
+    "label": "tests/RS/Back — დარჩენილი 💳 SMS: merchant-lien, mixed-wallets, reallocate",
+    "total": 39,
+    "passed": 11,
+    "failed": 10,
+    "skipped": 18,
+    "failedTitles": [
+      "ყადაღა მთლიანად დაფარულია (= ბალანსი) → add money 0.2 ₾ (ახალი ფული თავისუფალია) → merchant გაიტანს 0.1 ₾-ს → გადის",
+      "add money 0.2 ₾ → ყადაღა ტოვებს თავისუფალს 0.5 ₾ → merchant აკეთებს ნაწილობრივ refund-ს 0.1 ₾ → გადის, გაყინული ხელუხლებელია",
+      "add money 0.2 ₾ → ყადაღა ტოვებს თავისუფალს 0.5 ₾ → merchant აკეთებს სრულ refund-ს 0.2 ₾ → გადის, გაყინული ხელუხლებელია",
+      "ყადაღა მთლიანად დაფარულია (= ბალანსი) → add money 0.2 ₾ (ახალი ფული თავისუფალია) → merchant აკეთებს 0.1 ₾-ის refund-ს → გადის",
+      "ზღვარი: add money 0.2 ₾ → merchant-ს თავისუფალი აქვს ზუსტად 0.1 ₾ → refund 0.1 ₾ → გადის (refund-ს საკომისიო არ აქვს), გაყინული ხელუხლებელია",
+      "მიმღების საკომისიო: add money 0.2 ₾ (ერიცხება 0.19) → თავისუფალია 0.2 ₾ → სრული refund 0.2 ₾ → გადის, merchant-ს ეჭრება მთელი 0.2 ₾ (საკომისიოც), გაყინული ხელუხლებელია",
+      "ყადაღა მთლიანად დაფარულია (= ბალანსი) → ინტეგრატორის ორდერით გადახდა 0.2 ₾ (ახალი ფული თავისუფალია) → merchant გაიტანს 0.1 ₾-ს → გადის",
+      "ყადაღა მთლიანად დაფარულია (= ბალანსი) → merchant-ის payment link-ით გადახდა 0.2 ₾ (ახალი ფული თავისუფალია) → merchant გაიტანს 0.1 ₾-ს → გადის",
+      "ყადაღა 0.4: merchant 0.45, hub 0.2 → მხოლოდ merchant 0.4 → hub გადარიცხავს 0.1-ს ✅, merchant ვერ გაიტანს 0.1-ს (თავისუფალი 0.05) → RS ხსნის → ორივე თავისუფალია",
+      "ყადაღა 0.45 = merchant 0.15 + hub 0.3 (ორივე მთლიანად, hub ვერ გადარიცხავს) → merchant-ს add money 0.6 → Reallocate → მთელი ყადაღა merchant-ზე, hub თავისუფლდება და გადარიცხავს 0.1-ს ✅"
+    ]
+  },
+  {
     "id": "2026-11-12T14-08-29-236Z",
     "startedAt": "2026-11-12T14:08:29.236Z",
     "durationMs": 1745779,
@@ -17,28 +39,6 @@
       "RS Registration — უკვე მიბმული wallet, იგივე ident → არსებული რეგისტრაცია",
       "RS Registration — Cancel ათავისუფლებს wallet-ს (სხვა ident-ით რეგისტრირდება)"
     ]
-  },
-  {
-    "id": "2026-11-12T14-09-58-538Z",
-    "startedAt": "2026-11-12T14:09:58.538Z",
-    "durationMs": 0,
-    "label": "tests/RS/Back/Positive/rs-merchant-lien.spec.ts:17 tests/RS/Back/Positive/rs-merchant-lien.spec.ts:21 tests/RS/Back/Positive/rs-merchant-lien.spec.ts:27 tests/RS/Back/Positive/rs-merchant-lien.spec.ts:31 tests/RS/Back/Positive/rs-merchant-lien.spec.ts:37 tests/RS/Back/Positive/rs-merchant-lien.spec.ts:44 tests/RS/Back/Positive/rs-merchant-lien.spec.ts:49 tests/RS/Back/Positive/rs-merchant-lien.spec.ts:56 tests/RS/Back/Positive/rs-merchant-lien.spec.ts:63 tests/RS/Back/Positive/rs-merchant-lien.spec.ts:68 tests/RS/Back/Positive/rs-merchant-lien.spec.ts:75 tests/RS/Back/Positive/rs-merchant-lien.spec.ts:80 tests/RS/Back/Positive/rs-merchant-lien.spec.ts:87 tests/RS/Back/Positive/rs-merchant-lien.spec.ts:94 tests/RS/Back/Positive/rs-merchant-lien.spec.ts:99 tests/RS/Back/Positive/rs-merchant-lien.spec.ts:106 tests/RS/Back/Positive/rs-merchant-lien.spec.ts:111 tests/RS/Back/Positive/rs-mixed-wallets.spec.ts:18 tests/RS/Back/Positive/rs-mixed-wallets.spec.ts:22 tests/RS/Back/Positive/rs-mixed-wallets.spec.ts:28 tests/RS/Back/Positive/rs-mixed-wallets.spec.ts:32 tests/RS/Back/Positive/rs-mixed-wallets.spec.ts:36 tests/RS/Back/Positive/rs-mixed-wallets.spec.ts:40 tests/RS/Back/Positive/rs-mixed-wallets.spec.ts:44 tests/RS/Back/Positive/rs-mixed-wallets.spec.ts:50 tests/RS/Back/Positive/rs-mixed-wallets.spec.ts:54 tests/RS/Back/Positive/rs-mixed-wallets.spec.ts:58 tests/RS/Back/Positive/rs-mixed-wallets.spec.ts:62 tests/RS/Back/Positive/rs-mixed-wallets.spec.ts:66 tests/RS/Back/Positive/rs-mixed-wallets.spec.ts:70 tests/RS/Back/Positive/rs-reallocate.spec.ts:15 tests/RS/Back/Positive/rs-reallocate.spec.ts:19 tests/RS/Back/Positive/rs-reallocate.spec.ts:23 tests/RS/Back/Positive/rs-reallocate.spec.ts:27 tests/RS/Back/Positive/rs-reallocate.spec.ts:31 tests/RS/Back/Positive/rs-reallocate.spec.ts:35 tests/RS/Back/Positive/rs-reallocate.spec.ts:39 tests/RS/Back/Positive/rs-reallocate.spec.ts:43 tests/RS/Back/Positive/rs-reallocate.spec.ts:47",
-    "total": 0,
-    "passed": 0,
-    "failed": 0,
-    "skipped": 0,
-    "failedTitles": []
-  },
-  {
-    "id": "2026-11-12T14-08-19-841Z",
-    "startedAt": "2026-11-12T14:08:19.841Z",
-    "durationMs": 1,
-    "label": "tests/RS/Back/Positive/rs-collection.spec.ts:57 tests/RS/Back/Positive/rs-collection.spec.ts:61 tests/RS/Back/Positive/rs-collection.spec.ts:65 tests/RS/Back/Positive/rs-collection.spec.ts:69 tests/RS/Back/Positive/rs-collection.spec.ts:73 tests/RS/Back/Positive/rs-collection.spec.ts:77 tests/RS/Back/Positive/rs-collection.spec.ts:81 tests/RS/Back/Positive/rs-collection.spec.ts:89 tests/RS/Back/Positive/rs-collection.spec.ts:93 tests/RS/Back/Positive/rs-collection.spec.ts:97 tests/RS/Back/Positive/rs-collection.spec.ts:101 tests/RS/Back/Positive/rs-collection.spec.ts:105 tests/RS/Back/Positive/rs-collection.spec.ts:109 tests/RS/Back/Positive/rs-collection.spec.ts:113 tests/RS/Back/Positive/rs-collection.spec.ts:117 tests/RS/Back/Positive/rs-collection.spec.ts:121 tests/RS/Back/Positive/rs-collection.spec.ts:125 tests/RS/Back/Positive/rs-collection.spec.ts:129 tests/RS/Back/Positive/rs-collection.spec.ts:137 tests/RS/Back/Positive/rs-collection.spec.ts:141 tests/RS/Back/Positive/rs-collection.spec.ts:145 tests/RS/Back/Positive/rs-collection.spec.ts:149 tests/RS/Back/Positive/rs-collection.spec.ts:153 tests/RS/Back/Positive/rs-lien.spec.ts:18 tests/RS/Back/Positive/rs-lien.spec.ts:22 tests/RS/Back/Positive/rs-lien.spec.ts:26 tests/RS/Back/Positive/rs-lien.spec.ts:32 tests/RS/Back/Positive/rs-lien.spec.ts:36 tests/RS/Back/Positive/rs-lien.spec.ts:42 tests/RS/Back/Positive/rs-lien.spec.ts:47 tests/RS/Back/Positive/rs-lien.spec.ts:52 tests/RS/Back/Positive/rs-lien.spec.ts:57 tests/RS/Back/Positive/rs-lien.spec.ts:63 tests/RS/Back/Positive/rs-lien.spec.ts:67 tests/RS/Back/Positive/rs-lien.spec.ts:71 tests/RS/Back/Positive/rs-lien.spec.ts:75 tests/RS/Back/Positive/rs-lien.spec.ts:79 tests/RS/Back/Positive/rs-lien.spec.ts:85 tests/RS/Back/Positive/rs-lien.spec.ts:89 tests/RS/Back/Positive/rs-lien.spec.ts:95 tests/RS/Back/Positive/rs-lien.spec.ts:99 tests/RS/Back/Positive/rs-lien.spec.ts:103 tests/RS/Back/Positive/rs-lien.spec.ts:107 tests/RS/Back/Positive/rs-lien.spec.ts:112 tests/RS/Back/Positive/rs-lien.spec.ts:119 tests/RS/Back/Positive/rs-lien.spec.ts:123 tests/RS/Back/Positive/rs-lien.spec.ts:129 tests/RS/Back/Positive/rs-lien.spec.ts:136 tests/RS/Back/Positive/rs-lien.spec.ts:140 tests/RS/Back/Positive/rs-lien.spec.ts:146 tests/RS/Back/Positive/rs-lien.spec.ts:152 tests/RS/Back/Positive/rs-lien.spec.ts:158 tests/RS/Back/Positive/rs-lien.spec.ts:164 tests/RS/Back/Positive/rs-registration.spec.ts:17 tests/RS/Back/Positive/rs-registration.spec.ts:21 tests/RS/Back/Positive/rs-registration.spec.ts:25 tests/RS/Back/Positive/rs-registration.spec.ts:31 tests/RS/Back/Positive/rs-registration.spec.ts:37 tests/RS/Back/Positive/rs-registration.spec.ts:41 tests/RS/Back/Positive/rs-registration.spec.ts:47 tests/RS/Back/Positive/rs-registration.spec.ts:53 tests/RS/Back/Positive/rs-registration.spec.ts:57 tests/RS/Back/Positive/rs-registration.spec.ts:63 tests/RS/Back/Positive/rs-registration.spec.ts:68",
-    "total": 0,
-    "passed": 0,
-    "failed": 0,
-    "skipped": 0,
-    "failedTitles": []
   },
   {
     "id": "2026-11-12T12-08-24-000Z",
